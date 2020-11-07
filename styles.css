@@ -39,6 +39,10 @@ the "Create Account", "Log in", "search" and
   overflow: hidden;
 }
 
+.headerButton:hover {
+background-color: grey;
+}
+
 .left {
   float: left;
 }
@@ -94,7 +98,10 @@ the "Create Account", "Log in", "search" and
   text-align: center;
   padding: 15px 15px;
   text-decoration: none;
+}
 
+.socialMenu button:hover{
+  background-color: lightgray;
 }
 
 .featuredReview{
@@ -121,18 +128,41 @@ the "Create Account", "Log in", "search" and
   text-decoration: none;
 }
 
+.featuredReview Button:hover{
+  background-color: lightgray;
+}
 
-.mainMenu{
-  list-style-type: none;
+
+
+.mainMenu h2{
+background-color: red;
+color: white;
+text-align: center;
+padding: 15px 15px;
+}
+
+
+.mainMenu a{
+  
+  float: left;
+  display: block;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-decoration: none;
   float: left;
   margin: 0;
-  padding: 0;
-  text-align: center;
+  padding: 15px 0px 15px 0px;
   width: 80%;
   background-color: white;
 }
 
+.mainMenu a:hover{
 
+  background-color: lightgrey;
+
+}
 
 p {
   text-align: center;
