@@ -32,6 +32,7 @@ the "Create Account", "Log in", "search" and
 */
 .headerButton {
   border: none;
+  background-color: White;
   color: black;
   font-size:20px;
   margin: 10px;
@@ -58,9 +59,11 @@ background-color: grey;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .topNavBar a{
+  background-color: red;
   float: left;
   display: block;
   color: white;
@@ -220,6 +223,7 @@ p {
 }
 
 #searchBar{
+  background-color:white;
   width: 35px;
   height: 35px;
   border-radius: 10px;
