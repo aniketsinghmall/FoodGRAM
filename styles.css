@@ -220,7 +220,7 @@ p {
 }
 
 #searchBar{
-  width: 30px;
+  width: 35px;
   height: 35px;
   border-radius: 10px;
   float: right;
@@ -229,7 +229,7 @@ p {
   transition: width 0.25s;
   background-image: url("searchIcon.png");
   background-position: 0px -2px;
-  background-size: 30px 30px;
+  background-size: 40px 40px;
   background-repeat: no-repeat;
 }
 
@@ -237,7 +237,7 @@ p {
   width: 300px;
   float: top;
   transition: width 0.25s;
-  padding-left: 30px;
+  padding-left: 40px;
 }
 
 @keyframes searchOpen{
