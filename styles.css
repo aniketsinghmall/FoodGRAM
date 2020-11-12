@@ -1,0 +1,348 @@
+
+
+
+body {
+  background-color:white;
+  margin: 0;
+}
+
+header {
+  background-color:red;
+  color: white;
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+}
+
+/*
+headerButton
+
+KNOWN ISSUE: PADDING
+Increasing the size of the padding causeing
+black to render over the below navbar.
+I believe this issue has something to do with 
+the button being rendered overlapping the 
+navbar in some way. - Ryan 
+
+headButton contains the CSS properties for 
+the "Create Account", "Log in", "search" and 
+"Cart" buttons along the top of the screen.
+*/
+.headerButton {
+  border: none;
+  background-color: White;
+  color: black;
+  font-size:20px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.headerButton:hover {
+background-color: grey;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.topNavBar {
+  background-color: red;
+  color: white;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.topNavBar a{
+  background-color: red;
+  float: left;
+  display: block;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+  }
+
+.topNavBar a:hover {
+  background-color:tomato;
+}
+
+
+.socialMenu{
+  background-color: white;
+  color: black;
+  list-style-type: none;
+  float: left;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 20%;
+}
+
+.socialMenu ul{
+
+  overflow:hidden; 
+  overflow-y:scroll;
+  height: 2280px;
+  padding-left: 0;
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+}
+
+.socialMenu button{
+  background-color: white;
+  color: black;
+
+  float: left;
+  display: block;
+  width: 100%;
+  height: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+}
+
+.socialMenu button:hover{
+  background-color: lightgray;
+}
+
+.featuredReview{
+  background-color: white;
+  color: black;
+  list-style-type: none;
+  float: left;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 80%;
+}
+
+.featuredReview Button{
+  background-color: white;
+  color: black;
+
+  float: left;
+  display: block;
+  width: 100%;
+  height: 600px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+}
+
+.featuredReview Button:hover{
+  background-color: lightgray;
+}
+
+
+
+.mainMenu h2{
+
+background-color: red;
+color: white;
+font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+width: auto;
+padding: 20px;
+margin: 0px;
+}
+
+
+.mainMenu ul{
+  background-color: white;
+  overflow:hidden; 
+  overflow-y:scroll;
+  height: 1600px;
+  padding-left: 0;
+  list-style: none;
+  width: auto;
+
+}
+
+
+.mainMenu a{
+  background-color: white;
+  color: black;
+  float: left;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-decoration: none;
+  float: left;
+  margin: 0;
+  padding: 15px 0px 15px 0px;
+  width: 100%;
+  height: 50px;
+}
+
+.mainMenu a:hover{
+
+  background-color: lightgrey;
+
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color:white;
+}
+
+#searchInput{
+  width: 1px;
+  height: 24px;
+  border-radius: 10px;
+  animation-name:searchOpen;
+  animation-duration:0.25s;
+  float: right;
+  position: relative;
+  top: -23px;
+  animation-timing-function: ease-out;
+
+}
+
+#searchBar{
+  background-color:white;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  float: right;
+  position: relative;
+  top: -23px;
+  transition: width 0.25s;
+  background-image: url("searchIcon.png");
+  background-position: 0px -2px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+#searchBar:focus{
+  width: 300px;
+  float: top;
+  transition: width 0.25s;
+  padding-left: 40px;
+}
+
+@keyframes searchOpen{
+  from{width:1px;}
+  to{width:300px;}
+}
+
+@keyframes searchClose{
+  from{width:300px;}
+  to{width:1px;}
+}
+
+#checkoutDropDown{
+  width: 270px;
+  height: 500px;
+  float: right;
+  background-color: white;
+  position: absolute;
+  right: 10px;
+  top: 90px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7);
+  border-width: 3px;
+  animation-name: checkoutOpen;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+}
+
+#proceedCheckout{
+  width: 250px;
+  height: 75px;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  left: 10px;
+  color: white;
+  background-color: red;
+  font-size: 1px;
+  font-family: Arial;
+  font-weight: bold;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7);
+  border-width: 2px;
+  animation-name: proceedOpen;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes checkoutOpen{
+  from{height:1px; opacity: 0%;}
+  to{height:500px; opacity: 100%;}
+}
+
+@keyframes proceedOpen{
+  from{height:1px; font-size: 1px; opacity: 0%;}
+  to{height:75px; font-size: 20px; opacity: 100%;}
+}
+
+@keyframes checkoutClose{
+  from{height:500px; opacity: 100%;}
+  to{height:1px; opacity: 0%;}
+}
+
+@keyframes proceedClose{
+  from{height:75px; font-size: 20px; opacity: 100%;}
+  to{height:1px; font-size: 1px; opacity: 0%;}
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: auto;
+  padding: 20px;
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+
+.footer a{
+
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color:white;
+  text-decoration: none;
+
+}
+
+
+#searchButton{
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+#checkoutButton{
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+}
