@@ -204,6 +204,27 @@ p {
 
 }
 
+#searchBar{
+  width: 30px;
+  height: 35px;
+  border-radius: 10px;
+  float: right;
+  position: relative;
+  top: -23px;
+  transition: width 0.25s;
+  background-image: url("searchIcon.png");
+  background-position: 0px -2px;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+}
+
+#searchBar:focus{
+  width: 300px;
+  float: top;
+  transition: width 0.25s;
+  padding-left: 30px;
+}
+
 @keyframes searchOpen{
   from{width:1px;}
   to{width:300px;}
@@ -292,4 +313,17 @@ p {
   color:white;
   text-decoration: none;
 
+}
+
+
+#searchButton{
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+#checkoutButton{
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
 }
