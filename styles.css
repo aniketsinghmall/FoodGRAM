@@ -196,10 +196,11 @@ p {
   height: 24px;
   border-radius: 10px;
   animation-name:searchOpen;
-  animation-duration:0.5s;
+  animation-duration:0.25s;
   float: right;
   position: relative;
   top: -23px;
+  animation-timing-function: ease-out;
 
 }
 
@@ -211,6 +212,64 @@ p {
 @keyframes searchClose{
   from{width:300px;}
   to{width:1px;}
+}
+
+#checkoutDropDown{
+  width: 270px;
+  height: 500px;
+  float: right;
+  background-color: white;
+  position: absolute;
+  right: 10px;
+  top: 90px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7);
+  border-width: 3px;
+  animation-name: checkoutOpen;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+}
+
+#proceedCheckout{
+  width: 250px;
+  height: 75px;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  left: 10px;
+  color: white;
+  background-color: red;
+  font-size: 1px;
+  font-family: Arial;
+  font-weight: bold;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7);
+  border-width: 2px;
+  animation-name: proceedOpen;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes checkoutOpen{
+  from{height:1px; opacity: 0%;}
+  to{height:500px; opacity: 100%;}
+}
+
+@keyframes proceedOpen{
+  from{height:1px; font-size: 1px; opacity: 0%;}
+  to{height:75px; font-size: 20px; opacity: 100%;}
+}
+
+@keyframes checkoutClose{
+  from{height:500px; opacity: 100%;}
+  to{height:1px; opacity: 0%;}
+}
+
+@keyframes proceedClose{
+  from{height:75px; font-size: 20px; opacity: 100%;}
+  to{height:1px; font-size: 1px; opacity: 0%;}
 }
 
 .footer {
@@ -234,4 +293,3 @@ p {
   text-decoration: none;
 
 }
-  
