@@ -165,6 +165,7 @@ padding: 20px;
 margin: 0px;
 }
 
+
 .mainMenu ul{
   background-color: white;
   overflow:hidden; 
@@ -172,9 +173,10 @@ margin: 0px;
   height: 1600px;
   padding-left: 0;
   list-style: none;
-  width: 40%;
+  width: auto;
 
 }
+
 
 .mainMenu a{
   background-color: white;
