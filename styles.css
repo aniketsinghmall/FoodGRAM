@@ -88,6 +88,19 @@ background-color: grey;
   width: 20%;
 }
 
+.socialMenu ul{
+
+  overflow:hidden; 
+  overflow-y:scroll;
+  height: 2280px;
+  padding-left: 0;
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+}
+
 .socialMenu button{
   background-color: white;
   color: black;
@@ -152,16 +165,18 @@ padding: 20px;
 margin: 0px;
 }
 
+
 .mainMenu ul{
   background-color: white;
   overflow:hidden; 
   overflow-y:scroll;
-  height: 300px;
+  height: 1600px;
   padding-left: 0;
   list-style: none;
-  width: 40%;
+  width: auto;
 
 }
+
 
 .mainMenu a{
   background-color: white;
