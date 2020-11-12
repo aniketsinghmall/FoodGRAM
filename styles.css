@@ -172,4 +172,25 @@ p {
   color:white;
 }
 
+#searchInput{
+  width: 1px;
+  height: 24px;
+  border-radius: 10px;
+  animation-name:searchOpen;
+  animation-duration:0.5s;
+  float: right;
+  position: relative;
+  top: -23px;
+
+}
+
+@keyframes searchOpen{
+  from{width:1px;}
+  to{width:300px;}
+}
+
+@keyframes searchClose{
+  from{width:300px;}
+  to{width:1px;}
+}
   
