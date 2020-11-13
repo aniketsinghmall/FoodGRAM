@@ -49,7 +49,7 @@ function searchResults(){
         if(restaurants.length > 0){
             list.innerHTML = "";
             for(let i = 0; i<restaurants.length; i++){
-                list.innerHTML += "<a href = \"#"+ restaurants[0].name +"\">"+ "</a>";
+                list.innerHTML += "<a href = \"#"+ restaurants[i].name +"\">"+ restaurants[i].name+"</a>";
             }
         }
         else{
