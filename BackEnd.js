@@ -3,7 +3,7 @@
 "use strict";
 let fs = require('fs');
 
-export class Restaurant {
+class Restaurant {
     #_Name
     #_foodItems
 
