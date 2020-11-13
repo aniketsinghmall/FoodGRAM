@@ -34,15 +34,17 @@ the "Create Account", "Log in", "search" and
   border: none;
   background-color: #03DAC5;
   color: color;
-  font-size:20px;
+  font-size:22px;
   margin: 10px;
   padding: 5px;
   overflow: hidden;
   border-radius: 15px;
+  font-weight: bold;
 }
 
 #headerButtons{
   color: rgba(187,134,252, 200);
+  
 }
 
 .headerButton:hover {
@@ -61,10 +63,15 @@ background-color: rgb(45, 45, 45);
   background-color: rgb(25,25,25);
   color: rgb(18,18,18);
   list-style-type: none;
-  margin: 0;
-  overflow: hidden;
-  float: right;
-  width: 100%;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  float: left;
+  width: 73%;
+  padding-bottom: 20px;
+  padding-left: 400px;
+  position:relative;
+  top:-22px;
 }
 
 .topNavBar a{
@@ -76,18 +83,26 @@ background-color: rgb(45, 45, 45);
   font-weight: bold;
   font-size: large;
   text-align: center;
-  padding: 15px 15px;
   text-decoration: none;
   border-radius:10px;
   border-style: solid;
   border-width: 2px;
   border-color: white;
   margin: 5px;
+  font-size: 30px;
+  padding: 5px 5px;
   
   }
 
 .topNavBar a:hover {
   background-color:rgb(45, 45, 45);
+}
+
+#logo{
+  width:300px;
+  height:80px;
+  position: relative;
+  top: -15px;
 }
 
 
@@ -106,7 +121,7 @@ background-color: rgb(45, 45, 45);
 
   overflow:hidden; 
   overflow-y:scroll;
-  height: 2280px;
+  height: 1400px;
   padding-left: 0;
   padding-top: 0;
   margin-top: 0;
@@ -145,7 +160,7 @@ background-color: rgb(45, 45, 45);
   padding: 0;
   text-align: center;
   width: 78%;
-  margin: 14px 10px 14px 14px;
+  margin: 0px 10px 14px 14px;
   border-radius: 25px;
 }
 
@@ -180,9 +195,8 @@ font-family: Arial, Helvetica, sans-serif;
 text-align: center;
 width: auto;
 padding: 20px;
-margin: 0px;
 border-radius: 25px;
-margin-top: 100px;
+margin-top: 0px;
 }
 
 
@@ -190,7 +204,7 @@ margin-top: 100px;
   background-color: rgb(18,18,18);
   overflow:hidden; 
   overflow-y:scroll;
-  height: 1600px;
+  height: 600px;
   padding: 0;
   list-style: none;
   width: auto;
@@ -226,7 +240,7 @@ margin-top: 100px;
 
 #menu{
   background-color: rgb(25, 25, 25);
-  margin: 675px 15px 50px 310px;
+  margin: 730px 15px 50px 310px;
   border-radius: 25px;
 }
 
@@ -239,7 +253,7 @@ p {
 #searchInput{
   width: 1px;
   height: 24px;
-  border-radius: 10px;
+  border-radius: 15px;
   animation-name:searchOpen;
   animation-duration:0.25s;
   float: right;
@@ -256,7 +270,8 @@ p {
   border-radius: 10px;
   float: right;
   position: relative;
-  top: -23px;
+  top: -75px;
+  left: -100px;
   transition: width 0.25s;
   background-image: url("searchIcon.png");
   background-position: 0px -2px;
@@ -299,6 +314,7 @@ p {
   animation-name: checkoutOpen;
   animation-duration: 0.25s;
   animation-timing-function: ease-out;
+  z-index: 10;
 }
 
 #proceedCheckout{
@@ -317,6 +333,7 @@ p {
   animation-name: proceedOpen;
   animation-duration: 0.25s;
   animation-timing-function: ease-out;
+  z-index: 10;
 }
 
 @keyframes checkoutOpen{
