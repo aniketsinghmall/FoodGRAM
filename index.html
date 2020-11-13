@@ -8,6 +8,7 @@
 <head>
   <link rel="stylesheet" href="styles.css">
   <script type="text/javascript" src="BackEnd.js"></script>
+  <script src = "script.js"> </script>
   <!-- Imports Google icons for use-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -30,52 +31,33 @@
   </header>
 
 
-  <div class = "topNavBar">
-    <a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a>
-    <a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a>
-    <a href = "index.html?search=Fine Dinning"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a>
-    <a href = "index.html?search=Dessert"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a>
-    <a href = "index.html?search=Drink"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a>
-  </div>
+  <ul class = "topNavBar">
+    
+        <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
+        <li><a href = "index.html?search=Burgers"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
+        <li><a href = "index.html?search=Fine Dinning"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
+        <li><a href = "index.html?search=Desserts"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
+        <li><a href = "index.html?search=Drinks"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
+  
+  </ul>
 
 
-  <div class = "socialMenu">
+  <div id = "socialMenu" class = "socialMenu">
 
-    <ul>
-      <button id="review1" class = "socialMenu button"> Review 1 </button>
-      <button class = "socialMenu button"> Review 2 </button>
-      <button class = "socialMenu button"> Review 3 </button>
-      <button class = "socialMenu button"> Review 4 </button>
-      <button class = "socialMenu button"> Review 5 </button>
-      <button class = "socialMenu button"> Review 6 </button>
-      <button class = "socialMenu button"> Review 7 </button>
-      <button class = "socialMenu button"> Review 8 </button>
-      <button class = "socialMenu button"> Review 9 </button>
-      <button class = "socialMenu button"> Review 10 </button>
-      <button class = "socialMenu button"> Review 11 </button>
-      <button class = "socialMenu button"> Review 12 </button>
-      <button class = "socialMenu button"> Review 13 </button>
-      <button class = "socialMenu button"> Review 14 </button>
-      <button class = "socialMenu button"> Review 15 </button>
-      <button class = "socialMenu button"> Review 16 </button>
-      <button class = "socialMenu button"> Review 17 </button>
-      <button class = "socialMenu button"> Review 18 </button>
-      <button class = "socialMenu button"> Review 19 </button>
-      <button class = "socialMenu button"> Review 20 </button>
-      <button class = "socialMenu button"> Review 21 </button>
-      <button class = "socialMenu button"> Review 22 </button>
-      <button class = "socialMenu button"> Review 23 </button>
-      <button class = "socialMenu button"> Review 24 </button>
+    <ul id = "RestaurantReviews">
     </ul>
 
   </div>
-  <script> displayReviews() </script>
-  
+
+  <script> displayRestaurantReviews() </script>
+
   <span class = "featuredReview">
 
-    <button class = "featureReview Button"> Featured Review 1 </button>
+    <button id = "featuredReviewButton" class = "featureReview Button"> Featured Review 1 </button>
 
   </span>
+
+  <script> displayFeaturedReview() </script>
 
 
   <span class = "mainMenu">

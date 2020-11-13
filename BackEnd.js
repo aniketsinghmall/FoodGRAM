@@ -5,10 +5,12 @@
 class Restaurant {
     #_Name
     #_foodItems
+    #_Rating
 
     constructor(name) { // accepts name of Restaurant and array of food items.
         this.#_Name = name;
-        this.#_foodItems = []
+        this.#_foodItems = [];
+        this.#_Rating = parseInt(100*(1 +Math.random()*4))/100
     }
     addFood(name){
         this.#_foodItems.push(name);
@@ -18,6 +20,9 @@ class Restaurant {
     }
     get foodItems(){
         return this.#_foodItems;
+    }
+    get rating(){
+        return this.#_Rating
     }
 }
 
@@ -361,7 +366,7 @@ function compareReviews(a, b){
 
 
 //helper function for generating restaurant reviews. Accepts user list and restaurant list and makes reviews for it.
-//Please use generateTrendingReview or generateFriendsAndTheirReviews, to get data.
+//Please use generateTrendingReview or generateFriensAndTheirReviews, to get data.
 //This is just a helper function, don't use this.
 function generateRestaurantReviews(userList, restaurantList){
     let result = [];
@@ -429,6 +434,12 @@ function generateFriendFoodReviews(friends, restaurant){
     return generateFoodReviews(friends, restaurant);
 }
 
+function sortByRating(array){
+    return array.sort(compareReviews);
+}
+
+
+
 
 function testCode(){
     //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
@@ -460,7 +471,7 @@ function testCode(){
     let friends = createFriends();
     //Generates all friend restaurant reviews.
     let friendRestaurantReviews = generateFriendsRestaurantReviews(friends, data[0])[1];
-    for (let i =0; i<restaurantReviews.length; i++){
+    for (let i =0; i<friendRestaurantReviews.length; i++){
         //console.log(friendRestaurantReviews[i].name + ", " + friendRestaurantReviews[i].rating + "/5, " + friendRestaurantReviews[i].restaurant);
     }
 
@@ -482,22 +493,45 @@ function testCode(){
 }
 
 
-
 function main(){
     //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
     return createData();
 }
 
-main();
+let myfriends = createFriends();
 //displayReviews();
 
-function displayReviews(){
-    console.log("ooga booga dooga");
-    document.getElementById("review1").innerHTML = "spaghetti";
+let data=createData();
+let friends=createFriends()
+let friendReviews;
+
+
+function displayRestaurantReviews() {
+    if(friends === undefined){
+        friends=createFriends()
+    }
+    if(friendReviews === undefined) {
+        friendReviews = generateFriendsRestaurantReviews(friends, data[0])[1];
+        console.log("this ran.");
+    }
+    else
+        console.log("friends already exists.");
+
+    for (let i = 0; i < friendReviews.length; i++) {
+        let btn = document.createElement("BUTTON");
+        //btn.onclick = func;
+        btn.innerHTML = friendReviews[i].name + "<br/>" + friendReviews[i].restaurant + "<br/>" + friendReviews[i].rating + "/5<br/>";
+        document.getElementById("RestaurantReviews").appendChild(btn);
+    }
 }
 
+function displayFeaturedReview() {
+    let bestRest = sortByRating(data[0]);
 
-
+    let btn = document.getElementById("featuredReviewButton");
+    //btn.onclick = func;
+    btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
+}
 
 
 function getRestaurantText(){

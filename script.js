@@ -1,8 +1,6 @@
-let data;
-
 (function(){
     data = createData();
-    console.log(data);
+    // console.log(data);
     //document.getElementById("searchButton").addEventListener("click", searchBox);
     document.getElementById("checkoutButton").addEventListener("click", searchResults);
     window.addEventListener("popstate", searchResults());
