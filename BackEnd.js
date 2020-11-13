@@ -637,3 +637,14 @@ function getFoodText(){
 
 
 main();
+
+/*
+export = Restaurant;
+module.exports = FoodItem;
+module.exports = Recipe;
+module.exports = Ingredient;
+module.exports = User;
+module.exports = Friend;
+module.exports = RestaurantReview;
+module.exports = FoodReview;
+*/
