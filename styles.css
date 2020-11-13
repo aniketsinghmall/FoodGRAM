@@ -12,7 +12,9 @@ header {
   font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
   text-align: center;
 }
 
@@ -67,9 +69,10 @@ background-color: rgb(45, 45, 45);
   overflow-x: hidden;
   overflow-y: hidden;
   float: left;
-  width: 73%;
+  width: 100%;
   padding-bottom: 20px;
-  padding-left: 400px;
+  padding-left: 0%;
+  padding-top: 20px;
   position:relative;
   top:-22px;
 }
@@ -88,7 +91,7 @@ background-color: rgb(45, 45, 45);
   border-style: solid;
   border-width: 2px;
   border-color: white;
-  margin: 5px;
+  margin-left: 15px;
   font-size: 30px;
   padding: 5px 5px;
   
@@ -204,8 +207,9 @@ margin-top: 0px;
   background-color: rgb(18,18,18);
   overflow:hidden; 
   overflow-y:scroll;
-  height: 600px;
-  padding: 0;
+  height: 1600px;
+  padding-left: 0;
+  padding-top: 0;
   list-style: none;
   width: auto;
   border-bottom-right-radius: 25px;
@@ -270,6 +274,7 @@ p {
   border-radius: 10px;
   float: right;
   position: relative;
+  margin-right: 20px;
   top: -75px;
   left: -100px;
   transition: width 0.25s;
