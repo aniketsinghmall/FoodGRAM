@@ -485,8 +485,19 @@ function testCode(){
 
 function main(){
     //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
-    let data = createData();
+    return createData();
 }
+
+main();
+//displayReviews();
+
+function displayReviews(){
+    console.log("ooga booga dooga");
+    document.getElementById("review1").innerHTML = "spaghetti";
+}
+
+
+
 
 
 function getRestaurantText(){
