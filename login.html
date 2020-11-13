@@ -1,0 +1,81 @@
+
+<!-- This will be the login page of our website-->
+
+<!DOCTYPE html>
+<html lang="en-ca">
+<html>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Imports Google icons for use-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <style>
+	body {
+		color: black;
+		overflow: auto;
+	}
+		
+	input {
+		width: 40%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+		border: 2px solid red;
+		border-radius: 4px;
+	}
+	
+	input:focus {
+		background-color: lightblue;
+	}
+	
+	label {
+		text-align: left;
+	}
+	
+	.center {
+		margin-top: 5%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		width: 70%;
+		padding: 10px;
+		border: 2px solid black;
+	}
+
+  </style>
+
+</head>
+
+<title>foodGram</title>
+
+<body>
+
+  <header> 
+
+    <button class = "headerButton left" onclick="document.location='create_account.html'"> Create Account </button>
+    
+    foodGram
+    
+    <button class = "headerButton right"> <i class="material-icons">add_shopping_cart</i> Cart </button>
+    <button class = "headerButton right"> <i class="material-icons">search</i> Search  </button>
+
+
+  </header>
+
+  <div class="center";>
+	<h2>Welcome to foodGram!</h2>
+
+    <form action="something" autocomplete="on">
+		<label for="username">Username:</label><br>
+		<input type="text" id="username" name="username" value="Enter login" autofocus><br>
+		<label for="pass">Password:</label><br>
+		<input type="password" id="pass" name="pass" value="****"><br><br>
+		<input type="submit" value="Submit">
+	</form>
+  </div>
+
+
+</body>
+</html>
