@@ -1,3 +1,4 @@
+//for search
 (function(){
     //document.getElementById("searchButton").addEventListener("click", searchBox);
     document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
@@ -55,4 +56,16 @@ async function checkoutDropDown(){
 
 function sleep(duration) {
     return new Promise(resolve => setTimeout(resolve, duration));
+}
+
+function login() {
+	
+}
+
+function createAccount() {
+	
+}
+
+function completeLogin() {
+	
 }
