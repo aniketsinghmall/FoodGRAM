@@ -1,7 +1,6 @@
 //CV - Let me know if there are any problems with the code.
 
 "use strict";
-let fs = require('fs');
 
 class Restaurant {
     #_Name
