@@ -1,5 +1,10 @@
 body {
+<<<<<<< Updated upstream
   background-color:black;
+=======
+  /*background-color:rgb(18,18,18);*/
+  background-color: white;
+>>>>>>> Stashed changes
   margin: 0;
 }
 
@@ -9,8 +14,11 @@ header {
   font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0px;
   text-align: center;
+  width: 100%;
 }
 
 .headerButton {
@@ -32,6 +40,7 @@ header {
 
 .topNavBar {
   list-style-type: none;
+<<<<<<< Updated upstream
   margin: 0;
   padding: 0;
   background-color: red;
@@ -40,6 +49,26 @@ header {
 
 .topNavBar a{
   float: left;
+=======
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  float: left;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position:relative;
+  top:-22px;
+}
+
+.topNavBar a{
+  background-color: rgb(25,25,25);
+  position: absolute;
+  float: none;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+>>>>>>> Stashed changes
   display: block;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
@@ -111,8 +140,57 @@ header {
   margin: 0;
   padding: 0;
   text-align: center;
+<<<<<<< Updated upstream
   width: 80%;
   background-color: white;
+=======
+  color:white;
+}
+
+#searchInput{
+  width: 1px;
+  height: 24px;
+  border-radius: 15px;
+  animation-name:searchOpen;
+  animation-duration:0.25s;
+  float: right;
+  position: relative;
+  top: -23px;
+  animation-timing-function: ease-out;
+
+}
+
+#searchBar{
+  background-color:#03DAC5;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  margin-right: 20px;
+  float: right;
+  position: relative;
+  top: -75px;
+  left: -100px;
+  transition: width 0.25s;
+  background-image: url("searchIcon.png");
+  background-position: 0px -2px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  font-size: 20px;
+  border-style:solid;
+  border-color: #03DAC5;
+}
+
+#searchBar:focus{
+  width: 300px;
+  float: top;
+  transition: width 0.25s;
+  padding-left: 40px;
+}
+
+@keyframes searchOpen{
+  from{width:1px;}
+  to{width:300px;}
+>>>>>>> Stashed changes
 }
 
 
