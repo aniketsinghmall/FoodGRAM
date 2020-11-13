@@ -11,7 +11,7 @@
   <script src = "script.js"> </script>
   <!-- Imports Google icons for use-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script src = "script.js"> </script>
+
 </head>
 
 <title>foodGram</title>
@@ -20,8 +20,8 @@
 
   <header id="headerButtons"> 
 
-    <button class = "headerButton left" onclick="document.getElementById('signup').style.display='block'"> Sign Up </button>
-    <button class = "headerButton left" onclick="document.getElementById('login').style.display='block'"> Log In </button>
+    <button class = "headerButton left" onclick="document.location='create_account.html'"> Create Account </button>
+    <button class = "headerButton left" onclick="document.location='login.html'"> Log In </button>
     <img id = "logo" src="logo1.png">
     <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart </button>
     <!--<button class = "headerButton right" id = "searchButton"> <i class="material-icons">search</i> Search  </button> -->
@@ -29,41 +29,17 @@
       <input id = "searchBar" type="text" name="search">
     </form>
   </header>
-  <div class = "topNavBar">
-    <a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a>
-    <a href = "index.html?search=Burgers"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a>
-    <a href = "index.html?search=Fine Dinning"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a>
-    <a href = "index.html?search=Desserts"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a>
-    <a href = "index.html?search=Drinks"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a>
-  </div>
-  <div class = "socialMenu">
 
-    <ul>
 
-      <button class = "socialMenu button"> Review 1 </button>
-      <button class = "socialMenu button"> Review 2 </button>
-      <button class = "socialMenu button"> Review 3 </button>
-      <button class = "socialMenu button"> Review 4 </button>
-      <button class = "socialMenu button"> Review 5 </button>
-      <button class = "socialMenu button"> Review 6 </button>
-      <button class = "socialMenu button"> Review 7 </button>
-      <button class = "socialMenu button"> Review 8 </button>
-      <button class = "socialMenu button"> Review 9 </button>
-      <button class = "socialMenu button"> Review 10 </button>
-      <button class = "socialMenu button"> Review 11 </button>
-      <button class = "socialMenu button"> Review 12 </button>
-      <button class = "socialMenu button"> Review 13 </button>
-      <button class = "socialMenu button"> Review 14 </button>
-      <button class = "socialMenu button"> Review 15 </button>
-      <button class = "socialMenu button"> Review 16 </button>
-      <button class = "socialMenu button"> Review 17 </button>
-      <button class = "socialMenu button"> Review 18 </button>
-      <button class = "socialMenu button"> Review 19 </button>
-      <button class = "socialMenu button"> Review 20 </button>
-      <button class = "socialMenu button"> Review 21 </button>
-      <button class = "socialMenu button"> Review 22 </button>
-      <button class = "socialMenu button"> Review 23 </button>
-      <button class = "socialMenu button"> Review 24 </button>
+  <ul class = "topNavBar">
+    
+        <li><a href = "#Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
+        <li><a href = "#Burgers"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
+        <li><a href = "#Fine Dinning"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
+        <li><a href = "#Desserts"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
+        <li><a href = "#Drinks"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
+  
+  </ul>
 
 
   <div id = "socialMenu" class = "socialMenu">
@@ -86,7 +62,7 @@
 
   <span class = "mainMenu">
     <div id = "menu">
-      <h1 id = "resultsHeader" name = "menu"> Popular Restaurants</h1>
+      <h1 id = "resultsHeader"> Popular Restaurants</h1>
       
       <ul id = "resultsList">
     
@@ -123,92 +99,14 @@
     </div>
   </span>
 
-  <div id="login" class="modal">
-	<form class="modal-content animate" method="post">
-		<div style ="color: white">
-		  <h1 style="text-align:center">Welcome to foodGram!</h1>
-		  <label for="username"><b>Username:</b></label><br>
-		  <input type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
+  <script src = "script.js"> </script>
 
-		  <label for="pass"><b>Password:</b></label><br>
-		  <input type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
-			
-		  <button class = "headerButton" onclick="document.getElementById('loginSucess').style.display='block';">Log In</button>
-		  <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
-		</div>
-	</form>
-  </div>
-  
-    <div id="loginSucess" class="modal">
-	<div class="modal-content animate" style ="color: white">
-	  <h1 style="text-align:center">Welcome to foodGram!</h1>
-	  <p>You have been successfully logged in.</p><br>
-	  <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow .</p><br>
-	  <p>You can close this window now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('loginSucess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
-	</div>
-  </div>
-  
-  <div id="signup" class="modal">
-	<form class="modal-content animate" method="post">
-		<div style ="color: white">
-		  <h1 style="text-align:center">Welcome to foodGram!</h1>
-		  
-		  <label for="fname"><b>First Name:</b></label><br>
-		  <input type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
-		  
-		  <label for="lname"><b>Last Name:</b></label><br>
-		  <input type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>	
-
-		  <label for="phone"><b>Phone Number:</b></label><br>
-		  <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required><br>			  
-		  
-		  <label for="email"><b>Email:</b></label><br>
-		  <input type="email" id="email" name="email" placeholder="YourEmail@Egsample.com" required><br>
-		  
-		  <label for="username"><b>Username:</b></label><br>
-		  <input type="text" id="username" name="username" placeholder="Choose Username" required><br>
-
-		  <label for="pass"><b>Password:</b></label><br>
-		  <input type="password" id="pass" name="pass" placeholder="********" required><br>
-		  
-		  <label for="confpass"><b>Confirm Password:</b></label><br>
-		  <input type="password" id="confpass" name="confpass" placeholder="********" required><br>
-		  
-			
-		  <button class = "headerButton" onclick="document.getElementById('signupSucess').style.display='block';" >Sign Up</button>
-		  <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
-		</div>
-	</form>
-  </div>
-
-  <div id="signupSucess" class="modal">
-	<div class="modal-content animate" style ="color: white">
-	  <h1 style="text-align:center">Welcome to foodGram!</h1>
-	  <p>Your account has been created successfully.</p><br>
-	  <p>You can close this window and login now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('signupSucess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
-	</div>
-  </div>
-  
-  <div id="contact" class="modal">
-	<div class="modal-content animate" style ="color: white">
-	  <h1 style="text-align:center">Welcome to foodGram!</h1>
-	  <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
-	  <pre style="font-size: 16px">		
-	  Developed by: 
-	  Aniket Mall 								malla@myumanitoba.ca
-	  Christopher Vattheuer	 						vattheuc@myumanitoba.ca
-	  Matthias Penner 							pennerm2@myumanitoba.ca
-	  Paul Granelli 							umgranel@myumanitoba.ca
-	  Ryan Campbell 							campb169@myumanitoba.ca</pre><br>
-	  <button class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
-	</div>
-  </div>
 
   <div class="footer">
-    <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
+    <a href = "#Contact us"> Contact us </a>
   </div>
+
+
 
 
 </body>
