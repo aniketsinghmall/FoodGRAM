@@ -1,9 +1,13 @@
+let data;
+
 (function(){
+    data = createData();
+    console.log(data);
     //document.getElementById("searchButton").addEventListener("click", searchBox);
-    document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
-    window.addEventListener("popstate", search());
+    document.getElementById("checkoutButton").addEventListener("click", searchResults);
+    window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
-    //x = new Restaurant("Potato");
+    
 })();
 
 async function checkoutDropDown(){
@@ -34,14 +38,24 @@ function sleep(duration) {
     return new Promise(resolve => setTimeout(resolve, duration));
 }
 
-function search(){
+function searchResults(){
     const urlParams = new URLSearchParams(window.location.search);
     if(urlParams.get("search")){
         const header = document.getElementById("resultsHeader");
         header.innerHTML = "Search results for: "+urlParams.get("search");
         const list = document.getElementById("resultsList");
-        list.innerHTML = "<h2>No results found</h2>"
-        list.innerHTML += "<img src = plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
+
+        const restaurants = search(data[0], urlParams.get("search"));
+        if(restaurants.length > 0){
+            list.innerHTML = "";
+            for(let i = 0; i<restaurants.length; i++){
+                list.innerHTML += "<a href = \"#"+ restaurants[0].name +"\">"+ "</a>";
+            }
+        }
+        else{
+            list.innerHTML = "<h2>No results found</h2>"
+            list.innerHTML += "<img src = plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
+        }
     }
 }
 
