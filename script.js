@@ -3,7 +3,7 @@
     document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
     window.addEventListener("popstate", search());
     document.getElementById("logo").addEventListener("click", goHome);
-    x = new Restaurant("Potato");
+    //x = new Restaurant("Potato");
 })();
 
 async function checkoutDropDown(){
