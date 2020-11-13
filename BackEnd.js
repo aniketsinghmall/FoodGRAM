@@ -1,9 +1,9 @@
 //CV - Let me know if there are any problems with the code.
 
 "use strict";
-let fs = require('fs')
+let fs = require('fs');
 
-class Restaurant {
+export class Restaurant {
     #_Name
     #_foodItems
 
