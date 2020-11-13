@@ -5,6 +5,7 @@
     document.getElementById("checkoutButton").addEventListener("click", searchResults);
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
+    window.addEventListener("hashchange", restaurantSelected);
     
 })();
 
@@ -47,7 +48,12 @@ function searchResults(){
         if(restaurants.length > 0){
             list.innerHTML = "";
             for(let i = 0; i<restaurants.length; i++){
-                list.innerHTML += "<a href = \"#"+ restaurants[i].name +"\">"+ restaurants[i].name+"</a>";
+                let s = "<button id = \""+restaurants[i].name+"\" onclick=\"(function(){window.location.search='restaurant='+`"+restaurants[i].name+"`;})();\">"+restaurants[i].name+"</button>";
+                list.innerHTML += s;
+                
+            }
+            for(let i = 0; i<restaurants.length; i++){
+                //document.getElementById(restaurants[i].name).addEventListener("click", );
             }
         }
         else{
@@ -55,8 +61,27 @@ function searchResults(){
             list.innerHTML += "<img src = plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
         }
     }
+    else if(urlParams.get("restaurant")){
+        const restaurantName = decodeURIComponent(urlParams.get("restaurant"));
+        const header = document.getElementById("resultsHeader")
+        header.innerHTML = restaurantName + " Menu";
+        const list = document.getElementById("resultsList");
+        for(let i = 0; i<data[0].length; i++){
+            if(data[0][i].name == restaurantName){
+                list.innerHTML = "";
+                for(let j = 0; j<data[0][i].foodItems.length; j++){
+                    list.innerHTML += "<a href = \"#"+ data[0][i].foodItems[j].name +"\">" + data[0][i].foodItems[j].name + " - $" + data[0][i].foodItems[j].price + "</a>"
+                }
+            }
+        }
+    }
 }
 
 function goHome(){
     window.location.search = "";
 }
+
+function restaurantSelected(){
+}
+
+
