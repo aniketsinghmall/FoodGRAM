@@ -499,8 +499,10 @@ function displayRestaurantReviews() {
     let results = generateFriendsRestaurantReviews(friends, data[0])[1];
     for (let i = 0; i < results.length; i++) {
         let btn = document.createElement("BUTTON");
-        document.getElementById("RestaurantReviews").appendChild(btn);
+        btn.value = "im a button";
+        //btn.onclick = func;
         btn.innerHTML = results[i].name + "\n" + results[i].rating + "/5\n" + results[i].restaurant;
+        document.getElementById("RestaurantReviews").appendChild(btn);
     }
 }
 
