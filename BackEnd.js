@@ -361,7 +361,7 @@ function compareReviews(a, b){
 
 
 //helper function for generating restaurant reviews. Accepts user list and restaurant list and makes reviews for it.
-//Please use generateTrendingReview or generateFriendsAndTheirReviews, to get data.
+//Please use generateTrendingReview or generateFriensAndTheirReviews, to get data.
 //This is just a helper function, don't use this.
 function generateRestaurantReviews(userList, restaurantList){
     let result = [];
@@ -460,7 +460,7 @@ function testCode(){
     let friends = createFriends();
     //Generates all friend restaurant reviews.
     let friendRestaurantReviews = generateFriendsRestaurantReviews(friends, data[0])[1];
-    for (let i =0; i<restaurantReviews.length; i++){
+    for (let i =0; i<friendRestaurantReviews.length; i++){
         //console.log(friendRestaurantReviews[i].name + ", " + friendRestaurantReviews[i].rating + "/5, " + friendRestaurantReviews[i].restaurant);
     }
 
@@ -482,21 +482,27 @@ function testCode(){
 }
 
 
-
 function main(){
     //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
     return createData();
 }
 
-main();
+let myfriends = createFriends();
 //displayReviews();
 
-function displayReviews(){
-    console.log("ooga booga dooga");
-    document.getElementById("review1").innerHTML = "spaghetti";
+let data=createData();
+let friends=createFriends()
+
+
+
+function displayRestaurantReviews() {
+    let results = generateFriendsRestaurantReviews(friends, data[0])[1];
+    for (let i = 0; i < results.length; i++) {
+        let btn = document.createElement("BUTTON");
+        document.getElementById("RestaurantReviews").appendChild(btn);
+        btn.innerHTML = results[i].name + "\n" + results[i].rating + "/5\n" + results[i].restaurant;
+    }
 }
-
-
 
 
 
