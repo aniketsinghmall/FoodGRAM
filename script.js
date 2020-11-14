@@ -75,6 +75,29 @@ function searchResults(){
             }
         }
     }
+    else if(urlParams.get("search") === null){
+        console.log("this ran");
+        const header = document.getElementById("resultsHeader");
+        header.innerHTML = "Popular Restaurants ";
+        const list = document.getElementById("resultsList");
+
+        const restaurants = search(data[0], "");
+        if(restaurants.length > 0){
+            list.innerHTML = "";
+            for(let i = 0; i<restaurants.length; i++){
+                let s = "<button id = \""+restaurants[i].name+"\" onclick=\"(function(){window.location.search='restaurant='+`"+restaurants[i].name+"`;})();\">"+restaurants[i].name+"</button>";
+                list.innerHTML += s;
+
+            }
+            for(let i = 0; i<restaurants.length; i++){
+                //document.getElementById(restaurants[i].name).addEventListener("click", );
+            }
+        }
+        else{
+            list.innerHTML = "<h2>No results found</h2>"
+            list.innerHTML += "<img src = plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
+        }
+    }
 }
 
 function goHome(){
