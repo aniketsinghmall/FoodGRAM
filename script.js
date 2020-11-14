@@ -2,7 +2,7 @@
     data = createData();
     // console.log(data);
     //document.getElementById("searchButton").addEventListener("click", searchBox);
-    document.getElementById("checkoutButton").addEventListener("click", searchResults);
+    document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
     window.addEventListener("hashchange", restaurantSelected);
