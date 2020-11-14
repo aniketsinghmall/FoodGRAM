@@ -1,0 +1,466 @@
+
+
+
+body {
+background-color:rgb(18,18,18);
+  margin: 0;
+}
+
+header {
+  background-color:rgb(25,25,25);
+  color: white;
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/*
+headerButton
+
+KNOWN ISSUE: PADDING
+Increasing the size of the padding causeing
+black to render over the below navbar.
+I believe this issue has something to do with 
+the button being rendered overlapping the 
+navbar in some way. - Ryan 
+
+headButton contains the CSS properties for 
+the "Create Account", "Log in", "search" and 
+"Cart" buttons along the top of the screen.
+*/
+.headerButton {
+  border: none;
+  background-color: #03DAC5;
+  color: color;
+  font-size:22px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+#headerButtons{
+  color: rgba(187,134,252, 200);
+  
+}
+
+.headerButton:hover {
+background-color: rgb(45, 45, 45);
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.topNavBar {
+  background-color: rgb(25,25,25);
+  color: rgb(18,18,18);
+  list-style: none;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  float: left;
+  width: 100%;
+  padding-bottom: 10px;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  top: -40px;
+  position:relative;
+}
+
+.topNavBar li{
+    display: inline;
+}
+
+.topNavBar a{
+  background-color: rgb(25,25,25);
+  display: inline-block;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  text-decoration: none;
+  border-radius:10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  margin-left: 15px;
+
+  font-size: 30px;
+  padding: 5px 5px;
+  
+  }
+
+.topNavBar a:hover {
+  background-color:rgb(45, 45, 45);
+}
+
+#logo{
+  width:300px;
+  height:80px;
+  position: relative;
+}
+
+
+.socialMenu{
+  position: sticky;
+  top: 0;
+  background-color: rgb(18,18,18);
+  color: rgb(25,25,25);
+  list-style-type: none;
+  float: left;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 20%;
+}
+
+.socialMenu ul{
+
+  position: sticky;
+  top: 0;
+  overflow:hidden; 
+  overflow-y:scroll;
+  height: 1200px;
+  padding-left: 0;
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+}
+
+.socialMenu button{
+  background-color: rgb(25,25,25);
+  color: white;
+
+  float: left;
+  display: block;
+  width: 95%;
+  height: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+  margin: 5px 5px 5px 5px;
+  border-radius: 15px;
+}
+
+.socialMenu button:hover{
+  background-color: rgb(45, 45, 45);
+}
+
+.featuredReview{
+  background-color: rgb(18, 18, 18);
+  color: rgb(25,25,25);
+  list-style-type: none;
+  float: left;
+  padding: 0;
+  text-align: center;
+  width: 78%;
+  height: 40%;
+  margin: 0px 10px 14px 14px;
+  border-radius: 25px;
+}
+
+.featuredReview Button{
+  background-color: rgb(25,25,25);
+  color: white;
+  float: left;
+  display: block;
+  width: 100%;
+  height: 600px;
+  margin: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  padding:0;
+  text-decoration: none;
+  border-radius: 25px;
+}
+
+.featuredReview Button:hover{
+  background-color: rgb(45, 45, 45);
+}
+
+
+
+.mainMenu h1{
+
+background-color: rgb(35, 35, 35);
+color: rgba(187,134,252, 200);
+font-family: Arial, Helvetica, sans-serif;
+text-align: center;
+width: auto;
+padding: 20px;
+
+border-radius: 25px;
+margin-top: 0px;
+}
+
+.mainMenu h2{
+  color: rgba(187,134,252, 200);
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  width: auto;
+  padding: 20px;
+  border-radius: 25px;
+  margin-top: 0px;
+  }
+
+.mainMenu ul{
+  background-color: rgb(18,18,18);
+  overflow:hidden; 
+  overflow-y:scroll;
+  height: 625px;
+  padding-left: 0;
+  padding-top: 0;
+  list-style: none;
+  width: auto;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  background-color: rgb(25, 25, 25);
+
+
+}
+
+
+.mainMenu a{
+  background-color: rgb(25,25,25);
+  color: white;
+  float: left;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: xx-large;
+  text-decoration: none;
+  float: left;
+  margin: 5px;
+  padding: 15px 0px 15px 30px;
+  width: 100%;
+  height: 50px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 25px;
+  width: 90%;
+}
+
+.mainMenu button{
+  background-color: rgb(25,25,25);
+  color: white;
+  float: left;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: xx-large;
+  text-decoration: none;
+  float: left;
+  margin: 5px;
+  padding: 15px 0px 15px 30px;
+  width: 100%;
+  height: 50px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 25px;
+  width: 90%;
+  text-align: left;
+}
+
+
+.mainMenu button:hover{
+
+  background-color: rgb(45, 45, 45);
+
+}
+
+#menu{
+  background-color: rgb(25, 25, 25);
+  margin-top: 29%;
+  margin-left: 20%;
+  margin-right: 1%;
+  border-radius: 25px;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color:white;
+}
+
+#searchInput{
+  width: 1px;
+  height: 24px;
+  border-radius: 15px;
+  animation-name:searchOpen;
+  animation-duration:0.25s;
+  float: right;
+  position: relative;
+  top: -23px;
+  animation-timing-function: ease-out;
+
+}
+
+#searchBar{
+  background-color:#03DAC5;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  float: right;
+  position: relative;
+  margin-right: 20px;
+  top: -75px;
+  left: -100px;
+  transition: width 0.25s;
+  background-image: url("searchIcon.png");
+  background-position: 0px -2px;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  font-size: 20px;
+  border-style:solid;
+  border-color: #03DAC5;
+}
+
+#searchBar:focus{
+  width: 300px;
+  float: top;
+  transition: width 0.25s;
+  padding-left: 40px;
+}
+
+@keyframes searchOpen{
+  from{width:1px;}
+  to{width:300px;}
+}
+
+@keyframes searchClose{
+  from{width:300px;}
+  to{width:1px;}
+}
+
+#checkoutDropDown{
+  width: 270px;
+  height: 500px;
+  float: right;
+  background-color: rgb(35, 35, 35);
+  position: absolute;
+  right: 10px;
+  top: 90px;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7);
+  border-width: 3px;
+  animation-name: checkoutOpen;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  z-index: 10;
+}
+
+#proceedCheckout{
+  width: 250px;
+  height: 75px;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  left: 10px;
+  color: black;
+  background-color: #03DAC5;
+  font-size: 1px;
+  font-family: Arial;
+  font-weight: bold;
+  border-radius: 15px;
+  animation-name: proceedOpen;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  z-index: 10;
+}
+
+@keyframes checkoutOpen{
+  from{height:1px; opacity: 0%;}
+  to{height:500px; opacity: 100%;}
+}
+
+@keyframes proceedOpen{
+  from{height:1px; font-size: 1px; opacity: 0%;}
+  to{height:75px; font-size: 20px; opacity: 100%;}
+}
+
+@keyframes checkoutClose{
+  from{height:500px; opacity: 100%;}
+  to{height:1px; opacity: 0%;}
+}
+
+@keyframes proceedClose{
+  from{height:75px; font-size: 20px; opacity: 100%;}
+  to{height:1px; font-size: 1px; opacity: 0%;}
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: auto;
+  padding: 20px;
+  background-color: rgb(25,25,25);
+  color: white;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+
+.footer a{
+
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color:white;
+  text-decoration: none;
+
+}
+
+
+#searchButton{
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+#checkoutButton{
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(18, 18, 18); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(35, 35, 35); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(45, 45, 45); 
+}
