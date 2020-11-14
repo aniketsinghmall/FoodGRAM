@@ -148,6 +148,9 @@ class RestaurantReview{
     get restaurant(){
         return this.#_restaurant.name;
     }
+    get restaurantObj(){
+        return this.#_restaurant;
+    }
 }
 
 //Review for a specific FoodItem at a specific Restaurant.
@@ -496,8 +499,18 @@ function testCode(){
 }
 
 
-function filterReviews(reviews, query){
+function filterReviews(restaurants, reviews, query){
     console.log("hello");
+    let currentList = search(restaurants, query);
+    console.log("search.length: " + currentList.length);
+    let result = [];
+    for(let i = 0; i< reviews.length; i++){
+        //console.log("Index of " + reviews[i].name + currentList.indexOf(reviews[i].restaurantObj) Restarant: " + )
+        if (currentList.indexOf(reviews[i].restaurantObj) !== -1){
+            result.push(reviews[i])
+        }
+    }
+    return result;
 }
 
 
@@ -507,23 +520,13 @@ function main(){
 }
 
 
-
-
-//displayReviews();
-
-let data=createData();
-let friends=createFriends()
-let friendReviews;
-
-
-
 function displayRestaurantReviews() {
     if(friends === undefined){
         friends=createFriends()
     }
-    friendReviews = generateFriendsRestaurantReviews(friends, data[0]);
+    friendReviews = filterReviews(data[0], generateFriendsRestaurantReviews(friends, data[0]),
+        String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
 
-    console.log("friendReviews[i]: " + friendReviews);
     for (let i = 0; i < friendReviews.length; i++) {
         let btn = document.createElement("BUTTON");
         //btn.onclick = func;
@@ -533,7 +536,6 @@ function displayRestaurantReviews() {
 }
 
 function displayFeaturedReview() {
-    console.log("Over here!" + String(window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " ")))
     let bestRest = sortByRating(search(data[0],
         String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
     let btn = document.getElementById("featuredReviewButton");
@@ -689,15 +691,6 @@ function getFoodText(){
 }
 
 
-main();
-
-/*
-export = Restaurant;
-module.exports = FoodItem;
-module.exports = Recipe;
-module.exports = Ingredient;
-module.exports = User;
-module.exports = Friend;
-module.exports = RestaurantReview;
-module.exports = FoodReview;
-*/
+let data = main();
+let friends=createFriends()
+let friendReviews;
