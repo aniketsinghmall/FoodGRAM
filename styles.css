@@ -199,13 +199,12 @@ background-color: rgba(255, 0, 0, 0.4);
   border-radius: 25px;
 }
 
-.featuredReview Button{
-  background-color: rgb(25,25,25);
+.featuredReviewButton{
+  background-color: rgb(0,0,0);
   color: white;
   float: left;
   display: block;
-  width: 100%;
-  height: 600px;
+  width: 5%;
   margin: auto;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -214,13 +213,39 @@ background-color: rgba(255, 0, 0, 0.4);
   padding:0;
   text-decoration: none;
   border-radius: 25px;
+  opacity:0.6;
 }
 
-.featuredReview Button:hover{
+.featuredReviewButton:hover{
   background-color: rgb(45, 45, 45);
+  opacity:1;
 }
 
+.left{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  height: 50%;
+  float:left;
+}
 
+.left:active {
+  background-color: rgba(187,134,252, 200);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.right{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  height: 50%;
+  float:right;
+}
+
+.right:active {
+  background-color: rgba(187,134,252, 200);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 .mainMenu h1{
 
