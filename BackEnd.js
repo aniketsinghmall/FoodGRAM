@@ -393,7 +393,10 @@ function generateTrendingRestaurantReview(restaurants, query){
 //Accepts all restaurants.
 //Returns array, [0] is friends, [1] is array of their reviews.
 function generateFriendsRestaurantReviews(friends, restaurants){
-    return [friends, generateRestaurantReviews(friends, restaurants)];
+    if (friendReviews===undefined)
+        return generateRestaurantReviews(friends, restaurants);
+    else
+        return friendReviews;
 }
 
 
@@ -421,7 +424,7 @@ function generateFoodReviews(users, restaurant){
 }
 
 function generateFriendFoodReviews(friends, restaurant){
-    return [friends, generateFoodReviews(friends, restaurant)];
+    return generateFoodReviews(friends, restaurant);
 }
 
 
@@ -470,7 +473,7 @@ function testCode(){
     //createFriends will generate the main users friends. Only run this once to have consistent reviews.
     let friends = createFriends();
     //Generates all friend restaurant reviews.
-    let friendRestaurantReviews = generateFriendsRestaurantReviews(friends, data[0])[1];
+    let friendRestaurantReviews = generateFriendsRestaurantReviews(friends, data[0]);
     for (let i =0; i<friendRestaurantReviews.length; i++){
         //console.log(friendRestaurantReviews[i].name + ", " + friendRestaurantReviews[i].rating + "/5, " + friendRestaurantReviews[i].restaurant);
     }
@@ -493,10 +496,18 @@ function testCode(){
 }
 
 
+function filterReviews(reviews, query){
+    console.log("hello");
+}
+
+
 function main(){
     //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
     return createData();
 }
+
+
+
 
 let myfriends = createFriends();
 //displayReviews();
@@ -506,17 +517,14 @@ let friends=createFriends()
 let friendReviews;
 
 
+
 function displayRestaurantReviews() {
     if(friends === undefined){
         friends=createFriends()
     }
-    if(friendReviews === undefined) {
-        friendReviews = generateFriendsRestaurantReviews(friends, data[0])[1];
-        console.log("this ran.");
-    }
-    else
-        console.log("friends already exists.");
+    friendReviews = generateFriendsRestaurantReviews(friends, data[0]);
 
+    console.log("friendReviews[i]: " + friendReviews);
     for (let i = 0; i < friendReviews.length; i++) {
         let btn = document.createElement("BUTTON");
         //btn.onclick = func;
@@ -526,8 +534,10 @@ function displayRestaurantReviews() {
 }
 
 function displayFeaturedReview() {
-    let bestRest = sortByRating(data[0]);
-
+    let bestRest = sortByRating(search(data[0], search(data[0],
+        window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " "))));
+    console.log(window.location.search.substring(window.location.search.indexOf("=") + 1))
+    console.log(search(data[0], window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " ")))
     let btn = document.getElementById("featuredReviewButton");
     //btn.onclick = func;
     btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
