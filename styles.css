@@ -284,6 +284,11 @@ margin-top: 0px;
   border-radius: 25px;
 }
 
+.mainMenu a:hover{
+
+  background-color: rgb(45, 45, 45);
+}
+
 .mainMenu button{
   background-color: rgb(25,25,25);
   color: white;
@@ -304,12 +309,12 @@ margin-top: 0px;
   text-align: left;
 }
 
-
 .mainMenu button:hover{
 
   background-color: rgb(45, 45, 45);
-
 }
+
+
 
 #menu{
   background-color: rgb(25, 25, 25);
