@@ -536,8 +536,6 @@ function displayFeaturedReview() {
     console.log("Over here!" + String(window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " ")))
     let bestRest = sortByRating(search(data[0],
         String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
-    console.log(window.location.search.substring(window.location.search.indexOf("=") + 1))
-    console.log(search(data[0], window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " ")))
     let btn = document.getElementById("featuredReviewButton");
     //btn.onclick = func;
     btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
