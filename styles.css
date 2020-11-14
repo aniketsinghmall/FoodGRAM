@@ -275,12 +275,13 @@ margin-top: 0px;
   float: left;
   margin: 5px;
   padding: 15px 0px 15px 30px;
-  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 96%;
   height: 50px;
   border-style: solid;
   border-color: white;
   border-radius: 25px;
-  width: 90%;
 }
 
 .mainMenu button{
@@ -300,7 +301,6 @@ margin-top: 0px;
   border-style: solid;
   border-color: white;
   border-radius: 25px;
-  width: 90%;
   text-align: left;
 }
 
