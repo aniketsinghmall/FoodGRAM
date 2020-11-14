@@ -97,7 +97,7 @@ background-color: rgba(255, 0, 0, 0.4);
   padding-top: 10px;
   padding-left: 0;
   padding-right: 0;
-  top: -40px;
+  top: -50px;
   position:relative;
 }
 
@@ -341,12 +341,12 @@ p {
 #searchBar{
   background-color:#03DAC5;
   width: 35px;
-  height: 35px;
+  height: 40px;
   border-radius: 10px;
   float: right;
   position: relative;
   margin-right: 20px;
-  top: -75px;
+  top: -82px;
   left: -100px;
   transition: width 0.25s;
   background-image: url("searchIcon.png");
