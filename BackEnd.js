@@ -509,7 +509,6 @@ function main(){
 
 
 
-let myfriends = createFriends();
 //displayReviews();
 
 let data=createData();
@@ -534,8 +533,9 @@ function displayRestaurantReviews() {
 }
 
 function displayFeaturedReview() {
-    let bestRest = sortByRating(search(data[0], search(data[0],
-        window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " "))));
+    console.log("Over here!" + String(window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " ")))
+    let bestRest = sortByRating(search(data[0],
+        String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
     console.log(window.location.search.substring(window.location.search.indexOf("=") + 1))
     console.log(search(data[0], window.location.search.substring(window.location.search.indexOf("=") + 1).replace("+", " ")))
     let btn = document.getElementById("featuredReviewButton");
