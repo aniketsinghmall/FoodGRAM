@@ -82,7 +82,9 @@ background-color: rgba(255, 0, 0, 0.4);
 .right {
   float: right;
 }
-
+------------------*********------------------
+----------------   Nav Bar   ----------------
+------------------*********------------------
 .topNavBar {
   background-color: rgb(25,25,25);
   color: rgb(18,18,18);
@@ -135,7 +137,9 @@ background-color: rgba(255, 0, 0, 0.4);
   position: relative;
 }
 
-
+------------------*********------------------
+---------------  Social Menu  ---------------
+------------------*********------------------
 .socialMenu{
   position: sticky;
   top: 0;
@@ -186,6 +190,9 @@ background-color: rgba(255, 0, 0, 0.4);
   background-color: rgb(45, 45, 45);
 }
 
+------------------*********------------------
+---------------Featured Review---------------
+------------------*********------------------
 .featuredReview{
   background-color: rgb(18, 18, 18);
   color: rgb(25,25,25);
@@ -247,6 +254,15 @@ background-color: rgba(255, 0, 0, 0.4);
   transform: translateY(4px);
 }
 
+featuredReview.mySlides {
+  text-align: center;
+  height = 600px;
+  width = 600px;
+}
+
+------------------*********------------------
+---------------   Main Menu   ---------------
+------------------*********------------------
 .mainMenu h1{
 
 background-color: rgb(35, 35, 35);
@@ -357,6 +373,9 @@ p {
   font-size: large;
 }
 
+------------------*********------------------
+---------------     Search    ---------------
+------------------*********------------------
 #searchInput{
   width: 1px;
   height: 24px;
@@ -407,6 +426,9 @@ p {
   to{width:1px;}
 }
 
+------------------*********------------------
+---------------    Checkout   ---------------
+------------------*********------------------
 #checkoutDropDown{
   width: 270px;
   height: 500px;
