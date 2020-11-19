@@ -247,6 +247,7 @@ background-color: rgb(45, 45, 45);
   width: 5%;
   margin-top: 5%;
   margin-right: 1%;
+  margin-left: 1%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: large;
@@ -262,7 +263,7 @@ background-color: rgb(45, 45, 45);
   color: white;
   float: left;
   display: block;
-  width: 87%;
+  width: 86%;
   margin: auto;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -319,10 +320,10 @@ background-color: rgb(45, 45, 45);
   transform: translateY(4px);
 }
 
-featuredReview.mySlides {
+.featuredReview.mySlides {
   text-align: center;
-  height = 600px;
-  width = 600px;
+  height: 200px;
+  width: 200px;
 }
 
 .mainMenu h1{
