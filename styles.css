@@ -260,6 +260,7 @@ background-color: rgb(45, 45, 45);
 
 .featuredReviewMain{
   background-color: rgb(0,0,0);
+  background-image: url("testfoodpic1.jpg");
   color: white;
   float: left;
   display: block;
@@ -273,8 +274,16 @@ background-color: rgb(45, 45, 45);
   text-decoration: none;
   border-radius: 25px;
   opacity:0.6;
+  position: relative;
+  z-index: 0;
 }
 
+.mySlides{
+
+position: relative;
+z-index: -1;
+
+}
 
 .featuredReviewButton:hover{
   background-color: rgb(45, 45, 45);
