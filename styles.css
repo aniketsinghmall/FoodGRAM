@@ -204,6 +204,24 @@ background-color: rgba(255, 0, 0, 0.4);
   float: left;
   display: block;
   width: 5%;
+  margin-top: 5%;
+  margin-right: 1%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  padding:0;
+  text-decoration: none;
+  border-radius: 25px;
+  opacity:0.6;
+}
+
+.featuredReviewMain{
+  background-color: rgb(0,0,0);
+  color: white;
+  float: left;
+  display: block;
+  width: 87%;
   margin: auto;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -214,6 +232,7 @@ background-color: rgba(255, 0, 0, 0.4);
   border-radius: 25px;
   opacity:0.6;
 }
+
 
 .featuredReviewButton:hover{
   background-color: rgb(45, 45, 45);
@@ -228,6 +247,19 @@ background-color: rgba(255, 0, 0, 0.4);
 }
 
 .left:active {
+  background-color: rgba(187,134,252, 200);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.center{
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  height: 80%;
+  float:left;
+}
+
+.center:active {
   background-color: rgba(187,134,252, 200);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
