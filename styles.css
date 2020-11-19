@@ -74,6 +74,47 @@ background-color: rgb(45, 45, 45);
 background-color: rgba(255, 0, 0, 0.4);
 }
 
+/*******************************/
+/***** Cart Screen Helpers *****/
+/*******************************/
+
+* {
+  box-sizing: border-box;
+}
+
+
+.acceptButton {
+  border: none;
+  background-color: #03DAC5;
+  color: color;
+  font-size:22px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-weight: bold;
+  float:right;
+  height: 1%;
+}
+.acceptButton:hover {
+background-color: rgb(45, 45, 45);
+}
+
+.cart1 {
+  width: 50%;
+  height: 500px;
+  float: left;
+  padding: 15px;
+  border: 1px solid white;
+}
+
+.cart2 {
+  width: 50%;
+  height: 500px;
+  float: right;
+  padding: 15px;
+  border: 1px solid white;
+}
 
 .left {
   float: left;

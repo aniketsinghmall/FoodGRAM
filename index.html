@@ -23,7 +23,8 @@
     <button class = "headerButton left" onclick="document.getElementById('signup').style.display='block'"> Sign Up </button>
     <button class = "headerButton left" onclick="document.getElementById('login').style.display='block'"> Log In </button>
     <img id = "logo" src="logo1.png">
-    <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart </button>
+      <button class = "headerButton right" onclick="document.getElementById('cart').style.display='block'"
+              id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart </button>
     <!--<button class = "headerButton right" id = "searchButton"> <i class="material-icons">search</i> Search  </button> -->
     <form>
       <input id = "searchBar" type="text" name="search">
@@ -198,6 +199,41 @@
     <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
   </div>
 
+  <!--CART SECTION-->
+  <div id="cart" class="modal">
+      <footer class="modal-content animate" style ="color: rgba(187,134,252);">
+          <h1 style="text-align:center">Your Order</h1>
+
+          <div class="cart1">
+              <ul>
+                  <li>Item X</li>
+                  <li>Item Y</li>
+                  <li>Item Z</li>
+                  <li>Item Scooby Doo</li>
+              </ul>
+          </div>
+
+          <div class="cart2">
+              <h1>Payment Options</h1>
+              <label for="Payment Method">Select Payment Method:</label>
+
+              <select name="Payment Method" id="Payment Method">
+                  <option value="Credit">Credit</option>
+                  <option value="Debit">Debit</option>
+                  <option value="FG Dollars">FG Dollars</option><br>
+
+                  <label for="lname"><b>Last Name:</b></label><br>
+                  <input type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+          </div>
+
+          <div class = "footer">
+              <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
+              <button class = "acceptButton" onclick="document.getElementById('cart').style.display='none';">Process Payment</button>
+          </div>
+  </div>
+
+  </div>
+  </div>
 
 
 

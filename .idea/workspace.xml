@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efd01b94-d932-4323-9916-5b949de8b429" name="Default Changelist" comment="" />
+    <list default="true" id="efd01b94-d932-4323-9916-5b949de8b429" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +54,7 @@
       <updated>1605301136256</updated>
       <workItem from="1605301137556" duration="15690000" />
       <workItem from="1605390570754" duration="1802000" />
+      <workItem from="1605807029356" duration="321000" />
     </task>
     <servers />
   </component>
@@ -61,9 +66,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1375" y="359" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1605301287806" />
-    <state x="1700" y="459" key="FileChooserDialogImpl" timestamp="1605301270237">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="1275" y="341" key="FileChooserDialogImpl" timestamp="1605806800572">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="1275" y="341" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605806800572" />
     <state x="1700" y="459" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1605301270237" />
     <state width="1116" height="338" key="GridCell.Tab.0.bottom" timestamp="1605312195133">
       <screen x="0" y="0" width="2560" height="1400" />
