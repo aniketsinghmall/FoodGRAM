@@ -227,19 +227,89 @@
               <h1>Payment Options</h1>
               <label for="Payment Method">Select Payment Method:</label>
 
-              <select name="Payment Method" id="Payment Method">
+              <select name="Payment Method" id="Payment Method" onchange="displayInput();" onfocus="this.selectedIndex = -1;" >
+                  <option value="Choose">Choose</option>
                   <option value="Credit">Credit</option>
                   <option value="Debit">Debit</option>
-                  <option value="FG Dollars">FG Dollars</option><br>
+                  <option value="FG Dollars">FG Dollars</option>
+              </select>
 
-                  <label for="lname"><b>Last Name:</b></label><br>
-                  <input type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+              <div id = "creditSelected" style = "display:none;">
+                  <br><br><br>
+                  <label for="cardNum"><b>Card Number:</b></label><br>
+                  <input type="text" id="cardNum" name="cardNum" placeholder="Card Number" required><br>
+
+                  <label for="cardName"><b>Card Holder's Name:</b></label><br>
+                  <input type="text" id="cardName" name="cardName" placeholder="Card Holder's Name" required><br>
+
+                  <label for="exp"><b>Exp:</b></label>
+                  <input type="text" id="exp" name="exp" placeholder="MM/YY" required>
+                  <label for="ccv"><b>CCV:</b></label>
+                  <input type="text" id="ccv" name="ccv" placeholder="CCV " required>
+
+                  <label for="address"><b>Billing Address:</b></label>
+                  <input type="text" id="address" name="address" placeholder="Billing Address" required>
+                  <label for="postalCode"><b>Postal Code:</b></label>
+                  <input type="text" id="postalCode" name="postalCode" placeholder="Postal Code" required>
+
+              </div>
+
+              <div id = "debitSelected" style = "display:none;">
+                  <br><br><br>
+                  <label for="cardNum"><b>Card Number:</b></label><br>
+                  <input type="text" id="cardNum" name="cardNum" placeholder="Card Number" required><br>
+
+                  <label for="cardName"><b>Card Holder's Name:</b></label><br>
+                  <input type="text" id="cardName" name="cardName" placeholder="Card Holder's Name" required><br>
+
+                  <label for="insitution"><b>Select Bank:</b></label><br>
+                  <br>
+                  <select name="Bank" id="Bank">
+                      <option value="Choose">Choose</option>
+                      <option value="RBC">RBC</option>
+                      <option value="TD">TD</option>
+                      <option value="CIBC">CIBC</option>3
+                      <option value="BMO">BMO</option>
+                  </select>
+              </div>
+              <div id = "fgSelected" style = "display:none;">
+                  <br><br><br>
+                  <label for="redeem"><b>Redeem FG Dollars:</b></label><br>
+                  <input type="text" id="redeem" name="redeem" placeholder="Enter Amount" required><br>
+
+                  <label for="remaining"><b>Current FG Dollars Balance: $50.00</b></label><br>
+                  <br>
+              </div>
+
           </div>
 
           <div class = "footer">
               <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
               <button class = "acceptButton" onclick="document.getElementById('cart').style.display='none';">Process Payment</button>
           </div>
+
+      <script>
+          function displayInput() {
+              var selected = document.getElementById("Payment Method").value;
+              document.getElementById('creditSelected').style.display = "none";
+              document.getElementById('debitSelected').style.display = "none";
+              document.getElementById('fgSelected').style.display = "none";
+
+              if ( selected == "Credit" )
+              {
+                  document.getElementById('creditSelected').style.display = "block";
+              }
+              if ( selected == "Debit" )
+              {
+                  document.getElementById('debitSelected').style.display = "block";
+              }
+              if ( selected == "FG Dollars" )
+              {
+                  document.getElementById('fgSelected').style.display = "block";
+              }
+          }
+      </script>
+
   </div>
 
   </div>
