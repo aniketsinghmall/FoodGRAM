@@ -6,7 +6,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="styles.css">
+  <link id = "style" rel="stylesheet" href="styles.css">
   <script type="text/javascript" src="BackEnd.js"></script>
   <script src = "BackEnd.js"> </script>
   <!-- Imports Google icons for use-->
@@ -56,14 +56,36 @@
 
   <script> displayRestaurantReviews() </script>
 
-  <div class = "featuredReview">
+  <div id = "test" class = "featuredReview">
+
+
+    <button class = "featuredReviewButton left" onclick="plusDivs(1)">&#10094;  </button>
+    <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center"> </button>
+    <button class = "featuredReviewButton right" onclick="nextItem()" onclick="plusDivs(1)">&#10095; </button>
+
+
+  </div>
+
+
+
+
+  <script>
+
+    function nextItem(){
 
     
 
-    <button class = "featuredReviewButton left" onclick="plusDivs(1)">&#10094;  </button>
-    <button id = "featuredReviewButton" class = "featuredReviewMain center"> 
 
-      
+
+    }
+
+
+
+  </script>
+
+
+
+
       <!--img class="mySlides" src="testfoodpic1.jpg" width="400" height="200"-->
       <!--img class="mySlides" src="testfoodpic2.jpg" width="400" height="200"-->
 
@@ -90,11 +112,6 @@
 
 
 
-    
-    </button>
-    <button class = "featuredReviewButton right" onclick="plusDivs(1)">&#10095; </button>
-
-  </div>
 
   <script> displayFeaturedReview() </script>
 

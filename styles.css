@@ -22,13 +22,6 @@ header {
 /*
 headerButton
 
-KNOWN ISSUE: PADDING
-Increasing the size of the padding causeing
-black to render over the below navbar.
-I believe this issue has something to do with 
-the button being rendered overlapping the 
-navbar in some way. - Ryan 
-
 headButton contains the CSS properties for 
 the "Create Account", "Log in", "search" and 
 "Cart" buttons along the top of the screen.
