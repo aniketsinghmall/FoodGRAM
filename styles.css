@@ -254,6 +254,7 @@ background-color: rgb(45, 45, 45);
   width: 5%;
   margin-top: 5%;
   margin-right: 1%;
+  margin-left: 1%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: large;
@@ -266,10 +267,11 @@ background-color: rgb(45, 45, 45);
 
 .featuredReviewMain{
   background-color: rgb(0,0,0);
+  background-image: url("testfoodpic1.jpg");
   color: white;
   float: left;
   display: block;
-  width: 87%;
+  width: 86%;
   margin: auto;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -279,8 +281,16 @@ background-color: rgb(45, 45, 45);
   text-decoration: none;
   border-radius: 25px;
   opacity:0.6;
+  position: relative;
+  z-index: 0;
 }
 
+.mySlides{
+
+position: relative;
+z-index: -1;
+
+}
 
 .featuredReviewButton:hover{
   background-color: rgb(45, 45, 45);
@@ -326,10 +336,10 @@ background-color: rgb(45, 45, 45);
   transform: translateY(4px);
 }
 
-featuredReview.mySlides {
+.featuredReview.mySlides {
   text-align: center;
-  height = 600px;
-  width = 600px;
+  height: 200px;
+  width: 200px;
 }
 
 .mainMenu h1{

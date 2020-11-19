@@ -60,12 +60,12 @@
 
     
 
-    <button class = "featuredReviewButton left" onclick="plusDivs(1)">&#10094; </button>
-    <button id = "featuredReviewButton" class = "featuredReviewMain center" onclick="plusDivs(-1)"> </button>
-    <button class = "featuredReviewButton right" onclick="plusDivs(1)">&#10095; </button>
+    <button class = "featuredReviewButton left" onclick="plusDivs(1)">&#10094;  </button>
+    <button id = "featuredReviewButton" class = "featuredReviewMain center"> 
 
-      <!-- img class="mySlides" src="testfoodpic1.jpg" width="600" height="400"-->
-      <!-- img class="mySlides" src="testfoodpic2.jpg" width="600" height="400"-->
+      
+      <img class="mySlides" src="testfoodpic1.jpg" width="400" height="200">
+      <img class="mySlides" src="testfoodpic2.jpg" width="400" height="200">
 
         <script>
         var slideIndex = 1;
@@ -86,6 +86,14 @@
             x[slideIndex-1].style.display = "block";
         }
         </script>
+
+
+
+
+    
+    </button>
+    <button class = "featuredReviewButton right" onclick="plusDivs(1)">&#10095; </button>
+
   </div>
 
   <script> displayFeaturedReview() </script>
