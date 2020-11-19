@@ -57,6 +57,7 @@ the "Create Account", "Log in", "search" and
   overflow: hidden;
   border-radius: 15px;
   font-weight: bold;
+  float:left;
 }
 
 
@@ -82,11 +83,15 @@ background-color: rgba(255, 0, 0, 0.4);
   box-sizing: border-box;
 }
 
-
+.cartHeader {
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: rgba(187,134,252);
+}
 .acceptButton {
   border: none;
   background-color: #03DAC5;
-  color: color;
   font-size:22px;
   margin: 10px;
   padding: 5px;
@@ -106,6 +111,7 @@ background-color: rgb(45, 45, 45);
   float: left;
   padding: 15px;
   border: 1px solid white;
+  color: rgba(187,134,252);
 }
 
 .cart2 {
@@ -114,6 +120,7 @@ background-color: rgb(45, 45, 45);
   float: right;
   padding: 15px;
   border: 1px solid white;
+  color: rgba(187,134,252);
 }
 
 .left {
