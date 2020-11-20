@@ -3,85 +3,55 @@
 "use strict";
 
 class Restaurant {
-    #_Name
-    #_foodItems
-    #_Rating
+    name
+    foodItems
+    rating
 
     constructor(name) { // accepts name of Restaurant and array of food items.
-        this.#_Name = name;
-        this.#_foodItems = [];
-        this.#_Rating = parseInt(100*(1 +Math.random()*4))/100
+        this.name = name;
+        this.foodItems = [];
+        this.rating = parseInt(100*(1 +Math.random()*4))/100
     }
     addFood(name){
-        this.#_foodItems.push(name);
-    }
-    get name(){
-        return this.#_Name;
-    }
-    get foodItems(){
-        return this.#_foodItems;
-    }
-    get rating(){
-        return this.#_Rating
+        this.foodItems.push(name);
     }
 }
 
 class FoodItem{
-    #_Name
-    #_ingredients
-    #_category
-    #_description
-    #_price
+    name
+    ingredients
+    category
+    description
+    price
     constructor(name){  //accepts name of FoodItem and its possible ingredients
-        this.#_Name=name;
-        this.#_ingredients = [];
+        this.name=name;
+        this.ingredients = [];
     }
     addIngredient(name){
-        this.#_ingredients.push(name);
-    }
-    get name(){
-        return this.#_Name
-    }
-    set category(value){
-        this.#_category = value;
+        this.ingredients.push(name);
     }
     set description(value){
         if (value.includes("\r")){
             value = value.substring(0, value.indexOf("\r"));
         }
-        this.#_description = value;
-    }
-    get description(){
-        return this.#_description;
-    }
-    get category(){
-        return this.#_category;
-    }
-    set price(value){
-        this.#_price = value;
-    }
-    get price(){
-        return this.#_price;
-    }
-    get ingredients(){
-        return this.#_ingredients
+        this.description = value;
     }
 }
 
 
 class Recipe {
-    #_choices;
-    #_foodItem;
+    choices;
+    foodItem;
     constructor(foodItem, choices){
-        this.#_foodItem = foodItem;
-        this.#_choices = choices;
+        this.foodItem = foodItem;
+        this.choices = choices;
     }
     get orderString(){
-        let results = this.#_foodItem.name;
+        let results = this.foodItem.name;
         let toppings = "";
-        for(let i = 0; i<this.#_foodItem.ingredients.length; i++){
-            if(this.#_choices[i])
-                toppings += ", " + this.#_foodItem.ingredients[i].name;
+        for(let i = 0; i<this.foodItem.ingredients.length; i++){
+            if(this.choices[i])
+                toppings += ", " + this.foodItem.ingredients[i].name;
         }
         if(toppings.length >= 1)
             results += toppings;
@@ -89,85 +59,54 @@ class Recipe {
         return results;
     }
     get name(){
-        return this.#_foodItem.name;
+        return this.foodItem.name;
     }
 }
 
 class Ingredient{
-    #_name;
+    name;
     constructor(name){
-        this.#_name = name;
+        this.name = name;
     }
-    get name(){
-        return this.#_name;
-    }
-
 }
 
 
 //Users on this site essentially exist to have reviews and have a name.
 class User{
-    #_name;
+    name;
     constructor(name){
-        this.#_name = name;
-    }
-    get name(){
-        return this.#_name;
+        this.name = name;
     }
 }
 
 
 class Friend extends User{
-    #_distance;
+    distance;
     constructor(name, distance){
         super(name);
-        this.#_distance=distance;
+        this.distance=distance;
     }
 }
 
 
 //A review for a restaurant.
 class RestaurantReview{
-    #_user
-    #_rating
-    #_restaurant
+    user
+    rating
+    restaurant
     constructor(user, rating, restaurant){
-        this.#_user=user;
-        this.#_rating=rating;
-        this.#_restaurant=restaurant;
-    }
-    get name(){
-        return this.#_user.name;
-    }
-    get user(){
-        return this.#_user;
-    }
-    get rating(){
-        return this.#_rating;
-    }
-    get restaurant(){
-        return this.#_restaurant.name;
-    }
-    get restaurantObj(){
-        return this.#_restaurant;
+        this.user=user;
+        this.rating=rating;
+        this.restaurant=restaurant;
     }
 }
 
 //Review for a specific FoodItem at a specific Restaurant.
 class FoodReview extends RestaurantReview{
-    #_recipe  //binary array.
+    recipe  //binary array.
     constructor(user, rating, restaurant, foodItem, choices){
         super(user, rating, restaurant);
-        this.#_recipe = new Recipe(foodItem, choices)
-    }
-    get recipe(){
-        return this.#_recipe;
-    }
-    get orderString(){
-        return this.#_recipe.orderString;
-    }
-    get itemName(){
-        return this.#_recipe.name;
+        this.recipe = new Recipe(foodItem, choices)
     }
 }
 
@@ -225,6 +164,7 @@ function createRestaurants(){
             restaurants.push(restaurant);
         }
     }
+    let test = {};
     return [restaurants, foods];
 }
 
@@ -343,7 +283,7 @@ function search(array, query){
     for(let i = 0; i<array.length; i++){
         if(array[i].name.toLowerCase().includes(query.toLowerCase()))
             result.push(array[i]);
-        else if(array[i] instanceof Restaurant){
+        else if('foodItems' in array[i]){
             let foodItems = array[i].foodItems;
             for(let j = 0; j<foodItems.length; j++){
                 if(foodItems[j].name.toLowerCase().includes(query.toLowerCase())){
@@ -384,129 +324,57 @@ function generateRestaurantReviews(userList, restaurantList){
 }
 
 
-//Generate Random Trending Reviews. These are currently dynamic and will change every time a restaurant is reloaded,
-//as is the nature of trending pages. Also makes it much easier to do it like that lol.
-function generateTrendingRestaurantReview(restaurants, query){
-    let users = createRandomUsers();
-    let restaurantList = search(restaurants, query);
-    return generateRestaurantReviews(users, restaurantList);
-}
-
-
-//Accepts all restaurants.
-//Returns array, [0] is friends, [1] is array of their reviews.
-function generateFriendsRestaurantReviews(friends, restaurants){
-    if (friendReviews===undefined)
-        return generateRestaurantReviews(friends, restaurants);
-    else
-        return friendReviews;
-}
-
-
 //Accepts a restaurant, Generates random Food Reviews for that restaurant.
 //Accepts just ONE restaurant.
-function generateFoodReviews(users, restaurant){
+function generateFoodReviews(users, restaurants){
     let result = [];
-    let foodList = restaurant.foodItems;
-    for(let i = 0; i<foodList.length; i++){
-        let user1 = users[Math.floor(Math.random() * users.length)];
-        let user2 = users[Math.floor(Math.random() * users.length)];
-        while(user1 === user2)
-            user2 = users[Math.floor(Math.random() * users.length)];
-        let ingredientChoices = foodList[i].ingredients;
-        let choices1 = [];
-        let choices2 = [];
-        for(let j = 0; j<ingredientChoices.length; j++){
-            choices1.push(Math.random() >= 0.5)
-            choices2.push(Math.random() >= 0.5)
+    for(let j = 0; j<restaurants.length; j++) {
+        let restaurant = restaurants[j];
+        let foodList = restaurant.foodItems;
+        for (let i = 0; i < foodList.length; i++) {
+            let user1 = users[Math.floor(Math.random() * users.length)];
+            let user2 = users[Math.floor(Math.random() * users.length)];
+            while (user1 === user2)
+                user2 = users[Math.floor(Math.random() * users.length)];
+            let ingredientChoices = foodList[i].ingredients;
+            let choices1 = [];
+            let choices2 = [];
+            for (let j = 0; j < ingredientChoices.length; j++) {
+                choices1.push(Math.random() >= 0.5)
+                choices2.push(Math.random() >= 0.5)
+            }
+            result.push(new FoodReview(user1, parseInt(100 * (1 + Math.random() * 4)) / 100, restaurant, foodList[i], choices1))
+            result.push(new FoodReview(user2, parseInt(100 * (1 + Math.random() * 4)) / 100, restaurant, foodList[i], choices2))
         }
-        result.push(new FoodReview(user1,parseInt(100*(1 +Math.random()*4))/100, restaurant, foodList[i], choices1))
-        result.push(new FoodReview(user2,parseInt(100*(1 +Math.random()*4))/100, restaurant, foodList[i], choices2))
     }
     return result.sort(compareReviews);
 }
 
-function generateFriendFoodReviews(friends, restaurant){
-    return generateFoodReviews(friends, restaurant);
-}
-
-
-function generateTrendingFoodReviews(restaurant){
-    let users = createRandomUsers();
-    return generateFoodReviews(users, restaurant);
-}
-
-function generateFriendFoodReviews(friends, restaurant){
-    return generateFoodReviews(friends, restaurant);
-}
 
 function sortByRating(array){
     return array.sort(compareReviews);
 }
 
-
-
-
-function testCode(){
-    //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
-    let data = createData();
-    //printData(data[0]);  // data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
-
-
-    // search restaurants by some query. Returns array of restaurants matching query.
-    let results = search(data[0], "");
-    for(let i = 0; i<results.length; i++){
-        //console.log(results[i].name);
+function indexByName(array, value){
+    let index = -1;
+    for(let i = 0; i<array.length; i++){
+        if(array[i].name.localeCompare(value) === 0){
+            index = i;
+            break;
+        }
     }
-
-    //Creates random users to use for the trending page.
-    //You most likely will not need this function.
-    let users = createRandomUsers(); //Creates random Trending users (not friends). Returns array of Users.
-    for(let i = 0; i<users.length; i++){
-        //console.log(users[i].name);
-    }
-
-    //Generates random Restaurant Reviews for a query. Pass it all restaurants and your query. It returns array of Restaurant Reviews.
-    let restaurantReviews = generateTrendingRestaurantReview(data[0], "");
-    for (let i =0; i<restaurantReviews.length; i++){ //Returns array of those Reviews sorted by Rating.
-        //console.log(restaurantReviews[i].name + ", " + restaurantReviews[i].rating + "/5, " + restaurantReviews[i].restaurant);
-    }
-
-
-    //createFriends will generate the main users friends. Only run this once to have consistent reviews.
-    let friends = createFriends();
-    //Generates all friend restaurant reviews.
-    let friendRestaurantReviews = generateFriendsRestaurantReviews(friends, data[0]);
-    for (let i =0; i<friendRestaurantReviews.length; i++){
-        //console.log(friendRestaurantReviews[i].name + ", " + friendRestaurantReviews[i].rating + "/5, " + friendRestaurantReviews[i].restaurant);
-    }
-
-
-    //Generate food reviews for friends. Pass Friend and Restaurant object.
-    let friendReviews = generateFriendFoodReviews(friends, data[0][1]);
-    for (let i =0; i<friendReviews.length; i++){ //Returns array of those Reviews sorted by Rating.
-        //console.log(friendReviews[i].name + ", " + friendReviews[i].rating + "/5, " + friendReviews[i].restaurant + ", " + friendReviews[i].orderString);
-    }
-
-
-    //Generate Trending Data Reviews. Pass a restaurant object.
-    let trendingReviews = generateTrendingFoodReviews(data[0][1]);
-    for (let i =0; i<trendingReviews.length; i++){ //Returns array of those Reviews sorted by Rating.
-        //console.log(trendingReviews[i].name + ", " + trendingReviews[i].rating + "/5, " + trendingReviews[i].restaurant + ", " + trendingReviews[i].orderString);
-    }
-    //When trying to create FoodReviews for a specific restaurant you need to link to a specific Restaurant Object.
-    //To get such an object, use the search function. search(data[0], "name of restaurant")[0] to get the pointer.
+    return index;
 }
 
 
 function filterReviews(restaurants, reviews, query){
-    console.log("hello");
     let currentList = search(restaurants, query);
-    console.log("search.length: " + currentList.length);
+    console.log("Query: " + query);
+    console.log("current list length: " + currentList.length)
     let result = [];
     for(let i = 0; i< reviews.length; i++){
-        //console.log("Index of " + reviews[i].name + currentList.indexOf(reviews[i].restaurantObj) Restarant: " + )
-        if (currentList.indexOf(reviews[i].restaurantObj) !== -1){
+        //console.log("Index of " + reviews[i].name + currentList.indexOf(reviews[i].restaurant.name));
+        if (indexByName(currentList, reviews[i].restaurant.name) !== -1){
             result.push(reviews[i])
         }
     }
@@ -514,34 +382,82 @@ function filterReviews(restaurants, reviews, query){
 }
 
 
-function main(){
-    //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
-    return createData();
+function getData(){
+    //must run this. Reads the textfiles to produce the data.
+    if(sessionStorage.getItem("Restaurants") === null){
+        let results = createData();
+        sessionStorage.setItem("Restaurants", JSON.stringify(results[0]));
+        sessionStorage.setItem("Food", JSON.stringify(results[1]));
+        sessionStorage.setItem("Ingredients", JSON.stringify(results[2]));
+
+        //generate friends and trending users
+        let friends = createFriends();
+        let randomUsers = createRandomUsers();
+        sessionStorage.setItem("Friends", JSON.stringify(friends));
+        sessionStorage.setItem("Users", JSON.stringify(randomUsers));
+
+        //generate and store reviews
+        sessionStorage.setItem("UserRestaurantReviews", JSON.stringify(generateRestaurantReviews(randomUsers, results[0])));
+        sessionStorage.setItem("FriendRestaurantReviews", JSON.stringify(generateRestaurantReviews(friends, results[0])));
+        sessionStorage.setItem("UserFoodReviews", JSON.stringify(generateFoodReviews(randomUsers, results[0])));
+        sessionStorage.setItem("FriendFoodReviews", JSON.stringify(generateFoodReviews(friends, results[0])));
+
+        // conditional items:
+        sessionStorage.setItem("Trending", "false");
+
+    }
 }
 
 
 function displayRestaurantReviews() {
-    if(friends === undefined){
-        friends=createFriends()
-    }
-    friendReviews = filterReviews(data[0], generateFriendsRestaurantReviews(friends, data[0]),
-        String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
+    //if(sessionStorage.getItem("Restaurants") === null)
+        // getData();
+    let reviews;
 
-    for (let i = 0; i < friendReviews.length; i++) {
+    if(window.location.search.includes("restaurant=")){  // we are in a restaurant page.
+        if(!JSON.parse(sessionStorage.getItem("Trending")))
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendFoodReviews")),
+                decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+        else
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("UserFoodReviews")),
+                decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+
+    }
+    else{ //searching for a restaurant
+        if(!JSON.parse(sessionStorage.getItem("Trending")))
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendRestaurantReviews")),
+                String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
+        else
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("UserRestaurantReviews")),
+                String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
+    }
+
+    for (let i = 0; i < reviews.length; i++) {
         let btn = document.createElement("BUTTON");
         //btn.onclick = func;
-        btn.innerHTML = friendReviews[i].name + "<br/>" + friendReviews[i].restaurant + "<br/>" + friendReviews[i].rating + "/5<br/>";
+        let itemValue = "";
+        if(window.location.search.includes("restaurant=")) {
+            itemValue = reviews[i].recipe.foodItem.name;
+        }
+        else{
+            itemValue = reviews[i].restaurant.name;
+        }
+
+        btn.innerHTML = reviews[i].user.name + "<br/>" + itemValue + "<br/>" + reviews[i].rating + "/5<br/>";
         document.getElementById("RestaurantReviews").appendChild(btn);
     }
 }
 
 function displayFeaturedReview() {
-    let bestRest = sortByRating(search(data[0],
+    let bestRest = sortByRating(search(JSON.parse(sessionStorage.getItem("Restaurants")),
         String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
     let btn = document.getElementById("featuredReviewButton");
     //btn.onclick = func;
-    btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
+    if(bestRest[0] !== undefined)
+        btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
 }
+
+
 
 
 function getRestaurantText(){
@@ -691,6 +607,12 @@ function getFoodText(){
 }
 
 
-let data = main();
-let friends=createFriends()
-let friendReviews;
+getData();
+
+console.log("hello: " + String(window.location.search));
+
+console.log("My test: ");
+let results = search(JSON.parse(sessionStorage.getItem("Restaurants")), "frozen");
+for(let i =0; i<results.length; i++){
+    console.log("Result " + i +": " + results[i].name);
+}
