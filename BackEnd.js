@@ -453,6 +453,13 @@ function displayFeaturedReview() {
         String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
     let btn = document.getElementById("featuredReviewButton");
     //btn.onclick = func;
+
+    //Update dir with the correct path to background image (currently set to display random hamburger)
+
+    var dir = "foodImages/burger/burger"+ (Math.floor(Math.random() * 5) + 1) + ".jpg";
+
+    btn.setAttribute("style", "background-image: url(" + dir + ")");
+    
     if(bestRest[0] !== undefined)
         btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
 }
