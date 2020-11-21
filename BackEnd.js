@@ -456,7 +456,29 @@ function displayFeaturedReview() {
 
     //Update dir with the correct path to background image (currently set to display random hamburger)
 
-    var dir = "foodImages/burger/burger"+ (Math.floor(Math.random() * 5) + 1) + ".jpg";
+
+    // Search is assigned the value entered in the search 
+    var searchRequest = decodeURI(String(window.location.href).substring(window.location.href.indexOf("#") + 1).replace("+", " "));
+
+    var catagory = "burger";
+
+    if(searchRequest.includes("burger"))
+    {
+        catagory = "burger";
+    }
+    else if(searchRequest.includes("pizza"))
+    {
+        catagory = "pizza";
+    }
+    else if(searchRequest.includes("cheese"))
+    {
+        catagory = "cheese";
+    }
+
+    //var restraunt = String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ");
+
+
+    var dir = "foodImages/" + catagory + "/" + catagory + (Math.floor(Math.random() * 5) + 1) + ".jpg";
 
     btn.setAttribute("style", "background-image: url(" + dir + ")");
     
