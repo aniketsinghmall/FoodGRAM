@@ -403,7 +403,6 @@ margin-top: 0px;
   background-color: rgb(25,25,25);
   color: white;
   float: left;
-  display: block;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: xx-large;
@@ -418,6 +417,8 @@ margin-top: 0px;
   border-radius: 25px;
   text-align: left;
 }
+
+
 
 .mainMenu button:hover{
 
@@ -609,8 +610,8 @@ p {
 
 
 /*for login and create account*/
-input {
-		width: 100%;
+.login{
+    width:100%;
 		padding: 12px 20px;
 		margin: 8px 0;
 		box-sizing: border-box;
@@ -619,7 +620,7 @@ input {
 		border-radius: 4px;
 	}
 	
-input:focus {
+.login input:focus {
 		background-color: lightblue;
 	}
 
@@ -653,4 +654,25 @@ input:focus {
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
+}
+
+.ingredients input, .ingredients label{
+  background-color: rgb(25,25,25);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  text-decoration: none;
+  text-align: left;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  vertical-align:middle;
+}
+
+.ingredients ul{
+  height:100%;
+}
+
+.ingredients input{
+  margin-left:130px;
 }

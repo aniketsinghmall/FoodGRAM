@@ -70,7 +70,12 @@ function searchResults(){
             if(data[0][i].name == restaurantName){
                 list.innerHTML = "";
                 for(let j = 0; j<data[0][i].foodItems.length; j++){
-                    list.innerHTML += "<a href = \"#"+ data[0][i].foodItems[j].name +"\">" + data[0][i].foodItems[j].name + " - $" + data[0][i].foodItems[j].price + "</a>"
+                    let fn = "onclick=\"(function(){"+
+                        "ingredients("+i+", "+j+");"+ 
+                    "})();\"";
+                    let s = "<button "+fn+">"+data[0][i].foodItems[j].name+"</button> \n<form class = \"ingredients\" id = \""+"restaurant"+i+"menuItem"+j+"\"></form>";
+                    list.innerHTML += s;
+                    //document.getElementById("restaurant"+i+"menuItem"+j).addEventListener("click", ingredients);
                 }
             }
         }
@@ -104,7 +109,21 @@ function goHome(){
     window.location.search = "";
 }
 
-function restaurantSelected(){
+function ingredients(restaurant, menuItem){
+    if(document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML == ""){
+        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML = "<ul>";
+        for(let i = 0; i<data[0][restaurant].foodItems[menuItem].ingredients.length; i++){
+            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+                                                                                                "<label for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+                                                                                                data[0][restaurant].foodItems[menuItem].ingredients[i].name+
+                                                                                                "</label></li>";
+        }
+        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "</ul>";
+    }
+    else{
+        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML="";
+    }
 }
+
 
 
