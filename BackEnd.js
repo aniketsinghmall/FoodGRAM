@@ -3,85 +3,55 @@
 "use strict";
 
 class Restaurant {
-    #_Name
-    #_foodItems
-    #_Rating
+    name
+    foodItems
+    rating
 
     constructor(name) { // accepts name of Restaurant and array of food items.
-        this.#_Name = name;
-        this.#_foodItems = [];
-        this.#_Rating = parseInt(100*(1 +Math.random()*4))/100
+        this.name = name;
+        this.foodItems = [];
+        this.rating = parseInt(100*(1 +Math.random()*4))/100
     }
     addFood(name){
-        this.#_foodItems.push(name);
-    }
-    get name(){
-        return this.#_Name;
-    }
-    get foodItems(){
-        return this.#_foodItems;
-    }
-    get rating(){
-        return this.#_Rating
+        this.foodItems.push(name);
     }
 }
 
 class FoodItem{
-    #_Name
-    #_ingredients
-    #_category
-    #_description
-    #_price
+    name
+    ingredients
+    category
+    description
+    price
     constructor(name){  //accepts name of FoodItem and its possible ingredients
-        this.#_Name=name;
-        this.#_ingredients = [];
+        this.name=name;
+        this.ingredients = [];
     }
     addIngredient(name){
-        this.#_ingredients.push(name);
-    }
-    get name(){
-        return this.#_Name
-    }
-    set category(value){
-        this.#_category = value;
+        this.ingredients.push(name);
     }
     set description(value){
         if (value.includes("\r")){
             value = value.substring(0, value.indexOf("\r"));
         }
-        this.#_description = value;
-    }
-    get description(){
-        return this.#_description;
-    }
-    get category(){
-        return this.#_category;
-    }
-    set price(value){
-        this.#_price = value;
-    }
-    get price(){
-        return this.#_price;
-    }
-    get ingredients(){
-        return this.#_ingredients
+        this.description = value;
     }
 }
 
 
 class Recipe {
-    #_choices;
-    #_foodItem;
+    choices;
+    foodItem;
     constructor(foodItem, choices){
-        this.#_foodItem = foodItem;
-        this.#_choices = choices;
+        this.foodItem = foodItem;
+        this.choices = choices;
     }
     get orderString(){
-        let results = this.#_foodItem.name;
+        let results = this.foodItem.name;
         let toppings = "";
-        for(let i = 0; i<this.#_foodItem.ingredients.length; i++){
-            if(this.#_choices[i])
-                toppings += ", " + this.#_foodItem.ingredients[i].name;
+        for(let i = 0; i<this.foodItem.ingredients.length; i++){
+            if(this.choices[i])
+                toppings += ", " + this.foodItem.ingredients[i].name;
         }
         if(toppings.length >= 1)
             results += toppings;
@@ -89,85 +59,54 @@ class Recipe {
         return results;
     }
     get name(){
-        return this.#_foodItem.name;
+        return this.foodItem.name;
     }
 }
 
 class Ingredient{
-    #_name;
+    name;
     constructor(name){
-        this.#_name = name;
+        this.name = name;
     }
-    get name(){
-        return this.#_name;
-    }
-
 }
 
 
 //Users on this site essentially exist to have reviews and have a name.
 class User{
-    #_name;
+    name;
     constructor(name){
-        this.#_name = name;
-    }
-    get name(){
-        return this.#_name;
+        this.name = name;
     }
 }
 
 
 class Friend extends User{
-    #_distance;
+    distance;
     constructor(name, distance){
         super(name);
-        this.#_distance=distance;
+        this.distance=distance;
     }
 }
 
 
 //A review for a restaurant.
 class RestaurantReview{
-    #_user
-    #_rating
-    #_restaurant
+    user
+    rating
+    restaurant
     constructor(user, rating, restaurant){
-        this.#_user=user;
-        this.#_rating=rating;
-        this.#_restaurant=restaurant;
-    }
-    get name(){
-        return this.#_user.name;
-    }
-    get user(){
-        return this.#_user;
-    }
-    get rating(){
-        return this.#_rating;
-    }
-    get restaurant(){
-        return this.#_restaurant.name;
-    }
-    get restaurantObj(){
-        return this.#_restaurant;
+        this.user=user;
+        this.rating=rating;
+        this.restaurant=restaurant;
     }
 }
 
 //Review for a specific FoodItem at a specific Restaurant.
 class FoodReview extends RestaurantReview{
-    #_recipe  //binary array.
+    recipe  //binary array.
     constructor(user, rating, restaurant, foodItem, choices){
         super(user, rating, restaurant);
-        this.#_recipe = new Recipe(foodItem, choices)
-    }
-    get recipe(){
-        return this.#_recipe;
-    }
-    get orderString(){
-        return this.#_recipe.orderString;
-    }
-    get itemName(){
-        return this.#_recipe.name;
+        this.recipe = new Recipe(foodItem, choices)
     }
 }
 
@@ -225,6 +164,7 @@ function createRestaurants(){
             restaurants.push(restaurant);
         }
     }
+    let test = {};
     return [restaurants, foods];
 }
 
@@ -343,7 +283,7 @@ function search(array, query){
     for(let i = 0; i<array.length; i++){
         if(array[i].name.toLowerCase().includes(query.toLowerCase()))
             result.push(array[i]);
-        else if(array[i] instanceof Restaurant){
+        else if('foodItems' in array[i]){
             let foodItems = array[i].foodItems;
             for(let j = 0; j<foodItems.length; j++){
                 if(foodItems[j].name.toLowerCase().includes(query.toLowerCase())){
@@ -384,129 +324,55 @@ function generateRestaurantReviews(userList, restaurantList){
 }
 
 
-//Generate Random Trending Reviews. These are currently dynamic and will change every time a restaurant is reloaded,
-//as is the nature of trending pages. Also makes it much easier to do it like that lol.
-function generateTrendingRestaurantReview(restaurants, query){
-    let users = createRandomUsers();
-    let restaurantList = search(restaurants, query);
-    return generateRestaurantReviews(users, restaurantList);
-}
-
-
-//Accepts all restaurants.
-//Returns array, [0] is friends, [1] is array of their reviews.
-function generateFriendsRestaurantReviews(friends, restaurants){
-    if (friendReviews===undefined)
-        return generateRestaurantReviews(friends, restaurants);
-    else
-        return friendReviews;
-}
-
-
 //Accepts a restaurant, Generates random Food Reviews for that restaurant.
 //Accepts just ONE restaurant.
-function generateFoodReviews(users, restaurant){
+function generateFoodReviews(users, restaurants){
     let result = [];
-    let foodList = restaurant.foodItems;
-    for(let i = 0; i<foodList.length; i++){
-        let user1 = users[Math.floor(Math.random() * users.length)];
-        let user2 = users[Math.floor(Math.random() * users.length)];
-        while(user1 === user2)
-            user2 = users[Math.floor(Math.random() * users.length)];
-        let ingredientChoices = foodList[i].ingredients;
-        let choices1 = [];
-        let choices2 = [];
-        for(let j = 0; j<ingredientChoices.length; j++){
-            choices1.push(Math.random() >= 0.5)
-            choices2.push(Math.random() >= 0.5)
+    for(let j = 0; j<restaurants.length; j++) {
+        let restaurant = restaurants[j];
+        let foodList = restaurant.foodItems;
+        for (let i = 0; i < foodList.length; i++) {
+            let user1 = users[Math.floor(Math.random() * users.length)];
+            let user2 = users[Math.floor(Math.random() * users.length)];
+            while (user1 === user2)
+                user2 = users[Math.floor(Math.random() * users.length)];
+            let ingredientChoices = foodList[i].ingredients;
+            let choices1 = [];
+            let choices2 = [];
+            for (let j = 0; j < ingredientChoices.length; j++) {
+                choices1.push(Math.random() >= 0.5)
+                choices2.push(Math.random() >= 0.5)
+            }
+            result.push(new FoodReview(user1, parseInt(100 * (1 + Math.random() * 4)) / 100, restaurant, foodList[i], choices1))
+            result.push(new FoodReview(user2, parseInt(100 * (1 + Math.random() * 4)) / 100, restaurant, foodList[i], choices2))
         }
-        result.push(new FoodReview(user1,parseInt(100*(1 +Math.random()*4))/100, restaurant, foodList[i], choices1))
-        result.push(new FoodReview(user2,parseInt(100*(1 +Math.random()*4))/100, restaurant, foodList[i], choices2))
     }
     return result.sort(compareReviews);
 }
 
-function generateFriendFoodReviews(friends, restaurant){
-    return generateFoodReviews(friends, restaurant);
-}
-
-
-function generateTrendingFoodReviews(restaurant){
-    let users = createRandomUsers();
-    return generateFoodReviews(users, restaurant);
-}
-
-function generateFriendFoodReviews(friends, restaurant){
-    return generateFoodReviews(friends, restaurant);
-}
 
 function sortByRating(array){
     return array.sort(compareReviews);
 }
 
-
-
-
-function testCode(){
-    //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
-    let data = createData();
-    //printData(data[0]);  // data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
-
-
-    // search restaurants by some query. Returns array of restaurants matching query.
-    let results = search(data[0], "");
-    for(let i = 0; i<results.length; i++){
-        //console.log(results[i].name);
+function indexByName(array, value){
+    let index = -1;
+    for(let i = 0; i<array.length; i++){
+        if(array[i].name.localeCompare(value) === 0){
+            index = i;
+            break;
+        }
     }
-
-    //Creates random users to use for the trending page.
-    //You most likely will not need this function.
-    let users = createRandomUsers(); //Creates random Trending users (not friends). Returns array of Users.
-    for(let i = 0; i<users.length; i++){
-        //console.log(users[i].name);
-    }
-
-    //Generates random Restaurant Reviews for a query. Pass it all restaurants and your query. It returns array of Restaurant Reviews.
-    let restaurantReviews = generateTrendingRestaurantReview(data[0], "");
-    for (let i =0; i<restaurantReviews.length; i++){ //Returns array of those Reviews sorted by Rating.
-        //console.log(restaurantReviews[i].name + ", " + restaurantReviews[i].rating + "/5, " + restaurantReviews[i].restaurant);
-    }
-
-
-    //createFriends will generate the main users friends. Only run this once to have consistent reviews.
-    let friends = createFriends();
-    //Generates all friend restaurant reviews.
-    let friendRestaurantReviews = generateFriendsRestaurantReviews(friends, data[0]);
-    for (let i =0; i<friendRestaurantReviews.length; i++){
-        //console.log(friendRestaurantReviews[i].name + ", " + friendRestaurantReviews[i].rating + "/5, " + friendRestaurantReviews[i].restaurant);
-    }
-
-
-    //Generate food reviews for friends. Pass Friend and Restaurant object.
-    let friendReviews = generateFriendFoodReviews(friends, data[0][1]);
-    for (let i =0; i<friendReviews.length; i++){ //Returns array of those Reviews sorted by Rating.
-        //console.log(friendReviews[i].name + ", " + friendReviews[i].rating + "/5, " + friendReviews[i].restaurant + ", " + friendReviews[i].orderString);
-    }
-
-
-    //Generate Trending Data Reviews. Pass a restaurant object.
-    let trendingReviews = generateTrendingFoodReviews(data[0][1]);
-    for (let i =0; i<trendingReviews.length; i++){ //Returns array of those Reviews sorted by Rating.
-        //console.log(trendingReviews[i].name + ", " + trendingReviews[i].rating + "/5, " + trendingReviews[i].restaurant + ", " + trendingReviews[i].orderString);
-    }
-    //When trying to create FoodReviews for a specific restaurant you need to link to a specific Restaurant Object.
-    //To get such an object, use the search function. search(data[0], "name of restaurant")[0] to get the pointer.
+    return index;
 }
 
 
 function filterReviews(restaurants, reviews, query){
-    console.log("hello");
     let currentList = search(restaurants, query);
-    console.log("search.length: " + currentList.length);
     let result = [];
     for(let i = 0; i< reviews.length; i++){
-        //console.log("Index of " + reviews[i].name + currentList.indexOf(reviews[i].restaurantObj) Restarant: " + )
-        if (currentList.indexOf(reviews[i].restaurantObj) !== -1){
+        //console.log("Index of " + reviews[i].name + currentList.indexOf(reviews[i].restaurant.name));
+        if (indexByName(currentList, reviews[i].restaurant.name) !== -1){
             result.push(reviews[i])
         }
     }
@@ -514,34 +380,273 @@ function filterReviews(restaurants, reviews, query){
 }
 
 
-function main(){
-    //must run this. Reads the textfiles to produce the data. data[0]=Restaurants. data[1]=Foods. data[2]=Ingredients
-    return createData();
+function getData(){
+    //must run this. Reads the textfiles to produce the data.
+    if(sessionStorage.getItem("Restaurants") === null){
+        let results = createData();
+        sessionStorage.setItem("Restaurants", JSON.stringify(results[0]));
+        sessionStorage.setItem("Food", JSON.stringify(results[1]));
+        sessionStorage.setItem("Ingredients", JSON.stringify(results[2]));
+
+        //generate friends and trending users
+        let friends = createFriends();
+        let randomUsers = createRandomUsers();
+        sessionStorage.setItem("Friends", JSON.stringify(friends));
+        sessionStorage.setItem("Users", JSON.stringify(randomUsers));
+
+        //generate and store reviews
+        sessionStorage.setItem("UserRestaurantReviews", JSON.stringify(generateRestaurantReviews(randomUsers, results[0])));
+        sessionStorage.setItem("FriendRestaurantReviews", JSON.stringify(generateRestaurantReviews(friends, results[0])));
+        sessionStorage.setItem("UserFoodReviews", JSON.stringify(generateFoodReviews(randomUsers, results[0])));
+        sessionStorage.setItem("FriendFoodReviews", JSON.stringify(generateFoodReviews(friends, results[0])));
+
+        // conditional items:
+        sessionStorage.setItem("Trending", "false");
+
+    }
 }
 
 
 function displayRestaurantReviews() {
-    if(friends === undefined){
-        friends=createFriends()
+    let reviews;
+    let dir;
+    if(window.location.search.includes("restaurant=")){  // we are in a restaurant page.
+        if(!JSON.parse(sessionStorage.getItem("Trending")))
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendFoodReviews")),
+                decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+        else
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("UserFoodReviews")),
+                decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+        dir = getFoodPhotoDir(reviews[0].recipe.foodItem.name.toLowerCase());
+        console.log("dir: " + dir);
     }
-    friendReviews = filterReviews(data[0], generateFriendsRestaurantReviews(friends, data[0]),
-        String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
+    else{ //searching for a restaurant
 
-    for (let i = 0; i < friendReviews.length; i++) {
+        if(!JSON.parse(sessionStorage.getItem("Trending")))
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendRestaurantReviews")),
+                String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
+        else
+            reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("UserRestaurantReviews")),
+                String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
+    }
+    for (let i = 0; i < reviews.length; i++) {
         let btn = document.createElement("BUTTON");
-        //btn.onclick = func;
-        btn.innerHTML = friendReviews[i].name + "<br/>" + friendReviews[i].restaurant + "<br/>" + friendReviews[i].rating + "/5<br/>";
+        let itemValue = "";
+        if(window.location.search.includes("restaurant=")) {
+            itemValue = reviews[i].recipe.foodItem.name;
+        }
+        else{
+            btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
+            itemValue = reviews[i].restaurant.name;
+        }
+        btn.innerHTML =  "<span class = 'ReviewText' >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" + reviews[i].rating + "/5<br/> </span>";
+        if (window.location.search.includes("restaurant="))
+            dir = getFoodPhotoDir(reviews[i].recipe.foodItem.name.toLowerCase());
+        else
+            dir = getRestaurantPhotoDir(reviews[i].restaurant.name.toLowerCase())
+        btn.setAttribute("style", "background-image: url(" + dir + ")");
+        btn.style.backgroundSize = "contain";
+        btn.style.backgroundRepeat = 'no-repeat'
+        btn.style.backgroundPosition = 'center';
         document.getElementById("RestaurantReviews").appendChild(btn);
     }
 }
 
-function displayFeaturedReview() {
-    let bestRest = sortByRating(search(data[0],
-        String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
-    let btn = document.getElementById("featuredReviewButton");
-    //btn.onclick = func;
-    btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
+function displayFeaturedReview() {  // Needs to be generalized to food items!
+    if(window.location.search.includes("restaurant=")) {  // we are in a restaurant page.
+        let reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendFoodReviews")),
+            decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+        let btn = document.getElementById("featuredReviewButton");
+        if (reviews[0] !== undefined) {
+            btn.innerHTML = "<span class = 'ReviewText'>" + reviews[0].recipe.foodItem.name + "<br/>" + reviews[0].rating + "/5<br/> </span>";
+            // btn.style.textAlign
+            //btn.onclick = function () {   //this will need to pop up menu with food choices.
+            //    window.location.search = 'restaurant=' + reviews[0].name;
+            //};
+            let dir = getFoodPhotoDir(reviews[0].recipe.foodItem.name.toLowerCase())
+            btn.setAttribute("style", "background-image: url(" + dir + ")");
+            btn.style.backgroundSize = 'cover';
+            btn.style.backgroundRepeat = 'no-repeat';
+            btn.style.backgroundPosition = 'center';
+        }
+    }
+    else {  //looking for restaurant.
+        let bestRest = sortByRating(search(JSON.parse(sessionStorage.getItem("Restaurants")),
+            String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+        let btn = document.getElementById("featuredReviewButton");
+        if (bestRest[0] !== undefined) {
+            btn.innerHTML = "<span class = 'ReviewText'>" + bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/> </span>";
+            btn.onclick = function () {
+                window.location.search = 'restaurant=' + bestRest[0].name;
+            };
+            let dir = getRestaurantPhotoDir(bestRest[0].name.toLowerCase())
+            btn.setAttribute("style", "background-image: url(" + dir + ")");
+            btn.style.backgroundSize = 'cover';
+            btn.style.backgroundRepeat = 'no-repeat'
+            btn.style.backgroundPosition = 'center';
+        }
+    }
 }
+
+function getRestaurantPhotoDir(restName){
+    let category = "";
+    restName = restName.toLowerCase();
+    if(restName.includes("banana boat ice cream"))
+        category = "ice cream";
+    else if(restName.includes("burger") || restName.includes("jack rabbit") || restName.includes("krusty") || restName.includes("529") )
+        category = "burger";
+    else if(restName.includes("pizza"))
+        category = "pizza";
+    else if(restName.includes("cheese"))
+        category = "cheese";
+    else if(restName.includes("chowder"))
+        category = "chowder";
+    else if(restName.includes("banana"))
+        category = "george daddy";
+    else if(restName.includes("gust"))
+        category = "ratatouille";
+    else if(restName.includes("los pollos"))
+        category = "world famous chicken";
+    else if(restName.includes("milkthecow"))
+        category = "cappuccino";
+    else if(restName.includes("gazpacho"))
+        category = "soup";
+    else if(restName.includes("sol"))
+        category = "duck";
+    return getFoodPhotoDir(category);
+}
+
+
+function getFoodPhotoDir(foodName){
+    let category = "";
+    foodName = foodName.toLowerCase();
+    if(foodName.includes("heisen"))
+        category = "heisen";
+    else if(foodName.includes("fajita"))
+        category = "fajita";
+    else if(foodName.includes("world famous chicken"))
+        category = "chicken";
+    else if(foodName.includes("gordita"))
+        category = "gordita";
+    else if(foodName.includes("taco"))
+        category = "taco";
+    else if(foodName.includes("fries"))
+        category = "fries";
+    else if(foodName.includes("shake"))
+        category = "shake";
+    else if(foodName.includes("pickle"))
+        category = "pickle";
+    else if(foodName.includes("burger") || foodName.includes("sandwich") || foodName.includes("krabby")
+        || foodName.includes("four cheddar") || foodName.includes("sweet home") || foodName.includes("eggers can")
+        || foodName.includes("gourdon") || foodName.includes("big dipper"))
+        category = "burger";
+    else if(foodName.includes("dog"))
+        category = "hotdog";
+    else if(foodName.includes("pickle"))
+        category = "pickle";
+    else if(foodName.includes("coral"))
+        category = "coral";
+    else if(foodName.includes("ring"))
+        category = "onionring";
+    else if(foodName.includes("ron swanson"))
+        category = "enormousburger";
+    else if(foodName.includes("tornado"))
+        category = "meattornado";
+    else if(foodName.includes("heart attack"))
+        category = "heartattack";
+    else if(foodName.includes("gravy"))
+        category = "gravybucket";
+    else if(foodName.includes("artery"))
+        category = "artery";
+    else if(foodName.includes("wings"))
+        category = "wings";
+    else if(foodName.includes("quesadilla"))
+        category = "quesadilla";
+    else if(foodName.includes("chicken sandwich"))
+        category = "chickenburger";
+    else if(foodName.includes("pizza") || foodName.includes("meat lovers") || foodName.includes("slice")
+        || foodName.includes("be topped"))
+        category = "pizza";
+    else if(foodName.includes("sprite"))
+        category = "sprite";
+    else if(foodName.includes("fettuccine"))
+        category = "fettucinialfredo";
+    else if(foodName.includes("manicotti"))
+        category = "manicotti";
+    else if(foodName.includes("rigatoni"))
+        category = "rigatoni";
+    else if(foodName.includes("fettuccine"))
+        category = "fettucinialfredo";
+    else if(foodName.includes("steak") || foodName.includes("beef") || foodName.includes("rib eye"))
+        category = "steak";
+    else if(foodName.includes("ratatouille"))
+        category = "ratatouille";
+    else if(foodName.includes("fish") || foodName.includes("arctic char"))
+        category = "fish";
+    else if(foodName.includes("mousse"))
+        category = "mousse";
+    else if(foodName.includes("tartar"))
+        category = "fancy";
+    else if(foodName.includes("tart"))
+        category = "tart";
+    else if(foodName.includes("tiramisu"))
+        category = "tiramisu";
+    else if(foodName.includes("foie") || foodName.includes("duck"))
+        category = "duck";
+    else if(foodName.includes("soup") || foodName.includes("gazpacho"))
+        category = "soup";
+    else if(foodName.includes("pie"))
+        category = "pie";
+    else if(foodName.includes("chicken breast"))
+        category = "chickenbreast";
+    else if(foodName.includes("prawn"))
+        category = "prawn";
+    else if(foodName.includes("salad"))
+        category = "salad";
+    else if(foodName.includes("olives"))
+        category = "olives";
+    else if(foodName.includes("cheese") || foodName.includes("cheddar") || foodName.includes("brie")
+        || foodName.includes("feta") || foodName.includes("asiago"))
+        category = "cheese";
+    else if(foodName.includes("cake"))
+        category = "cake";
+    else if(foodName.includes("ice cream"))
+        category = "icecream";
+    else if(foodName.includes("frozen clam") || foodName.includes("frozen lamb"))
+        category = "coldsoup";
+    else if(foodName.includes("chowder"))
+        category = "chowder";
+    else if(foodName.includes("double diped"))
+        category = "dippedbanana";
+    else if(foodName.includes("go banana") || foodName.includes("girly banana") || foodName.includes("george daddy")
+        || foodName.includes("simple simon"))
+        category = "banana";
+    else if(foodName.includes("iced tea"))
+        category = "icedtea";
+    else if(foodName.includes("tea"))
+        category = "tea";
+    else if(foodName.includes("coffee") || foodName.includes("americano"))
+        category = "coffee";
+    else if(foodName.includes("cappuccino") || foodName.includes("latte"))
+        category = "cappuccino";
+    else if(foodName.includes("espresso"))
+        category = "espresso";
+    else if(foodName.includes("chocolate banana soft"))
+        category = "bananasoftc";
+    else if(foodName.includes("lla banana soft"))
+        category = "bananasoftv";
+    else if(foodName.includes("chunky"))
+        category = "icecreamcup";
+    else if(foodName.includes("float"))
+        category = "cokefloat";
+    else if(foodName.includes("crackers"))
+        category = "crackers";
+    else if(foodName.includes("banana split"))
+        category = "bananasplit";
+    return "foodImages/" + category + "/" + category + ((Math.floor(Math.random() * foodPhotoCount[category])) + 1) +".jpg";
+}
+
+
 
 
 function getRestaurantText(){
@@ -556,7 +661,7 @@ function getRestaurantText(){
     "Jack Rabbit Slims(MilkShake, Foie and Loathing in Las VeGras, Honey I Shrunk The Soup, Blueberry Pie)\n" +
     "Krusty Krab(Krabby Patty, Double Krabby Patty, Triple Krabby Patty, Coral bits, Kelp Rings)\n" +
     "Los Pollos Hermanos(Gus' World Famous Chicken, The Heisenberg Special, Fajitas, Gales Gordita, Jesse's Tasty Tacos)\n" +
-    "Mamma Mia's Pizzaria(Mia's Famous Fettuccini Alfredo, Mia's Manicotti, Mia's Rigatoni, Mia's Meaty Pizzaroni)\n" +
+    "Mamma Mia's Pizzaria(Mia's Famous Fettuccine Alfredo, Mia's Manicotti, Mia's Rigatoni, Mia's Meaty Pizzaroni)\n" +
     "Matthias' Burger Stank Shack(Matty's Big Ol' Cheeseburger, MeeMaw's Famous Burger Slider, Matt's Curly Fries, Matt's Musk Burger)\n" +
     "MilkTheCow(Chai Tea, Green Tea, Coffee, Iced Tea, Cappuccino, Americano, Latte, Espresso)\n" +
     "Paunch Burger(The Ron Swanson Supreme, The Meat Tornado, The Heart Attack, Gravy Bucket, The Artery Clogger)\n" +
@@ -625,7 +730,7 @@ function getFoodText(){
     "Slice To Meat You:12.63:Main:A delicious pizza topped in slices of ham.:Extra Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Ham, Chicken, Ranch:\n" +
     "Can't Be Topped:18.33:Main:An Extra Large Cheese Pizza topped by Extra Small Pizzas.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
     "Slice Slice Baby:13.96:Main:Cold Pizza, toppings of your choice.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "Mia's Famous Fettuccini Alfredo:6.04:Main:A creamy and delicious pasta coming from Mamma Mia!:Extra Alfredo Sauce:\n" +
+    "Mia's Famous Fettuccine Alfredo:6.04:Main:A creamy and delicious pasta coming from Mamma Mia!:Extra Alfredo Sauce:\n" +
     "Mia's Manicotti:4.68:Main:A zesty Manicotti served hot and ready from Mamma Mia!:Tomato Sauce:\n" +
     "Mia's Rigatoni:7.04:Main:A perfectly cooked Rigatoni, world famous, coming straight from Mamma Mia's oven!:Tomato Sauce:\n" +
     "Mia's Meaty Pizzaroni:3.86:Main:Mamma Mia's hidden recipe, hint(its a pizza + a rigatoni!):Tomato Sauce, Pepperoni:\n" +
@@ -690,7 +795,68 @@ function getFoodText(){
     return string2;
 }
 
+let foodPhotoCount = {  // folder name, count of files in that folder.
+    "artery": 1,
+    "banana": 5,
+    "bananasoftc": 2,
+    "bananasoftv": 1,
+    "bananasplit": 1,
+    "burger": 9,
+    "cake": 1,
+    "cappuccino": 2,
+    "cheese": 9,
+    "chicken": 1,
+    "chickenbreast": 1,
+    "chickenburger": 1,
+    "chowder": 3,
+    "coffee": 5,
+    "cokefloat": 1,
+    "coldsoup": 2,
+    "coral": 1,
+    "crackers": 1,
+    "curlyfries": 1,
+    "dippedbanana": 1,
+    "duck": 1,
+    "enormousburger": 2,
+    "enormouspizza": 1,
+    "espresso": 1,
+    "fajita": 2,
+    "fancy": 1,
+    "fettucinialfredo": 1,
+    "fish": 2,
+    "fries": 4,
+    "gordita": 1,
+    "gravybucket": 1,
+    "heartattack": 1,
+    "heisen": 1,
+    "hotdog": 3,
+    "icecream": 2,
+    "icecreamcup": 1,
+    "icedtea": 1,
+    "manicotti": 1,
+    "meattornad": 1,
+    "mousse": 1,
+    "olives": 1,
+    "onionring": 3,
+    "pickle": 3,
+    "pie": 2,
+    "pizza": 9,
+    "prawn": 1,
+    "quesadilla1": 2,
+    "ratatouille": 1,
+    "rigatoni": 1,
+    "salad": 1,
+    "shake": 3,
+    "soup": 2,
+    "sprite": 1,
+    "steak": 10,
+    "taco": 3,
+    "tart": 1,
+    "tea": 10,
+    "tiramisu": 1,
+    "wings": 1
+}
 
-let data = main();
-let friends=createFriends()
-let friendReviews;
+
+
+getData();

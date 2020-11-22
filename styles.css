@@ -30,7 +30,7 @@ the button being rendered overlapping the
 navbar in some way. - Ryan 
 
 headButton contains the CSS properties for 
-the "Create Account", "Log in", "search" and 
+the "Create Account", "Log in", "search" and
 "Cart" buttons along the top of the screen.
 */
 .headerButton {
@@ -374,7 +374,6 @@ margin-top: 0px;
   border-bottom-left-radius: 25px;
   background-color: rgb(25, 25, 25);
 
-
 }
 
 
@@ -408,7 +407,6 @@ margin-top: 0px;
   background-color: rgb(25,25,25);
   color: white;
   float: left;
-  display: block;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: xx-large;
@@ -423,6 +421,8 @@ margin-top: 0px;
   border-radius: 25px;
   text-align: left;
 }
+
+
 
 .mainMenu button:hover{
 
@@ -469,7 +469,7 @@ p {
   float: right;
   position: relative;
   margin-right: 20px;
-  top: -82px;
+  top: -70px;
   left: -100px;
   transition: width 0.25s;
   background-image: url("searchIcon.png");
@@ -614,8 +614,8 @@ p {
 
 
 /*for login and create account*/
-input {
-		width: 100%;
+.login{
+    width:100%;
 		padding: 12px 20px;
 		margin: 8px 0;
 		box-sizing: border-box;
@@ -624,7 +624,7 @@ input {
 		border-radius: 4px;
 	}
 	
-input:focus {
+.login input:focus {
 		background-color: lightblue;
 	}
 
@@ -658,4 +658,40 @@ input:focus {
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
+}
+
+.ingredients input, .ingredients label{
+  background-color: rgb(25,25,25);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  text-decoration: none;
+  text-align: left;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  vertical-align:middle;
+}
+
+.ingredients ul{
+  height:100%;
+}
+
+.ingredients input{
+  margin-left:130px;
+}
+
+.RestaurantReviews {
+  display: inline-block;
+  vertical-align: top;
+  color:red;
+  vertical-align: text-top;
+  align: left;
+}
+
+.ReviewText {
+  background-size: contain;
+  color:white;
+  background-color: black;
+  vertical-align: top;
 }
