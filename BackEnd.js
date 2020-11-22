@@ -478,10 +478,29 @@ function displayFeaturedReview() {
     {
         catagory = "coffee";
     }
-else if(searchRequest.includes("tea"))
+    else if(searchRequest.includes("steak"))
+    {
+        catagory = "steak";
+    }
+    else if(searchRequest.includes("tea"))
     {
         catagory = "tea";
     }
+    else if(searchRequest.includes("beverage") || searchRequest.includes("drink"))
+    {
+        var randomChoice = Math.floor(Math.random() * 10) % 2;
+
+        if(randomChoice)
+        {
+            catagory = "tea";
+        }
+        else
+        {
+            catagory = "coffee";
+        }
+
+    }
+
 
     //var restraunt = String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ");
 
