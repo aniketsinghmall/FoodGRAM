@@ -23,7 +23,7 @@ header {
 headerButton
 
 headButton contains the CSS properties for 
-the "Create Account", "Log in", "search" and 
+the "Create Account", "Log in", "search" and
 "Cart" buttons along the top of the screen.
 */
 .headerButton {
@@ -674,4 +674,19 @@ p {
 
 .ingredients input{
   margin-left:130px;
+}
+
+.RestaurantReviews {
+  display: inline-block;
+  vertical-align: top;
+  color:red;
+  vertical-align: text-top;
+  align: left;
+}
+
+.ReviewText {
+  background-size: contain;
+  color:white;
+  background-color: black;
+  vertical-align: top;
 }

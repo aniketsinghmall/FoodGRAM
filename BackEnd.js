@@ -408,10 +408,8 @@ function getData(){
 
 
 function displayRestaurantReviews() {
-    //if(sessionStorage.getItem("Restaurants") === null)
-        // getData();
     let reviews;
-
+    let dir;
     if(window.location.search.includes("restaurant=")){  // we are in a restaurant page.
         if(!JSON.parse(sessionStorage.getItem("Trending")))
             reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendFoodReviews")),
@@ -419,9 +417,11 @@ function displayRestaurantReviews() {
         else
             reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("UserFoodReviews")),
                 decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
-
+        dir = getFoodPhotoDir(reviews[0].recipe.foodItem.name.toLowerCase());
+        console.log("dir: " + dir);
     }
     else{ //searching for a restaurant
+
         if(!JSON.parse(sessionStorage.getItem("Trending")))
             reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendRestaurantReviews")),
                 String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
@@ -429,7 +429,6 @@ function displayRestaurantReviews() {
             reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("UserRestaurantReviews")),
                 String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
     }
-
     for (let i = 0; i < reviews.length; i++) {
         let btn = document.createElement("BUTTON");
         let itemValue = "";
@@ -440,81 +439,211 @@ function displayRestaurantReviews() {
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
             itemValue = reviews[i].restaurant.name;
         }
-
-        btn.innerHTML = reviews[i].user.name + "<br/>" + itemValue + "<br/>" + reviews[i].rating + "/5<br/>";
+        btn.innerHTML =  "<span class = 'ReviewText' >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" + reviews[i].rating + "/5<br/> </span>";
+        if (window.location.search.includes("restaurant="))
+            dir = getFoodPhotoDir(reviews[i].recipe.foodItem.name.toLowerCase());
+        else
+            dir = getRestaurantPhotoDir(reviews[i].restaurant.name.toLowerCase())
+        btn.setAttribute("style", "background-image: url(" + dir + ")");
+        btn.style.backgroundSize = "contain";
+        btn.style.backgroundRepeat = 'no-repeat'
+        btn.style.backgroundPosition = 'center';
         document.getElementById("RestaurantReviews").appendChild(btn);
     }
 }
 
-function displayFeaturedReview() {
-    let bestRest = sortByRating(search(JSON.parse(sessionStorage.getItem("Restaurants")),
-        String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
-    let btn = document.getElementById("featuredReviewButton");
-    //btn.onclick = func;
-
-    //Update dir with the correct path to background image (currently set to display random hamburger)
-
-
-    // Search is assigned the value entered in the search 
-    var searchRequest = decodeURI(String(window.location.href).substring(window.location.href.indexOf("#") + 1).replace("+", " "));
-
-    var catagory = "burger";
-
-    if(searchRequest.includes("burger") || searchRequest.includes("cheeseburger") || searchRequest.includes("sandwich"))
-    {
-        catagory = "burger";
-    }
-    else if(searchRequest.includes("pizza"))
-    {
-        catagory = "pizza";
-    }
-    else if(searchRequest.includes("cheese"))
-    {
-        catagory = "cheese";
-    }
-    else if(searchRequest.includes("coffee") || searchRequest.includes("espresso"))
-    {
-        catagory = "coffee";
-    }
-    else if(searchRequest.includes("steak"))
-    {
-        catagory = "steak";
-    }
-    else if(searchRequest.includes("tea"))
-    {
-        catagory = "tea";
-    }
-    else if(searchRequest.includes("beverage") || searchRequest.includes("drink"))
-    {
-        var randomChoice = Math.floor(Math.random() * 10) % 2;
-
-        if(randomChoice)
-        {
-            catagory = "tea";
+function displayFeaturedReview() {  // Needs to be generalized to food items!
+    if(window.location.search.includes("restaurant=")) {  // we are in a restaurant page.
+        let reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendFoodReviews")),
+            decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+        let btn = document.getElementById("featuredReviewButton");
+        if (reviews[0] !== undefined) {
+            btn.innerHTML = "<span class = 'ReviewText'>" + reviews[0].recipe.foodItem.name + "<br/>" + reviews[0].rating + "/5<br/> </span>";
+            // btn.style.textAlign
+            //btn.onclick = function () {   //this will need to pop up menu with food choices.
+            //    window.location.search = 'restaurant=' + reviews[0].name;
+            //};
+            let dir = getFoodPhotoDir(reviews[0].recipe.foodItem.name.toLowerCase())
+            btn.setAttribute("style", "background-image: url(" + dir + ")");
+            btn.style.backgroundSize = 'cover';
+            btn.style.backgroundRepeat = 'no-repeat';
+            btn.style.backgroundPosition = 'center';
         }
-        else
-        {
-            catagory = "coffee";
-        }
-
     }
-
-
-    //var restraunt = String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ");
-
-
-    var dir = "foodImages/" + catagory + "/" + catagory + (Math.floor(Math.random() * 10)) + ".jpg";
-
-    btn.setAttribute("style", "background-image: url(" + dir + ")");
-    if(bestRest[0] !== undefined){
-        btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
-        btn.onclick=function(){window.location.search='restaurant='+ bestRest[0].name};
+    else {  //looking for restaurant.
+        let bestRest = sortByRating(search(JSON.parse(sessionStorage.getItem("Restaurants")),
+            String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
+        let btn = document.getElementById("featuredReviewButton");
+        if (bestRest[0] !== undefined) {
+            btn.innerHTML = "<span class = 'ReviewText'>" + bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/> </span>";
+            btn.onclick = function () {
+                window.location.search = 'restaurant=' + bestRest[0].name;
+            };
+            let dir = getRestaurantPhotoDir(bestRest[0].name.toLowerCase())
+            btn.setAttribute("style", "background-image: url(" + dir + ")");
+            btn.style.backgroundSize = 'cover';
+            btn.style.backgroundRepeat = 'no-repeat'
+            btn.style.backgroundPosition = 'center';
+        }
     }
 }
 
+function getRestaurantPhotoDir(restName){
+    let category = "";
+    restName = restName.toLowerCase();
+    if(restName.includes("banana boat ice cream"))
+        category = "ice cream";
+    else if(restName.includes("burger") || restName.includes("jack rabbit") || restName.includes("krusty") || restName.includes("529") )
+        category = "burger";
+    else if(restName.includes("pizza"))
+        category = "pizza";
+    else if(restName.includes("cheese"))
+        category = "cheese";
+    else if(restName.includes("chowder"))
+        category = "chowder";
+    else if(restName.includes("banana"))
+        category = "george daddy";
+    else if(restName.includes("gust"))
+        category = "ratatouille";
+    else if(restName.includes("los pollos"))
+        category = "world famous chicken";
+    else if(restName.includes("milkthecow"))
+        category = "cappuccino";
+    else if(restName.includes("gazpacho"))
+        category = "soup";
+    else if(restName.includes("sol"))
+        category = "duck";
+    return getFoodPhotoDir(category);
+}
 
-function getPhoto(){
 
+function getFoodPhotoDir(foodName){
+    let category = "";
+    foodName = foodName.toLowerCase();
+    if(foodName.includes("heisen"))
+        category = "heisen";
+    else if(foodName.includes("fajita"))
+        category = "fajita";
+    else if(foodName.includes("world famous chicken"))
+        category = "chicken";
+    else if(foodName.includes("gordita"))
+        category = "gordita";
+    else if(foodName.includes("taco"))
+        category = "taco";
+    else if(foodName.includes("fries"))
+        category = "fries";
+    else if(foodName.includes("shake"))
+        category = "shake";
+    else if(foodName.includes("pickle"))
+        category = "pickle";
+    else if(foodName.includes("burger") || foodName.includes("sandwich") || foodName.includes("krabby")
+        || foodName.includes("four cheddar") || foodName.includes("sweet home") || foodName.includes("eggers can")
+        || foodName.includes("gourdon") || foodName.includes("big dipper"))
+        category = "burger";
+    else if(foodName.includes("dog"))
+        category = "hotdog";
+    else if(foodName.includes("pickle"))
+        category = "pickle";
+    else if(foodName.includes("coral"))
+        category = "coral";
+    else if(foodName.includes("ring"))
+        category = "onionring";
+    else if(foodName.includes("ron swanson"))
+        category = "enormousburger";
+    else if(foodName.includes("tornado"))
+        category = "meattornado";
+    else if(foodName.includes("heart attack"))
+        category = "heartattack";
+    else if(foodName.includes("gravy"))
+        category = "gravybucket";
+    else if(foodName.includes("artery"))
+        category = "artery";
+    else if(foodName.includes("wings"))
+        category = "wings";
+    else if(foodName.includes("quesadilla"))
+        category = "quesadilla";
+    else if(foodName.includes("chicken sandwich"))
+        category = "chickenburger";
+    else if(foodName.includes("pizza") || foodName.includes("meat lovers") || foodName.includes("slice")
+        || foodName.includes("be topped"))
+        category = "pizza";
+    else if(foodName.includes("sprite"))
+        category = "sprite";
+    else if(foodName.includes("fettuccine"))
+        category = "fettucinialfredo";
+    else if(foodName.includes("manicotti"))
+        category = "manicotti";
+    else if(foodName.includes("rigatoni"))
+        category = "rigatoni";
+    else if(foodName.includes("fettuccine"))
+        category = "fettucinialfredo";
+    else if(foodName.includes("steak") || foodName.includes("beef") || foodName.includes("rib eye"))
+        category = "steak";
+    else if(foodName.includes("ratatouille"))
+        category = "ratatouille";
+    else if(foodName.includes("fish") || foodName.includes("arctic char"))
+        category = "fish";
+    else if(foodName.includes("mousse"))
+        category = "mousse";
+    else if(foodName.includes("tartar"))
+        category = "fancy";
+    else if(foodName.includes("tart"))
+        category = "tart";
+    else if(foodName.includes("tiramisu"))
+        category = "tiramisu";
+    else if(foodName.includes("foie") || foodName.includes("duck"))
+        category = "duck";
+    else if(foodName.includes("soup") || foodName.includes("gazpacho"))
+        category = "soup";
+    else if(foodName.includes("pie"))
+        category = "pie";
+    else if(foodName.includes("chicken breast"))
+        category = "chickenbreast";
+    else if(foodName.includes("prawn"))
+        category = "prawn";
+    else if(foodName.includes("salad"))
+        category = "salad";
+    else if(foodName.includes("olives"))
+        category = "olives";
+    else if(foodName.includes("cheese") || foodName.includes("cheddar") || foodName.includes("brie")
+        || foodName.includes("feta") || foodName.includes("asiago"))
+        category = "cheese";
+    else if(foodName.includes("cake"))
+        category = "cake";
+    else if(foodName.includes("ice cream"))
+        category = "icecream";
+    else if(foodName.includes("frozen clam") || foodName.includes("frozen lamb"))
+        category = "coldsoup";
+    else if(foodName.includes("chowder"))
+        category = "chowder";
+    else if(foodName.includes("double diped"))
+        category = "dippedbanana";
+    else if(foodName.includes("go banana") || foodName.includes("girly banana") || foodName.includes("george daddy")
+        || foodName.includes("simple simon"))
+        category = "banana";
+    else if(foodName.includes("iced tea"))
+        category = "icedtea";
+    else if(foodName.includes("tea"))
+        category = "tea";
+    else if(foodName.includes("coffee") || foodName.includes("americano"))
+        category = "coffee";
+    else if(foodName.includes("cappuccino") || foodName.includes("latte"))
+        category = "cappuccino";
+    else if(foodName.includes("espresso"))
+        category = "espresso";
+    else if(foodName.includes("chocolate banana soft"))
+        category = "bananasoftc";
+    else if(foodName.includes("lla banana soft"))
+        category = "bananasoftv";
+    else if(foodName.includes("chunky"))
+        category = "icecreamcup";
+    else if(foodName.includes("float"))
+        category = "cokefloat";
+    else if(foodName.includes("crackers"))
+        category = "crackers";
+    else if(foodName.includes("banana split"))
+        category = "bananasplit";
+    return "foodImages/" + category + "/" + category + ((Math.floor(Math.random() * foodPhotoCount[category])) + 1) +".jpg";
 }
 
 
@@ -532,7 +661,7 @@ function getRestaurantText(){
     "Jack Rabbit Slims(MilkShake, Foie and Loathing in Las VeGras, Honey I Shrunk The Soup, Blueberry Pie)\n" +
     "Krusty Krab(Krabby Patty, Double Krabby Patty, Triple Krabby Patty, Coral bits, Kelp Rings)\n" +
     "Los Pollos Hermanos(Gus' World Famous Chicken, The Heisenberg Special, Fajitas, Gales Gordita, Jesse's Tasty Tacos)\n" +
-    "Mamma Mia's Pizzaria(Mia's Famous Fettuccini Alfredo, Mia's Manicotti, Mia's Rigatoni, Mia's Meaty Pizzaroni)\n" +
+    "Mamma Mia's Pizzaria(Mia's Famous Fettuccine Alfredo, Mia's Manicotti, Mia's Rigatoni, Mia's Meaty Pizzaroni)\n" +
     "Matthias' Burger Stank Shack(Matty's Big Ol' Cheeseburger, MeeMaw's Famous Burger Slider, Matt's Curly Fries, Matt's Musk Burger)\n" +
     "MilkTheCow(Chai Tea, Green Tea, Coffee, Iced Tea, Cappuccino, Americano, Latte, Espresso)\n" +
     "Paunch Burger(The Ron Swanson Supreme, The Meat Tornado, The Heart Attack, Gravy Bucket, The Artery Clogger)\n" +
@@ -601,7 +730,7 @@ function getFoodText(){
     "Slice To Meat You:12.63:Main:A delicious pizza topped in slices of ham.:Extra Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Ham, Chicken, Ranch:\n" +
     "Can't Be Topped:18.33:Main:An Extra Large Cheese Pizza topped by Extra Small Pizzas.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
     "Slice Slice Baby:13.96:Main:Cold Pizza, toppings of your choice.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "Mia's Famous Fettuccini Alfredo:6.04:Main:A creamy and delicious pasta coming from Mamma Mia!:Extra Alfredo Sauce:\n" +
+    "Mia's Famous Fettuccine Alfredo:6.04:Main:A creamy and delicious pasta coming from Mamma Mia!:Extra Alfredo Sauce:\n" +
     "Mia's Manicotti:4.68:Main:A zesty Manicotti served hot and ready from Mamma Mia!:Tomato Sauce:\n" +
     "Mia's Rigatoni:7.04:Main:A perfectly cooked Rigatoni, world famous, coming straight from Mamma Mia's oven!:Tomato Sauce:\n" +
     "Mia's Meaty Pizzaroni:3.86:Main:Mamma Mia's hidden recipe, hint(its a pizza + a rigatoni!):Tomato Sauce, Pepperoni:\n" +
@@ -665,6 +794,69 @@ function getFoodText(){
     "Aged Crackers:4.33:Appetizer:Air Aged, delicious whole wheat crackers to pair with one of our cheeses.:Salted:";
     return string2;
 }
+
+let foodPhotoCount = {  // folder name, count of files in that folder.
+    "artery": 1,
+    "banana": 5,
+    "bananasoftc": 2,
+    "bananasoftv": 1,
+    "bananasplit": 1,
+    "burger": 9,
+    "cake": 1,
+    "cappuccino": 2,
+    "cheese": 9,
+    "chicken": 1,
+    "chickenbreast": 1,
+    "chickenburger": 1,
+    "chowder": 3,
+    "coffee": 5,
+    "cokefloat": 1,
+    "coldsoup": 2,
+    "coral": 1,
+    "crackers": 1,
+    "curlyfries": 1,
+    "dippedbanana": 1,
+    "duck": 1,
+    "enormousburger": 2,
+    "enormouspizza": 1,
+    "espresso": 1,
+    "fajita": 2,
+    "fancy": 1,
+    "fettucinialfredo": 1,
+    "fish": 2,
+    "fries": 4,
+    "gordita": 1,
+    "gravybucket": 1,
+    "heartattack": 1,
+    "heisen": 1,
+    "hotdog": 3,
+    "icecream": 2,
+    "icecreamcup": 1,
+    "icedtea": 1,
+    "manicotti": 1,
+    "meattornad": 1,
+    "mousse": 1,
+    "olives": 1,
+    "onionring": 3,
+    "pickle": 3,
+    "pie": 2,
+    "pizza": 9,
+    "prawn": 1,
+    "quesadilla1": 2,
+    "ratatouille": 1,
+    "rigatoni": 1,
+    "salad": 1,
+    "shake": 3,
+    "soup": 2,
+    "sprite": 1,
+    "steak": 10,
+    "taco": 3,
+    "tart": 1,
+    "tea": 10,
+    "tiramisu": 1,
+    "wings": 1
+}
+
 
 
 getData();
