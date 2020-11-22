@@ -369,8 +369,6 @@ function indexByName(array, value){
 
 function filterReviews(restaurants, reviews, query){
     let currentList = search(restaurants, query);
-    console.log("Query: " + query);
-    console.log("current list length: " + currentList.length)
     let result = [];
     for(let i = 0; i< reviews.length; i++){
         //console.log("Index of " + reviews[i].name + currentList.indexOf(reviews[i].restaurant.name));
@@ -434,12 +432,12 @@ function displayRestaurantReviews() {
 
     for (let i = 0; i < reviews.length; i++) {
         let btn = document.createElement("BUTTON");
-        //btn.onclick = func;
         let itemValue = "";
         if(window.location.search.includes("restaurant=")) {
             itemValue = reviews[i].recipe.foodItem.name;
         }
         else{
+            btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
             itemValue = reviews[i].restaurant.name;
         }
 
@@ -508,9 +506,15 @@ function displayFeaturedReview() {
     var dir = "foodImages/" + catagory + "/" + catagory + (Math.floor(Math.random() * 10)) + ".jpg";
 
     btn.setAttribute("style", "background-image: url(" + dir + ")");
-    
-    if(bestRest[0] !== undefined)
+    if(bestRest[0] !== undefined){
         btn.innerHTML = bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/>";
+        btn.onclick=function(){window.location.search='restaurant='+ bestRest[0].name};
+    }
+}
+
+
+function getPhoto(){
+
 }
 
 
@@ -664,11 +668,3 @@ function getFoodText(){
 
 
 getData();
-
-console.log("hello: " + String(window.location.search));
-
-console.log("My test: ");
-let results = search(JSON.parse(sessionStorage.getItem("Restaurants")), "frozen");
-for(let i =0; i<results.length; i++){
-    console.log("Result " + i +": " + results[i].name);
-}

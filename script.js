@@ -39,7 +39,7 @@ function sleep(duration) {
 
 function searchResults(){
     const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.get("search")){
+    if(urlParams.get("search")){ //they searched
         const header = document.getElementById("resultsHeader");
         header.innerHTML = "Search results for: "+urlParams.get("search");
         const list = document.getElementById("resultsList");
@@ -61,7 +61,7 @@ function searchResults(){
             list.innerHTML += "<img src = plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
         }
     }
-    else if(urlParams.get("restaurant")){
+    else if(urlParams.get("restaurant")){  //restaurant page, get food items.
         const restaurantName = decodeURIComponent(urlParams.get("restaurant"));
         const header = document.getElementById("resultsHeader")
         header.innerHTML = restaurantName + " Menu";
@@ -80,8 +80,7 @@ function searchResults(){
             }
         }
     }
-    else if(urlParams.get("search") === null){
-        console.log("this ran");
+    else if(urlParams.get("search") === null){ //opening the page first itme.
         const header = document.getElementById("resultsHeader");
         header.innerHTML = "Popular Restaurants ";
         const list = document.getElementById("resultsList");
