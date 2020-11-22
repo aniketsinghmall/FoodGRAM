@@ -462,7 +462,7 @@ function displayFeaturedReview() {
 
     var catagory = "burger";
 
-    if(searchRequest.includes("burger"))
+    if(searchRequest.includes("burger") || searchRequest.includes("cheeseburger") || searchRequest.includes("sandwich"))
     {
         catagory = "burger";
     }
@@ -474,11 +474,19 @@ function displayFeaturedReview() {
     {
         catagory = "cheese";
     }
+    else if(searchRequest.includes("coffee") || searchRequest.includes("espresso"))
+    {
+        catagory = "coffee";
+    }
+else if(searchRequest.includes("tea"))
+    {
+        catagory = "tea";
+    }
 
     //var restraunt = String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ");
 
 
-    var dir = "foodImages/" + catagory + "/" + catagory + (Math.floor(Math.random() * 5) + 1) + ".jpg";
+    var dir = "foodImages/" + catagory + "/" + catagory + (Math.floor(Math.random() * 10)) + ".jpg";
 
     btn.setAttribute("style", "background-image: url(" + dir + ")");
     
