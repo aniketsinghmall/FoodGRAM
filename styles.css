@@ -369,7 +369,6 @@ margin-top: 0px;
   border-bottom-left-radius: 25px;
   background-color: rgb(25, 25, 25);
 
-
 }
 
 
@@ -465,7 +464,7 @@ p {
   float: right;
   position: relative;
   margin-right: 20px;
-  top: -82px;
+  top: -70px;
   left: -100px;
   transition: width 0.25s;
   background-image: url("searchIcon.png");
