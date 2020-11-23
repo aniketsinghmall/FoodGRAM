@@ -1,4 +1,3 @@
-
 <!-- This will be the main page of our website-->
 
 <!DOCTYPE html>
@@ -6,225 +5,201 @@
 <html>
 
 <head>
-  <link id = "myStyleSheet" rel="stylesheet" href="styles.css">
-  <script type="text/javascript" src="BackEnd.js"></script>
-  <script src = "BackEnd.js"> </script>
-  <!-- Imports Google icons for use-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link id = "myStyleSheet" rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="BackEnd.js"></script>
+    <script src = "BackEnd.js"> </script>
+    <!-- Imports Google icons for use-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 
 <title>Welcome to FoodGram</title>
 
 <body>
+<div class="grid-container"> <!-- Site contained in grid -->
 
-  <header id="headerButtons"> 
-
-    <button class = "headerButton left" onclick="document.getElementById('signup').style.display='block'"> Sign Up </button>
-    <button class = "headerButton left" onclick="document.getElementById('login').style.display='block'"> Log In </button>
-    <img id = "logo" src="logo1.png">
-      <button class = "headerButton right"
-              id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart </button>
-    <!--<button class = "headerButton right" id = "searchButton"> <i class="material-icons">search</i> Search  </button> -->
-    <form>
-      <input id = "searchBar" type="text" name="search">
-    </form>
-  </header>
-
-
-  <ul class = "topNavBar">
-    
-        <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
-        <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
-        <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
-        <li><a href = "index.html?search=Dessert"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
-        <li><a href = "index.html?search=Drinks"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
-  
-  </ul>
-
-  <div id = "socialMenu" class = "socialMenu">
-
-    <ul id = "RestaurantReviews" class = "RestaurantReviews">
-    </ul>
-
-  </div>
-
-
-
-  <script> displayRestaurantReviews() </script>
-
-  <div class = "featuredReview">
-
-
-    <button class = "featuredReviewButton left" onclick="changeFeaturedReview(-1)">&#10094;  </button>
-
-
-
-    <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center"> 
-
-      
-
-     <!--img id = "stars" class = "content-front" src="stars/4star.png"-->
-
-
-
-    </button>
-
-
-
-
-    <button class = "featuredReviewButton right" onclick="changeFeaturedReview(1)">&#10095; </button>
-
-
-  </div>
-
-
-
-  <script> displayFeaturedReview() </script>
-
-
-
-
-  <span class = "mainMenu">
-    <div id = "menu">
-      <h1 id = "resultsHeader" name = "menu"> Popular Restaurants</h1>
-      
-      <ul id = "resultsList">
-    
-        <a href = "#Mike's Special"> Mike's Special </a>
-
-      </ul>
-      <h1></h1>
+    <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
+        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
+        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
+        <img id = "logo" src="logo1.png">
+        <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
+        </button>
+        <form>
+            <input id = "searchBar" type="text" name="search">
+        </form>
     </div>
-  </span>
-  <script src = "script.js"> </script>
-  <script> searchResults() </script>
 
-  <div id="login" class="modal">
-	<form class="modal-content animate" method="post">
-    <div style ="color: rgba(187,134,252);">
-		  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-		  <label for="username"><b>Username:</b></label><br>
-		  <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
+    <div class="bottomHeader"> <!-- Bottom header for category buttons -->
+        <ul class = "topNavBar">
+            <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
+            <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
+            <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
+            <li><a href = "index.html?search=Dessert"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
+            <li><a href = "index.html?search=Drinks"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
+        </ul>
+    </div>
 
-		  <label for="pass"><b>Password:</b></label><br>
-		  <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
-			
-		  <button class = "headerButton" onclick="document.getElementById('loginSucess').style.display='block';">Log In</button>
-		  <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
-		</div>
-	</form>
-  </div>
-  
-    <div id="loginSucess" class="modal">
-<div class="modal-content animate" style ="color: rgba(187,134,252);">
-	  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-	  <p>You have been successfully logged in.</p><br>
-	  <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
-	  <p>You can close this window now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('loginSucess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
-	</div>
-  </div>
-  
-  <div id="signup" class="modal">
-	<form class="modal-content animate" method="post">
-		<div style ="color: rgba(187,134,252);">
-		  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-		  
-		  <label for="fname"><b>First Name:</b></label><br>
-		  <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
-		  
-		  <label for="lname"><b>Last Name:</b></label><br>
-		  <input class = "login" type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>	
+    <div class="socialMenu" id = "socialMenu">  <!-- This is the reviews on left side -->
+        <p>User Reviews</p>
+        <ul id = "RestaurantReviews" class = "RestaurantReviews">
+        </ul>
+        <script> displayRestaurantReviews() </script>
+    </div>
 
-		  <label for="phone"><b>Phone Number:</b></label><br>
-		  <input class = "login" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required><br>			  
-		  
-		  <label for="email"><b>Email:</b></label><br>
-		  <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
-		  
-		  <label for="username"><b>Username:</b></label><br>
-		  <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
+    <div class="title"> <!-- Bottom header for category buttons -->
+        <h1 id = "resultsHeader" name = "menu"> Popular Restaurants</h1>
+    </div>
 
-		  <label for="pass"><b>Password:</b></label><br>
-		  <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
-		  
-		  <label for="confpass"><b>Confirm Password:</b></label><br>
-		  <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
-		  
-			
-		  <button class = "headerButton" onclick="document.getElementById('signupSucess').style.display='block';" >Sign Up</button>
-		  <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
-		</div>
-	</form>
-  </div>
+    <div class="menuChoice">
+        <button class = "TrendingButton"> Trending Tab </button>
+        <button class = "FriendButton"> Friends Tab </button>
+    </div>  <!-- These are Friends/Trending Buttons -->
 
-  <div id="signupSucess" class="modal">
-	<div class="modal-content animate" style ="color: rgba(187,134,252);">
-	  <h1 style="text-align:center;">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-	  <p>Your account has been created successfully.</p><br>
-	  <p>You can close this window and login now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('signupSucess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
-	</div>
-  </div>
-  
-  <div id="contact" class="modal">
-	<div class="modal-content animate" style ="color: rgba(187,134,252);">
-	  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-	  <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
-	  <pre style="font-size: 16px; font-weight: bold; font-size: large;">		
-	  Developed by: 
+    <div class="featuredReview">  <!-- This is the big review in the top middle. -->
+        <button class = "featuredReviewSideLeftButton" onclick="changeFeaturedReview(-1)">&#10094;  </button>
+        <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center">
+        </button>
+        <button class = "featuredReviewSideButton" onclick="changeFeaturedReview(1)">&#10095; </button>
+    </div>
+    <script> displayFeaturedReview() </script>
+
+    <div class="results mainMenu menu">
+      <ul id = "resultsList">
+        <a href = "#Mike's Special"> Mike's Special </a>
+      </ul>
+        <script src = "script.js"> </script>
+        <script> searchResults() </script>
+    </div>
+
+    <div class="footer">
+        <div id="contact" class="modal">
+            <div class="modal-content animate" style ="color: rgb(187,134,252);">
+                <h1 style="text-align:center">Welcome to Food Gram!</h1>
+                <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
+                <pre style="font-size: 16px; font-weight: bold; font-size: large;">
+	  Developed by:
 	  Aniket Mall 								malla@myumanitoba.ca
 	  Christopher Vattheuer	 						vattheuc@myumanitoba.ca
 	  Matthias Penner 							pennerm2@myumanitoba.ca
 	  Paul Granelli 							umgranel@myumanitoba.ca
 	  Ryan Campbell 							campb169@myumanitoba.ca</pre><br>
-	  <button class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
-	</div>
-  </div>
+                <button class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
+            </div>
+        </div>
 
-  <div class="footer">
-    <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
-  </div>
+        <div class="footer">
+            <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
+        </div>
 
-  <!--CART SECTION-->
-  <div id="cart" class="modal">
+    </div>
+</div>
 
-      <div class="cartHeader">
-          <h1 style="text-align:center">Your Order</h1>
-      </div>
 
-          <div class="cart1">
-              <ul>
-                  <li>Item X</li>
-                  <li>Item Y</li>
-                  <li>Item Z</li>
-                  <li>Item Scooby Doo</li>
-              </ul>
-          </div>
+<!--CART SECTION.  CONSIDER MAKING IT GRAPH BASED? NOT SURE HOW IT WORKS FOR MODAL.-->
+<div id="cart" class="modal grid-cart">
 
-          <div class="cart2">
-              <h1>Payment Options</h1>
-              <label for="Payment Method">Select Payment Method:</label>
+    <div class="cartHeader">
+        <h1 style="text-align:center">Your Order</h1>
+    </div>
 
-              <select name="Payment Method" id="Payment Method">
-                  <option value="Credit">Credit</option>
-                  <option value="Debit">Debit</option>
-                  <option value="FG Dollars">FG Dollars</option><br>
+    <div class="cart1">
+        <ul>
+            <li>Item X</li>
+            <li>Item Y</li>
+            <li>Item Z</li>
+            <li>Item Scooby Doo</li>
+        </ul>
+    </div>
 
-                  <label for="lname"><b>Last Name:</b></label><br>
-                  <input type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
-          </div>
+    <div class="cart2">
+        <h1>Payment Options</h1>
+        <label for="Payment Method">Select Payment Method:</label>
 
-          <div class = "footer">
-              <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
-              <button class = "acceptButton" onclick="document.getElementById('cart').style.display='none';">Process Payment</button>
-          </div>
-  </div>
+        <select name="Payment Method" id="Payment Method">
+            <option value="Credit">Credit</option>
+            <option value="Debit">Debit</option>
+            <option value="FG Dollars">FG Dollars</option><br>
 
-  </div>
-  </div>
+            <label for="lname"><b>Last Name:</b></label><br>
+            <input type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+        </select>
+    </div>
 
+    <div class = "footerCart">
+        <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
+        <button class = "acceptButton" onclick="document.getElementById('cart').style.display='none';">Process Payment</button>
+    </div>
+</div>
+
+
+<!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
+<div id="login" class="modal">
+    <form class="modal-content animate" method="post">
+        <div style ="color: rgba(187,134,252);">
+            <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
+            <label for="username"><b>Username:</b></label><br>
+            <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
+
+            <label for="pass"><b>Password:</b></label><br>
+            <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
+
+            <button class = "headerButton" onclick="document.getElementById('loginSucess').style.display='block';">Log In</button>
+            <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<div id="loginSucess" class="modal">
+    <div class="modal-content animate" style ="color: rgba(187,134,252);">
+        <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
+        <p>You have been successfully logged in.</p><br>
+        <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
+        <p>You can close this window now.</p><br>
+        <button class = "cancelButton" onclick="document.getElementById('loginSucess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
+    </div>
+</div>
+
+<div id="signup" class="modal">
+    <form class="modal-content animate" method="post">
+        <div style ="color: rgba(187,134,252);">
+            <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
+
+            <label for="fname"><b>First Name:</b></label><br>
+            <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
+
+            <label for="lname"><b>Last Name:</b></label><br>
+            <input class = "login" type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+
+            <label for="phone"><b>Phone Number:</b></label><br>
+            <input class = "login" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required><br>
+
+            <label for="email"><b>Email:</b></label><br>
+            <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
+
+            <label for="username"><b>Username:</b></label><br>
+            <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
+
+            <label for="pass"><b>Password:</b></label><br>
+            <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
+
+            <label for="confpass"><b>Confirm Password:</b></label><br>
+            <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
+
+
+            <button class = "headerButton" onclick="document.getElementById('signupSucess').style.display='block';" >Sign Up</button>
+            <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<div id="signupSucess" class="modal">
+    <div class="modal-content animate" style ="color: rgba(187,134,252);">
+        <h1 style="text-align:center;">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
+        <p>Your account has been created successfully.</p><br>
+        <p>You can close this window and login now.</p><br>
+        <button class = "cancelButton" onclick="document.getElementById('signupSucess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
+    </div>
+</div>
 
 
 </body>

@@ -2,6 +2,12 @@
 
 "use strict";
 
+
+function mod(n, m) {
+    return ((n % m) + m) % m;
+}
+
+
 class Restaurant {
     name
     foodItems
@@ -441,7 +447,7 @@ function displayRestaurantReviews() {
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
             itemValue = reviews[i].restaurant.name;
         }
-        btn.innerHTML =  "<span class = 'ReviewText SocialMenu'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" +  reviews[i].rating + "/5<br/> </span>";
+        btn.innerHTML =  "<span class = 'ReviewText SocialMenu RestaurantReviews'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" +  reviews[i].rating + "/5<br/> </span>";
         if (window.location.search.includes("restaurant="))
             dir = getFoodPhotoDir(reviews[i].recipe.foodItem.name.toLowerCase());
         else
@@ -475,8 +481,7 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
 
         if (reviews[0] !== undefined) { //looking for food.
             let uniqueReview = getUniqueFoodReviews(reviews);
-            let index = Math.abs(parseInt((sessionStorage.getItem("FeaturedReviewNum")) + uniqueReview.length*10) % uniqueReview.length);
-            console.log("index: " + index);
+            let index =  mod(parseInt((sessionStorage.getItem("FeaturedReviewNum")) + uniqueReview.length*10), uniqueReview.length);
             btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
             // btn.style.textAlign
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
@@ -496,9 +501,7 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
         let btn = document.getElementById("featuredReviewButton");
         if (bestRest[0] !== undefined) {
             let uniqueReview = getUniqueRestaurantReviews(bestRest);
-            console.log(uniqueReview);
-            let index = parseInt(sessionStorage.getItem("FeaturedReviewNum")) % uniqueReview.length;
-            console.log("review length: " + uniqueReview.length + " index: " + index);
+            let index = mod(parseInt(sessionStorage.getItem("FeaturedReviewNum") + uniqueReview.length*10), uniqueReview.length);
             btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
             btn.onclick = function () {
                 window.location.search = 'restaurant=' + bestRest[0].name;
@@ -671,7 +674,7 @@ function getFoodPhotoDir(foodName){
     else if(foodName.includes("double diped"))
         category = "dippedbanana";
     else if(foodName.includes("go banana") || foodName.includes("girly banana") || foodName.includes("george daddy")
-        || foodName.includes("simple simon"))
+        || foodName.includes("simple simon") || foodName.includes("original frozen banana") )
         category = "banana";
     else if(foodName.includes("iced tea"))
         category = "icedtea";
