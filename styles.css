@@ -207,7 +207,8 @@ background-color: rgb(45, 45, 45);
 .socialMenu button{
   background-color: rgb(25,25,25);
   color: white;
-
+  background-size: contain, cover;
+  background-position: center;
   float: left;
   display: block;
   width: 95%;
@@ -681,12 +682,11 @@ p {
   vertical-align: top;
   color:red;
   vertical-align: text-top;
-  align: left;
 }
 
 .ReviewText {
   background-size: contain;
+  font-size: x-large;
   color:white;
-  background-color: black;
   vertical-align: top;
 }
