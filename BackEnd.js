@@ -403,7 +403,9 @@ function getData(){
         // conditional items:
         sessionStorage.setItem("Trending", "false");
 
+        sessionStorage.setItem("Restaurants", JSON.stringify(results[0]));
     }
+    sessionStorage.setItem("FeaturedReviewNum", "0");
 }
 
 
@@ -439,7 +441,7 @@ function displayRestaurantReviews() {
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
             itemValue = reviews[i].restaurant.name;
         }
-        btn.innerHTML =  "<span class = 'ReviewText' >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" + reviews[i].rating + "/5<br/> </span>";
+        btn.innerHTML =  "<span class = 'ReviewText SocialMenu'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" + reviews[i].rating + "/5<br/> </span>";
         if (window.location.search.includes("restaurant="))
             dir = getFoodPhotoDir(reviews[i].recipe.foodItem.name.toLowerCase());
         else
@@ -452,18 +454,27 @@ function displayRestaurantReviews() {
     }
 }
 
+
+function changeFeaturedReview(increment){
+    sessionStorage.setItem("FeaturedReviewNum", parseInt(sessionStorage.getItem("FeaturedReviewNum")) + increment);
+    displayFeaturedReview();
+}
+
 function displayFeaturedReview() {  // Needs to be generalized to food items!
     if(window.location.search.includes("restaurant=")) {  // we are in a restaurant page.
         let reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendFoodReviews")),
             decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
         let btn = document.getElementById("featuredReviewButton");
-        if (reviews[0] !== undefined) {
-            btn.innerHTML = "<span class = 'ReviewText'>" + reviews[0].recipe.foodItem.name + "<br/>" + reviews[0].rating + "/5<br/> </span>";
+
+        if (reviews[0] !== undefined) { //looking for food.
+            let uniqueReview = getUniqueFoodReviews(reviews);
+            let index = parseInt(sessionStorage.getItem("FeaturedReviewNum"))% uniqueReview.length;
+            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
             // btn.style.textAlign
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
             //    window.location.search = 'restaurant=' + reviews[0].name;
             //};
-            let dir = getFoodPhotoDir(reviews[0].recipe.foodItem.name.toLowerCase())
+            let dir = getFoodPhotoDir(uniqueReview[index].recipe.foodItem.name.toLowerCase())
             btn.setAttribute("style", "background-image: url(" + dir + ")");
             btn.style.backgroundSize = 'cover';
             btn.style.backgroundRepeat = 'no-repeat';
@@ -475,11 +486,15 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
             String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
         let btn = document.getElementById("featuredReviewButton");
         if (bestRest[0] !== undefined) {
-            btn.innerHTML = "<span class = 'ReviewText'>" + bestRest[0].name + "<br/>" + bestRest[0].rating + "/5<br/> </span>";
+            let uniqueReview = getUniqueRestaurantReviews(bestRest);
+            console.log(uniqueReview);
+            let index = parseInt(sessionStorage.getItem("FeaturedReviewNum")) % uniqueReview.length;
+            console.log("review length: " + uniqueReview.length + " index: " + index);
+            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
             btn.onclick = function () {
                 window.location.search = 'restaurant=' + bestRest[0].name;
             };
-            let dir = getRestaurantPhotoDir(bestRest[0].name.toLowerCase())
+            let dir = getRestaurantPhotoDir(uniqueReview[index].name.toLowerCase())
             btn.setAttribute("style", "background-image: url(" + dir + ")");
             btn.style.backgroundSize = 'cover';
             btn.style.backgroundRepeat = 'no-repeat'
@@ -487,6 +502,34 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
         }
     }
 }
+
+
+function getUniqueFoodReviews(array){
+    let result = [];
+    for(let i=0; i<array.length && result.length<3; i++){
+        let found = false;
+        for(let j = 0; j<result.length && !found; j++){
+            found = result[j].recipe.foodItem.name.localeCompare(array[i].recipe.foodItem.name) === 0;
+        }
+        if(!found)
+            result.push(array[i]);
+    }
+    return result;
+}
+
+function getUniqueRestaurantReviews(array){
+    let result = [];
+    for(let i=0; i<array.length && result.length<3; i++){
+        let found = false;
+        for(let j = 0; j<result.length && !found; j++){
+            found = result[j].name.localeCompare(array[i].name) === 0;
+        }
+        if(!found)
+            result.push(array[i]);
+    }
+    return result;
+}
+
 
 function getRestaurantPhotoDir(restName){
     let category = "";
@@ -653,13 +696,13 @@ function getRestaurantText(){
     let string1 = "Aniket's Iced Chowder Cafe(Frozen Clam Chowder, Frozen Lamb Chowder, Lukewarm Potato Chowder, Scolding Hot Cheese Chowder)\n" +
     "Banana Boat Ice Cream(Banana Split, Chocolate Banana Softserve, Vanilla Banana Softserve, Chunky Monkey, Coke-Float)\n" +
     "Bob's Burgers(The Original Burger, Don't You Four Cheddar Bout Me, Sweet Home Avocado, Eggers Can't Be Cheesers, Gourdon Hamsy)\n" +
-    "Boston Pizza(Fried Wings, Quesadillas, Chicken Sandwich, The Big Dipper, Tacos)\n" +
+    "Boston Pizza(Fried Wings, Quesadillas, Chicken Sandwich, The Big Dipper Burger, Tacos)\n" +
     "Christophers Chunky Cheeses(Chunk o' Cheddar, Bowl o' Brie, Fist o' Feta, A-ton o' Asiago, Aged Crackers)\n" +
     "Frozen Banana Stand(Original Frozen Banana, On the Go-Go Banana, Double Diped Frozen, Giddy-Girly Banana, George Daddy, Simple Simon)\n" +
     "Good Burger(Good Burger, Good Fries, Good Shake, Good Pickle, Double Good Burger)\n" +
     "Gusteau's(Grilled Steak, Ratatouille, Roasted Cod Fish, Chocolate Mousse, Apple Tart, Tiramisu)\n" +
     "Jack Rabbit Slims(MilkShake, Foie and Loathing in Las VeGras, Honey I Shrunk The Soup, Blueberry Pie)\n" +
-    "Krusty Krab(Krabby Patty, Double Krabby Patty, Triple Krabby Patty, Coral bits, Kelp Rings)\n" +
+    "Krusty Krab(Krabby Patty Burger, Double Krabby Patty Burger, Triple Krabby Patty Burger, Coral bits, Kelp Rings)\n" +
     "Los Pollos Hermanos(Gus' World Famous Chicken, The Heisenberg Special, Fajitas, Gales Gordita, Jesse's Tasty Tacos)\n" +
     "Mamma Mia's Pizzaria(Mia's Famous Fettuccine Alfredo, Mia's Manicotti, Mia's Rigatoni, Mia's Meaty Pizzaroni)\n" +
     "Matthias' Burger Stank Shack(Matty's Big Ol' Cheeseburger, MeeMaw's Famous Burger Slider, Matt's Curly Fries, Matt's Musk Burger)\n" +
@@ -689,9 +732,9 @@ function getFoodText(){
     "French Fries:6.32:Main:Delicious classic french fries, nothing special here!:Extra Salt, Buttered Fries, Ketchup:\n" +
     "Hot Dog:5.33:Main:A classic hotdog.:Ketchup, Mustard, Onions, Relish:\n" +
     "Jumbo Dog:7.31:Main:A classic jumbodog, its like a hotdog but bigger!:Ketchup, Mustard, Onions, Relish:\n" +
-    "Krabby Patty:4.25:Main:Our Ocean Famous Burger. Comes with Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Secret Sauce:\n" +
-    "Double Krabby Patty:6.50:Main:A Krabby Patty with an Extra Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
-    "Triple Krabby Patty:8.95:Main:A Double Krabby Patty with 1.5x the Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
+    "Krabby Patty Burger:4.25:Main:Our Ocean Famous Burger. Comes with Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Secret Sauce:\n" +
+    "Double Krabby Patty Burger:6.50:Main:A Krabby Patty Burger with an Extra Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
+    "Triple Krabby Patty Burger:8.95:Main:A Double Krabby Patty Burger with 1.5x the Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
     "Coral bits:2.41:Appetizer:Fresh Coral Grilled To Perfection.:\n" +
     "Kelp Rings:5.97:Main:Deep Fried Kelp shaped into a ring. Good for the soul, bad for the arteries.:\n" +
     "The Original Burger:6.15:Main:There can only be one original. Bob's Best Burger with our Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Bob Sauce:\n" +
@@ -715,7 +758,7 @@ function getFoodText(){
     "Fried Wings:4.98:Main:Delicious Fried Wings.:Spicy Dip, Medium Dip, Cool Dip, Ranch Dip:\n" +
     "Quesadillas:5.1:Main:Our Famous Quesadillas. You're going to love them.:Lettuce, Tomatoes, Onions, Peppers, Guacamole:\n" +
     "Chicken Sandwich:6.81:Main:Our Chicken Sandwhich was perfected through iterative design.:Lettuce, Tomatoes, Guacamole:\n" +
-    "The Big Dipper:7.41:Main:It's astronomically good.:Lettuce, Ketchup, Mustard, Tomatoes, Spicy Sauce, Peppers, Guacamole:\n" +
+    "The Big Dipper Burger:7.41:Main:It's astronomically good.:Lettuce, Ketchup, Mustard, Tomatoes, Spicy Sauce, Peppers, Guacamole:\n" +
     "Tacos:4.36:Main:Our crunchy beef tacos, they are a classic.:Lettuce, Tomatoes, Onions, Guacamole, Spicy Sauce:\n" +
     "Olive Lovers Pizza:18.51:Main:Pizza which comes with extra olives!:Green Olives, Black Olives, Extra Cheese:\n" +
     "Margarita Pizza:16.42:Main:A classic style margarita pizza.:Extra Cheese, Extra Basil, Extra Tomatoes:\n" +
