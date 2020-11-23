@@ -447,7 +447,7 @@ function displayRestaurantReviews() {
         else
             dir = getRestaurantPhotoDir(reviews[i].restaurant.name.toLowerCase())
         btn.setAttribute("style", "background-image: url(" + dir + ")");
-        btn.style.backgroundSize = "contain";
+        btn.style.backgroundSize = "cover";
         btn.style.backgroundRepeat = 'no-repeat'
         btn.style.backgroundPosition = 'center';
         document.getElementById("RestaurantReviews").appendChild(btn);
@@ -468,7 +468,8 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
 
         if (reviews[0] !== undefined) { //looking for food.
             let uniqueReview = getUniqueFoodReviews(reviews);
-            let index = parseInt(sessionStorage.getItem("FeaturedReviewNum"))% uniqueReview.length;
+            let index = Math.abs(parseInt((sessionStorage.getItem("FeaturedReviewNum")) + uniqueReview.length*10) % uniqueReview.length);
+            console.log("index: " + index);
             btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
             // btn.style.textAlign
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
