@@ -842,7 +842,7 @@ let foodPhotoCount = {  // folder name, count of files in that folder.
     "pie": 2,
     "pizza": 9,
     "prawn": 1,
-    "quesadilla1": 2,
+    "quesadilla": 2,
     "ratatouille": 1,
     "rigatoni": 1,
     "salad": 1,
