@@ -441,7 +441,7 @@ function displayRestaurantReviews() {
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
             itemValue = reviews[i].restaurant.name;
         }
-        btn.innerHTML =  "<span class = 'ReviewText SocialMenu'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" + reviews[i].rating + "/5<br/> </span>";
+        btn.innerHTML =  "<span class = 'ReviewText SocialMenu'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" +  reviews[i].rating + "/5<br/> </span>";
         if (window.location.search.includes("restaurant="))
             dir = getFoodPhotoDir(reviews[i].recipe.foodItem.name.toLowerCase());
         else
@@ -451,7 +451,14 @@ function displayRestaurantReviews() {
         btn.style.backgroundRepeat = 'no-repeat'
         btn.style.backgroundPosition = 'center';
         document.getElementById("RestaurantReviews").appendChild(btn);
+
+
     }
+
+
+    
+
+
 }
 
 
@@ -475,6 +482,7 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
             //    window.location.search = 'restaurant=' + reviews[0].name;
             //};
+
             let dir = getFoodPhotoDir(uniqueReview[index].recipe.foodItem.name.toLowerCase())
             btn.setAttribute("style", "background-image: url(" + dir + ")");
             btn.style.backgroundSize = 'cover';

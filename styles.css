@@ -297,6 +297,12 @@ background-color: rgb(45, 45, 45);
 
 }
 
+.content-front{
+
+z-index: -1;
+
+}
+
 
 .featuredReviewButton:hover{
   background-color: rgb(45, 45, 45);
