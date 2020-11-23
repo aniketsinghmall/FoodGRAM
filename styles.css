@@ -670,6 +670,7 @@ p {
 
 .ingredients ul{
   height:100%;
+  animation-name: checkoutOpen;
 }
 
 .ingredients input{
