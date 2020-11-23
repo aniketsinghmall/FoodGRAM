@@ -18,7 +18,7 @@ async function checkoutDropDown(){
         const checkout = document.createElement("button");
         checkout.id = "proceedCheckout";
         checkout.innerHTML = "Proceed to Checkout";
-        checkout.addEventListener("click", function(){window.location.href = "checkout.html";});
+        checkout.addEventListener("click", proceedToCheckout);
         dropDown.appendChild(checkout);
         await sleep(230);
 
@@ -31,6 +31,14 @@ async function checkoutDropDown(){
         await sleep(230);
         document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
     }
+}
+
+async function proceedToCheckout(){
+    document.getElementById('cart').style.display='block';
+    document.getElementById("proceedCheckout").style = "animation-name:proceedClose";
+    document.getElementById("checkoutDropDown").style = "animation-name:checkoutClose";
+    await sleep(230);
+    document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
 }
 
 function sleep(duration) {
