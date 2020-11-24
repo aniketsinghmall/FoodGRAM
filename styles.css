@@ -287,7 +287,7 @@ body {
 }
 
 .topNavBar a:hover {
-  background-color:rgb(45, 45, 45);
+  background-color:rgb(50, 50, 50);
 }
 
 /* END OF BOTTOM HEADER CSS.*/
@@ -443,6 +443,13 @@ body {
   border-radius: 25px;
 }
 
+.featuredReviewSideButton:hover{
+  background-color:rgb(45, 45, 45);
+}
+
+.featuredReviewSideLeftButton:hover{
+  background-color:rgb(45, 45, 45);
+}
 
 /* Big image button.*/
 .featuredReviewMain{
