@@ -1,24 +1,47 @@
+let currRestaurant=-1, currMenuItem=-1;
+let cartContents = [];
+let windowLocationSearch;
+
 (function(){
     data = createData();
-    // console.log(data);
-    //document.getElementById("searchButton").addEventListener("click", searchBox);
     document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
-    window.addEventListener("hashchange", restaurantSelected);
-    
 })();
 
 async function checkoutDropDown(){
+    cartContents = JSON.parse(window.localStorage.getItem("cartContents"));
     if(!document.getElementById("proceedCheckout")){
         const dropDown = document.createElement("div");
         dropDown.id = "checkoutDropDown";
         dropDown.class = "headerButton right";
         document.getElementById("headerButtons").appendChild(dropDown);
+        let cartItem;
+        let totalPrice = 0;
+        let list = document.createElement("ul");
+        list.style= "overflow:scroll; height:66%; list-style-type: square;"
+        dropDown.appendChild(list);
+        for(let i = 0; i<cartContents.length; i++){
+            cartItem = document.createElement("li");
+            cartItem.className = "checkoutItem";
+            cartItem.innerHTML = cartContents[i].foodItem.name + "<br> <div style=\"padding-left:20px;\">- $" + cartContents[i].foodItem.price+"</div>";
+            list.appendChild(cartItem);
+            totalPrice += parseFloat(cartContents[i].foodItem.price);
+        }
+        let line = document.createElement("hr");
+        line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 20px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
+        dropDown.appendChild(line);
+        line = document.createElement("hr");
+        line.style = "position:absolute; bottom:135px; left:0px; right:0px; background-color: #03DAC5; height: 3px; padding-left:0px; padding-right:30px; z-index: 12;";
+        dropDown.appendChild(line);
+        cartItem = document.createElement("div");
+        cartItem.innerHTML = "Total price: $"+totalPrice.toFixed(2);
+        cartItem.style = "position:absolute; bottom:110px; left:10px; right:10px; font-family:Arial;";
+        dropDown.appendChild(cartItem);
         const checkout = document.createElement("button");
         checkout.id = "proceedCheckout";
         checkout.innerHTML = "Proceed to Checkout";
-        checkout.addEventListener("click", function(){window.location.href = "checkout.html";});
+        checkout.addEventListener("click", proceedToCheckout);
         dropDown.appendChild(checkout);
         await sleep(230);
 
@@ -31,6 +54,14 @@ async function checkoutDropDown(){
         await sleep(230);
         document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
     }
+}
+
+async function proceedToCheckout(){
+    document.getElementById('cart').style.display='block';
+    document.getElementById("proceedCheckout").style = "animation-name:proceedClose";
+    document.getElementById("checkoutDropDown").style = "animation-name:checkoutClose";
+    await sleep(230);
+    document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
 }
 
 function sleep(duration) {
@@ -52,9 +83,6 @@ function searchResults(){
                 list.innerHTML += s;
                 
             }
-            for(let i = 0; i<restaurants.length; i++){
-                //document.getElementById(restaurants[i].name).addEventListener("click", );
-            }
         }
         else{
             list.innerHTML = "<h2>No results found</h2>"
@@ -73,9 +101,8 @@ function searchResults(){
                     let fn = "onclick=\"(function(){"+
                         "ingredients("+i+", "+j+");"+ 
                     "})();\"";
-                    let s = "<button "+fn+">"+data[0][i].foodItems[j].name+"</button> \n<form class = \"ingredients\" id = \""+"restaurant"+i+"menuItem"+j+"\"></form>";
+                    let s = "<button "+fn+">"+data[0][i].foodItems[j].name+" - $"+ data[0][i].foodItems[j].price+"</button> \n<form class = \"ingredients\" id = \""+"restaurant"+i+"menuItem"+j+"\"></form>";
                     list.innerHTML += s;
-                    //document.getElementById("restaurant"+i+"menuItem"+j).addEventListener("click", ingredients);
                 }
             }
         }
@@ -93,9 +120,6 @@ function searchResults(){
                 list.innerHTML += s;
 
             }
-            for(let i = 0; i<restaurants.length; i++){
-                //document.getElementById(restaurants[i].name).addEventListener("click", );
-            }
         }
         else{
             list.innerHTML = "<h2>No results found</h2>"
@@ -105,24 +129,41 @@ function searchResults(){
 }
 
 function goHome(){
+
     window.location.search = "";
 }
 
 function ingredients(restaurant, menuItem){
+    windowLocationSearch = window.location.search;
     if(document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML == ""){
-        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML = "<ul>";
+        
+        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML = "<ul style=\"width: 0%;\">";
         for(let i = 0; i<data[0][restaurant].foodItems[menuItem].ingredients.length; i++){
-            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li style=\"display: inline-block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
                                                                                                 "<label for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
                                                                                                 data[0][restaurant].foodItems[menuItem].ingredients[i].name+
                                                                                                 "</label></li>";
         }
+        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type=\"button\" class=\"AddToCart\" onclick=\"addToCart();\" style=\"background-color:#03DAC5; width:25%; text-align:center; height: 15%; padding: 5px; margin-left: 100px; font-size: 30px; color: black; border-color: black;\" value=\"Add to cart\"></li>"
         document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "</ul>";
+        if(currRestaurant != -1 && currMenuItem != -1)
+            document.getElementById("restaurant"+currRestaurant+"menuItem"+currMenuItem).innerHTML="";
+        currRestaurant = restaurant;
+        currMenuItem = menuItem;
     }
     else{
         document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML="";
+        currRestaurant = -1;
+        currMenuItem = -1;
     }
 }
 
-
-
+function addToCart(){
+    let customization = [];
+    for(let i = 0; i<data[0][currRestaurant].foodItems[currMenuItem].ingredients.length; i++){
+        customization.push(document.getElementById("checkBoxRestaurant"+currRestaurant+"menuItem"+currMenuItem+"ingredient"+i).checked);
+    }
+    cartContents.push(new Recipe(data[0][currRestaurant].foodItems[currMenuItem], customization));
+    ingredients(currRestaurant, currMenuItem);
+    localStorage.setItem("cartContents", JSON.stringify(cartContents));
+}
