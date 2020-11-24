@@ -160,6 +160,8 @@ body {
   float: top;
   transition: width 0.25s;
   padding-left: 40px;
+  background-color:#03DAC5;
+
 }
 
 @keyframes searchOpen{
