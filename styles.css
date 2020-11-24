@@ -210,6 +210,13 @@ body {
   z-index: 10;
 }
 
+.checkoutItem{
+  text-align: left;
+  padding-left: 10px;
+  color: white;
+  font-family: Arial;
+}
+
 @keyframes checkoutOpen{
   from{height:1px; opacity: 0%;}
   to{height:500px; opacity: 100%;}
@@ -530,16 +537,17 @@ body {
   text-align: left;
   margin-bottom: 5px;
   margin-top: 0px;
-  vertical-align:middle;
+  vertical-align:left;
 }
 
 .ingredients ul{
-  height:100%;
-  animation-name: checkoutOpen;
+  height:100px;
+  vertical-align:left;
+  align-items: left;
 }
 
 .ingredients input{
-  margin-left:130px;
+  margin-left:50px;
 }
 
 
