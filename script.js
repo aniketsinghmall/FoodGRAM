@@ -139,7 +139,7 @@ function ingredients(restaurant, menuItem){
         
         document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML = "<ul style=\"width: 0%;\">";
         for(let i = 0; i<data[0][restaurant].foodItems[menuItem].ingredients.length; i++){
-            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li style=\"display: inline-block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
                                                                                                 "<label for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
                                                                                                 data[0][restaurant].foodItems[menuItem].ingredients[i].name+
                                                                                                 "</label></li>";
