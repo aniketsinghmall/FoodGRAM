@@ -108,9 +108,9 @@ body {
   display: inline-block;
   padding-top: 6px;
   height:auto;
-  width:300px;
-  left: calc(50% - 150px); /* use this to center */
-  /*left:40%; */
+  width:300px; /* use this to center */
+  left: 20%;
+  margin-left: calc(40% - 150px);
   text-align:center;
   top:0%;
   position: absolute;
