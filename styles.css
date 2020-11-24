@@ -147,7 +147,12 @@ body {
   background-repeat: no-repeat;
   font-size: 20px;
   border-style:solid;
-  border-color: #03DAC5;
+  border-color: black;
+}
+
+
+#searchBar:hover{
+  background-color:rgb(45, 45, 45);
 }
 
 #searchBar:focus{
@@ -393,7 +398,7 @@ body {
 }
 
 .socialMenu button:hover{
-  background-color: rgb(45, 45, 45);
+  opacity: 60%;
 }
 
 /* BOTTOM HEADER ENDS.*/
@@ -630,7 +635,6 @@ body {
 .cancelButton:hover {
   background-color: rgba(255, 0, 0, 0.4);
 }
-
 
 
 /* CART PAGE.*/
