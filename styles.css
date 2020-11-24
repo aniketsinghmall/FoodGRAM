@@ -46,6 +46,8 @@ body {
 
 .title {
   grid-area: title;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
   vertical-align: middle;
 }
 
@@ -201,7 +203,7 @@ body {
   color: black;
   background-color: #03DAC5;
   font-size: 1px;
-  font-family: Arial;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   border-radius: 15px;
   animation-name: proceedOpen;
@@ -214,7 +216,7 @@ body {
   text-align: left;
   padding-left: 10px;
   color: white;
-  font-family: Arial;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @keyframes checkoutOpen{
