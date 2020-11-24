@@ -67,6 +67,9 @@ class Recipe {
     get name(){
         return this.foodItem.name;
     }
+    get price(){
+        return this.foodItem.price;
+    }
 }
 
 class Ingredient{

@@ -107,8 +107,8 @@ body {
 #logo{
   display: inline-block;
   padding-top: 6px;
-  height:auto;
-  width:300px;
+  height:55px;
+  width:270px;
   margin-left:0; /* use this to center */
   /*left:40%; */
   text-align:center;
@@ -209,6 +209,13 @@ body {
   animation-duration: 0.25s;
   animation-timing-function: ease-out;
   z-index: 10;
+}
+
+.checkoutItem{
+  text-align: left;
+  padding-left: 10px;
+  color: white;
+  font-family: Arial;
 }
 
 @keyframes checkoutOpen{
@@ -530,16 +537,17 @@ body {
   text-align: left;
   margin-bottom: 5px;
   margin-top: 0px;
-  vertical-align:middle;
+  vertical-align:left;
 }
 
 .ingredients ul{
-  height:100%;
-  animation-name: checkoutOpen;
+  height:100px;
+  vertical-align:left;
+  align-items: left;
 }
 
 .ingredients input{
-  margin-left:130px;
+  margin-left:50px;
 }
 
 
