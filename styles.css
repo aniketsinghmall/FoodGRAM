@@ -531,7 +531,7 @@ body {
 
 /* Actual Food and Restaurant Chocies .*/
 .mainMenu button{
-  background-color: rgb(25,25,25);
+  background-color: rgb(142,89,207);
   color: white;
   float: left;
   font-family: Arial, Helvetica, sans-serif;
@@ -567,6 +567,7 @@ body {
 }
 
 .ingredients ul{
+
   vertical-align:left;
   align-items: left;
 }
