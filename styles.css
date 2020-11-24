@@ -16,7 +16,7 @@ body {
   'menu results'
   'menuChoice results'
   'footer footer';
-  grid-gap: 2px;
+  grid-gap: 0px;
   padding: 2px;
   grid-template-rows: 6% 5% 5% 25% 50% 5% 4%;
   grid-template-columns: 20% 80%;
@@ -40,20 +40,24 @@ body {
 /* Specific areas in the grid.*/
 /* Logo and Search.*/
 .topHeader {
+  background-color: rgb(15, 15, 15);
   grid-area: header;
   vertical-align: center;
 }
 
 .title {
   grid-area: title;
+  background-color: rgb(35, 35, 35);
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   vertical-align: middle;
+  color:white;
 }
 
 /* Category buttons.*/
 .bottomHeader {
   grid-area: header2;
+  background-color: rgb(15, 15, 15);
 }
 
 /* Reviews on the left side.*/
@@ -63,6 +67,7 @@ body {
 
 /* Main featured review. */
 .featuredReview {
+  background-color: rgb(35, 35, 35);
   grid-area: featured;
 }
 
@@ -250,7 +255,6 @@ body {
 /* BOTTOM HEADER CSS.*/
 /* Categories.*/
 .topNavBar {
-  background-color: rgb(25,25,25);
   padding-top:10px;
   color: rgb(18,18,18);
   list-style: none;

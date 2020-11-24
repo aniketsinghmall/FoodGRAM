@@ -44,17 +44,6 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JarApplication">
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
@@ -81,6 +70,7 @@
       <workItem from="1606009970816" duration="18617000" />
       <workItem from="1606091360483" duration="100000" />
       <workItem from="1606091664511" duration="7252000" />
+      <workItem from="1606189835199" duration="276000" />
     </task>
     <servers />
   </component>
