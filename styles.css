@@ -310,6 +310,11 @@ body {
   vertical-align: center;
 }
 
+.TrendingButton:hover{
+  background-color:rgb(45, 45, 45);
+}
+
+
 .FriendButton {
   display: inline-block;
   border: none;
@@ -321,6 +326,10 @@ body {
   border-radius: 15px;
   font-weight: bold;
   vertical-align: center;
+}
+
+.FriendButton:hover{
+  background-color:rgb(45, 45, 45);
 }
 
 /* END OF TITLE */
