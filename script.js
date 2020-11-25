@@ -144,7 +144,7 @@ function ingredients(restaurant, menuItem){
                                                                                                 data[0][restaurant].foodItems[menuItem].ingredients[i].name+
                                                                                                 "</label></li>";
         }
-        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type=\"button\" class=\"AddToCart\" onclick=\"addToCart();\" style=\"background-color:#03DAC5; width:25%; text-align:center; height: 15%; padding: 5px; margin-left: 100px; font-size: 30px; color: black; border-color: black;\" value=\"Add to cart\"></li>"
+        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type=\"button\" class=\"AddToCart\" onclick=\"addToCart();\" style=\"background-color:#03DAC5; width:25%; text-align:center; height: 15%; padding: 5px; margin-left: 100px; margin-top: 10px; font-size: 30px; color: black; border-color: black; border-radius: 15px\" value=\"Add to cart\"></li>"
         document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "</ul>";
         if(currRestaurant != -1 && currMenuItem != -1)
             document.getElementById("restaurant"+currRestaurant+"menuItem"+currMenuItem).innerHTML="";
