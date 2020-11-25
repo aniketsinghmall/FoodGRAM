@@ -738,10 +738,10 @@ function getFoodText(){
     "Fajitas:8.18:Main:Spicy and Declicious ABQ Fajitas.:Lettuce, Tomatoes, Onions, Peppers, Guacamole:\n" +
     "Gales Gordita:3.91:Main:A Mouth Watering Pastry cooked perfectly by our renownend cook Gale.:Extra Gus Sauce:\n" +
     "Jesse's Tasty Tacos:4.01:Main:Three Tacos, with a little extra Chippy Powder on all of them.:Lettuce, Tomatoes, Onions, Guacamole, Spicy Sauce:\n" +
-    "Good Burger:5.07:Main:The Best Burger in Town. Comes with extra Good Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Good Sauce:\n" +
-    "Good Fries:2.03:Main:The Best Fries in Town, Comes fried in Good Sauce.:Extra Salt, Buttered Fries, Ketchup:\n" +
-    "Good Shake:4.85:Main:The Best Vanilla Shake In Town. Comes with Good Sauce on top.:Chocolate Sauce, Bananas, Cherries:\n" +
-    "Good Pickle:5.62:Dessert:Our World Famous Good Pickles, Brined to Pickley perfection in Good Sauce.:Extra Good Sauce:\n" +
+    "Good Burger:5.07:Main:The best burger in Town. Comes with extra Good Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Good Sauce:\n" +
+    "Good Fries:2.03:Main:The best fries in Town. Comes fried in Good Sauce.:Extra Salt, Buttered Fries, Ketchup:\n" +
+    "Good Shake:4.85:Main:The best vanilla Shake In Town. Comes with Good Sauce on top.:Chocolate Sauce, Bananas, Cherries:\n" +
+    "Good Pickle:5.62:Dessert:Our world famous Good Pickles. Brined to pickley perfection in Good Sauce.:Extra Good Sauce:\n" +
     "Double Good Burger:8.85:Main:Its like a Good Burger, but twice as Good (Double Patty).:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Good Sauce:\n" +
     "Cheeseburger:15.32:Main:A Classic Cheeseburger.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo:\n" +
     "French Fries:6.32:Main:Delicious classic french fries, nothing special here!:Extra Salt, Buttered Fries, Ketchup:\n" +

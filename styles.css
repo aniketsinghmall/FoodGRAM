@@ -612,11 +612,68 @@ body {
   margin-left: 20%;
   padding: 20px;
   margin-top: 10%;
+  position:relative;
   border: 1px solid #888;
   width: 60%;
   height:40%;
+  font-size: 25px;
 }
 
+.modal-content2 h1{
+  font-size: 55px;
+  margin:0;
+  text-align:center;
+  color:white;
+}
+
+.modal-content2 h2{
+  font-size: 25px;
+  margin:5px;
+  text-align:center;
+  color:whitesmoke;
+}
+
+#IngredientList{
+  overflow-y: scroll;
+  height:55%;
+  background-color: rgb(35,35,35);;
+}
+
+/* The Checkbox */
+.checkItem{
+  color:white;
+  margin:20px;
+}
+
+/* The text next to the checkbox */
+.checkText{
+  color:white;
+}
+
+.IngredientRow1{
+  color:white;
+  background-color: rgb(15,15,15);
+}
+
+.IngredientRow2{
+  background-color: rgb(35,35,35);
+}
+
+
+.headerButton2 {
+  border: none;
+  background-color: #03DAC5;
+  font-size:22px;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+
+.headerButton2:hover {
+  background-color: rgb(45, 45, 45);
+}
 
 
 
@@ -676,16 +733,6 @@ body {
   padding: 60px;
 }
 
-.headerButton {
-  border: none;
-  background-color: #03DAC5;
-  font-size:22px;
-  margin: 10px;
-  padding: 5px;
-  overflow: hidden;
-  border-radius: 15px;
-  font-weight: bold;
-}
 
 .cancelButton {
   border: none;
@@ -698,11 +745,21 @@ body {
   font-weight: bold;
 }
 
-.
+.checkItem{
+  font-size:50px;
 
+}
 
-
-
+.headerButton {
+  border: none;
+  background-color: #03DAC5;
+  font-size:22px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-weight: bold;
+}
 
 #headerButtons{
   color: rgba(187,134,252, 200);

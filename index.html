@@ -275,11 +275,14 @@
 <div id="foodPopup" class="modal2">
     <!-- Modal content -->
     <div class="modal-content2 animate">
-        <span>
-            <button style = "width:50px;" id = "closePopupPage" class = "headerButton" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
-        </span>
-        <h1 id="FoodName">Food Item!</h1>
+        <div>
+            <span>
+                <button style = "width:50px; display:block;" id = "closePopupPage" class = "headerButton2" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
+            </span>
+            <h1 id="FoodName">Food Item!</h1>
+        </div>
         <h2 id="FoodDesc">Here is the description</h2>
+        <div id="IngredientList"></div>
     </div>
 </div>
 <script>
