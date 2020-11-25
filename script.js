@@ -136,17 +136,18 @@ function goHome(){
 function ingredients(restaurant, menuItem){
     windowLocationSearch = window.location.search;
     document.getElementById('foodPopup').style.display = "block";
+    let popup = document.getElementById('foodPopup').style.display = "block";
 
-    if(document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML == ""){
+    if(document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML === ""){
         
         document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML = "<ul style=\"width: 0%;\">";
         for(let i = 0; i<data[0][restaurant].foodItems[menuItem].ingredients.length; i++){
-            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li style=\"display: inline-block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
-                                                                                                "<label for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
-                                                                                                data[0][restaurant].foodItems[menuItem].ingredients[i].name+
-                                                                                                "</label></li>";
+            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li style=\"display: inline-block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
+                "type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+"<label for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+                data[0][restaurant].foodItems[menuItem].ingredients[i].name+"</label></li>";
         }
-        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type=\"button\" class=\"AddToCart\" onclick=\"addToCart();\" style=\"background-color:#03DAC5; width:25%; text-align:center; height: 15%; padding: 5px; margin-left: 100px; margin-top: 10px; font-size: 30px; color: black; border-color: black; border-radius: 15px\" value=\"Add to cart\"></li>"
+        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type=\"button\" class=\"AddToCart\" onclick=\"addToCart();\" style=\"background-color:#03DAC5; " +
+            "width:25%; text-align:center; height: 15%; padding: 5px; margin-left: 100px; margin-top: 10px; font-size: 30px; color: black; border-color: black; border-radius: 15px\" value=\"Add to cart\"></li>"
         document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "</ul>";
         if(currRestaurant != -1 && currMenuItem != -1)
             document.getElementById("restaurant"+currRestaurant+"menuItem"+currMenuItem).innerHTML="";
