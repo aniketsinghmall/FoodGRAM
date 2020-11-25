@@ -114,7 +114,7 @@
     <div class="cart2" >
         <h1>Checkout</h1>
 
-            <form method="post">
+            <form method="post" onsubmit="let testVal = []; localStorage.setItem('cartContents', JSON.stringify(testVal));" >
 
             <label for="Delivery Address">Delivery Address<br></label>
             <input type="text" id="fname" name="fname" placeholder="First Name" required>
