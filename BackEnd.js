@@ -802,8 +802,8 @@ function getFoodText(){
     "Krabby Patty Burger:4.25:Main:Our Ocean Famous Burger. Comes with Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Secret Sauce:\n" +
     "Double Krabby Patty Burger:6.50:Main:A Krabby Patty Burger with an Extra Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
     "Triple Krabby Patty Burger:8.95:Main:A Double Krabby Patty Burger with 1.5x the Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
-    "Coral bits:2.41:Appetizer:Fresh Coral Grilled To Perfection.:\n" +
-    "Kelp Rings:5.97:Main:Deep Fried Kelp shaped into a ring. Good for the soul, bad for the arteries.:\n" +
+    "Coral bits:2.41:Appetizer:Fresh Coral Grilled To Perfection.:Ketchup:\n" +
+    "Kelp Rings:5.97:Main:Deep Fried Kelp shaped into a ring. Good for the soul, bad for the arteries.:Ketchup:\n" +
     "The Original Burger:6.15:Main:There can only be one original. Bob's Best Burger with our Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Bob Sauce:\n" +
     "Don't You Four Cheddar Bout Me:5.93:Main:A Delicious Cheese Burger with Aged Cheddar.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Extra Bob Sauce:\n" +
     "Sweet Home Avocado:6.46:Main:A Tasty Burger Topped with A Smathering Of Avacado.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Avacado, Extra Bob Sauce:\n" +
