@@ -448,19 +448,20 @@ function displayCart(){
                 costText.innerText = "$" + cart[i].foodItem.price;
                 uiMain.appendChild(document.createElement("br"));
                 uiMain.appendChild(costText);
-                let ui = document.createElement("ui");
+                let ingredientWords = "";
+                let ui = document.createElement("p");
                 let numElm = 0;
                 for(let j = 0; j < cart[i].choices.length; j++){
                     if(cart[i].choices[j]){
                         numElm ++;
-                        let li = document.createElement("li");
-                        li.innerText=cart[i].foodItem.ingredients[j].name;
-                        ui.appendChild(li);
+                        if(ingredientWords.length > 0)
+                            ingredientWords += ", ";
+                        ingredientWords += cart[i].foodItem.ingredients[j].name;
                     }
                 }
+                ui.innerText = ingredientWords;
                 uiMain.appendChild(ui);
-                if(numElm === 0)
-                    uiMain.appendChild(document.createElement("br"));
+                uiMain.appendChild(document.createElement("br"));
 
                 //create the drop down:
                 let friends = ["Me", "ChrisVat", "Ryan Campbell", "Matty P", "Aniket S"]

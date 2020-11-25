@@ -368,6 +368,7 @@ body {
   top: 0;
   overflow:hidden;
   overflow-y:scroll;
+  background-color:rgba(50,50,50,0.5);
   padding-left: 0;
   padding-top: 0;
   height:95%;
@@ -526,6 +527,7 @@ body {
   overflow-y:scroll;
   height: 85%;
   padding-left: 5%;
+  background-color:rgba(50,50,50,0.5);
   padding-right: 5%;
   padding-top: 0;
   list-style: none;
