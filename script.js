@@ -135,28 +135,69 @@ function goHome(){
 
 function ingredients(restaurant, menuItem){
     windowLocationSearch = window.location.search;
-    if(document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML == ""){
-        
-        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML = "<ul style=\"width: 0%;\">";
-        for(let i = 0; i<data[0][restaurant].foodItems[menuItem].ingredients.length; i++){
-            document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li style=\"display: inline-block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" type = \"checkbox\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
-                                                                                                "<label for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
-                                                                                                data[0][restaurant].foodItems[menuItem].ingredients[i].name+
-                                                                                                "</label></li>";
-        }
-        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "<li><input type=\"button\" class=\"AddToCart\" onclick=\"addToCart();\" style=\"background-color:#03DAC5; width:25%; text-align:center; height: 15%; padding: 5px; margin-left: 100px; font-size: 30px; color: black; border-color: black;\" value=\"Add to cart\"></li>"
-        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML += "</ul>";
-        if(currRestaurant != -1 && currMenuItem != -1)
-            document.getElementById("restaurant"+currRestaurant+"menuItem"+currMenuItem).innerHTML="";
-        currRestaurant = restaurant;
-        currMenuItem = menuItem;
+    console.log("In the function!");
+    document.getElementById('foodPopup').style.display = "block";
+    document.getElementById('FoodName').innerText = data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
+    document.getElementById("IngredientList").innerHTML = "";
+
+    for(let i = 0; i<data[0][restaurant].foodItems[menuItem].ingredients.length; i++){
+        let helper;
+        if(i%2 === 0)
+            helper = "\"IngredientRow1\"";
+        else
+            helper = "\"IngredientRow2\"";
+        let theOnPressFunction = "onclick=\"document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked = "+
+            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked; console.log('clicked');\"";
+        document.getElementById("IngredientList").innerHTML += "<li " + theOnPressFunction + " class = "+ helper +" " +
+            "style=\"display: block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
+            "type = \"checkbox\" class=\"checkItem\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+            "<label class = \"checkText\" for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+            data[0][restaurant].foodItems[menuItem].ingredients[i].name+"</label></li>";
+
+        document.getElementById("checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i).onclick = function() {
+            return false;
+        };
     }
-    else{
-        document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML="";
-        currRestaurant = -1;
-        currMenuItem = -1;
-    }
+    document.getElementById("IngredientList").innerHTML += "</ul>";
+    currRestaurant = restaurant;
+    currMenuItem = menuItem;
 }
+
+
+function ingredientsFromPremade(restaurant, menuItem, choices, name){
+    windowLocationSearch = window.location.search;
+    document.getElementById('foodPopup').style.display = "block";
+    document.getElementById('FoodName').innerText = name + " - " + data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
+    document.getElementById("IngredientList").innerHTML = "";
+
+    let foods = [];
+    for(let i = 0; i<data[0][restaurant].foodItems[menuItem].ingredients.length; i++){
+        let helper;
+        if(i%2 === 0)
+            helper = "\"IngredientRow1\"";
+        else
+            helper = "\"IngredientRow2\"";
+        let theOnPressFunction = "onclick=\"document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked = "+
+            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked;\"";
+        foods.push("checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i);
+        document.getElementById("IngredientList").innerHTML += "<li " + theOnPressFunction + " class = "+ helper +" style=\"display: block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
+            "type = \"checkbox\" class=\"checkItem\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+"<label class = \"checkText\" for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+            data[0][restaurant].foodItems[menuItem].ingredients[i].name+"</label></li>";
+    }
+    for(let i = 0; i<foods.length; i++){
+        document.getElementById("checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i).checked = choices[i];
+
+    }
+    // console.log("choices " + i + ": " + choices[i]);
+    // document.getElementById("checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i).checked = choices[i];
+    // document.getElementById("IngredientList").innerHTML += "</ul>";
+    currRestaurant = restaurant;
+    currMenuItem = menuItem;
+}
+
+
 
 function addToCart(){
     let customization = [];
@@ -166,4 +207,5 @@ function addToCart(){
     cartContents.push(new Recipe(data[0][currRestaurant].foodItems[currMenuItem], customization));
     ingredients(currRestaurant, currMenuItem);
     localStorage.setItem("cartContents", JSON.stringify(cartContents));
+    hidePopUp();
 }
