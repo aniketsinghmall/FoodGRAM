@@ -418,6 +418,17 @@ function getData(){
 }
 
 
+function changeReviews(value){
+    sessionStorage.setItem(("Trending"), value);
+    let buttons = document.getElementsByClassName('deleteMe');
+    while(buttons[0]) {
+        buttons[0].parentNode.removeChild(buttons[0]);
+    }
+    displayRestaurantReviews();
+}
+
+
+
 function displayRestaurantReviews() {
     let reviews;
     let dir;
@@ -429,7 +440,7 @@ function displayRestaurantReviews() {
             reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("UserFoodReviews")),
                 decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
         dir = getFoodPhotoDir(reviews[0].recipe.foodItem.name.toLowerCase());
-        console.log("dir: " + dir);
+        //console.log("dir: " + dir);
     }
     else{ //searching for a restaurant
 
@@ -442,9 +453,28 @@ function displayRestaurantReviews() {
     }
     for (let i = 0; i < reviews.length; i++) {
         let btn = document.createElement("BUTTON");
+        btn.className = "deleteMe";
         let itemValue = "";
-        if(window.location.search.includes("restaurant=")) {
+        if(window.location.search.includes("restaurant=")) { // in restaurant page.
             itemValue = reviews[i].recipe.foodItem.name;
+            let restNum = -1;
+            let foodNum = -1;
+            let dataTest = JSON.parse(sessionStorage.getItem("Restaurants"));
+            for(let p = 0; p<dataTest.length && restNum == -1; p++){
+                if(reviews[0].restaurant.name == dataTest[p].name) {
+                    restNum = p;
+                }
+            }
+            for(let j = 0; j < dataTest[restNum].foodItems.length && foodNum == -1; j++){
+                if(reviews[i].recipe.foodItem.name == dataTest[restNum].foodItems[j].name) {
+                    foodNum = j;
+                }
+            }
+
+            btn.onclick = function(){
+                ingredientsFromPremade(restNum, foodNum, reviews[i].recipe.choices, reviews[i].user.name);
+            };
+
         }
         else{
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
@@ -452,6 +482,9 @@ function displayRestaurantReviews() {
         }
         btn.innerHTML =  "<span class = 'ReviewText SocialMenu RestaurantReviews'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" +  reviews[i].rating + "/5<br/> </span>";
         if (window.location.search.includes("restaurant="))
+
+
+
             dir = getFoodPhotoDir(reviews[i].recipe.foodItem.name.toLowerCase());
         else
             dir = getRestaurantPhotoDir(reviews[i].restaurant.name.toLowerCase())
@@ -460,11 +493,11 @@ function displayRestaurantReviews() {
         btn.style.backgroundRepeat = 'no-repeat'
         btn.style.backgroundPosition = 'center';
         document.getElementById("RestaurantReviews").appendChild(btn);
-
-
     }
-
-
+    if(sessionStorage.getItem("Trending") == 'true')
+        document.getElementById("reviewTitle").innerText = "Trending Reviews";
+    else
+        document.getElementById("reviewTitle").innerText = "Friend Reviews";
     
 
 
@@ -485,6 +518,23 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
         if (reviews[0] !== undefined) { //looking for food.
             let uniqueReview = getUniqueFoodReviews(reviews);
             let index =  mod(parseInt((sessionStorage.getItem("FeaturedReviewNum")) + uniqueReview.length*10), uniqueReview.length);
+            let restNum = -1;
+            let foodNum = -1;
+            let dataTest = JSON.parse(sessionStorage.getItem("Restaurants"));
+            for(let i = 0; i<dataTest.length && restNum == -1; i++){
+                if(dataTest[i].name == uniqueReview[index].restaurant.name) {
+                    restNum = i;
+                }
+            }
+            for(let i = 0; i < dataTest[i].foodItems.length && foodNum == -1; i++){
+                if(dataTest[restNum].foodItems[i].name == uniqueReview[index].recipe.foodItem.name) {
+                    foodNum = i;
+                }
+            }
+
+            btn.onclick = function(){
+                ingredients(restNum, foodNum);
+            };
             btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
             // btn.style.textAlign
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
@@ -704,8 +754,10 @@ function getFoodPhotoDir(foodName){
     return "foodImages/" + category + "/" + category + ((Math.floor(Math.random() * foodPhotoCount[category])) + 1) +".jpg";
 }
 
+function hidePopUp(){
+    document.getElementById("foodPopup").style.display = "none";
 
-
+}
 
 function getRestaurantText(){
     let string1 = "Aniket's Iced Chowder Cafe(Frozen Clam Chowder, Frozen Lamb Chowder, Lukewarm Potato Chowder, Scolding Hot Cheese Chowder)\n" +
@@ -757,8 +809,6 @@ function getFoodText(){
     "Sweet Home Avocado:6.46:Main:A Tasty Burger Topped with A Smathering Of Avacado.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Avacado, Extra Bob Sauce:\n" +
     "Eggers Can't Be Cheesers:9.69:Main:Cheeseburger with an egg on it. Sweet livin'.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo, Extra Bob Sauce:\n" +
     "Gourdon Hamsy:7.82:Main:Served with Squash and Ham. Brought Tears To Gordon Ramsay's Eyes.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo, Extra Ham, Extra Bob Sauce:\n" +
-    "French Fries:6.32:Main:Delicious classic french fries, nothing special here!:Extra Salt, Buttered Fries, Ketchup:\n" +
-    "Hot Dog:5.33:Main:A classic Hotdog.:Ketchup, Mustard, Onions, Relish:\n" +
     "Jumbo Dog:7.31:Main:A classic Jumbodog, its like a Hotdog but bigger!:Ketchup, Mustard, Onions, Relish:\n" +
     "The Ron Swanson Supreme:7.65:Main:Quadruple Burger, hold the veggies.:Extra Meat, Additional Protein, Extra Perservatives:\n" +
     "The Meat Tornado:10.35:Main:Assorted Meats, Guranteed to Give you the Meat Sweats.:Extra Meat, Additional Protein, Extra Perservatives:\n" +
@@ -769,7 +819,6 @@ function getFoodText(){
     "MeeMaw's Famous Burger Slider:1.81:Main:Extra Small Cheeseburger. Cooked by the Mother of North-West St. Vital's fifth best Fry Cook.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
     "Matt's Curly Fries:1.21:Main:Like normal fries but all bendy.:Extra Salt, Buttered Fries, Ketchup:\n" +
     "Matt's Musk Burger:6.36:Main:Matty's Big Ol' Cheeseburger with extra Musk Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
-    "French Fries:6.32:Main:Delicious classic french fries, nothing special here!:Extra Salt, Buttered Fries, Ketchup:\n" +
     "Fried Wings:4.98:Main:Delicious Fried Wings.:Spicy Dip, Medium Dip, Cool Dip, Ranch Dip:\n" +
     "Quesadillas:5.1:Main:Our Famous Quesadillas. You're going to love them.:Lettuce, Tomatoes, Onions, Peppers, Guacamole:\n" +
     "Chicken Sandwich:6.81:Main:Our Chicken Sandwhich was perfected through iterative design.:Lettuce, Tomatoes, Guacamole:\n" +
@@ -896,7 +945,7 @@ let foodPhotoCount = {  // folder name, count of files in that folder.
     "mousse": 1,
     "olives": 1,
     "onionring": 3,
-    "pickle": 3,
+    "pickle": 2,
     "pie": 2,
     "pizza": 9,
     "prawn": 1,

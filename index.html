@@ -34,13 +34,13 @@
             <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
             <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
             <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
-            <li><a href = "index.html?search=Dessert"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
-            <li><a href = "index.html?search=Drinks"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
+            <li><a href = "index.html?search=Chocolate"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
+            <li><a href = "index.html?search=Coffee"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
         </ul>
     </div>
 
     <div class="socialMenu" id = "socialMenu">  <!-- This is the reviews on left side -->
-        <p id = "reviewTitle" >Trending Reviews</p>
+        <p id = "reviewTitle" ></p>
         <ul id = "RestaurantReviews" class = "RestaurantReviews">
         </ul>
         <script> displayRestaurantReviews() </script>
@@ -51,8 +51,9 @@
     </div>
 
     <div class="menuChoice">
-        <button class = "TrendingButton" onclick="document.getElementById('reviewTitle').textContent='Trending Review'"> Trending Reviews </button>
-        <button class = "FriendButton" onclick="document.getElementById('reviewTitle').textContent='Friend Reviews'"> Friend Reviews </button>
+        <button class = "TrendingButton" onclick="changeReviews(true)"> Trending Reviews </button>
+        <button class = "FriendButton" onclick="changeReviews(false);"> Friend Reviews </button>
+
     </div>  <!-- These are Friends/Trending Buttons -->
 
     <div class="featuredReview">  <!-- This is the big review in the top middle. -->
@@ -273,25 +274,29 @@
 
 
 <div id="foodPopup" class="modal2">
-    <!-- Modal content -->
     <div class="modal-content2 animate">
         <div>
             <span>
-                <button style = "width:50px; display:block;" id = "closePopupPage" class = "headerButton2" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
+                <button style = "width:50px;" id = "closePopupPage" class = "headerButton2" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
             </span>
             <h1 id="FoodName">Food Item!</h1>
         </div>
         <h2 id="FoodDesc">Here is the description</h2>
         <div id="IngredientList"></div>
+        <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
+        <button id="AddReview" class = "headerButton4">Add To Reviews</button>
     </div>
 </div>
+
 <script>
     document.getElementById('closePopupPage').onclick = function() {
-        document.getElementById("foodPopup").style.display = "none";
+        hidePopUp();
+        //document.getElementById("foodPopup").style.display = "none";
     }
     window.onclick = function(event) {
         if (event.target === document.getElementById("foodPopup")) {
-            document.getElementById("foodPopup").style.display = "none";
+            hidePopUp();
+            //document.getElementById("foodPopup").style.display = "none";
         }
     }
 </script>
