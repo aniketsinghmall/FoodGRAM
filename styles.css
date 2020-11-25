@@ -347,7 +347,8 @@ body {
 
 .socialMenu{
   position: sticky;
-  background-color: none;  
+  background-image: url("background.jpg");
+  background-color: none;
   color: rgb(25,25,25);
   border-radius: 25px;
   list-style-type: none;
@@ -498,6 +499,15 @@ body {
 /* End of Featured Review CSS.*/
 /* Restaurants / Food Items CSS.*/
 
+
+
+.mainMenu{
+  background-image: url("backgroundmenu.jpg");
+  border-radius: 25px;
+  width: 90%;
+  margin-left:5%;
+}
+
 .mainMenu h1{
   background-color: rgb(35, 35, 35);
   color: rgba(187,134,252, 200);
@@ -527,7 +537,6 @@ body {
   overflow-y:scroll;
   height: 85%;
   padding-left: 5%;
-  background-color:rgba(50,50,50,0.5);
   padding-right: 5%;
   padding-top: 0;
   list-style: none;
@@ -555,6 +564,7 @@ body {
   border-style: outset;
   border-radius: 15px;
   text-align: left;
+  opacity: 100%;
 }
 
 .mainMenu button:hover{
