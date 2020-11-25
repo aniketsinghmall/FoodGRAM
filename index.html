@@ -58,63 +58,20 @@
 
   <div id = "test" class = "featuredReview">
 
-
     <button class = "featuredReviewButton left" onclick="plusDivs(1)">&#10094;  </button>
-
-
 
     <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center"> 
 
-      
-
-
-
     </button>
-
-
-
 
     <button class = "featuredReviewButton right" onclick="nextImage()" onclick="plusDivs(1)">&#10095; </button>
 
-
   </div>
-
-
-
-
-
 
       <!--img class="mySlides" src="testfoodpic1.jpg" width="400" height="200"-->
       <!--img class="mySlides" src="testfoodpic2.jpg" width="400" height="200"-->
 
-        <script>
-        var slideIndex = 1;
-        showDivs(slideIndex);
-
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            x[slideIndex-1].style.display = "block";
-        }
-        </script>
-
-
-
-
-
   <script> displayFeaturedReview() </script>
-
-
-
 
   <span class = "mainMenu">
     <div id = "menu">
@@ -147,13 +104,13 @@
 	</form>
   </div>
   
-    <div id="loginSucess" class="modal">
+    <div id="loginSuccess" class="modal">
 <div class="modal-content animate" style ="color: rgba(187,134,252);">
 	  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
 	  <p>You have been successfully logged in.</p><br>
 	  <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
 	  <p>You can close this window now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('loginSucess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
+	  <button class = "cancelButton" onclick="document.getElementById('loginSuccess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
 	</div>
   </div>
   
@@ -161,7 +118,8 @@
 	<form class="modal-content animate" method="post">
 		<div style ="color: rgba(187,134,252);">
 		  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-		  
+
+            <form onsubmit="foo()">
 		  <label for="fname"><b>First Name:</b></label><br>
 		  <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
 		  
@@ -184,18 +142,27 @@
 		  <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 		  
 			
-		  <button class = "headerButton" onclick="document.getElementById('signupSucess').style.display='block';" >Sign Up</button>
-		  <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
-		</div>
+		  <button class = "headerButton" type="submit">Sign Up </button>
+		  <button class = "cancelButton"  onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+              <script>
+                  function foo()
+                  {
+                      document.getElementById('signupSuccess').style.display='block'
+                  }
+              </script>
+        </form>
+
+
+        </div>
 	</form>
   </div>
 
-  <div id="signupSucess" class="modal">
+  <div id="signupSuccess" class="modal">
 	<div class="modal-content animate" style ="color: rgba(187,134,252);">
 	  <h1 style="text-align:center;">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
 	  <p>Your account has been created successfully.</p><br>
 	  <p>You can close this window and login now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('signupSucess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
+	  <button class = "cancelButton" onclick="document.getElementById('signupSuccess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
 	</div>
   </div>
   
