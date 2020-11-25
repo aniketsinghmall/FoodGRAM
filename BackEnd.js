@@ -480,6 +480,7 @@ function displayCart(){
                 document.getElementById("CartList").appendChild(uiMain);
             }
         }
+        cost = parseInt(cost*100)/100;
         document.getElementById("TotalCost").innerText = "Total Cost: $"+cost;
 }
 
