@@ -1,4 +1,3 @@
-
 <!-- This will be the main page of our website-->
 
 <!DOCTYPE html>
@@ -6,292 +5,303 @@
 <html>
 
 <head>
-  <link id = "myStyleSheet" rel="stylesheet" href="styles.css">
-  <script type="text/javascript" src="BackEnd.js"></script>
-  <script src = "BackEnd.js"> </script>
-  <!-- Imports Google icons for use-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link id = "myStyleSheet" rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="BackEnd.js"></script>
+    <script src = "BackEnd.js"> </script>
+    <!-- Imports Google icons for use-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 
 <title>Welcome to FoodGram</title>
 
 <body>
+<div class="grid-container"> <!-- Site contained in grid -->
 
-  <header id="headerButtons"> 
-
-    <button class = "headerButton left" onclick="document.getElementById('signup').style.display='block'"> Sign Up </button>
-    <button class = "headerButton left" onclick="document.getElementById('login').style.display='block'"> Log In </button>
-    <img id = "logo" src="logo1.png">
-      <button class = "headerButton right" onclick="document.getElementById('cart').style.display='block'"
-              id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart </button>
-    <!--<button class = "headerButton right" id = "searchButton"> <i class="material-icons">search</i> Search  </button> -->
-    <form>
-      <input id = "searchBar" type="text" name="search">
-    </form>
-  </header>
-
-
-  <ul class = "topNavBar">
-    
-        <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
-        <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
-        <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
-        <li><a href = "index.html?search=Dessert"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
-        <li><a href = "index.html?search=Drink"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
-  
-  </ul>
-
-  <div id = "socialMenu" class = "socialMenu">
-
-    <ul id = "RestaurantReviews" class = "RestaurantReviews">
-    </ul>
-
-  </div>
-
-
-
-
-
-
-  <script> displayRestaurantReviews() </script>
-
-  <div id = "test" class = "featuredReview">
-
-    <button class = "featuredReviewButton left" onclick="plusDivs(1)">&#10094;  </button>
-
-    <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center"> 
-
-    </button>
-
-    <button class = "featuredReviewButton right" onclick="nextImage()" onclick="plusDivs(1)">&#10095; </button>
-
-  </div>
-
-      <!--img class="mySlides" src="testfoodpic1.jpg" width="400" height="200"-->
-      <!--img class="mySlides" src="testfoodpic2.jpg" width="400" height="200"-->
-
-  <script> displayFeaturedReview() </script>
-
-  <span class = "mainMenu">
-    <div id = "menu">
-      <h1 id = "resultsHeader" name = "menu"> Popular Restaurants</h1>
-      
-      <ul id = "resultsList">
-    
-        <a href = "#Mike's Special"> Mike's Special </a>
-
-      </ul>
-      <h1></h1>
-    </div>
-  </span>
-  <script src = "script.js"> </script>
-  <script> searchResults() </script>
-
-  <div id="login" class="modal">
-	<form class="modal-content animate" method="post">
-    <div style ="color: rgba(187,134,252);">
-		  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-		  <label for="username"><b>Username:</b></label><br>
-		  <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
-
-		  <label for="pass"><b>Password:</b></label><br>
-		  <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
-			
-		  <button class = "headerButton" onclick="document.getElementById('loginSucess').style.display='block';">Log In</button>
-		  <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
-		</div>
-	</form>
-  </div>
-  
-    <div id="loginSuccess" class="modal">
-<div class="modal-content animate" style ="color: rgba(187,134,252);">
-	  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-	  <p>You have been successfully logged in.</p><br>
-	  <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
-	  <p>You can close this window now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('loginSuccess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
-	</div>
-  </div>
-  
-  <div id="signup" class="modal">
-	<form class="modal-content animate" method="post">
-		<div style ="color: rgba(187,134,252);">
-		  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-
-            <form onsubmit="foo()">
-		  <label for="fname"><b>First Name:</b></label><br>
-		  <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
-		  
-		  <label for="lname"><b>Last Name:</b></label><br>
-		  <input class = "login" type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>	
-
-		  <label for="phone"><b>Phone Number:</b></label><br>
-		  <input class = "login" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required><br>			  
-		  
-		  <label for="email"><b>Email:</b></label><br>
-		  <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
-		  
-		  <label for="username"><b>Username:</b></label><br>
-		  <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
-
-		  <label for="pass"><b>Password:</b></label><br>
-		  <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
-		  
-		  <label for="confpass"><b>Confirm Password:</b></label><br>
-		  <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
-		  
-			
-		  <button class = "headerButton" type="submit">Sign Up </button>
-		  <button class = "cancelButton"  onclick="document.getElementById('signup').style.display='none';">Cancel</button>
-              <script>
-                  function foo()
-                  {
-                      document.getElementById('signupSuccess').style.display='block'
-                  }
-              </script>
+    <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
+        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
+        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
+        <img id = "logo" src="logo1.png">
+        <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
+        </button>
+        <form>
+            <input id = "searchBar" type="text" name="search">
         </form>
+    </div>
 
+    <div class="bottomHeader"> <!-- Bottom header for category buttons -->
+        <ul class = "topNavBar">
+            <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
+            <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
+            <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
+            <li><a href = "index.html?search=Chocolate"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
+            <li><a href = "index.html?search=Coffee"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
+        </ul>
+    </div>
 
-        </div>
-	</form>
-  </div>
+    <div class="socialMenu" id = "socialMenu">  <!-- This is the reviews on left side -->
+        <p id = "reviewTitle" ></p>
+        <ul id = "RestaurantReviews" class = "RestaurantReviews">
+        </ul>
+        <script> displayRestaurantReviews() </script>
+    </div>
 
-  <div id="signupSuccess" class="modal">
-	<div class="modal-content animate" style ="color: rgba(187,134,252);">
-	  <h1 style="text-align:center;">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-	  <p>Your account has been created successfully.</p><br>
-	  <p>You can close this window and login now.</p><br>
-	  <button class = "cancelButton" onclick="document.getElementById('signupSuccess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
-	</div>
-  </div>
-  
-  <div id="contact" class="modal">
-	<div class="modal-content animate" style ="color: rgba(187,134,252);">
-	  <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
-	  <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
-	  <pre style="font-size: 16px; font-weight: bold; font-size: large;">		
-	  Developed by: 
-	  Aniket Mall 								malla@myumanitoba.ca
+    <div class="title"> <!-- Bottom header for category buttons -->
+        <h1 id = "resultsHeader" name = "menu"> Popular Restaurants</h1>
+    </div>
+
+    <div class="menuChoice">
+        <button class = "TrendingButton" onclick="changeReviews(true)"> Trending Reviews </button>
+        <button class = "FriendButton" onclick="changeReviews(false);"> Friend Reviews </button>
+
+    </div>  <!-- These are Friends/Trending Buttons -->
+
+    <div class="featuredReview">  <!-- This is the big review in the top middle. -->
+        <button class = "featuredReviewSideLeftButton" onclick="changeFeaturedReview(-1)">&#10094;  </button>
+        <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center">
+        </button>
+        <button class = "featuredReviewSideButton" onclick="changeFeaturedReview(1)">&#10095; </button>
+    </div>
+    <script> displayFeaturedReview() </script>
+
+    <div class="results mainMenu menu">
+      <ul id = "resultsList">
+        <a href = "#Mike's Special"> Mike's Special </a>
+      </ul>
+        <script src = "script.js"> </script>
+        <script> searchResults() </script>
+    </div>
+
+    <div class="footer">
+        <div id="contact" class="modal">
+            <div class="modal-content animate" style ="color: rgb(187,134,252);">
+                <h1 style="text-align:center">Welcome to FoodGram!</h1>
+                <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
+                <pre style="font-size: 16px; font-weight: bold; font-size: large;">
+	  Developed by:
+        Aniket Mall 							        malla@myumanitoba.ca
 	  Christopher Vattheuer	 						vattheuc@myumanitoba.ca
 	  Matthias Penner 							pennerm2@myumanitoba.ca
 	  Paul Granelli 							umgranel@myumanitoba.ca
 	  Ryan Campbell 							campb169@myumanitoba.ca</pre><br>
-	  <button class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
-	</div>
-  </div>
+                <button class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
+            </div>
+        </div>
 
-  <div class="footer">
-    <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
-  </div>
+        <div class="footer">
+            <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
+            <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
+        </div>
 
-  <!--CART SECTION-->
-  <div id="cart" class="modal">
+    </div>
+</div>
 
-      <div class="cartHeader">
-          <h1 style="text-align:center">Your Order</h1>
-      </div>
 
-          <div class="cart1">
-              <ul>
-                  <li>Item X</li>
-                  <li>Item Y</li>
-                  <li>Item Z</li>
-                  <li>Item Scooby Doo</li>
-              </ul>
-          </div>
+<!--CART SECTION.  CONSIDER MAKING IT GRAPH BASED? NOT SURE HOW IT WORKS FOR MODAL.-->
+<div id="cart" class="modal grid-cart">
 
-          <div class="cart2">
-              <h1>Payment Options</h1>
-              <label for="Payment Method">Select Payment Method:</label>
+    <div class="cartHeader">
+        <h1 style="text-align:center">Your Order</h1>
+    </div>
 
-              <select name="Payment Method" id="Payment Method" onchange="displayInput();" onfocus="this.selectedIndex = -1;" >
-                  <option value="Choose">Choose</option>
-                  <option value="Credit">Credit</option>
-                  <option value="Debit">Debit</option>
-                  <option value="FG Dollars">FG Dollars</option>
-              </select>
+    <div class="cart1">
+        <h1 style="text-align: center;">Order Summary</h1>
+        <div>
+        <ul id="CartList">
+        </ul>
+    </div>
 
-              <div id = "creditSelected" style = "display:none;">
-                  <br><br><br>
-                  <label for="cardNum"><b>Card Number:</b></label><br>
-                  <input type="text" id="cardNum" name="cardNum" placeholder="Card Number" required><br>
 
-                  <label for="cardName"><b>Card Holder's Name:</b></label><br>
-                  <input type="text" id="cardName" name="cardName" placeholder="Card Holder's Name" required><br>
 
-                  <label for="exp"><b>Exp:</b></label>
-                  <input type="text" id="exp" name="exp" placeholder="MM/YY" required>
-                  <label for="ccv"><b>CCV:</b></label>
-                  <input type="text" id="ccv" name="ccv" placeholder="CCV " required>
+    </div>
 
-                  <label for="address"><b>Billing Address:</b></label>
-                  <input type="text" id="address" name="address" placeholder="Billing Address" required>
-                  <label for="postalCode"><b>Postal Code:</b></label>
-                  <input type="text" id="postalCode" name="postalCode" placeholder="Postal Code" required>
+    <div class="cart2">
+        <h1>Checkout</h1>
 
-              </div>
+        <label for="Delivery Address">Delivery Address<br></label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <input type="text" id="postal" name="postal" placeholder="Postal Code" required><br>
 
-              <div id = "debitSelected" style = "display:none;">
-                  <br><br><br>
-                  <label for="cardNum"><b>Card Number:</b></label><br>
-                  <input type="text" id="cardNum" name="cardNum" placeholder="Card Number" required><br>
+        <br>
 
-                  <label for="cardName"><b>Card Holder's Name:</b></label><br>
-                  <input type="text" id="cardName" name="cardName" placeholder="Card Holder's Name" required><br>
 
-                  <label for="insitution"><b>Select Bank:</b></label><br>
-                  <br>
-                  <select name="Bank" id="Bank">
-                      <option value="Choose">Choose</option>
-                      <option value="RBC">RBC</option>
-                      <option value="TD">TD</option>
-                      <option value="CIBC">CIBC</option>3
-                      <option value="BMO">BMO</option>
-                  </select>
-              </div>
-              <div id = "fgSelected" style = "display:none;">
-                  <br><br><br>
-                  <label for="redeem"><b>Redeem FG Dollars:</b></label><br>
-                  <input type="text" id="redeem" name="redeem" placeholder="Enter Amount" required><br>
+        <label for="Billing Address">Billing Address<br></label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <input type="text" id="postal" name="postal" placeholder="Postal Code" required><br>
 
-                  <label for="remaining"><b>Current FG Dollars Balance: $50.00</b></label><br>
-                  <br>
-              </div>
+        <br>
 
-          </div>
 
-          <div class = "footer">
-              <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
-              <button class = "acceptButton" onclick="document.getElementById('cart').style.display='none';">Process Payment</button>
-          </div>
 
-      <script>
-          function displayInput() {
-              var selected = document.getElementById("Payment Method").value;
-              document.getElementById('creditSelected').style.display = "none";
-              document.getElementById('debitSelected').style.display = "none";
-              document.getElementById('fgSelected').style.display = "none";
+    <label for="Payment Method"><pre>Payment Method</pre></label>
+        <input type="text" style="margin-left: 0px; width:186px;" id="ccNumber" name="ccNumber" placeholder="Credit Card Number" required>
 
-              if ( selected == "Credit" )
-              {
-                  document.getElementById('creditSelected').style.display = "block";
-              }
-              if ( selected == "Debit" )
-              {
-                  document.getElementById('debitSelected').style.display = "block";
-              }
-              if ( selected == "FG Dollars" )
-              {
-                  document.getElementById('fgSelected').style.display = "block";
-              }
-          }
-      </script>
+        <br>
 
-  </div>
+        <label for="expiryMonth">Expiry</label>
+        <select name="expiryMonth" id="expiryMonth">
 
-  </div>
-  </div>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+
+        </select>
+
+        <label for="expiryYear"></label>
+        <select name="expiryYear" id="expiryYear">
+
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+
+        </select>
+        <input type="text" style="width: 40px;" id="ccNumber" name="cvcCode" placeholder="CVC" required><br>
+
+
+
+ 
+    </div>
+
+
+
+    <div class = "footerCart">
+        <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
+        <button class = "acceptButton" onclick="document.getElementById('cart').style.display='none';">Process Payment</button>
+    </div>
+
+
+
+
+</div>
+
+
+
+<!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
+<div id="login" class="modal">
+    <form class="modal-content animate" method="post">
+
+        <div style ="color: rgb(187,134,252);">
+
+            <h1 style="text-align:center">Welcome to FoodGram!</h1>
+            <label for="username"><b>Username:</b></label><br>
+            <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
+
+            <label for="pass"><b>Password:</b></label><br>
+            <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
+
+            <button class = "headerButton" onclick="document.getElementById('loginSucess').style.display='block';">Log In</button>
+            <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
+        </div>
+        </div>
+    </form>
+</div>
+
+<div id="loginSucess" class="modal">
+    <div class="modal-content animate" style ="color: rgba(187,134,252);">
+        <h1 style="text-align:center">Welcome to FoodGram!</h1>
+        <p>You have been successfully logged in.</p><br>
+        <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
+        <p>You can close this window now.</p><br>
+        <button class = "cancelButton" onclick="document.getElementById('loginSucess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
+    </div>
+    </div>
+</div>
+
+<div id="signup" class="modal">
+    <form class="modal-content animate" method="post">
+        <div style ="color: rgba(187,134,252);">
+            <h1 style="text-align:center">Welcome to FoodGram!</h1>
+
+            <label for="fname"><b>First Name:</b></label><br>
+            <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
+
+            <label for="lname"><b>Last Name:</b></label><br>
+            <input class = "login" type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+
+            <label for="phone"><b>Phone Number:</b></label><br>
+            <input class = "login" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required><br>
+
+            <label for="email"><b>Email:</b></label><br>
+            <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
+
+            <label for="username"><b>Username:</b></label><br>
+            <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
+
+            <label for="pass"><b>Password:</b></label><br>
+            <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
+
+            <label for="confpass"><b>Confirm Password:</b></label><br>
+            <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
+
+
+            <button class = "headerButton" onclick="document.getElementById('signupSucess').style.display='block';" >Sign Up</button>
+            <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+        </div>
+        </div>
+    </form>
+</div>
+
+<div id="signupSucess" class="modal">
+    <div class="modal-content animate" style ="color: rgba(187,134,252);">
+        <h1 style="text-align:center;">Welcome to FoodGram!</h1>
+        <p>Your account has been created successfully.</p><br>
+        <p>You can close this window and login now.</p><br>
+        <button class = "cancelButton" onclick="document.getElementById('signupSucess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
+    </div>
+</div>
+
+
+<!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
+
+
+
+<div id="foodPopup" class="modal2">
+    <div class="modal-content2 animate">
+        <div>
+            <span>
+                <button style = "width:50px;" id = "closePopupPage" class = "headerButton2" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
+            </span>
+            <h1 id="FoodName">Food Item!</h1>
+        </div>
+        <h2 id="FoodDesc">Here is the description</h2>
+        <div id="IngredientList"></div>
+        <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
+        <button id="AddReview" class = "headerButton4">Add To Reviews</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('closePopupPage').onclick = function() {
+        hidePopUp();
+        //document.getElementById("foodPopup").style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target === document.getElementById("foodPopup")) {
+            hidePopUp();
+            //document.getElementById("foodPopup").style.display = "none";
+        }
+        if(event.target.classList.contains("checkItem")){
+            event.target.checked = !event.target.checked;
+        }
+    }
+</script>
+
+
 
 
 
