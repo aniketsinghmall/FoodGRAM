@@ -695,7 +695,7 @@ body {
 
 .cart1 {
   width: 48%;
-  height: 500px;
+  height: 40%;
   float:left;
   border: 1px solid white;
   color: rgb(187,134,252);
@@ -703,9 +703,9 @@ body {
 }
 
 .cart2 {
-  width:48%;
+  width:46%;
   float:left;
-  height: 500px;
+  height: 40%;
   border: 1px solid white;
   color: rgb(187,134,252);
   grid-area: cart2;
