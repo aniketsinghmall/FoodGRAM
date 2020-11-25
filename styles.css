@@ -895,7 +895,7 @@ overflow: scroll;
 .cart1 li{
    
   color: rgb(187,134,252);
-  font-size: large;
+  font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 
@@ -984,9 +984,13 @@ overflow: scroll;
 }
 
 
-.deleteMeToo {
+.deleteMeToo { /* this is the food items in cart */
   padding:10px;
 }
+
+
+
+
 
 
 
