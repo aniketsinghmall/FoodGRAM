@@ -732,6 +732,31 @@ body {
   grid-area: cart1;
 }
 
+
+.cart1 h1{
+  text-align: center;
+  color: rgb(187,134,252);
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.cart1 label{
+ 
+  color: rgb(187,134,252);
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}  
+
+.cart1 pre{
+
+  color: rgb(187,134,252);
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
 .cart2 {
   width:46%;
   float:left;
@@ -740,6 +765,33 @@ body {
   color: rgb(187,134,252);
   grid-area: cart2;
 }
+
+
+.cart2 h1{
+  text-align: center;
+  color: rgb(187,134,252);
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.cart2 label{
+ 
+  color: rgb(187,134,252);
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}  
+
+.cart2 pre{
+
+  color: rgb(187,134,252);
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+
 
 .footerCart {
   bottom: 0;

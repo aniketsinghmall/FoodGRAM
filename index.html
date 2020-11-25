@@ -103,26 +103,86 @@
     </div>
 
     <div class="cart1">
+        <h1 style="text-align: center;">Order Summary</h1>
         <ul>
             <li>Item X</li>
             <li>Item Y</li>
             <li>Item Z</li>
             <li>Item Scooby Doo</li>
         </ul>
-    </div>
 
-    <div class="cart2">
-        <h1 style="text-align: center;">Payment Options</h1>
-        <label for="Payment Method">Select Payment Method:</label>
-
+        <label for="Payment Method">Add friends to order<br></label>
         <select name="Payment Method" id="Payment Method">
-            <option value="Credit">Credit</option>
-            <option value="Debit">Debit</option>
-            <option value="FG Dollars">FG Dollars</option><br>
+            <option value="Christopher">Christopher</option>
+            <option value="Ryan">Ryan</option>
+            <option value="Paul">Paul</option><br>
 
             <label for="lname"><b>Last Name:</b></label><br>
             <input type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
         </select>
+
+
+
+    </div>
+
+    <div class="cart2">
+        <h1>Checkout</h1>
+
+
+
+        <label for="Delivery Address">Delivery Address<br></label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <input type="text" id="postal" name="postal" placeholder="Postal Code" required><br>
+
+        <br>
+
+
+        <label for="Billing Address">Billing Address<br></label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <input type="text" id="postal" name="postal" placeholder="Postal Code" required><br>
+
+        <br>
+
+
+
+        <label for="Payment Method">Payment<br></label>
+        <input type="text" id="ccNumber" name="ccNumber" placeholder="Credit Card Number" required><br>
+        <input type="text" id="ccNumber" name="cvcCode" placeholder="CVC" required><br>
+
+        <label for="expiryMonth"><pre>Expiry: Month   Year</pre></label>
+        <select style="margin-left: 60px;" name="expiryMonth" id="expiryMonth">
+
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+
+        </select>
+
+        <label for="expiryYear"></label>
+        <select name="expiryYear" id="expiryYear">
+
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+
+        </select>
+
+ 
     </div>
 
     <div class = "footerCart">
@@ -135,13 +195,8 @@
 <!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
     <form class="modal-content animate" method="post">
-<<<<<<< Updated upstream
         <div style ="color: rgba(187,134,252);">
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
-=======
-        <div style ="color: rgb(187,134,252);">
-            <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
->>>>>>> Stashed changes
             <label for="username"><b>Username:</b></label><br>
             <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
 
@@ -155,13 +210,8 @@
 </div>
 
 <div id="loginSucess" class="modal">
-<<<<<<< Updated upstream
     <div class="modal-content animate" style ="color: rgba(187,134,252);">
         <h1 style="text-align:center">Welcome to FoodGram!</h1>
-=======
-    <div class="modal-content animate" style ="color: rgb(187,134,252);">
-        <h1 style="text-align:center">Welcome to <img id = "logo" src="logo1.png" style="top: +10px;">!</h1>
->>>>>>> Stashed changes
         <p>You have been successfully logged in.</p><br>
         <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
         <p>You can close this window now.</p><br>
