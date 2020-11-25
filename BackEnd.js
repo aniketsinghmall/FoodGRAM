@@ -411,6 +411,8 @@ function getData(){
 
         // conditional items:
         sessionStorage.setItem("Trending", "false");
+        let testVal = [];
+        localStorage.setItem("cartContents", JSON.stringify(testVal));
 
         sessionStorage.setItem("Restaurants", JSON.stringify(results[0]));
     }
@@ -426,6 +428,54 @@ function changeReviews(value){
     }
     displayRestaurantReviews();
 }
+
+
+function displayCart(){
+        let cart = JSON.parse(localStorage.getItem("cartContents"));
+
+        let cartItems = document.getElementsByClassName('deleteMeToo');
+        while(cartItems[0]) {
+            cartItems[0].parentNode.removeChild(cartItems[0]);
+        }
+
+        if(cart != null) {
+            // document.getElementById("cartOrderItem").childNodes[0].nodeValue="hi";
+            for (let i = 0; i < cart.length; i++) {
+                let uiMain = document.createElement("li");
+                uiMain.className = "deleteMeToo";
+                uiMain.innerText = cart[i].foodItem.name;
+                let costText = document.createElement("p");
+                costText.innerText = "$" + cart[i].foodItem.price;
+                uiMain.appendChild(document.createElement("br"));
+                uiMain.appendChild(costText);
+                let ui = document.createElement("ui");
+                let numElm = 0;
+                for(let j = 0; j < cart[i].choices.length; j++){
+                    if(cart[i].choices[j]){
+                        numElm ++;
+                        let li = document.createElement("li");
+                        li.innerText=cart[i].foodItem.ingredients[j].name;
+                        ui.appendChild(li);
+                    }
+                }
+                uiMain.appendChild(ui);
+                if(numElm === 0)
+                    uiMain.appendChild(document.createElement("br"));
+
+                //create the drop down:
+                let friends = ["Me", "ChrisVat", "Ryan Campbell", "Matty P", "Aniket S"]
+                let dropDown = document.createElement("select");
+                for(let i =0; i<friends.length; i++){
+                    let myOption = document.createElement("option");
+                    myOption.innerText = friends[i];
+                    dropDown.appendChild(myOption);
+                }
+                uiMain.appendChild(dropDown);
+                document.getElementById("CartList").appendChild(uiMain);
+            }
+        }
+}
+
 
 
 
@@ -623,6 +673,8 @@ function getRestaurantPhotoDir(restName){
         category = "duck";
     return getFoodPhotoDir(category);
 }
+
+
 
 
 function getFoodPhotoDir(foodName){
