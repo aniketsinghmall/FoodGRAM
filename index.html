@@ -100,10 +100,10 @@
 <!--CART SECTION.  CONSIDER MAKING IT GRAPH BASED? NOT SURE HOW IT WORKS FOR MODAL.-->
 <div id="cart" class="modal grid-cart">
     <div class="cartHeader">
-        <h1 style="text-align:center">Your Order</h1>
+        <h1 style="text-align:center;font-size:60px;">Your Order</h1>
     </div>
     <div class="cart1">
-        <h1 style="text-align: center;">Order Summary</h1>
+        <h1 style="text-align: center; font-size:50px;">Order Summary</h1>
             <div class = "CartScroller">
                 <ul id="CartList">
                 </ul>
@@ -111,6 +111,7 @@
         <h1 style="float:right; color:white;" id="TotalCost">Total Cost: </h1>
     </div>
 
+<<<<<<< Updated upstream
     <div class="cart2" >
         <h1>Checkout</h1>
 
@@ -162,6 +163,49 @@
             </select>
             <input type="text" style="width: 40px;" id="ccNumber" name="cvcCode" placeholder="CVC" required><br>
             
+=======
+    <div class="cart2">
+        <h1 style="font-size:50px;">Checkout</h1>
+        <label for="Delivery Address">Delivery Address<br></label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <input type="text" id="postal" name="postal" placeholder="Postal Code" required><br>
+        <br>
+        <label for="Billing Address">Billing Address<br></label>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <input type="text" id="postal" name="postal" placeholder="Postal Code" required><br>
+        <br>
+    <label for="Payment Method"><pre>Payment Method</pre></label>
+        <input type="text" style="margin-left: 0px; width:186px;" id="ccNumber" name="ccNumber" placeholder="Credit Card Number" required>
+        <br>
+        <label for="expiryMonth">Expiry</label>
+        <select name="expiryMonth" id="expiryMonth">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <label for="expiryYear"></label>
+        <select name="expiryYear" id="expiryYear">
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+        </select>
+        <input type="text" style="width: 40px;" id="ccNumber" name="cvcCode" placeholder="CVC" required><br>
+>>>>>>> Stashed changes
     </div>
     <div class = "footerCart" class="cart2">
         <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>

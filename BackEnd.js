@@ -480,6 +480,12 @@ function displayCart(){
                 document.getElementById("CartList").appendChild(uiMain);
             }
         }
+        if (cart.length === 0){
+            let p = documnet.createElement("h1");
+            p.innerText = "Cart Empty";
+            document.getElementById("CartList").appendChild(p);
+
+        }
         cost = parseInt(cost*100)/100;
         document.getElementById("TotalCost").innerText = "Total Cost: $"+cost;
 }
