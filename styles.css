@@ -41,14 +41,14 @@ body {
 /* Specific areas in the grid.*/
 /* Logo and Search.*/
 .topHeader {
-  background-color: rgb(15, 15, 15);
+  background-color: none;
   grid-area: header;
   vertical-align: center;
 }
 
 .title {
   grid-area: title;
-  background-color: rgb(35, 35, 35);
+  background-color: none;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   vertical-align: middle;
@@ -58,7 +58,7 @@ body {
 /* Category buttons.*/
 .bottomHeader {
   grid-area: header2;
-  background-color: rgb(15, 15, 15);
+  background-color: none;
 }
 
 /* Reviews on the left side.*/
@@ -68,7 +68,7 @@ body {
 
 /* Main featured review. */
 .featuredReview {
-  background-color: rgb(35, 35, 35);
+  background-color: none;
   grid-area: featured;
 }
 
