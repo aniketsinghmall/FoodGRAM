@@ -842,6 +842,7 @@ body {
 
 .cart1 h1{
   text-align: center;
+  padding-left: 5%;
   color: rgb(187,134,252);
   font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
@@ -896,9 +897,11 @@ overflow: scroll;
 }
 
 .cart2 {
-  width:46%;
+  width:22%;
   float:left;
   height: 40%;
+  padding-left: 12%;
+  padding-right: 12%;
   border: 1px solid white;
   color: rgb(187,134,252);
   grid-area: cart2;
