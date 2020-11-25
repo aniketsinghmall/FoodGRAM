@@ -437,16 +437,16 @@ function displayCart(){
         while(cartItems[0]) {
             cartItems[0].parentNode.removeChild(cartItems[0]);
         }
-
+        let cost = 0.0;
         if(cart != null) {
             // document.getElementById("cartOrderItem").childNodes[0].nodeValue="hi";
             for (let i = 0; i < cart.length; i++) {
+                cost+=parseFloat(cart[i].foodItem.price);
                 let uiMain = document.createElement("li");
                 uiMain.className = "deleteMeToo";
                 uiMain.innerText = cart[i].foodItem.name;
                 let costText = document.createElement("p");
                 costText.innerText = "$" + cart[i].foodItem.price;
-                uiMain.appendChild(document.createElement("br"));
                 let ingredientWords = "";
                 let ui = document.createElement("p");
                 let numElm = 0;
@@ -458,6 +458,8 @@ function displayCart(){
                         ingredientWords += cart[i].foodItem.ingredients[j].name;
                     }
                 }
+                if(numElm > 0)
+                    uiMain.appendChild(document.createElement("br"));
                 ui.innerText = ingredientWords;
                 uiMain.appendChild(ui);
                 uiMain.appendChild(document.createElement("br"));
@@ -478,6 +480,7 @@ function displayCart(){
                 document.getElementById("CartList").appendChild(uiMain);
             }
         }
+        document.getElementById("TotalCost").innerText = "Total Cost: $"+cost;
 }
 
 
