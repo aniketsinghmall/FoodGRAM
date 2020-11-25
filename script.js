@@ -135,6 +135,8 @@ function goHome(){
 
 function ingredients(restaurant, menuItem){
     windowLocationSearch = window.location.search;
+    document.getElementById('itemChoices').style.display='block';
+
     if(document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML == ""){
         
         document.getElementById("restaurant"+restaurant+"menuItem"+menuItem).innerHTML = "<ul style=\"width: 0%;\">";
