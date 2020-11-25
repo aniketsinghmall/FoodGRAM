@@ -5,6 +5,10 @@ body {
   background-image: url("background2.jpg");
 }
 
+.resultsList{
+  margin-top:0px;
+}
+
 
 /*  The grid. */
 .grid-container {
@@ -535,10 +539,10 @@ body {
 .mainMenu ul{
   overflow:hidden;
   overflow-y:scroll;
-  height: 85%;
+  height: 95%;
   padding-left: 5%;
   padding-right: 5%;
-  padding-top: 0;
+  padding-top: 0px;
   list-style: none;
   width: auto;
   border-bottom-right-radius: 25px;
@@ -851,7 +855,7 @@ body {
 
 .cart1 {
   width: 38%;
-  height: 40%;
+  height: 70%;
   float:left;
   padding-left: 5%;
   padding-right: 5%;
@@ -920,7 +924,7 @@ overflow: scroll;
 .cart2 {
   width:22%;
   float:left;
-  height: 40%;
+  height: 70%;
   padding-left: 12%;
   padding-right: 12%;
   border: 1px solid white;
@@ -950,6 +954,12 @@ overflow: scroll;
   font-size: large;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+}
+
+.CartScroller{
+  height:80%;
+  background-color: rgb(15,15,15);
+  overflow-y: scroll;
 }
 
 .footerCart {
