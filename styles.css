@@ -147,7 +147,7 @@ body {
 
 
 #searchBar:hover{
-  background-color:rgb(45, 45, 45);
+  opacity: 60%;
 }
 
 #searchBar:focus{
@@ -286,7 +286,7 @@ body {
 }
 
 .topNavBar a:hover {
-  background-color:rgb(50, 50, 50);
+  opacity: 60%;
 }
 
 /* END OF BOTTOM HEADER CSS.*/
@@ -310,7 +310,7 @@ body {
 }
 
 .TrendingButton:hover{
-  background-color:rgb(45, 45, 45);
+  opacity: 60%;
 }
 
 
@@ -328,7 +328,7 @@ body {
 }
 
 .FriendButton:hover{
-  background-color:rgb(45, 45, 45);
+  opacity: 60%;
 }
 
 /* END OF TITLE */
@@ -347,14 +347,13 @@ body {
 
 .socialMenu{
   position: sticky;
-  background-color: rgb(18,18,18);
+  background-color: none;  
   color: rgb(25,25,25);
   border-radius: 25px;
   list-style-type: none;
   padding: 0;
   overflow-x:hidden;
   float:left;
-  overflow-y:scroll;
 }
 
 .socialMenu p{
@@ -382,7 +381,7 @@ body {
 .socialMenu button{
   /*trying to center was weird process. Here is what I went with:*/
   margin: 3px 0px;
-  background-color: rgb(25,25,25);
+  background-color: black;
   background-size: contain, cover;
   background-position: center;
   float: none;
@@ -488,6 +487,13 @@ body {
   border-radius: 25px;
 }
 
+.featuredReviewMain:hover{
+
+  opacity: 70%;
+
+}
+
+
 /* End of Featured Review CSS.*/
 /* Restaurants / Food Items CSS.*/
 
@@ -550,7 +556,7 @@ body {
 }
 
 .mainMenu button:hover{
-  background-color: rgb(45, 45, 45);
+  opacity: 60%;
 }
 
 .ingredients input, .ingredients label{
@@ -666,7 +672,7 @@ body {
 
 .headerButton3 {
   border: none;
-  background-color: rgb(235,48,11);
+  background-color: #03DAC5;
   font-size:22px;
   margin: 10px;
   overflow: hidden;
@@ -676,13 +682,13 @@ body {
 }
 
 .headerButton3:hover {
-  background-color: rgb(215,28,0);
+  opacity: 60%;
 }
 
 
 .headerButton4 {
   border: none;
-  background-color: rgb(235,48,11);
+  background-color: #03DAC5;
   font-size:22px;
   padding:5px;
   margin: 10px;
@@ -693,13 +699,13 @@ body {
 
 
 .headerButton4:hover {
-  background-color: rgb(215,28,0);
+  opacity: 60%;
 }
 
 
 
 .headerButton2:hover {
-  background-color: rgb(45, 45, 45);
+  opacity: 60;
 }
 
 
@@ -708,7 +714,6 @@ body {
 /* Modal Content */
 .modal-content-new {
   position: relative;
-  background-color: #fefefe;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
