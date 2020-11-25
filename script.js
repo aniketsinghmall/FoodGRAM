@@ -148,10 +148,16 @@ function ingredients(restaurant, menuItem){
         else
             helper = "\"IngredientRow2\"";
         let theOnPressFunction = "onclick=\"document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked = "+
-            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked;\"";
-        document.getElementById("IngredientList").innerHTML += "<li " + theOnPressFunction + " class = "+ helper +" style=\"display: block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
-            "type = \"checkbox\" class=\"checkItem\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+"<label class = \"checkText\" for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked; console.log('clicked');\"";
+        document.getElementById("IngredientList").innerHTML += "<li " + theOnPressFunction + " class = "+ helper +" " +
+            "style=\"display: block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
+            "type = \"checkbox\" class=\"checkItem\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
+            "<label class = \"checkText\" for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
             data[0][restaurant].foodItems[menuItem].ingredients[i].name+"</label></li>";
+
+        document.getElementById("checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i).onclick = function() {
+            return false;
+        };
     }
     document.getElementById("IngredientList").innerHTML += "</ul>";
     currRestaurant = restaurant;
