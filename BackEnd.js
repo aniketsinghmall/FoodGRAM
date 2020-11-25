@@ -447,7 +447,6 @@ function displayCart(){
                 let costText = document.createElement("p");
                 costText.innerText = "$" + cart[i].foodItem.price;
                 uiMain.appendChild(document.createElement("br"));
-                uiMain.appendChild(costText);
                 let ingredientWords = "";
                 let ui = document.createElement("p");
                 let numElm = 0;
@@ -462,7 +461,11 @@ function displayCart(){
                 ui.innerText = ingredientWords;
                 uiMain.appendChild(ui);
                 uiMain.appendChild(document.createElement("br"));
-
+                uiMain.appendChild(costText);
+                let orderedBy = " Ordered By: ";
+                let ord = document.createElement("p");
+                ord.innerText = orderedBy;
+                uiMain.appendChild(ord);
                 //create the drop down:
                 let friends = ["Me", "ChrisVat", "Ryan Campbell", "Matty P", "Aniket S"]
                 let dropDown = document.createElement("select");

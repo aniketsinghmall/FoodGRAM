@@ -942,8 +942,6 @@ overflow: scroll;
   font-weight: bold;
 }
 
-
-
 .footerCart {
   bottom: 0;
   width: 84%;
@@ -963,8 +961,16 @@ overflow: scroll;
   text-align: center;
   color:white;
   text-decoration: none;
-
 }
+
+
+.deleteMeToo {
+  padding:10px;
+}
+
+
+
+
 
 
 p {
