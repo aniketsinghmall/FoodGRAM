@@ -88,6 +88,7 @@
         </div>
 
         <div class="footer">
+            <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
             <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
         </div>
 
@@ -195,7 +196,12 @@
 <!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
     <form class="modal-content animate" method="post">
+<<<<<<< Updated upstream
         <div style ="color: rgba(187,134,252);">
+=======
+<<<<<<< Updated upstream
+        <div style ="color: rgb(187,134,252);">
+>>>>>>> Stashed changes
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
             <label for="username"><b>Username:</b></label><br>
             <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
@@ -205,6 +211,7 @@
 
             <button class = "headerButton" onclick="document.getElementById('loginSucess').style.display='block';">Log In</button>
             <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
+        </div>
         </div>
     </form>
 </div>
@@ -216,6 +223,7 @@
         <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
         <p>You can close this window now.</p><br>
         <button class = "cancelButton" onclick="document.getElementById('loginSucess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
+    </div>
     </div>
 </div>
 
@@ -254,6 +262,7 @@
             <button class = "headerButton" onclick="document.getElementById('signupSucess').style.display='block';" >Sign Up</button>
             <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
         </div>
+        </div>
     </form>
 </div>
 
@@ -269,24 +278,30 @@
 
 <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
 
-<div id="itemChoices" class="modalnew">
-    <div class="modal-content-new animate" style ="color: rgb(187,134,252);">
-        <h1 id="ModalFoodName" style="text-align:center">Food Item</h1>
-        <h2 id="ModalFoodDesc" style="text-align:center">Chicken Salad is tasty</h2>
 
 
-
-        <script>
-            let modal = document.getElementById("itemChoices");
-            window.onclick = function(event){
-                if (event.target == modal)
-                    modal.style.display = "none"
-            }
-        </script>
-
-        <button class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
+<div id="foodPopup" class="modal2">
+    <!-- Modal content -->
+    <div class="modal-content2 animate">
+        <span>
+            <button style = "width:50px;" id = "closePopupPage" class = "headerButton" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
+        </span>
+        <p>Some text in the Modal..</p>
     </div>
 </div>
+<script>
+    document.getElementById('closePopupPage').onclick = function() {
+        document.getElementById("foodPopup").style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target === document.getElementById("foodPopup")) {
+            document.getElementById("foodPopup").style.display = "none";
+        }
+    }
+</script>
+
+
+
 
 
 </body>
