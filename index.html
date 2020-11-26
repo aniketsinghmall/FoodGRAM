@@ -19,9 +19,8 @@
 <div class="grid-container"> <!-- Site contained in grid -->
 
     <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
-        <span id = "signUpButton"><button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button></span>
-        <span id = "loginButton"><button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button></span>
-        <button id = "usernameButton" style="display: none" class = "headerButton left"> </button>
+        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
+        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
@@ -60,9 +59,6 @@
     <div class="featuredReview">  <!-- This is the big review in the top middle. -->
         <button class = "featuredReviewSideLeftButton" onclick="changeFeaturedReview(-1)">&#10094;  </button>
         <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center">
-
-
-            
         </button>
         <button class = "featuredReviewSideButton" onclick="changeFeaturedReview(1)">&#10095; </button>
     </div>
@@ -83,7 +79,7 @@
                 <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
                 <pre style="font-size: 16px; font-weight: bold; font-size: large;">
 	  Developed by:
-          Aniket Mall 							           malla@myumanitoba.ca
+        Aniket Mall 							        malla@myumanitoba.ca
 	  Christopher Vattheuer	 						vattheuc@myumanitoba.ca
 	  Matthias Penner 							pennerm2@myumanitoba.ca
 	  Paul Granelli 							umgranel@myumanitoba.ca
@@ -93,10 +89,11 @@
         </div>
 
         <div class="footer">
+            <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
             <button type = "button" class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
         </div>
         <script>
-            if ( window.history.replaceState ) { //stop pop ups
+            if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
             }
         </script>
@@ -182,6 +179,8 @@
 </div>
 
 
+
+<!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
     <form class="modal-content animate" method="post">
 
@@ -197,7 +196,7 @@
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
-                <button type = "button" class = "headerButton" onclick= "loginAction()";>Log In</button>
+                <button class = "headerButton" >Log In</button>
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
 
             </ul>
@@ -234,11 +233,20 @@
 
                 <button class = "headerButton" >Sign Up</button>
                 <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+
+
+
             </ul>
+
+           
         </div>
     </form>
 
 </div>
+
+
+<!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
+
 
 <div id="foodPopup" class="modal2">
     <div class="modal-content2 animate">
@@ -251,39 +259,9 @@
         <h2 id="FoodDesc">Here is the description</h2>
         <div id="IngredientList"></div>
         <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
-        <button id="AddReview" class = "headerButton4"  onclick = "document.getElementById('reviewPopup').style.display='block'">Add To Reviews</button>
+        <button id="AddReview" class = "headerButton4">Add To Reviews</button>
     </div>
 </div>
-
-
-<div id="reviewPopup" class="modal3">
-    <div class="modal-content3">
-        <div>
-            <span>
-                <button style = "width:50px;" id = "closeReviewPage" class = "headerButton2" onclick="document.getElementById('reviewPopup').style.display='none';">X</button>
-            </span>
-            <h1 id="ReviewTag" style="color:white;text-align:center;margin:0;">Add Review</h1>
-        </div>
-
-            <form method="post">
-
-        <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
-        <br>
-        <p style="text-align:left;float:left;">I give my recipe a 
-
-        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
-
-        out of 5 </p>
-
-        <button id="AddAReview" class = "headerButton3" style="margin-top:10%;">Add Review</button>
-        <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;" onclick = "document.getElementById('reviewPopup').style.display='none'">Cancel</button>
-
-
-        </form>
-
-    </div>
-</div>
-
 
 <script>
     document.getElementById('closePopupPage').onclick = function() {
@@ -294,9 +272,6 @@
         if (event.target === document.getElementById("foodPopup")) {
             hidePopUp();
             //document.getElementById("foodPopup").style.display = "none";
-        }
-        if (event.target === document.getElementById("reviewPopup")) {
-            document.getElementById("reviewPopup").style.display = "none";
         }
         if(event.target.classList.contains("checkItem")){
             event.target.checked = !event.target.checked;
