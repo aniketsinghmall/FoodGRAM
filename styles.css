@@ -474,7 +474,6 @@ body {
 /* Big image button.*/
 .featuredReviewMain{
   background-color: rgb(0,0,0);
-  background-image: url("foodImages/burger/burger5.jpg");
   background-size: contain, cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -782,7 +781,7 @@ body {
 .modal-content {
   margin: 5% auto 15% auto;
   border: 1px solid #888;
-  background-image: url("background2.jpg");
+  /* background-image: url("background2.jpg"); /* TESTTESTTEST*/
   border-radius: 25px;
   width: 60%;
   padding: 60px;
