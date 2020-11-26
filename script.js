@@ -12,10 +12,7 @@ let windowLocationSearch;
 async function checkoutDropDown(){
     cartContents = JSON.parse(window.localStorage.getItem("cartContents"));
     if(!document.getElementById("proceedCheckout")){
-        const dropDown = document.createElement("div");
-        dropDown.id = "checkoutDropDown";
-        dropDown.class = "headerButton right";
-        document.getElementById("headerButtons").appendChild(dropDown);
+        const dropDown = document.getElementById("checkoutDropDown");
         let cartItem;
         let totalPrice = 0;
         let cartButton;
