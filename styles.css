@@ -994,6 +994,15 @@ overflow: scroll;
   padding:10px;
 }
 
+.removeCartButton{
+  border-radius: 15px; 
+  height: 25px; 
+  width: 100px;
+  background-color: red;
+  color: black;
+  font-weight: bold;
+}
+
 
 
 .signUp{

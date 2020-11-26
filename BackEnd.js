@@ -477,6 +477,12 @@ function displayCart(){
                     dropDown.appendChild(myOption);
                 }
                 uiMain.appendChild(dropDown);
+                uiMain.appendChild(document.createElement("br"))
+                let button = document.createElement("button");
+                button.className = "removeCartButton";
+                button.innerText = "Remove";
+                button.addEventListener("click", function(){removeItemFromCart(i)});
+                uiMain.appendChild(button);
                 document.getElementById("CartList").appendChild(uiMain);
             }
         }
@@ -488,6 +494,22 @@ function displayCart(){
         }
         cost = parseInt(cost*100)/100;
         document.getElementById("TotalCost").innerText = "Total Cost: $"+cost;
+}
+
+function removeItemFromCart(item){
+    let temp = cartContents;
+    let tempL = cartContents.length;
+    cartContents = [];
+    for(let i = 0; i<item; i++){
+        cartContents.push(temp.shift());
+    }
+    temp.shift();
+    for(let i = item+1; i<tempL; i++){
+        cartContents.push(temp.shift());
+    }
+    localStorage.setItem("cartContents", JSON.stringify(cartContents));
+
+    displayCart();
 }
 
 
