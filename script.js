@@ -1,56 +1,64 @@
 let currRestaurant=-1, currMenuItem=-1;
 let cartContents = [];
 let windowLocationSearch;
+let dropDownAnimating = false;
 
 (function(){
     data = createData();
     document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
+    document.body.addEventListener("click", function(){if(document.getElementById("proceedCheckout")){checkoutDropDown()}});
 })();
 
 async function checkoutDropDown(){
-    cartContents = JSON.parse(window.localStorage.getItem("cartContents"));
-    if(!document.getElementById("proceedCheckout")){
-        const dropDown = document.getElementById("checkoutDropDown");
-        let cartItem;
-        let totalPrice = 0;
-        let cartButton;
-        let list = document.createElement("ul");
-        list.style= "overflow:scroll; height:66%; list-style-type: none;"
-        dropDown.appendChild(list);
-        for(let i = 0; i<cartContents.length; i++){
-            cartItem = document.createElement("li");
-            cartItem.className = "checkoutItem";
-            cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\">- $" + cartContents[i].foodItem.price+"</div>";
-            list.appendChild(cartItem);
-            totalPrice += parseFloat(cartContents[i].foodItem.price);
+    if(!dropDownAnimating){
+        cartContents = JSON.parse(window.localStorage.getItem("cartContents"));
+        if(!document.getElementById("proceedCheckout")){
+            dropDownAnimating = true;
+            const dropDown = document.createElement("div");
+            dropDown.id = "checkoutDropDown";
+            dropDown.class = "headerButton right";
+            document.getElementById("headerButtons").appendChild(dropDown);
+            let cartItem;
+            let totalPrice = 0;
+            let cartButton;
+            let list = document.createElement("ul");
+            list.style= "overflow:scroll; height:66%; list-style-type: none;"
+            dropDown.appendChild(list);
+            for(let i = 0; i<cartContents.length; i++){
+                cartItem = document.createElement("li");
+                cartItem.className = "checkoutItem";
+                cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\">- $" + cartContents[i].foodItem.price+"</div>";
+                list.appendChild(cartItem);
+                totalPrice += parseFloat(cartContents[i].foodItem.price);
+            }
+            let line = document.createElement("hr");
+            line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 20px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
+            dropDown.appendChild(line);
+            line = document.createElement("hr");
+            line.style = "position:absolute; bottom:135px; left:0px; right:0px; background-color: #03DAC5; height: 3px; padding-left:0px; padding-right:30px; z-index: 12;";
+            dropDown.appendChild(line);
+            cartItem = document.createElement("div");
+            cartItem.innerHTML = "Total price: $"+totalPrice.toFixed(2);
+            cartItem.style = "position:absolute; bottom:110px; left:10px; right:10px; font-family:Arial;";
+            dropDown.appendChild(cartItem);
+            const checkout = document.createElement("button");
+            checkout.id = "proceedCheckout";
+            checkout.innerHTML = "Proceed to Checkout";
+            checkout.addEventListener("click", proceedToCheckout);
+            dropDown.appendChild(checkout);
+            await sleep(230);
+            dropDownAnimating = false;
+            checkout.style = "font-size:20px";
+
         }
-        let line = document.createElement("hr");
-        line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 20px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
-        dropDown.appendChild(line);
-        line = document.createElement("hr");
-        line.style = "position:absolute; bottom:135px; left:0px; right:0px; background-color: #03DAC5; height: 3px; padding-left:0px; padding-right:30px; z-index: 12;";
-        dropDown.appendChild(line);
-        cartItem = document.createElement("div");
-        cartItem.innerHTML = "Total price: $"+totalPrice.toFixed(2);
-        cartItem.style = "position:absolute; bottom:110px; left:10px; right:10px; font-family:Arial;";
-        dropDown.appendChild(cartItem);
-        const checkout = document.createElement("button");
-        checkout.id = "proceedCheckout";
-        checkout.innerHTML = "Proceed to Checkout";
-        checkout.addEventListener("click", proceedToCheckout);
-        dropDown.appendChild(checkout);
-        await sleep(230);
-
-        checkout.style = "font-size:20px";
-
-    }
-    else{
-        document.getElementById("proceedCheckout").style = "animation-name:proceedClose";
-        document.getElementById("checkoutDropDown").style = "animation-name:checkoutClose";
-        await sleep(230);
-        document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
+        else{
+            document.getElementById("proceedCheckout").style = "animation-name:proceedClose";
+            document.getElementById("checkoutDropDown").style = "animation-name:checkoutClose";
+            await sleep(230);
+            document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
+        }
     }
 }
 
