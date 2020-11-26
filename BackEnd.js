@@ -445,6 +445,9 @@ function displayCart(){
         }
         let cost = 0.0;
         if(cart != null) {
+            if(document.getElementById("cartEmpty")){
+                document.getElementById("cartEmpty").parentElement.removeChild(document.getElementById("cartEmpty"));
+            }
             // document.getElementById("cartOrderItem").childNodes[0].nodeValue="hi";
             for (let i = 0; i < cart.length; i++) {
                 cost+=parseFloat(cart[i].foodItem.price);
@@ -493,8 +496,12 @@ function displayCart(){
             }
         }
         if (cart.length === 0){
-            let p = documnet.createElement("h1");
+            if(document.getElementById("cartEmpty")){
+                document.getElementById("cartEmpty").parentElement.removeChild(document.getElementById("cartEmpty"));
+            }
+            let p = document.createElement("h1");
             p.innerText = "Cart Empty";
+            p.id = "cartEmpty";
             document.getElementById("CartList").appendChild(p);
 
         }
