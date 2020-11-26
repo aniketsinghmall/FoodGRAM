@@ -181,6 +181,10 @@ body {
   vertical-align: center;
 }
 
+#contactUsButton{
+  margin-left:20%;
+}
+
 #checkoutDropDown{
   width: 500px;
   height: 500px;
