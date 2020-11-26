@@ -566,7 +566,7 @@ function displayRestaurantReviews() {
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
             itemValue = reviews[i].restaurant.name;
         }
-        btn.innerHTML =  "<span class = 'ReviewText SocialMenu RestaurantReviews'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/>" +  reviews[i].rating + "/5<br/> </span>";
+        btn.innerHTML =  "<span class = 'ReviewText SocialMenu RestaurantReviews'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/> </span>";
         if (window.location.search.includes("restaurant="))
 
 
@@ -579,6 +579,13 @@ function displayRestaurantReviews() {
         btn.style.backgroundSize = "cover";
         btn.style.backgroundRepeat = 'no-repeat'
         btn.style.backgroundPosition = 'center';
+
+        
+            var stars = new Image();
+            stars.src = "stars/" + Math.floor(reviews[i].rating) + "star.png"
+            stars.style.width = "35%";
+            btn.appendChild(stars);
+           
         document.getElementById("RestaurantReviews").appendChild(btn);
     }
     if(sessionStorage.getItem("Trending") == 'true')
