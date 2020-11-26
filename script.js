@@ -159,7 +159,7 @@ function ingredients(restaurant, menuItem){
     windowLocationSearch = window.location.search;
     console.log("In the function!");
     document.getElementById('foodPopup').style.display = "block";
-    document.getElementById('FoodName').innerText = data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodName').innerText = "$" + data[0][restaurant].foodItems[menuItem].price + " - " + data[0][restaurant].foodItems[menuItem].name;
     document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
     document.getElementById("IngredientList").innerHTML = "";
 
@@ -186,7 +186,7 @@ function ingredients(restaurant, menuItem){
 function ingredientsFromPremade(restaurant, menuItem, choices, name){
     windowLocationSearch = window.location.search;
     document.getElementById('foodPopup').style.display = "block";
-    document.getElementById('FoodName').innerText = name + " - " + data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodName').innerText = "$" + data[0][restaurant].foodItems[menuItem].price + " - " + name + " - " + data[0][restaurant].foodItems[menuItem].name;
     document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
     document.getElementById("IngredientList").innerHTML = "";
 
