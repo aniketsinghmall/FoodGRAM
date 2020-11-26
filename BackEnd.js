@@ -708,41 +708,14 @@ function getRestaurantPhotoDir(foodName){
 }
 
 
-/*
-function getRestaurantPhotoDir(restName){
-    let category = "";
-    restName = restName.toLowerCase();
-    if(restName.includes("banana boat ice cream"))
-        category = "ice cream";
-    else if(restName.includes("burger") || restName.includes("jack rabbit") || restName.includes("krusty") || restName.includes("529") )
-        category = "burger";
-    else if(restName.includes("pizza"))
-        category = "pizza";
-    else if(restName.includes("cheese"))
-        category = "cheese";
-    else if(restName.includes("chowder"))
-        category = "chowder";
-    else if(restName.includes("banana"))
-        category = "george daddy";
-    else if(restName.includes("gust"))
-        category = "ratatouille";
-    else if(restName.includes("los pollos"))
-        category = "world famous chicken";
-    else if(restName.includes("milkthecow"))
-        category = "cappuccino";
-    else if(restName.includes("gazpacho"))
-        category = "soup";
-    else if(restName.includes("sol"))
-        category = "duck";
-    return getFoodPhotoDir(category);
-}
-*/
-
-
 
 function getFoodPhotoDir(foodName){
     let category = "";
     foodName = foodName.toLowerCase();
+    let hash = 0;
+    for(let i = 0; i<foodName.length && i<5; i++){
+        hash += foodName.charCodeAt(i);
+    }
     if(foodName.includes("heisen"))
         category = "heisen";
     else if(foodName.includes("fajita"))
@@ -866,7 +839,7 @@ function getFoodPhotoDir(foodName){
         category = "crackers";
     else if(foodName.includes("banana split"))
         category = "bananasplit";
-    return "foodImages/" + category + "/" + category + ((Math.floor(Math.random() * foodPhotoCount[category])) + 1) +".jpg";
+    return "foodImages/" + category + "/" + category + ((hash%foodPhotoCount[category]) + 1) +".jpg";
 }
 
 function hidePopUp(){
