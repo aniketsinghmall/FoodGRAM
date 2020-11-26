@@ -5,11 +5,17 @@ let dropDownAnimating = false;
 
 (function(){
     data = createData();
-    document.getElementById("checkoutButton").addEventListener("click", function(){checkoutDropDown();});
+    document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
-    document.body.addEventListener("click", function(){if(document.getElementById("proceedCheckout")){checkoutDropDown()}});
+    document.body.addEventListener("click", function(event){if(document.getElementById("proceedCheckout") && !event.target.matches(".noClose")){checkoutDropDown()}});
 })();
+
+function goto(event) {
+    var noRedirect = '.some-div-class, .another-div-class, .parent-div-class *';
+    if (!event.target.matches(noRedirect)) {
+    }
+  }
 
 async function checkoutDropDown(){
     if(!dropDownAnimating){
@@ -19,34 +25,42 @@ async function checkoutDropDown(){
             const dropDown = document.createElement("div");
             dropDown.id = "checkoutDropDown";
             dropDown.class = "headerButton right";
+            dropDown.classList.add("noClose");
             document.getElementById("headerButtons").appendChild(dropDown);
             let cartItem;
             let totalPrice = 0;
             let cartButton;
             let list = document.createElement("ul");
             list.style= "overflow:scroll; height:66%; list-style-type: none;"
+            dropDown.className
+            list.classList.add("noClose");
             dropDown.appendChild(list);
             for(let i = 0; i<cartContents.length; i++){
                 cartItem = document.createElement("li");
                 cartItem.className = "checkoutItem";
-                cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\">- $" + cartContents[i].foodItem.price+"</div>";
+                cartItem.innerHTML = "<button class=\"cartButton noClose\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\" class=\"noClose\">- $" + cartContents[i].foodItem.price+"</div>";
+                cartItem.classList.add("noClose");
                 list.appendChild(cartItem);
                 totalPrice += parseFloat(cartContents[i].foodItem.price);
             }
             let line = document.createElement("hr");
-            line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 20px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
+            line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 40px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
+            line.classList.add("noClose");
             dropDown.appendChild(line);
             line = document.createElement("hr");
             line.style = "position:absolute; bottom:135px; left:0px; right:0px; background-color: #03DAC5; height: 3px; padding-left:0px; padding-right:30px; z-index: 12;";
+            line.classList.add("noClose");
             dropDown.appendChild(line);
             cartItem = document.createElement("div");
             cartItem.innerHTML = "Total price: $"+totalPrice.toFixed(2);
             cartItem.style = "position:absolute; bottom:110px; left:10px; right:10px; font-family:Arial;";
+            cartItem.classList.add("noClose");
             dropDown.appendChild(cartItem);
             const checkout = document.createElement("button");
             checkout.id = "proceedCheckout";
             checkout.innerHTML = "Proceed to Checkout";
             checkout.addEventListener("click", proceedToCheckout);
+            checkout.classList.add("noClose");
             dropDown.appendChild(checkout);
             await sleep(230);
             checkout.style = "font-size:20px";
