@@ -267,14 +267,21 @@ async function removeItem(item){
 
 }
 
-function getReview(){
-    let checkboxes = document.getElementsByClassName("checkboxes");
+function getReview(user, rating){
+    let checkboxes = document.getElementsByClassName("checkItem");
     let checkBoxVals = [];
+    console.log("checkboxes length: " + checkboxes.length);
     for(let i = 0; i<checkboxes.length; i++){
         checkBoxVals.push(checkboxes[i].checked);
     }
-    
-    return [new Recipe(data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals), document.getElementById("reviewRating").value];
+
+    console.log("restaurant: " + data[0][currRestaurant]);
+    console.log("food: " + data[0][currRestaurant].foodItems[currMenuItem]);
+
+    let review = new FoodReview(user, rating, data[0][currRestaurant], data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals);
+    return review;
+
+    // return new Recipe(data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals), document.getElementById("reviewRating").value;
 }
 
 
