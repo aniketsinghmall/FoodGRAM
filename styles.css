@@ -820,7 +820,7 @@ body {
 .modal-content {
   margin: 5% auto 15% auto;
   border: 1px solid #888;
-  /* background-image: url("background2.jpg"); /* TESTTESTTEST*/
+  background-image: url("background2.jpg");
   border-radius: 25px;
   width: 60%;
   padding: 60px;
