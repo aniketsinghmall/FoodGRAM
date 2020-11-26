@@ -23,6 +23,8 @@ class Restaurant {
     }
 }
 
+
+
 class FoodItem{
     name
     ingredients
@@ -420,6 +422,10 @@ function getData(){
 }
 
 
+
+
+
+
 function changeReviews(value){
     sessionStorage.setItem(("Trending"), value);
     let buttons = document.getElementsByClassName('deleteMe');
@@ -527,6 +533,10 @@ function displayRestaurantReviews() {
                 decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
         dir = getFoodPhotoDir(reviews[0].recipe.foodItem.name.toLowerCase());
         //console.log("dir: " + dir);
+
+    // ADD SORT HERE
+        reviews = reviews.sort(compareReviews);
+
     }
     else{ //searching for a restaurant
 
@@ -538,6 +548,7 @@ function displayRestaurantReviews() {
                 String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " "));
     }
     for (let i = 0; i < reviews.length; i++) {
+
         let btn = document.createElement("BUTTON");
         btn.className = "deleteMe";
         let itemValue = "";
@@ -556,11 +567,9 @@ function displayRestaurantReviews() {
                     foodNum = j;
                 }
             }
-
             btn.onclick = function(){
                 ingredientsFromPremade(restNum, foodNum, reviews[i].recipe.choices, reviews[i].user.name);
             };
-
         }
         else{
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
@@ -593,8 +602,6 @@ function displayRestaurantReviews() {
         
     else
         document.getElementById("reviewTitle").innerText = "Friend Reviews";
-    
-
 
 }
 
@@ -604,7 +611,7 @@ function changeFeaturedReview(increment){
     displayFeaturedReview();
 }
 
-function displayFeaturedReview() {  // Needs to be generalized to food items!
+function displayFeaturedReview() {
     if(window.location.search.includes("restaurant=")) {  // we are in a restaurant page.
         let reviews = filterReviews(JSON.parse(sessionStorage.getItem("Restaurants")), JSON.parse(sessionStorage.getItem("FriendFoodReviews")),
             decodeURI(String(window.location.search).substring(window.location.search.indexOf("=") + 1).replace("+", " ")));
@@ -630,6 +637,8 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
             btn.onclick = function(){
                 ingredients(restNum, foodNum);
             };
+
+
             btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/> </span>";
             // btn.style.textAlign
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
@@ -704,6 +713,42 @@ function getUniqueRestaurantReviews(array){
             result.push(array[i]);
     }
     return result;
+}
+
+
+function addNewReview(review){
+    // here here here
+    let allReviews = JSON.parse(sessionStorage.getItem("FriendFoodReviews"));
+    let test = JSON.stringify(review);
+    let reviewS = JSON.parse(test);
+    allReviews.push(reviewS);
+    sessionStorage.setItem("FriendFoodReviews", JSON.stringify(allReviews));
+    document.getElementById('reviewPopup').style.display='none';
+
+    let buttons = document.getElementsByClassName('deleteMe');
+    while(buttons[0]) {
+        buttons[0].parentNode.removeChild(buttons[0]);
+    }
+    displayRestaurantReviews();
+}
+
+function addReviewThing(){
+    let num = document.getElementById('reviewRating').value;
+    if(num==0){
+        num = 1;
+    }
+    if(!Number.isInteger(num)){
+        num = parseInt(num) || 5;
+    }
+    num=Math.min(5, num);
+    num=Math.max(1,num);
+
+
+
+    let name = "Your Name";  //PUT ACTUAL USERNAME HERE!
+    let user = new Friend(name);
+    let review = getReview(user, num);
+    addNewReview(review);
 }
 
 
