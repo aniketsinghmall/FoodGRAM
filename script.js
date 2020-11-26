@@ -68,6 +68,7 @@ async function proceedToCheckout(){
     document.getElementById("checkoutDropDown").style = "animation-name:checkoutClose";
     await sleep(230);
     document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
+    dropDownAnimating = false;
     displayCart();
 }
 
