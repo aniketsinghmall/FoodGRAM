@@ -19,8 +19,9 @@
 <div class="grid-container"> <!-- Site contained in grid -->
 
     <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
-        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
-        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
+        <span id = "signUpButton"><button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button></span>
+        <span id = "loginButton"><button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button></span>
+        <button id = "usernameButton" class = "headerButton left"> </button>
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
@@ -82,7 +83,7 @@
                 <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
                 <pre style="font-size: 16px; font-weight: bold; font-size: large;">
 	  Developed by:
-        Aniket Mall 							        malla@myumanitoba.ca
+          Aniket Mall 							           malla@myumanitoba.ca
 	  Christopher Vattheuer	 						vattheuc@myumanitoba.ca
 	  Matthias Penner 							pennerm2@myumanitoba.ca
 	  Paul Granelli 							umgranel@myumanitoba.ca
@@ -92,7 +93,6 @@
         </div>
 
         <div class="footer">
-            <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
             <button type = "button" class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
         </div>
         <script>
@@ -182,8 +182,6 @@
 </div>
 
 
-
-<!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
     <form class="modal-content animate" method="post">
 
@@ -199,7 +197,7 @@
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
-                <button class = "headerButton" >Log In</button>
+                <button type = "button" class = "headerButton" onclick= "loginAction()";>Log In</button>
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
 
             </ul>
@@ -242,10 +240,6 @@
 
 </div>
 
-
-<!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
-
-
 <div id="foodPopup" class="modal2">
     <div class="modal-content2 animate">
         <div>
@@ -270,14 +264,22 @@
             </span>
             <h1 id="ReviewTag" style="color:white;text-align:center;margin:0;">Add Review</h1>
         </div>
+
+            <form method="post">
+
         <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
         <br>
-        <p style="text-align:left;float:left;">I give my recipe a </p>
-        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "2.5" required style="display: inline-block;float:left;margin-top:17px;margin-left: 10px; margin-right:10px;">
+        <p style="text-align:left;float:left;">I give my recipe a 
 
-        <p style="text-align:left;"> out of 5 </p>
-        <button id="AddAReview" class = "headerButton3" style="margin-top:10%;" onclick = "" >Add Review</button>
+        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
+
+        out of 5 </p>
+
+        <button id="AddAReview" class = "headerButton3" style="margin-top:10%;">Add Review</button>
         <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;" onclick = "document.getElementById('reviewPopup').style.display='none'">Cancel</button>
+
+
+        </form>
 
     </div>
 </div>
