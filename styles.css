@@ -983,6 +983,7 @@ body {
   border: 1px solid white;
   color: rgb(187,134,252);
   grid-area: cart1;
+ overflow-y: scroll;
 }
 
 
