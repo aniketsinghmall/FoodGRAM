@@ -92,7 +92,11 @@
             <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
             <button type = "button" class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
         </div>
-
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
     </div>
 </div>
 
