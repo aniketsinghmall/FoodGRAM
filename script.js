@@ -282,5 +282,5 @@ function loginAction() {
     document.getElementById('loginButton').style.display ='none';
     document.getElementById('signUpButton').style.display ='none';
     document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = document.getElementById("username").value;
+    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("username").value + "!";
 }
