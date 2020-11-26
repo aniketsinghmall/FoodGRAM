@@ -18,13 +18,14 @@ async function checkoutDropDown(){
         document.getElementById("headerButtons").appendChild(dropDown);
         let cartItem;
         let totalPrice = 0;
+        let cartButton;
         let list = document.createElement("ul");
-        list.style= "overflow:scroll; height:66%; list-style-type: square;"
+        list.style= "overflow:scroll; height:66%; list-style-type: none;"
         dropDown.appendChild(list);
         for(let i = 0; i<cartContents.length; i++){
             cartItem = document.createElement("li");
             cartItem.className = "checkoutItem";
-            cartItem.innerHTML = cartContents[i].foodItem.name + "<br> <div style=\"padding-left:20px;\">- $" + cartContents[i].foodItem.price+"</div>";
+            cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\"></button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:20px;\">- $" + cartContents[i].foodItem.price+"</div>";
             list.appendChild(cartItem);
             totalPrice += parseFloat(cartContents[i].foodItem.price);
         }
@@ -209,4 +210,57 @@ function addToCart(){
     ingredients(currRestaurant, currMenuItem);
     localStorage.setItem("cartContents", JSON.stringify(cartContents));
     hidePopUp();
+}
+
+async function removeItem(item){
+    temp = cartContents;
+    tempL = cartContents.length;
+    cartContents = [];
+    for(let i = 0; i<item; i++){
+        cartContents.push(temp.shift());
+    }
+    temp.shift();
+    for(let i = item+1; i<tempL; i++){
+        cartContents.push(temp.shift());
+    }
+    localStorage.setItem("cartContents", JSON.stringify(cartContents));
+
+
+    document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
+    const dropDown = document.createElement("div");
+    dropDown.id = "checkoutDropDown";
+    dropDown.class = "headerButton right";
+    dropDown.style = "animation-name: none;"
+    document.getElementById("headerButtons").appendChild(dropDown);
+    let cartItem;
+    let totalPrice = 0;
+    let cartButton;
+    let list = document.createElement("ul");
+    list.style= "overflow:scroll; height:66%; list-style-type: none;"
+    dropDown.appendChild(list);
+    for(let i = 0; i<cartContents.length; i++){
+        cartItem = document.createElement("li");
+        cartItem.className = "checkoutItem";
+        cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\"></button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:20px;\">- $" + cartContents[i].foodItem.price+"</div>";
+        list.appendChild(cartItem);
+        totalPrice += parseFloat(cartContents[i].foodItem.price);
+    }
+    let line = document.createElement("hr");
+    line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 20px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
+    dropDown.appendChild(line);
+    line = document.createElement("hr");
+    line.style = "position:absolute; bottom:135px; left:0px; right:0px; background-color: #03DAC5; height: 3px; padding-left:0px; padding-right:30px; z-index: 12;";
+    dropDown.appendChild(line);
+    cartItem = document.createElement("div");
+    cartItem.innerHTML = "Total price: $"+totalPrice.toFixed(2);
+    cartItem.style = "position:absolute; bottom:110px; left:10px; right:10px; font-family:Arial;";
+    dropDown.appendChild(cartItem);
+    const checkout = document.createElement("button");
+    checkout.id = "proceedCheckout";
+    checkout.style = "animation-name: none; font-size:20px";
+    checkout.innerHTML = "Proceed to Checkout";
+    checkout.addEventListener("click", proceedToCheckout);
+    dropDown.appendChild(checkout);
+    await sleep(230);
+
 }
