@@ -914,6 +914,18 @@ body {
   font-weight: bold;
 }
 
+.usernameButton {
+  border: none;
+  background-color: #03DAC5;
+  font-size:22px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+
 #headerButtons{
   color: rgba(187,134,252, 200);
 

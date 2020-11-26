@@ -21,7 +21,7 @@
     <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
         <button id = "signUpButton" class = "headerButton left" onclick="document.getElementById('signup').style.display='block'"> Sign Up </button>
         <button id = "loginButton" class = "headerButton left" onclick="document.getElementById('login').style.display='block'"> Log In </button>
-        <button id = "usernameButton" class = "headerButton left" style="display: none"> Log In </button>
+        <button id = "usernameButton" class = "usernameButton left" style="display: none"> </button>
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
@@ -188,13 +188,13 @@
 
             <ul style="margin-left: 35%">
 
-                <label for="username"><b>Username:</b></label><br>
-                <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
+                <label for="usernameL"><b>Username:</b></label><br>
+                <input class = "login" type="text" id="usernameL" name="usernameL" placeholder="Enter Username" autofocus required><br>
 
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
-                <button class = "headerButton" onclick= "loginAction()">Log In</button>
+                <button class = "headerButton" onclick= "loginAction();">Log In</button>
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
             </ul>
         </div>
@@ -208,11 +208,11 @@
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
 
             <ul style="margin-left: 35%">
-                <label for="fname"><b>First Name:</b></label><br>
-                <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
+                <label for="fnameS"><b>First Name:</b></label><br>
+                <input class = "login" type="text" id="fnameS" name="fnameS" placeholder="Your First Name" autofocus required><br>
 
-                <label for="lname"><b>Last Name:</b></label><br>
-                <input class = "login" type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+                <label for="lnameS"><b>Last Name:</b></label><br>
+                <input class = "login" type="text" id="lnameS" name="lnameS" placeholder="Your Last Name" required><br>
             
                 <label for="email"><b>Email:</b></label><br>
                 <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
@@ -227,7 +227,7 @@
                 <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 
 
-                <button type = "button" class = "headerButton" onclick= "signUpAction()">Sign Up</button>
+                <button type = "button" class = "headerButton" onclick= "signUpAction();">Sign Up</button>
                 <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
             </ul>
         </div>
@@ -246,7 +246,7 @@
         </div>
         <h2 id="FoodDesc">Here is the description</h2>
         <div id="IngredientList"></div>
-        <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
+        <button id="AddToCart" class = "headerButton3" onclick = "addToCart(); ">Add To Cart</button>
 
         <button id="AddReview" class = "headerButton4"  onclick = "document.getElementById('reviewPopup').style.display='block'">Add To Reviews</button>
     </div>
