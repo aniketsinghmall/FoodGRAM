@@ -264,3 +264,10 @@ async function removeItem(item){
     await sleep(230);
 
 }
+
+function loginAction() {
+    document.getElementById('login').style.display ='none'; 
+    document.getElementById('loginButton').style.display ='none';
+    document.getElementById('signUpButton').style.display ='none';
+    document.getElementById('usernameButton').innerHTML = document.getElementById("username").value;
+}
