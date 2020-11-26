@@ -853,6 +853,10 @@ body {
   background-color:#03DAC5; width:25%; text-align:center; height: 15%; padding: 10px; margin-left: 100px; font-size: 30px; color: black; border-color: black; border-radius: 15px;
 }
 
+.cart {
+  overflow-y: scroll;
+}
+
 .cart1 {
   width: 38%;
   height: 70%;
