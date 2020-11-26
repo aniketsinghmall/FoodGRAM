@@ -221,6 +221,11 @@ body {
   z-index: 10;
 }
 
+#proceedCheckout:hover{
+  opacity: 60%;
+}
+
+
 .checkoutItem{
   text-align: left;
   padding-left: 10px;
