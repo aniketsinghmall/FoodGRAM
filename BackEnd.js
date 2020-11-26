@@ -480,6 +480,12 @@ function displayCart(){
                 document.getElementById("CartList").appendChild(uiMain);
             }
         }
+        if (cart.length === 0){
+            let p = documnet.createElement("h1");
+            p.innerText = "Cart Empty";
+            document.getElementById("CartList").appendChild(p);
+
+        }
         cost = parseInt(cost*100)/100;
         document.getElementById("TotalCost").innerText = "Total Cost: $"+cost;
 }
@@ -654,6 +660,55 @@ function getUniqueRestaurantReviews(array){
 }
 
 
+function getRestaurantPhotoDir(foodName){
+    let category = "";
+    foodName = foodName.toLowerCase();
+    if(foodName.includes("aniket"))
+        category = "ani";
+    else if(foodName.includes("boat"))
+        category = "bananaBoat";
+    else if(foodName.includes("bob"))
+        category = "bobsBurgers";
+    else if(foodName.includes("boston"))
+        category = "bostonPizza";
+    else if(foodName.includes("chunky"))
+        category = "chunkyCheese";
+    else if(foodName.includes("cow"))
+        category = "cow";
+    else if(foodName.includes("frozen banana"))
+        category = "frozenBanana";
+    else if(foodName.includes("gazpacho"))
+        category = "gazpach";
+    else if(foodName.includes("good"))
+        category = "goodBurger";
+    else if(foodName.includes("gusteau"))
+        category = "gusteaus";
+    else if(foodName.includes("krusty"))
+        category = "krusty";
+    else if(foodName.includes("los pollos"))
+        category = "lph";
+    else if(foodName.includes("mamma"))
+        category = "mamma";
+    else if(foodName.includes("matthias"))
+        category = "matty";
+    else if(foodName.includes("party"))
+        category = "party";
+    else if(foodName.includes("paunch"))
+        category = "paunch";
+    else if(foodName.includes("piece"))
+        category = "piece";
+    else if(foodName.includes("slim"))
+        category = "slims";
+    else if(foodName.includes("sous"))
+        category = "sous";
+    else if(foodName.includes("wellington"))
+        category = "wellington";
+
+    return "restaurantImages/" + category + "/" + category+".jpg";
+}
+
+
+/*
 function getRestaurantPhotoDir(restName){
     let category = "";
     restName = restName.toLowerCase();
@@ -681,7 +736,7 @@ function getRestaurantPhotoDir(restName){
         category = "duck";
     return getFoodPhotoDir(category);
 }
-
+*/
 
 
 
@@ -835,7 +890,6 @@ function getRestaurantText(){
     "Matthias' Burger Stank Shack(Matty's Big Ol' Cheeseburger, MeeMaw's Famous Burger Slider, Matt's Curly Fries, Matt's Musk Burger)\n" +
     "MilkTheCow(Chai Tea, Green Tea, Coffee, Iced Tea, Cappuccino, Americano, Latte, Espresso)\n" +
     "Paunch Burger(The Ron Swanson Supreme, The Meat Tornado, The Heart Attack, Gravy Bucket, The Artery Clogger)\n" +
-    "Pauls \"Pizza\"(\"Pepperoni\" \"Pizza\", \"Sprite\", \"Pizza\" On A \"Stick\")\n" +
     "Piece a da Pizza(Pizza Your Heart, Slice To Meat You, Can't Be Topped, Slice Slice Baby)\n" +
     "Pizza Party(Party Pizza for 8, Jumbo Party Pizza for 10, Sad Lonely Pizza for One)\n" +
     "Ryan's Great Gazpacho Emporium(Green Grape and Cucumber Gazpacho, Red Pepper Gazpacho, Butter Gazpacho, Yogurt Gazpacho)\n" +
@@ -890,9 +944,6 @@ function getFoodText(){
     "Party Pizza for 8:27.69:Main:A comically large Pizza designed to perfectly fill the bellies of 8 people.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
     "Jumbo Party Pizza for 10:35.54:Main:An EXTRA large pizza for 10 people.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Ham, Chicken, Ranch:\n" +
     "Sad Lonely Pizza for One:4.24:Main:A sad pizza designed perfectly for one person to consume in its entirity.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "\"Pepperoni\" \"Pizza\":4.8:Main:A secret \"recipe\" using some \"Pepperoni\".:Extra Dough, Extra Sauce:\n" +
-    "\"Sprite\":6.88:Drink:The world famous \"drink\", known to some as \"Sprite\".:Extra Sprite:\n" +
-    "\"Pizza\" On A \"Stick\":7.44:Main:It's the deliciousness of pizzas combined with the class and convinience of food on a stick.:Pepperoni, Ham, Oak Wood Stick:\n" +
     "Pizza Your Heart:13.21:Main:It is so good that it will fill your belly AND your heart. Comes with our delicious pizza sauce.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
     "Slice To Meat You:12.63:Main:A delicious pizza topped in slices of ham.:Extra Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Ham, Chicken, Ranch:\n" +
     "Can't Be Topped:18.33:Main:An Extra Large Cheese Pizza topped by Extra Small Pizzas.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
