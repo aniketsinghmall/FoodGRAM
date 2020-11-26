@@ -290,5 +290,15 @@ function loginAction() {
     document.getElementById('loginButton').style.display ='none';
     document.getElementById('signUpButton').style.display ='none';
     document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("username").value + "!";
+    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("usernameL").value + "!";
+}
+
+
+function signUpAction() {
+    
+    document.getElementById('signup').style.display ='none'; 
+    document.getElementById('loginButton').style.display ='none';
+    document.getElementById('signUpButton').style.display ='none';
+    document.getElementById('usernameButton').style.display ='inline';
+    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("username").value + document.getElementById("lname").value + "!";
 }
