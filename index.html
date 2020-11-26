@@ -264,14 +264,22 @@
             </span>
             <h1 id="ReviewTag" style="color:white;text-align:center;margin:0;">Add Review</h1>
         </div>
+
+            <form method="post">
+
         <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
         <br>
-        <p style="text-align:left;float:left;">I give my recipe a </p>
-        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "2.5" required style="display: inline-block;float:left;margin-top:17px;margin-left: 10px; margin-right:10px;">
+        <p style="text-align:left;float:left;">I give my recipe a 
 
-        <p style="text-align:left;"> out of 5 </p>
-        <button id="AddAReview" class = "headerButton3" style="margin-top:10%;" onclick = "" >Add Review</button>
+        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
+
+        out of 5 </p>
+
+        <button id="AddAReview" class = "headerButton3" style="margin-top:10%;">Add Review</button>
         <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;" onclick = "document.getElementById('reviewPopup').style.display='none'">Cancel</button>
+
+
+        </form>
 
     </div>
 </div>
