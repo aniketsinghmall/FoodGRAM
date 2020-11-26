@@ -19,8 +19,9 @@
 <div class="grid-container"> <!-- Site contained in grid -->
 
     <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
-        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
-        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
+        <span id = "signUpButton"><button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button></span>
+        <span id = "loginButton"><button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button></span>
+        <button id = "usernameButton" style="display: none" class = "headerButton left"> </button>
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
@@ -59,6 +60,9 @@
     <div class="featuredReview">  <!-- This is the big review in the top middle. -->
         <button class = "featuredReviewSideLeftButton" onclick="changeFeaturedReview(-1)">&#10094;  </button>
         <button id = "featuredReviewButton" id = "featuredReviewMain" class = "featuredReviewMain center">
+
+
+            
         </button>
         <button class = "featuredReviewSideButton" onclick="changeFeaturedReview(1)">&#10095; </button>
     </div>
@@ -79,7 +83,7 @@
                 <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
                 <pre style="font-size: 16px; font-weight: bold; font-size: large;">
 	  Developed by:
-        Aniket Mall 							        malla@myumanitoba.ca
+          Aniket Mall 							           malla@myumanitoba.ca
 	  Christopher Vattheuer	 						vattheuc@myumanitoba.ca
 	  Matthias Penner 							pennerm2@myumanitoba.ca
 	  Paul Granelli 							umgranel@myumanitoba.ca
@@ -89,11 +93,10 @@
         </div>
 
         <div class="footer">
-            <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
             <button type = "button" class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
         </div>
         <script>
-            if ( window.history.replaceState ) {
+            if ( window.history.replaceState ) { //stop pop ups
                 window.history.replaceState( null, null, window.location.href );
             }
         </script>
@@ -179,8 +182,6 @@
 </div>
 
 
-
-<!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
     <form class="modal-content animate" method="post">
 
@@ -196,7 +197,7 @@
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
-                <button class = "headerButton" >Log In</button>
+                <button type = "button" class = "headerButton" onclick= "loginAction()";>Log In</button>
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
             </ul>
         </div>
@@ -237,10 +238,6 @@
 
 </div>
 
-
-<!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
-
-
 <div id="foodPopup" class="modal2">
     <div class="modal-content2 animate">
         <div>
@@ -252,7 +249,10 @@
         <h2 id="FoodDesc">Here is the description</h2>
         <div id="IngredientList"></div>
         <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 04211a0... Merge branch 'master' of https://github.com/aniketsinghmall/Group-30-Milestone
         <button id="AddReview" class = "headerButton4"  onclick = "document.getElementById('reviewPopup').style.display='block'">Add To Reviews</button>
     </div>
 </div>
@@ -267,7 +267,11 @@
             <h1 id="ReviewTag" style="color:white;text-align:center;margin:0;">Add Review</h1>
         </div>
 
+<<<<<<< HEAD
 
+=======
+            <form method="post">
+>>>>>>> parent of 04211a0... Merge branch 'master' of https://github.com/aniketsinghmall/Group-30-Milestone
 
         <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
         <br>
@@ -276,11 +280,21 @@
         <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
 
         out of 5 </p>
+<<<<<<< HEAD
         <button id="AddAReview" class = "headerButton3"  onclick = "addReviewThing();" style="margin-top:10%;">Add Review</button>
         <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;">Cancel</button>
+=======
+
+        <button id="AddAReview" class = "headerButton3" style="margin-top:10%;">Add Review</button>
+        <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;" onclick = "document.getElementById('reviewPopup').style.display='none'">Cancel</button>
+
+
+        </form>
+>>>>>>> parent of 04211a0... Merge branch 'master' of https://github.com/aniketsinghmall/Group-30-Milestone
 
     </div>
 </div>
+
 
 <script>
     document.getElementById('closePopupPage').onclick = function() {
@@ -291,6 +305,9 @@
         if (event.target === document.getElementById("foodPopup")) {
             hidePopUp();
             //document.getElementById("foodPopup").style.display = "none";
+        }
+        if (event.target === document.getElementById("reviewPopup")) {
+            document.getElementById("reviewPopup").style.display = "none";
         }
         if(event.target.classList.contains("checkItem")){
             event.target.checked = !event.target.checked;
