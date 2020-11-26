@@ -632,7 +632,19 @@ body {
 /* END OF MAIN MENU CSS .*/
 /* FOOTER CSS .*/
 
-
+.modal3 {
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(5,5,5,0.7);
+  padding: 60px;
+}
 
 
 
@@ -651,6 +663,20 @@ body {
 }
 
 /* Modal Content */
+.modal-content3 {
+  background-color: rgb(50,50,50);
+  margin-left: 30%;
+  padding: 20px;
+  margin-top: 12%;
+  position:relative;
+  border: 1px solid #888;
+  width: 40%;
+  height:30%;
+  font-size: 25px;
+}
+
+
+
 .modal-content2 {
   background-color: rgb(50,50,50);
   margin-left: 20%;
@@ -789,6 +815,14 @@ body {
   to {transform: scale(1)}
 }
 
+#reviewPopup{
+  width:100%;
+  height:100%;
+
+}
+
+
+
 .modal {
   display: none;
   font-family: Arial, Helvetica, sans-serif;
@@ -806,7 +840,7 @@ body {
 .modal-content {
   margin: 5% auto 15% auto;
   border: 1px solid #888;
-  /* background-image: url("background2.jpg"); /* TESTTESTTEST*/
+  background-image: url("background2.jpg");
   border-radius: 25px;
   width: 60%;
   padding: 60px;
