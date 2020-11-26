@@ -19,8 +19,9 @@
 <div class="grid-container"> <!-- Site contained in grid -->
 
     <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
-        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
-        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
+        <button id = "signUpButton" class = "headerButton left" onclick="document.getElementById('signup').style.display='block'"> Sign Up </button>
+        <button id = "loginButton" class = "headerButton left" onclick="document.getElementById('login').style.display='block'"> Log In </button>
+        <button id = "usernameButton" class = "headerButton left" style="display: none"> Log In </button>
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
@@ -193,7 +194,7 @@
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
-                <button class = "headerButton" >Log In</button>
+                <button class = "headerButton" onclick= "loginAction()">Log In</button>
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
             </ul>
         </div>
@@ -226,7 +227,7 @@
                 <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 
 
-                <button type = "button" class = "headerButton" onclick= "signUpAction()";>Sign Up</button>
+                <button type = "button" class = "headerButton" onclick= "signUpAction()">Sign Up</button>
                 <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
             </ul>
         </div>

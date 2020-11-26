@@ -298,5 +298,5 @@ function signUpAction() {
     document.getElementById('loginButton').style.display ='none';
     document.getElementById('signUpButton').style.display ='none';
     document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("fname").value + document.getElementById("lname").value + "!";
+    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("fname").value + " " + document.getElementById("lname").value + "!";
 }
