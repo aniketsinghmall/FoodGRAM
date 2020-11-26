@@ -1103,8 +1103,10 @@ overflow: scroll;
 }
 
 .CartScroller{
-  height:80%;
+  height:75%;
+  margin-bottom: 5%;
   background-color: rgb(15,15,15);
+  border-radius: 45px;
   overflow-y: scroll;
 }
 
