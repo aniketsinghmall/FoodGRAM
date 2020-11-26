@@ -183,6 +183,7 @@
 
 <!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
+
     <form class="modal-content animate" method="post">
 
         <div style ="color: rgb(187,134,252);">
@@ -192,12 +193,12 @@
             <ul style="margin-left: 35%">
 
                 <label for="usernameL"><b>Username:</b></label><br>
-                <input class = "login" type="text" id="usernameL" name="usernameL" placeholder="Enter Username" autofocus required><br>
+                <input class = "login" type="text" id="usernameL" name="usernameL" placeholder="Enter Username" required><br>
 
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
-                <button type = "button" class = "headerButton" onclick= "loginAction();">Log In</button>
+                <button class = "headerButton" onclick= "loginAction();">Log In</button>
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
             </ul>
         </div>
