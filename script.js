@@ -12,10 +12,7 @@ let windowLocationSearch;
 async function checkoutDropDown(){
     cartContents = JSON.parse(window.localStorage.getItem("cartContents"));
     if(!document.getElementById("proceedCheckout")){
-        const dropDown = document.createElement("div");
-        dropDown.id = "checkoutDropDown";
-        dropDown.class = "headerButton right";
-        document.getElementById("headerButtons").appendChild(dropDown);
+        const dropDown = document.getElementById("checkoutDropDown");
         let cartItem;
         let totalPrice = 0;
         let cartButton;
@@ -152,7 +149,7 @@ function ingredients(restaurant, menuItem){
         let theOnPressFunction = "onclick=\"document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked = "+
             "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked; console.log('clicked');\"";
         document.getElementById("IngredientList").innerHTML += "<li " + theOnPressFunction + " class = "+ helper +" " +
-            "style=\"display: block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
+            "style=\"display: block\"><input class = \"checkboxes\" id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
             "type = \"checkbox\" class=\"checkItem\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
             "<label class = \"checkText\" for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
             data[0][restaurant].foodItems[menuItem].ingredients[i].name+"</label></li>";
@@ -263,4 +260,14 @@ async function removeItem(item){
     dropDown.appendChild(checkout);
     await sleep(230);
 
+}
+
+function getReview(){
+    let checkboxes = document.getElementsByClassName("checkboxes");
+    let checkBoxVals = [];
+    for(let i = 0; i<checkboxes.length; i++){
+        checkBoxVals.push(checkboxes[i].checked);
+    }
+    
+    return [new Recipe(data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals), document.getElementById("reviewRating").value];
 }
