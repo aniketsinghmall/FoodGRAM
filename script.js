@@ -68,6 +68,7 @@ async function proceedToCheckout(){
     document.getElementById("checkoutDropDown").style = "animation-name:checkoutClose";
     await sleep(230);
     document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
+    dropDownAnimating = false;
     displayCart();
 }
 
@@ -289,13 +290,5 @@ function loginAction() {
     document.getElementById('loginButton').style.display ='none';
     document.getElementById('signUpButton').style.display ='none';
     document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("usernameL").value + "!";
-}
-
-function signUpAction() {
-    document.getElementById('signup').style.display ='none'; 
-    document.getElementById('loginButton').style.display ='none';
-    document.getElementById('signUpButton').style.display ='none';
-    document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("fnameS").value + " " + document.getElementById("lnameS").value + "!";
+    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("username").value + "!";
 }
