@@ -223,7 +223,7 @@
 </div>
 
 <div id="signup" class="modal">
-    <form class="modal-content animate" method="post">
+    <form class="modal-content animate" name="form1" method="post" onsubmit="showConfirm();">
         <div style ="color: rgba(187,134,252);">
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
 
@@ -245,15 +245,26 @@
             <label for="confpass"><b>Confirm Password:</b></label><br>
             <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 
-
-            <button class = "headerButton" >Sign Up</button>
-            <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+            <button class = "cancelButton" document.getElementById('signup').style.display='none';">Cancel</button>
+            <button class = "headerButton" onclick="showConfirm();">Sign Up</button>
         </div>
     </form>
     <script>
         if ( window.history.replaceState ) {  // this will prevent form resubmission requests!
             window.history.replaceState( null, null, window.location.href );
         }
+    </script>
+    <script>
+        function showConfirm()
+        {
+            if (document.forms["form1"]["fname"].value != "" &&
+                document.forms["form1"]["lname"].value != "" &&
+                document.forms["form1"]["email"].value != "" &&
+                document.forms["form1"]["pass"].value != "" &&
+                document.forms["form1"]["confpass"].value != "")
+            {document.getElementById('signupSucess').style.display='block';}
+        }
+
     </script>
 </div>
 
