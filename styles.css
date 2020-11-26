@@ -914,6 +914,18 @@ body {
   font-weight: bold;
 }
 
+.usernameButton {
+  border: none;
+  background-color: #03DAC5;
+  font-size:22px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+
 #headerButtons{
   color: rgba(187,134,252, 200);
 
@@ -958,6 +970,10 @@ body {
   background-color:#03DAC5; width:25%; text-align:center; height: 15%; padding: 10px; margin-left: 100px; font-size: 30px; color: black; border-color: black; border-radius: 15px;
 }
 
+.cart {
+  overflow-y: scroll;
+}
+
 .cart1 {
   width: 38%;
   height: 70%;
@@ -967,6 +983,7 @@ body {
   border: 1px solid white;
   color: rgb(187,134,252);
   grid-area: cart1;
+ overflow-y: scroll;
 }
 
 
