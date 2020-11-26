@@ -5,7 +5,7 @@ let dropDownAnimating = false;
 
 (function(){
     data = createData();
-    document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
+    document.getElementById("checkoutButton").addEventListener("click", function(){checkoutDropDown();});
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
     document.body.addEventListener("click", function(){if(document.getElementById("proceedCheckout")){checkoutDropDown()}});
@@ -13,9 +13,9 @@ let dropDownAnimating = false;
 
 async function checkoutDropDown(){
     if(!dropDownAnimating){
+        dropDownAnimating = true;
         cartContents = JSON.parse(window.localStorage.getItem("cartContents"));
         if(!document.getElementById("proceedCheckout")){
-            dropDownAnimating = true;
             const dropDown = document.createElement("div");
             dropDown.id = "checkoutDropDown";
             dropDown.class = "headerButton right";
@@ -49,7 +49,6 @@ async function checkoutDropDown(){
             checkout.addEventListener("click", proceedToCheckout);
             dropDown.appendChild(checkout);
             await sleep(230);
-            dropDownAnimating = false;
             checkout.style = "font-size:20px";
 
         }
@@ -59,6 +58,7 @@ async function checkoutDropDown(){
             await sleep(230);
             document.getElementById("checkoutDropDown").parentNode.removeChild(document.getElementById("checkoutDropDown"));
         }
+        dropDownAnimating = false;
     }
 }
 
