@@ -275,3 +275,11 @@ function getReview(){
     
     return [new Recipe(data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals), document.getElementById("reviewRating").value];
 }
+
+
+function loginAction() {
+    document.getElementById('login').style.display ='none'; 
+    document.getElementById('loginButton').style.display ='none';
+    document.getElementById('signUpButton').style.display ='none';
+    document.getElementById('usernameButton').innerHTML = document.getElementById("username").value;
+}
