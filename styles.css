@@ -221,11 +221,41 @@ body {
   z-index: 10;
 }
 
+#proceedCheckout:hover{
+  opacity: 60%;
+}
+
+
 .checkoutItem{
   text-align: left;
-  padding-left: 10px;
+  padding-left: 0px;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.cartButton{
+  height:25px;
+  width:25px; 
+  margin-right:20px;
+  border-radius:10px;
+  background-color: red;
+  color:black;
+  padding-left: auto;
+  padding-right:auto;
+  font-weight: bold;
+  position:relative;
+  top: -4px;
+  margin-bottom:3px;
+  font-size:15px;
+}
+
+.cartButton:hover{
+  height:31px;
+  width:31px;
+  margin-right:14px;
+  margin-bottom:0px;
+  border-radius:15px;
+  font-size:18px;
 }
 
 @keyframes checkoutOpen{
@@ -426,6 +456,8 @@ body {
 /* Buttons for changing image.*/
 .featuredReviewSideButton{
   background-color: rgb(0,0,0);
+  background-image: url("backgroundmenu.jpg");
+
   color: white;
   display: inline-block;
   vertical-align: bottom;
@@ -443,6 +475,7 @@ body {
 /* Buttons for changing image.*/
 .featuredReviewSideLeftButton{
   background-color: rgb(0,0,0);
+  background-image: url("backgroundmenu.jpg");
   color: white;
   display: inline-block;
   vertical-align: bottom;
@@ -460,16 +493,18 @@ body {
 
 .featuredReviewSideButton:hover{
   background-color:rgb(45, 45, 45);
+  background-image: url("background.jpg");
 }
 
 .featuredReviewSideLeftButton:hover{
   background-color:rgb(45, 45, 45);
+    background-image: url("background.jpg");
+
 }
 
 /* Big image button.*/
 .featuredReviewMain{
   background-color: rgb(0,0,0);
-  background-image: url("foodImages/burger/burger5.jpg");
   background-size: contain, cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -483,7 +518,7 @@ body {
   0 -3px 0 black,
   0 3px 0 black;
   display: inline-block;
-  width: 55%;
+  width: 40%;
   height: 95%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -509,6 +544,7 @@ body {
   background-image: url("backgroundmenu.jpg");
   border-radius: 25px;
   width: 90%;
+  height:90%;
   margin-left:5%;
 }
 
@@ -607,6 +643,37 @@ body {
 
 
 
+.modal4 {
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(5,5,5,0.7);
+  padding: 60px;
+}
+
+
+.modal3 {
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(5,5,5,0.7);
+  padding: 60px;
+}
+
+
+
 .modal2 {
   display: none;
   font-family: Arial, Helvetica, sans-serif;
@@ -622,6 +689,34 @@ body {
 }
 
 /* Modal Content */
+
+.modal-content4 {
+  background-color: rgb(50,50,50);
+  margin-left: 30%;
+  padding: 20px;
+  margin-top: 12%;
+  position:relative;
+  border: 1px solid #888;
+  width: 40%;
+  height:30%;
+  font-size: 25px;
+}
+
+
+.modal-content3 {
+  background-color: rgb(50,50,50);
+  margin-left: 30%;
+  padding: 20px;
+  margin-top: 12%;
+  position:relative;
+  border: 1px solid #888;
+  width: 40%;
+  height:30%;
+  font-size: 25px;
+}
+
+
+
 .modal-content2 {
   background-color: rgb(50,50,50);
   margin-left: 20%;
@@ -760,6 +855,14 @@ body {
   to {transform: scale(1)}
 }
 
+#reviewPopup{
+  width:100%;
+  height:100%;
+
+}
+
+
+
 .modal {
   display: none;
   font-family: Arial, Helvetica, sans-serif;
@@ -770,13 +873,15 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(25,25,25);
+  background-color: rgba(0, 0, 0, 0.9);
   padding: 60px;
 }
 
 .modal-content {
   margin: 5% auto 15% auto;
   border: 1px solid #888;
+  background-image: url("background2.jpg");
+  border-radius: 25px;
   width: 60%;
   padding: 60px;
 }
@@ -808,6 +913,18 @@ body {
   border-radius: 15px;
   font-weight: bold;
 }
+
+.usernameButton {
+  border: none;
+  background-color: #03DAC5;
+  font-size:22px;
+  margin: 10px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
 
 #headerButtons{
   color: rgba(187,134,252, 200);
@@ -992,13 +1109,23 @@ overflow: scroll;
   padding:10px;
 }
 
+.removeCartButton{
+  border-radius: 15px; 
+  height: 25px; 
+  width: 100px;
+  background-color: red;
+  color: black;
+  font-weight: bold;
+}
 
 
 
+.signUp{
+
+  border-radius: 15px;
 
 
-
-
+}
 
 
 p {

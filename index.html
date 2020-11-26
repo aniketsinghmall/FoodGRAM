@@ -19,8 +19,9 @@
 <div class="grid-container"> <!-- Site contained in grid -->
 
     <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
-        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
-        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
+        <button id = "signUpButton" class = "headerButton left" onclick="document.getElementById('signup').style.display='block'"> Sign Up </button>
+        <button id = "loginButton" class = "headerButton left" onclick="document.getElementById('login').style.display='block'"> Log In </button>
+        <button id = "usernameButton" class = "usernameButton left" style="display: none"> </button>
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
@@ -79,44 +80,44 @@
                 <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
                 <pre style="font-size: 16px; font-weight: bold; font-size: large;">
 	  Developed by:
-        Aniket Mall 							        malla@myumanitoba.ca
+          Aniket Mall 			   			                   malla@myumanitoba.ca
 	  Christopher Vattheuer	 						vattheuc@myumanitoba.ca
 	  Matthias Penner 							pennerm2@myumanitoba.ca
 	  Paul Granelli 							umgranel@myumanitoba.ca
 	  Ryan Campbell 							campb169@myumanitoba.ca</pre><br>
-                <button class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
+                <button type = "button" class = "cancelButton" onclick="document.getElementById('contact').style.display='none';">Close</button>
             </div>
         </div>
 
         <div class="footer">
-            <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
-            <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
+            <button type = "button" class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
         </div>
-
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
     </div>
 </div>
 
 
-<!--CART SECTION.  CONSIDER MAKING IT GRAPH BASED? NOT SURE HOW IT WORKS FOR MODAL.-->
 <div id="cart" class="modal grid-cart">
     <div class="cartHeader">
         <h1 style="text-align:center;font-size:60px;">Your Order</h1>
-
     </div>
-    <div class="cart1">
+    <div class="cart1" style="  background-color: rgb(25, 25, 25);">
         <h1 style="text-align: center; font-size:50px;">Order Summary</h1>
             <div class = "CartScroller">
                 <ul id="CartList">
                 </ul>
-                <footer style="float:right; font-size:24px; color:white;"  id="TotalCost">Total Cost: </footer>
             </div>
-
+        <h1 style="float:right; color:white;" id="TotalCost">Total Cost: </h1>
     </div>
 
-    <div class="cart2" >
+    <div class="cart2" style="background-color: rgb(25, 25, 25);" >
         <h1>Checkout</h1>
 
-            <form method="post" onsubmit="let testVal = []; localStorage.setItem('cartContents', JSON.stringify(testVal));" >
+         <form method="post" onsubmit="let testVal = []; localStorage.setItem('cartContents', JSON.stringify(testVal));" >
 
             <label for="Delivery Address">Delivery Address<br></label>
             <input type="text" id="fname" name="fname" placeholder="First Name" required>
@@ -154,6 +155,7 @@
                 <option value="11">11</option>
                 <option value="12">12</option>
             </select>
+
             <label for="expiryYear"></label>
             <select name="expiryYear" id="expiryYear">
                 <option value="20">20</option>
@@ -163,97 +165,75 @@
                 <option value="24">24</option>
             </select>
             <input type="text" style="width: 40px;" id="ccNumber" name="cvcCode" placeholder="CVC" required><br>
-            
 
-                <div class = "footerCart" class="cart2">
-                    <button class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
-                    <button class = "acceptButton">Process Payment</button>
+            <div class = "footerCart" class="cart2">
+                <button  class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
+                <button  class = "acceptButton">Process Payment</button>
 
-                 </div>
+            </div>
 
-
-            </form>
+         </form>
 
     </div>
 
 </div>
 
 
-
-<!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
     <form class="modal-content animate" method="post">
 
         <div style ="color: rgb(187,134,252);">
 
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
-            <label for="username"><b>Username:</b></label><br>
-            <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
 
-            <label for="pass"><b>Password:</b></label><br>
-            <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
+            <ul style="margin-left: 35%">
 
-            <button class = "headerButton" >Log In</button>
-            <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
-        </div>
+                <label for="usernameL"><b>Username:</b></label><br>
+                <input class = "login" type="text" id="usernameL" name="usernameL" placeholder="Enter Username" autofocus required><br>
+
+                <label for="pass"><b>Password:</b></label><br>
+                <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
+
+                <button class = "headerButton" onclick= "loginAction();">Log In</button>
+                <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
+            </ul>
         </div>
     </form>
 </div>
 
-<div id="loginSucess" class="modal">
-    <div class="modal-content animate" style ="color: rgba(187,134,252);">
-        <h1 style="text-align:center">Welcome to FoodGram!</h1>
-        <p>You have been successfully logged in.</p><br>
-        <p>Enjoy your delicious food, and don't forget to use our special's for you: MilkTheCow.</p><br>
-        <p>You can close this window now.</p><br>
-        <button class = "cancelButton" onclick="document.getElementById('loginSucess').style.display='none'; document.getElementById('login').style.display='none';">Close</button>
-    </div>
-    </div>
-</div>
 
 <div id="signup" class="modal">
     <form class="modal-content animate" method="post">
         <div style ="color: rgba(187,134,252);">
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
 
-            <label for="fname"><b>First Name:</b></label><br>
-            <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
+            <ul style="margin-left: 35%">
+                <label for="fnameS"><b>First Name:</b></label><br>
+                <input class = "login" type="text" id="fnameS" name="fnameS" placeholder="Your First Name" autofocus required><br>
 
-            <label for="lname"><b>Last Name:</b></label><br>
-            <input class = "login" type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+                <label for="lnameS"><b>Last Name:</b></label><br>
+                <input class = "login" type="text" id="lnameS" name="lnameS" placeholder="Your Last Name" required><br>
             
-            <label for="email"><b>Email:</b></label><br>
-            <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
+                <label for="email"><b>Email:</b></label><br>
+                <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
 
-            <label for="username"><b>Username:</b></label><br>
-            <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
+                <label for="username"><b>Username:</b></label><br>
+                <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
 
-            <label for="pass"><b>Password:</b></label><br>
-            <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
+                <label for="pass"><b>Password:</b></label><br>
+                <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
 
-            <label for="confpass"><b>Confirm Password:</b></label><br>
-            <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
+                <label for="confpass"><b>Confirm Password:</b></label><br>
+                <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 
-            <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
-            <button class = "headerButton" input = "submit">Sign Up</button>
+
+                <button type = "button" class = "headerButton" onclick= "signUpAction();">Sign Up</button>
+                <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+            </ul>
         </div>
     </form>
 
 </div>
-
-
-<div id="signupSucess" class="modal">
-    <div class="modal-content animate" style ="color: rgba(187,134,252);">
-        <h1 style="text-align:center;">Welcome to FoodGram!</h1>
-        <p>Your account has been created successfully.</p><br>
-        <p>You can close this window and login now.</p><br>
-        <button class = "cancelButton" onclick="document.getElementById('signupSucess').style.display='none'; document.getElementById('signup').style.display='none';">Close</button>
-    </div>
-</div>
-
-
-<!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
-
 
 
 <div id="foodPopup" class="modal2">
@@ -266,8 +246,34 @@
         </div>
         <h2 id="FoodDesc">Here is the description</h2>
         <div id="IngredientList"></div>
-        <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
-        <button id="AddReview" class = "headerButton4">Add To Reviews</button>
+        <button id="AddToCart" class = "headerButton3" onclick = "addToCart(); ">Add To Cart</button>
+
+        <button id="AddReview" class = "headerButton4"  onclick = "document.getElementById('reviewPopup').style.display='block'">Add To Reviews</button>
+    </div>
+</div>
+
+
+<div id="reviewPopup" class="modal3">
+    <div class="modal-content3">
+        <div>
+            <span>
+                <button style = "width:50px;" id = "closeReviewPage" class = "headerButton2" onclick="document.getElementById('reviewPopup').style.display='none';">X</button>
+            </span>
+            <h1 id="ReviewTag" style="color:white;text-align:center;margin:0;">Add Review</h1>
+        </div>
+
+
+
+        <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
+        <br>
+        <p style="text-align:left;float:left;">I give my recipe a 
+
+        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
+
+        out of 5 </p>
+        <button id="AddAReview" class = "headerButton3"  onclick = "addReviewThing();" style="margin-top:10%;">Add Review</button>
+        <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;">Cancel</button>
+
     </div>
 </div>
 
