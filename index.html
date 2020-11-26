@@ -259,7 +259,37 @@
         <h2 id="FoodDesc">Here is the description</h2>
         <div id="IngredientList"></div>
         <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
+<<<<<<< Updated upstream
         <button id="AddReview" class = "headerButton4">Add To Reviews</button>
+=======
+        <button id="AddReview" class = "headerButton4"  onclick = "document.getElementById('reviewPopup').style.display='block'">Add To Reviews</button>
+    </div>
+</div>
+
+
+<div id="reviewPopup" class="modal3">
+    <div class="modal-content3">
+        <div>
+            <span>
+                <button style = "width:50px;" id = "closeReviewPage" class = "headerButton2" onclick="document.getElementById('reviewPopup').style.display='none';">X</button>
+            </span>
+            <h1 id="ReviewTag" style="color:white;text-align:center;margin:0;">Add Review</h1>
+        </div>
+
+            <form method="post">
+
+        <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
+        <br>
+        <p style="text-align:left;float:left;">I give my recipe a 
+
+        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
+
+        out of 5 </p>
+
+        <button id="AddAReview" class = "headerButton3" style="margin-top:10%;">Add Review</button>
+        <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;" onclick = "document.getElementById('reviewPopup').style.display='none'">Cancel</button>
+        </form>
+>>>>>>> Stashed changes
     </div>
 </div>
 

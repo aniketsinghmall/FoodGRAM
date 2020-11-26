@@ -23,6 +23,8 @@ class Restaurant {
     }
 }
 
+
+
 class FoodItem{
     name
     ingredients
@@ -420,6 +422,10 @@ function getData(){
 }
 
 
+
+
+
+
 function changeReviews(value){
     sessionStorage.setItem(("Trending"), value);
     let buttons = document.getElementsByClassName('deleteMe');
@@ -593,8 +599,6 @@ function displayRestaurantReviews() {
         
     else
         document.getElementById("reviewTitle").innerText = "Friend Reviews";
-    
-
 
 }
 
@@ -704,6 +708,15 @@ function getUniqueRestaurantReviews(array){
             result.push(array[i]);
     }
     return result;
+}
+
+
+function addNewReview(review){
+    // here here here
+    let allReviews = JSON.parse(localStorage.getItem("friendFoodReviews"));
+    allReviews.push(review);
+    localStorage.setItem("friendFoodReivews", JSON.stringify(allReviews));
+    displayRestaurantReviews();
 }
 
 
