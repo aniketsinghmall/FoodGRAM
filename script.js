@@ -25,7 +25,7 @@ async function checkoutDropDown(){
         for(let i = 0; i<cartContents.length; i++){
             cartItem = document.createElement("li");
             cartItem.className = "checkoutItem";
-            cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\"></button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:20px;\">- $" + cartContents[i].foodItem.price+"</div>";
+            cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\">- $" + cartContents[i].foodItem.price+"</div>";
             list.appendChild(cartItem);
             totalPrice += parseFloat(cartContents[i].foodItem.price);
         }
@@ -241,7 +241,7 @@ async function removeItem(item){
     for(let i = 0; i<cartContents.length; i++){
         cartItem = document.createElement("li");
         cartItem.className = "checkoutItem";
-        cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\"></button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:20px;\">- $" + cartContents[i].foodItem.price+"</div>";
+        cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\">- $" + cartContents[i].foodItem.price+"</div>";
         list.appendChild(cartItem);
         totalPrice += parseFloat(cartContents[i].foodItem.price);
     }
