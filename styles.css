@@ -456,7 +456,7 @@ body {
 /* Buttons for changing image.*/
 .featuredReviewSideButton{
   background-color: rgb(0,0,0);
-  background-image: url("backgroundmenu.jpg");
+  background-image: url("background.jpg");
 
   color: white;
   display: inline-block;
@@ -475,7 +475,7 @@ body {
 /* Buttons for changing image.*/
 .featuredReviewSideLeftButton{
   background-color: rgb(0,0,0);
-  background-image: url("backgroundmenu.jpg");
+  background-image: url("background.jpg");
   color: white;
   display: inline-block;
   vertical-align: bottom;
@@ -493,12 +493,12 @@ body {
 
 .featuredReviewSideButton:hover{
   background-color:rgb(45, 45, 45);
-  background-image: url("background.jpg");
+  background-image: url("backgroundmenu.jpg");
 }
 
 .featuredReviewSideLeftButton:hover{
   background-color:rgb(45, 45, 45);
-    background-image: url("background.jpg");
+    background-image: url("backgroundmenu.jpg");
 
 }
 
