@@ -572,6 +572,7 @@ function displayRestaurantReviews() {
 
 
             dir = getFoodPhotoDir(reviews[i].recipe.foodItem.name.toLowerCase());
+            
         else
             dir = getRestaurantPhotoDir(reviews[i].restaurant.name.toLowerCase())
         btn.setAttribute("style", "background-image: url(" + dir + ")");
@@ -582,6 +583,7 @@ function displayRestaurantReviews() {
     }
     if(sessionStorage.getItem("Trending") == 'true')
         document.getElementById("reviewTitle").innerText = "Trending Reviews";
+        
     else
         document.getElementById("reviewTitle").innerText = "Friend Reviews";
     
@@ -621,7 +623,7 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
             btn.onclick = function(){
                 ingredients(restNum, foodNum);
             };
-            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
+            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/> </span>";
             // btn.style.textAlign
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
             //    window.location.search = 'restaurant=' + reviews[0].name;
@@ -632,6 +634,13 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
             btn.style.backgroundSize = 'cover';
             btn.style.backgroundRepeat = 'no-repeat';
             btn.style.backgroundPosition = 'center';
+
+            var stars = new Image();
+            stars.src = "stars/" + Math.floor(uniqueReview[index].rating) + "star.png"
+            stars.style.width = "35%";
+            btn.appendChild(stars);
+
+
         }
     }
     else {  //looking for restaurant.
@@ -641,7 +650,7 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
         if (bestRest[0] !== undefined) {
             let uniqueReview = getUniqueRestaurantReviews(bestRest);
             let index = mod(parseInt(sessionStorage.getItem("FeaturedReviewNum") + uniqueReview.length*10), uniqueReview.length);
-            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].name + "<br/>" + uniqueReview[index].rating + "/5<br/> </span>";
+            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].name + "<br/> </span>";
             btn.onclick = function () {
                 window.location.search = 'restaurant=' + bestRest[0].name;
             };
@@ -650,7 +659,16 @@ function displayFeaturedReview() {  // Needs to be generalized to food items!
             btn.style.backgroundSize = 'cover';
             btn.style.backgroundRepeat = 'no-repeat'
             btn.style.backgroundPosition = 'center';
+
+            var stars = new Image();
+            stars.src = "stars/" + Math.floor(uniqueReview[index].rating) + "star.png"
+            stars.style.width = "35%";
+            btn.appendChild(stars);
+
         }
+
+
+
     }
 }
 
