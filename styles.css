@@ -1200,6 +1200,7 @@ p {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(35, 35, 35);
+  background: #4e9dde;
 }
 
 /* Handle on hover */
