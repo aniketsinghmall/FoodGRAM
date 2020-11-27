@@ -12,6 +12,8 @@ body {
 .catImg{
   height:1.5vw;
   width:1.5vw;
+  text-align: center;
+  vertical-align: middle;
 }
 
 
@@ -114,6 +116,13 @@ body {
   vertical-align: center;
 }
 
+.material-icons{
+  font-size:2vw;
+}
+
+
+
+
 /* Logo Icon.*/
 #logo{
   display: inline-block;
@@ -152,7 +161,7 @@ body {
   margin-right: 20px;
   transition: width 0.25s;
   background-image: url("searchIcon.png");
-  background-size: 40px 40px;
+  background-size:1.82vw 1.82vw;
   background-repeat: no-repeat;
   font-size: 20px;
   border-style:solid;
@@ -186,6 +195,7 @@ body {
 #checkoutButton{
   display: inline-block;
   border-radius: 15px;
+  background-size:2.5vw, 2.5vh;
   width:4vw;
   height:2.1vw;
   border-style: solid;
@@ -302,15 +312,15 @@ body {
 /* BOTTOM HEADER CSS.*/
 /* Categories.*/
 .topNavBar {
-  padding-top:10px;
   color: rgb(18,18,18);
   list-style: none;
   align:center;
+  margin:0;
+  margin-top: 0.6vh;
   padding-left:20vw;
-  margin: 0;
   overflow-x: hidden;
+  vertical-align: middle;
   overflow-y: hidden;
-  height:100%;
   text-align: center;
   padding-right: 0;
   position:relative;
@@ -327,8 +337,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   margin-top:0;
+  height:3vh;
   margin-bottom:-0.1vh;
-  height:4vh;
   text-align: center;
   text-decoration: none;
   border-radius:0.4vw;
@@ -1247,6 +1257,7 @@ overflow: scroll;
 }
 
 #resultsHeader{
+  margin:0;
   margin-top: 0.1vh;
   font-size: 1.7vw;
 }
