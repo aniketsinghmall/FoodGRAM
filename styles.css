@@ -1121,12 +1121,31 @@ overflow: scroll;
   font-weight: bold;
 }
 
+.CartForm{
+  width:100%;
+  padding:100px;
+  align-content: center;
+  background-color: rgb(15,15,15);
+}
+
+
 .CartScroller{
   height:75%;
   margin-bottom: 5%;
   background-color: rgb(15,15,15);
   border-radius: 45px;
   overflow-y: scroll;
+}
+
+.CartScroller2{
+  height:75%;
+  width:200%;
+  margin-bottom: 5%;
+  background-color: rgb(15,15,15);
+  border-radius: 45px;
+  overflow-y: scroll;
+  margin-left:-50%;
+  overflow-x:hidden;
 }
 
 .footerCart {
