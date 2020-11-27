@@ -37,8 +37,6 @@ body {
   background-color: none;
   grid-area: header;
   vertical-align: center;
-  margin-top:5px;
-  margin-bottom:0px;
 }
 
 .title {
@@ -59,7 +57,6 @@ body {
 /* Reviews on the left side.*/
 .socialMenu {
   grid-area: menu;
-  overflow:hidden;
 }
 
 /* Main featured review. */
@@ -112,8 +109,8 @@ body {
   display: inline-block;
   padding-top: 3px;
   height:auto;
-  width:200px; /* use this to center */
-  left: 23%;
+  width:375px; /* use this to center */
+  left: 18%;
   margin-left: calc(40% - 150px);
   text-align:center;
   top:0%;
@@ -323,12 +320,8 @@ body {
   border-width: 2px;
   border-color: white;
   margin-left: 15px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top:0px;
-  margin-top:0px;
-  position:relative;
-  top:-15px;
+  font-size: 30px;
+  padding: 5px 5px;
 }
 
 .topNavBar a:hover {
@@ -1201,9 +1194,8 @@ overflow: scroll;
 }
 
 #resultsHeader{
-  font-size: 30px;
-  position: relative;
-  top:-5px;
+  margin-top: 1%;
+  font-size: 40px;
 }
 
 
