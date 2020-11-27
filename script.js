@@ -12,7 +12,6 @@ let dropDownAnimating = false;
 
 
     if(sessionStorage.getItem("UserName") !== null) {
-        console.log("This ran!");
         document.getElementById('loginButton').style.display = 'none';
         document.getElementById('signUpButton').style.display = 'none';
         document.getElementById('usernameButton').style.display = 'block';
@@ -21,7 +20,6 @@ let dropDownAnimating = false;
 })();
 
 function loginAction() {
-    console.log("this ran");
     sessionStorage.setItem("UserName", document.getElementById("usernameL").value);
 }
 
@@ -183,7 +181,7 @@ function ingredients(restaurant, menuItem){
         else
             helper = "\"IngredientRow2\"";
         let theOnPressFunction = "onclick=\"document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked = "+
-            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked; console.log('clicked');\"";
+            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked;\"";
         document.getElementById("IngredientList").innerHTML += "<li " + theOnPressFunction + " class = "+ helper +" style=\"display: block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
             "type = \"checkbox\" class=\"checkItem\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+"<label class = \"checkText\" for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
             data[0][restaurant].foodItems[menuItem].ingredients[i].name+"</label></li>";
@@ -297,13 +295,9 @@ async function removeItem(item){
 function getReview(user, rating){
     let checkboxes = document.getElementsByClassName("checkItem");
     let checkBoxVals = [];
-    console.log("checkboxes length: " + checkboxes.length);
     for(let i = 0; i<checkboxes.length; i++){
         checkBoxVals.push(checkboxes[i].checked);
     }
-
-    console.log("restaurant: " + data[0][currRestaurant]);
-    console.log("food: " + data[0][currRestaurant].foodItems[currMenuItem]);
 
     let review = new FoodReview(user, rating, data[0][currRestaurant], data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals);
     return review;
