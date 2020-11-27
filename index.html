@@ -32,6 +32,7 @@
 
     <div class="bottomHeader"> <!-- Bottom header for category buttons -->
         <ul class = "topNavBar">
+            <li><a href = "index.html"> <img src = "stars/oldStars/1star.png" style="width:30px; height:30px;"> All </a></li>
             <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
             <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
             <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
@@ -304,7 +305,7 @@
     <div class="modal-content3">
         <img src="DeliveryGuy.png" style="width:50%;height:90%;margin-left:auto; margin-right:auto; display:block; position:relative; top:-65px;"> 
         <h3 style="text-align:center;display:block; position:relative; margin-top:auto; margin-bottom:auto; top:-90px;">Thank you! <br> Your order will be delivered soon <br> You will be sent an email to leave a review</h3>
-        <button class="headerButton3" style="margin-top:10%;background-color:red;display:block; margin-left:auto; margin-right:auto; margin-bottom:auto; margin-top:auto; position:relative; top:-85px;" onclick="document.getElementById('thankYou').style.display='none';">Close</button>
+        <button class="headerButton3" style="margin-top:10%;background-color:red;display:block; margin-left:auto; margin-right:auto; margin-bottom:auto; margin-top:auto; position:relative; top:-85px;" onclick="document.getElementById('thankYou').style.display='none';window.localStorage.setItem('cartContents', JSON.stringify([]));">Close</button>
     </div>
 </div>
 

@@ -598,7 +598,7 @@ function displayRestaurantReviews() {
 
         
             var stars = new Image();
-            stars.src = "stars/" + Math.floor(reviews[i].rating) + "star.png"
+            stars.src = "stars/" + Math.round(reviews[i].rating) + "star.png"
             stars.style.width = "35%";
             btn.appendChild(stars);
            
@@ -659,7 +659,7 @@ function displayFeaturedReview() {
             btn.style.backgroundPosition = 'center';
 
             var stars = new Image();
-            stars.src = "stars/" + Math.floor(uniqueReview[index].rating) + "star.png"
+            stars.src = "stars/" + Math.round(uniqueReview[index].rating) + "star.png"
             stars.style.width = "35%";
             btn.appendChild(stars);
 
@@ -684,7 +684,7 @@ function displayFeaturedReview() {
             btn.style.backgroundPosition = 'center';
 
             var stars = new Image();
-            stars.src = "stars/" + Math.floor(uniqueReview[index].rating) + "star.png"
+            stars.src = "stars/" + Math.round(uniqueReview[index].rating) + "star.png"
             stars.style.width = "35%";
             btn.appendChild(stars);
 
