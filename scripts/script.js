@@ -121,7 +121,7 @@ function searchResults(){
         }
         else{
             list.innerHTML = "<h2>No results found</h2>"
-            list.innerHTML += "<img src = plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
+            list.innerHTML += "<img src = images/plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
         }
     }
     else if(urlParams.get("restaurant")){  //restaurant page, get food items.
@@ -158,7 +158,7 @@ function searchResults(){
         }
         else{
             list.innerHTML = "<h2>No results found</h2>"
-            list.innerHTML += "<img src = plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
+            list.innerHTML += "<img src = images/plate.png style = \"width:50%; height: 50%; margin: auto; display:block; float:none\">";
         }
     }
 }

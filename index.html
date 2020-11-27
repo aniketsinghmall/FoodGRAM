@@ -6,7 +6,7 @@
 
 <head>
     <link id = "myStyleSheet" rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="BackEnd.js"></script>
+    <script type="text/javascript" src="scripts/BackEnd.js"></script>
     <!-- Imports Google icons for use-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -21,7 +21,7 @@
         <span id = "signUpButton"><button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button></span>
         <span id = "loginButton"><button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button></span>
         <button id = "usernameButton" class = "usernameButton left" style="display: none"> </button>
-        <img id = "logo" src="logo1.png">
+        <img id = "logo" src="images/logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i style = "font-size:1.2vw;" class="material-icons">add_shopping_cart</i>
         </button>
         <form>
@@ -69,7 +69,7 @@
       <ul id = "resultsList">
         <a href = "#Mike's Special"> Mike's Special </a>
       </ul>
-        <script src = "script.js"> </script>
+        <script src = "scripts/script.js"> </script>
         <script> searchResults() </script>
     </div>
 
@@ -186,18 +186,18 @@
 
         <div style ="color: rgb(187,134,252);">
 
-            <h1 style="text-align:center">Welcome to FoodGram!</h1>
+            <h1 style="text-align:center; font-size:2vw;">Welcome to FoodGram!</h1>
 
-            <ul style="margin-left: 35%">
+            <ul style="margin-left: 20vw">
 
-                <label for="usernameL"><b>Username:</b></label><br>
-                <input class = "login" type="text" id="usernameL" name="usernameL" placeholder="Enter Username" required><br>
+                <label for="usernameL" style="font-size:1vw;"><b>Username:</b></label><br>
+                <input class = "login" style="font-size:1vw;" type="text" id="usernameL" name="usernameL" placeholder="Enter Username" required><br>
 
-                <label for="pass"><b>Password:</b></label><br>
-                <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
+                <label for="pass" style="font-size:1vw;" ><b>Password:</b></label><br>
+                <input class = "login" type="password" id="pass" style="font-size:1vw;" name="pass" placeholder="Enter Password" required><br>
 
-                <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
-                <button class = "headerButton" onsubmit="loginAction();">Log In</button>
+                <button class = "cancelButton" style="font-size:1vw;" onclick="document.getElementById('login').style.display='none';">Cancel</button>
+                <button class = "headerButton" style="font-size:1vw;" onsubmit="loginAction();">Log In</button>
 
             </ul>
         </div>
@@ -208,30 +208,30 @@
 <div id="signup" class="modal">
     <form class="modal-content animate" onsubmit="signUpAction();" method="post">
         <div style ="color: rgba(187,134,252);">
-            <h1 style="text-align:center">Welcome to FoodGram!</h1>
+            <h1 style="text-align:center; font-size:2vw;">Welcome to FoodGram!</h1>
 
             <ul style="margin-left: 35%">
 
-                <label for="fnameS"><b>First Name:</b></label><br>
-                <input class = "signup" type="text" id="fnameS" name="fnameS" placeholder="Your First Name" autofocus required><br>
+                <label for="fnameS" style="font-size:1vw;"><b>First Name:</b></label><br>
+                <input class = "signup" style="font-size:1vw;" type="text" id="fnameS" name="fnameS" placeholder="Your First Name" autofocus required><br>
 
-                <label for="lnameS"><b>Last Name:</b></label><br>
-                <input class = "signup" type="text" id="lnameS" name="lnameS" placeholder="Your Last Name" required><br>
+                <label for="lnameS" style="font-size:1vw;"><b>Last Name:</b></label><br>
+                <input class = "signup" style="font-size:1vw;" type="text" id="lnameS" name="lnameS" placeholder="Your Last Name" required><br>
             
-                <label for="email"><b>Email:</b></label><br>
-                <input class = "signup" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
+                <label for="email" style="font-size:1vw;"><b>Email:</b></label><br>
+                <input class = "signup" style="font-size:1vw;" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
 
-                <label for="username"><b>Username:</b></label><br>
-                <input class = "signup" type="text" id="username" name="username" placeholder="Choose Username" required><br>
+                <label for="username" style="font-size:1vw;" ><b>Username:</b></label><br>
+                <input class = "signup" style="font-size:1vw;" type="text" id="username" name="username" placeholder="Choose Username" required><br>
 
-                <label for="pass"><b>Password:</b></label><br>
-                <input class = "signup" type="password" id="pass" name="pass" placeholder="********" required><br>
+                <label for="pass" style="font-size:1vw;"><b>Password:</b></label><br>
+                <input class = "signup" style="font-size:1vw;" type="password" id="pass" name="pass" placeholder="********" required><br>
 
-                <label for="confpass"><b>Confirm Password:</b></label><br>
-                <input class = "signup" type="password" id="confpass" name="confpass" placeholder="********" required><br>
+                <label for="confpass" style="font-size:1vw;"><b>Confirm Password:</b></label><br>
+                <input class = "signup" style="font-size:1vw;" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 
-                <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
-                <button class = "headerButton" onsubmit="signUpAction();">Sign Up</button>
+                <button class = "cancelButton" style="font-size:1vw;" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+                <button class = "headerButton" style="font-size:1vw;" onsubmit="signUpAction();">Sign Up</button>
 
             </ul>
         </div>
@@ -289,7 +289,7 @@
 
 <div id="thankYou" class="modal5">
     <div class="modal-content3">
-        <img src="DeliveryGuy.png" style="width:15vw;height:25vh;margin-left:auto; margin-right:auto; display:block; position:relative; ">
+        <img src="images/DeliveryGuy.png" style="width:15vw;height:25vh;margin-left:auto; margin-right:auto; display:block; position:relative; ">
         <h3 style="text-align:center;display:block; position:relative; font-size:1vw; margin-top:auto; margin-bottom:auto; top:-3.5vh;">Thank you! <br> Your order will be delivered soon <br> You will be sent an email to leave a review</h3>
         <button class="headerButton3" style="margin-top:5vh;background-color:red;display:block; margin-left:auto; margin-right:auto; margin-bottom:auto; margin-top:auto; position:relative; top:-3vh;" onclick="document.getElementById('thankYou').style.display='none';window.localStorage.setItem('cartContents', JSON.stringify([]));">Close</button>
     </div>

@@ -2,7 +2,7 @@ body {
   background-color: rgb(25, 25, 25);
   padding: 0% 1%;
   color: rgba(187,134,252, 200);
-  background-image: url("background2.jpg");
+  background-image: url("images/background2.jpg");
 }
 
 #resultsList{
@@ -160,7 +160,7 @@ body {
   float: right;
   margin-right: 20px;
   transition: width 0.25s;
-  background-image: url("searchIcon.png");
+  background-image: url("images/searchIcon.png");
   background-size:1.82vw 1.82vw;
   background-repeat: no-repeat;
   font-size: 20px;
@@ -508,7 +508,7 @@ body {
 /* Buttons for changing image.*/
 .featuredReviewSideButton{
   background-color: rgb(0,0,0);
-  background-image: url("background.jpg");
+  background-image: url("images/background.jpg");
 
   color: white;
   display: inline-block;
@@ -528,7 +528,7 @@ body {
 /* Buttons for changing image.*/
 .featuredReviewSideLeftButton{
   background-color: rgb(0,0,0);
-  background-image: url("background.jpg");
+  background-image: url("images/background.jpg");
   color: white;
   display: inline-block;
   vertical-align: bottom;
@@ -547,12 +547,12 @@ body {
 
 .featuredReviewSideButton:hover{
   background-color:rgb(45, 45, 45);
-  background-image: url("backgroundmenu.jpg");
+  background-image: url("images/backgroundmenu.jpg");
 }
 
 .featuredReviewSideLeftButton:hover{
   background-color:rgb(45, 45, 45);
-    background-image: url("backgroundmenu.jpg");
+    background-image: url("images/backgroundmenu.jpg");
 
 }
 
@@ -601,7 +601,7 @@ body {
 
 
 .mainMenu{
-  background-image: url("backgroundmenu.jpg");
+  background-image: url("images/backgroundmenu.jpg");
   border-radius: 25px;
   width: 90%;
   height:-webkit-fill-available;
@@ -955,7 +955,7 @@ body {
 .modal-content {
   margin: 5% auto 15% auto;
   border: 1px solid #888;
-  background-image: url("background2.jpg");
+  background-image: url("images/background2.jpg");
   border-radius: 25px;
   width: 60%;
   padding: 60px;
