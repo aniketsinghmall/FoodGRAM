@@ -234,9 +234,10 @@ function addToCart(){
     for(let i = 0; i<data[0][currRestaurant].foodItems[currMenuItem].ingredients.length; i++){
         customization.push(document.getElementById("checkBoxRestaurant"+currRestaurant+"menuItem"+currMenuItem+"ingredient"+i).checked);
     }
+    cartContents = JSON.parse(window.localStorage.getItem("cartContents"));
     cartContents.push(new Recipe(data[0][currRestaurant].foodItems[currMenuItem], customization));
     ingredients(currRestaurant, currMenuItem);
-    localStorage.setItem("cartContents", JSON.stringify(cartContents));
+    window.localStorage.setItem("cartContents", JSON.stringify(cartContents));
     hidePopUp();
 }
 
