@@ -1123,7 +1123,9 @@ overflow: scroll;
 
 .CartForm{
   width:100%;
-  padding:100px;
+  padding-left:100px;
+  padding-top:25px;
+  padding-right:100px;
   align-content: center;
   background-color: rgb(15,15,15);
 }
