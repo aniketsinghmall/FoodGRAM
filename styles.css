@@ -997,7 +997,6 @@ body {
   border: 1px solid white;
   color: rgb(187,134,252);
   grid-area: cart1;
-  overflow-y:scroll;
 }
 
 
@@ -1093,7 +1092,6 @@ overflow: scroll;
   border: 1px solid white;
   color: rgb(187,134,252);
   grid-area: cart2;
-  overflow-y:scroll;
 }
 
 .cart2 h1{
