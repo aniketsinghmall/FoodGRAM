@@ -478,6 +478,7 @@ function displayCart(){
                 //create the drop down:
                 let friends = ["Me", "ChrisVat", "Ryan Campbell", "Matty P", "Aniket S"]
                 let dropDown = document.createElement("select");
+                dropDown.className = "cart1Drop";
                 for(let i =0; i<friends.length; i++){
                     let myOption = document.createElement("option");
                     myOption.innerText = friends[i];

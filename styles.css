@@ -5,8 +5,13 @@ body {
   background-image: url("background2.jpg");
 }
 
-.resultsList{
-  margin-top:0px;
+#resultsList{
+  margin:0;
+}
+
+.catImg{
+  height:1.5vw;
+  width:1.5vw;
 }
 
 
@@ -24,7 +29,7 @@ body {
   'footer footer';
   grid-gap: 0px;
   padding: 2px;
-  grid-template-rows: 8% 5% 5% 25% 50% 5% 2%;
+  grid-template-rows: 8% 6% 4% 27% 46% 3.8% 2%;
   grid-template-columns: 20% 80%;
 }
 
@@ -53,9 +58,15 @@ body {
   background-color: none;
 }
 
+#reviewTitle{
+  font-size:1.3vw;
+}
+
+
 /* Reviews on the left side.*/
 .socialMenu {
   grid-area: menu;
+  overflow-y: hidden;
 }
 
 /* Main featured review. */
@@ -94,7 +105,7 @@ body {
   display: inline-block;
   border: none;
   background-color: #03DAC5;
-  font-size:22px;
+  font-size:1.3vw;
   margin: 10px;
   padding: 5px;
   overflow: hidden;
@@ -108,9 +119,9 @@ body {
   display: inline-block;
   padding-top: 3px;
   height:auto;
-  width:375px; /* use this to center */
-  left: 18%;
-  margin-left: calc(40% - 150px);
+  width:18vw; /* use this to center */
+  margin-left:-4vw;
+  /* left: 18vw; */
   text-align:center;
   top:0%;
   position: absolute;
@@ -175,13 +186,18 @@ body {
 #checkoutButton{
   display: inline-block;
   border-radius: 15px;
+  width:4vw;
+  height:2.1vw;
   border-style: solid;
   border-width: 3px;
   vertical-align: center;
 }
 
 #contactUsButton{
-  margin-left:18.5%;
+  margin-left:18.5vw;
+  width:5vw;
+  height:2vw;
+  font-size: 1vw;
 }
 
 #checkoutDropDown{
@@ -289,14 +305,13 @@ body {
   padding-top:10px;
   color: rgb(18,18,18);
   list-style: none;
+  align:center;
+  padding-left:20vw;
   margin: 0;
   overflow-x: hidden;
   overflow-y: hidden;
-  float: left;
   height:100%;
   text-align: center;
-  padding-left: 29.6%;  /* use this to center categories! */
-  width: 60%;
   padding-right: 0;
   position:relative;
 }
@@ -311,16 +326,18 @@ body {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: large;
+  margin-top:0;
+  margin-bottom:-0.1vh;
+  height:4vh;
   text-align: center;
   text-decoration: none;
-  border-radius:10px;
+  border-radius:0.4vw;
   border-style: solid;
-  border-width: 2px;
+  border-width: 0.15vw;
   border-color: white;
-  margin-left: 15px;
-  font-size: 30px;
-  padding: 5px 5px;
+  margin-left: 0.5vw;
+  font-size: 1.3vw;
+  padding: 0px 5px;
 }
 
 .topNavBar a:hover {
@@ -338,9 +355,10 @@ body {
   display: inline-block;
   border: none;
   background-color: #03DAC5;
-  font-size:22px;
-  margin: 5px;
-  padding: 5px;
+  font-size:1vw;
+  width:9vw;
+  margin: 0.2vw;
+  padding: 0.2vw;
   overflow: hidden;
   border-radius: 15px;
   font-weight: bold;
@@ -356,9 +374,10 @@ body {
   display: inline-block;
   border: none;
   background-color: #03DAC5;
-  font-size:22px;
-  margin: 5px;
-  padding: 5px;
+  font-size:1vw;
+  margin: 0.1vw;
+  width:8vw;
+  padding: 0.2vw;
   overflow: hidden;
   border-radius: 15px;
   font-weight: bold;
@@ -374,13 +393,32 @@ body {
 
 .RestaurantReviews {
   width:100%;
-  height:100%;
+  height:-webkit-fill-available;
 }
+
+#ReviewTag{
+  font-size:2vw;
+}
+
+#FoodDesc2{
+  font-size:0.9vw;
+}
+
+.text3{
+  font-size:1vw;
+}
+
+#reviewRating{
+  font-size:1vw;
+}
+
+
 
 .ReviewText {
   background-size: contain;
   color:white;
   vertical-align: top;
+  font-size:1.3vw;
 }
 
 .socialMenu{
@@ -394,6 +432,8 @@ body {
   overflow-x:hidden;
   float:left;
 }
+
+
 
 .socialMenu p{
   color:white;
@@ -466,12 +506,13 @@ body {
   display: inline-block;
   vertical-align: bottom;
   width: 5%;
-  height: 95%;
+  height: -webkit-fill-available;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: large;
   text-align: center;
   text-decoration: none;
+  margin-bottom:0.5vh;
   border-radius: 25px;
   margin-left: 2%;
 }
@@ -485,7 +526,8 @@ body {
   vertical-align: bottom;
   margin-left: 0%;     /* Use this to center.*/
   width: 5%;
-  height: 95%;
+  height: -webkit-fill-available;
+  margin-bottom:0.5vh;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: large;
@@ -506,6 +548,11 @@ body {
 
 }
 
+
+.QuickFix{
+  font-size: 1.3vw;
+}
+
 /* Big image button.*/
 .featuredReviewMain{
   background-color: rgb(0,0,0);
@@ -522,11 +569,12 @@ body {
   0 -3px 0 black,
   0 3px 0 black;
   display: inline-block;
-  width: 40%;
-  height: 95%;
+  width: 30vw;
+  height:-webkit-fill-available;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: 1.5vw;
+  margin-bottom:0.5vh;
   text-align: center;
   text-decoration: none;
   border-radius: 25px;
@@ -548,7 +596,7 @@ body {
   background-image: url("backgroundmenu.jpg");
   border-radius: 25px;
   width: 90%;
-  height:90%;
+  height:-webkit-fill-available;
   margin-left:5%;
 }
 
@@ -579,10 +627,12 @@ body {
 .mainMenu ul{
   overflow:hidden;
   overflow-y:scroll;
-  height: 95%;
+  height: inherit;
+  font-size:10vw;
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 0px;
+  padding-bottom:0;
   list-style: none;
   width: auto;
   border-bottom-right-radius: 25px;
@@ -596,7 +646,7 @@ body {
   float: left;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: 1.4vw;
   text-decoration: none;
   float: left;
   margin-top:1.5%;
@@ -726,8 +776,8 @@ body {
   margin-top: 12%;
   position:relative;
   border: 1px solid #888;
-  width: 40%;
-  height:30%;
+  width: 40vw;
+  height: 35vh;
   font-size: 25px;
 }
 
@@ -740,13 +790,13 @@ body {
   margin-top: 10%;
   position:relative;
   border: 1px solid #888;
-  width: 60%;
-  height:40%;
-  font-size: 25px;
+  width: 60vw;
+  height:43.5vh;
+  font-size: 1.3vw;
 }
 
 .modal-content2 h1{
-  font-size: 55px;
+  font-size: 2.7vw;
   margin:0;
   display:inherit;
   text-align:center;
@@ -754,7 +804,7 @@ body {
 }
 
 .modal-content2 h2{
-  font-size: 25px;
+  font-size: 1.4vw;
   margin:5px;
   text-align:center;
   color:whitesmoke;
@@ -790,8 +840,9 @@ body {
 .headerButton2 {
   border: none;
   background-color: #03DAC5;
-  font-size:22px;
+  font-size:1.1vw;
   margin: 10px;
+  width:2.5vw;
   overflow: hidden;
   border-radius: 15px;
   font-weight: bold;
@@ -800,7 +851,7 @@ body {
 .headerButton3 {
   border: none;
   background-color: #03DAC5;
-  font-size:22px;
+  font-size:1.1vw;
   margin: 10px;
   overflow: hidden;
   padding:5px;
@@ -816,7 +867,7 @@ body {
 .headerButton4 {
   border: none;
   background-color: #03DAC5;
-  font-size:22px;
+  font-size:1.1vw;
   padding:5px;
   margin: 10px;
   overflow: hidden;
@@ -919,15 +970,10 @@ body {
 
 }
 
-.headerButton {
-  border: none;
-  background-color: #03DAC5;
-  font-size:22px;
-  margin: 10px;
-  padding: 5px;
-  overflow: hidden;
-  border-radius: 15px;
-  font-weight: bold;
+#searchBar{
+  width:2vw;
+  height:1.8vw;
+
 }
 
 .usernameButton {
@@ -961,7 +1007,7 @@ body {
 
 /* CART PAGE.*/
 .cartHeader {
-  padding: 30px;
+  padding: 1vh;
   text-align: center;
   font-size: 35px;
   color: rgb(187,134,252);
@@ -990,7 +1036,7 @@ body {
 
 .cart1 {
   width: 38%;
-  height: 70%;
+  height: 73%;
   float:left;
   padding-left: 5%;
   padding-right: 5%;
@@ -1031,14 +1077,19 @@ overflow: scroll;
 .cart1 li{
    
   color: rgb(187,134,252);
-  font-size: 30px;
+  font-size: 1.6vw;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 
 }
 
+.cart1Drop{
+  font-size:1vw;
+}
+
 .cart1 p{
   display: inline;
+  font-size: 1vw;
 }
 
 .cart1 label{
@@ -1087,7 +1138,7 @@ overflow: scroll;
 .cart2 {
   width:20%;
   float:left;
-  height: 70%;
+  height: 73%;
   padding-left: 14%;
   padding-right: 12%;
   border: 1px solid white;
@@ -1099,7 +1150,7 @@ overflow: scroll;
 .cart2 h1{
   text-align: center;
   color: rgb(187,134,252);
-  font-size: 50px;
+  font-size: 2.2vw;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
@@ -1173,12 +1224,15 @@ overflow: scroll;
 
 .deleteMeToo { /* this is the food items in cart */
   padding:10px;
+  font-size:2vw;
 }
 
+
+
 .removeCartButton{
-  border-radius: 15px; 
-  height: 25px; 
-  width: 100px;
+  border-radius: 15px;
+  font-size:1vw;
+  padding: 0 1vw;
   background-color: red;
   color: black;
   font-weight: bold;
@@ -1193,8 +1247,8 @@ overflow: scroll;
 }
 
 #resultsHeader{
-  margin-top: 1%;
-  font-size: 40px;
+  margin-top: 0.1vh;
+  font-size: 1.7vw;
 }
 
 

@@ -136,7 +136,7 @@ function searchResults(){
                     let fn = "onclick=\"(function(){"+
                         "ingredients("+i+", "+j+");"+ 
                     "})();\"";
-                    let s = "<button "+fn+">"+data[0][i].foodItems[j].name+" - $"+ data[0][i].foodItems[j].price+"</button> \n<form class = \"ingredients\" id = \""+"restaurant"+i+"menuItem"+j+"\"></form>";
+                    let s = "<button "+fn+" + class =\"QuickFix\" >"+data[0][i].foodItems[j].name+" - $"+ data[0][i].foodItems[j].price+"</button> \n<form class = \"ingredients\" id = \""+"restaurant"+i+"menuItem"+j+"\"></form>";
                     list.innerHTML += s;
                 }
             }
@@ -151,7 +151,7 @@ function searchResults(){
         if(restaurants.length > 0){
             list.innerHTML = "";
             for(let i = 0; i<restaurants.length; i++){
-                let s = "<button id = \""+restaurants[i].name+"\" onclick=\"(function(){window.location.search='restaurant='+`"+restaurants[i].name+"`;})();\">"+restaurants[i].name+"</button>";
+                let s = "<button class =\"QuickFix\"  id = \""+restaurants[i].name+"\" onclick=\"(function(){window.location.search='restaurant='+`"+restaurants[i].name+"`;})();\">"+restaurants[i].name+"</button>";
                 list.innerHTML += s;
 
             }
