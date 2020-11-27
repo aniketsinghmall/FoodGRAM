@@ -24,7 +24,7 @@
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
-        <form novalidate>
+        <form>
             <input id = "searchBar" type="text" name="search">
         </form>
     </div>
@@ -93,7 +93,6 @@
         </div>
 
         <div class="footer">
-            <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
             <button type = "button" class = "headerButton" id="contactUsButton" onclick="document.getElementById('contact').style.display='block';" >Help Me</button>
         </div>
         <script>
@@ -121,7 +120,7 @@
     <div class="cart2" style="background-color: rgb(25, 25, 25);" >
         <h1>Checkout</h1>
 
-         <form method="post" onsubmit="let testVal = []; localStorage.setItem('cartContents', JSON.stringify(testVal));" novalidate>
+         <form method="post" onsubmit="let testVal = []; localStorage.setItem('cartContents', JSON.stringify(testVal));">
 
             <label for="Delivery Address">Delivery Address<br></label>
             <input type="text" id="fname" name="fname" placeholder="First Name" required>
@@ -243,10 +242,6 @@
     </form>
 
 </div>
-
-
-<!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
-
 
 <div id="foodPopup" class="modal2">
     <div class="modal-content2 animate">
