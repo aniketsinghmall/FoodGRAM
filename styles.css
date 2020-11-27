@@ -24,7 +24,7 @@ body {
   'footer footer';
   grid-gap: 0px;
   padding: 2px;
-  grid-template-rows: 6% 6% 4% 25% 50% 5% 4%;
+  grid-template-rows: 7% 4% 5% 25% 50% 5% 4%;
   grid-template-columns: 20% 80%;
 }
 
@@ -107,10 +107,10 @@ body {
 /* Logo Icon.*/
 #logo{
   display: inline-block;
-  padding-top: 6px;
+  padding-top: 3px;
   height:auto;
-  width:300px; /* use this to center */
-  left: 20%;
+  width:375px; /* use this to center */
+  left: 18%;
   margin-left: calc(40% - 150px);
   text-align:center;
   top:0%;
@@ -182,7 +182,7 @@ body {
 }
 
 #contactUsButton{
-  margin-left:20%;
+  margin-left:18.5%;
 }
 
 #checkoutDropDown{
@@ -295,7 +295,7 @@ body {
   float: left;
   height:100%;
   text-align: center;
-  padding-left: 30%;  /* use this to center categories! */
+  padding-left: 29.6%;  /* use this to center categories! */
   width: 60%;
   padding-right: 0;
   position:relative;
@@ -1170,7 +1170,7 @@ overflow: scroll;
 }
 
 #resultsHeader{
-  top-margin: -5%;
+  margin-top: 1%;
   font-size: 40px;
 }
 
