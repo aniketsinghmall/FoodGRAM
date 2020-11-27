@@ -1,5 +1,3 @@
-//CV - Let me know if there are any problems with the code.
-
 "use strict";
 
 
@@ -445,6 +443,9 @@ function displayCart(){
         }
         let cost = 0.0;
         if(cart != null) {
+            if(document.getElementById("cartEmpty")){
+                document.getElementById("cartEmpty").parentElement.removeChild(document.getElementById("cartEmpty"));
+            }
             // document.getElementById("cartOrderItem").childNodes[0].nodeValue="hi";
             for (let i = 0; i < cart.length; i++) {
                 cost+=parseFloat(cart[i].foodItem.price);
@@ -477,6 +478,7 @@ function displayCart(){
                 //create the drop down:
                 let friends = ["Me", "ChrisVat", "Ryan Campbell", "Matty P", "Aniket S"]
                 let dropDown = document.createElement("select");
+                dropDown.className = "cart1Drop";
                 for(let i =0; i<friends.length; i++){
                     let myOption = document.createElement("option");
                     myOption.innerText = friends[i];
@@ -493,8 +495,12 @@ function displayCart(){
             }
         }
         if (cart.length === 0){
-            let p = documnet.createElement("h1");
+            if(document.getElementById("cartEmpty")){
+                document.getElementById("cartEmpty").parentElement.removeChild(document.getElementById("cartEmpty"));
+            }
+            let p = document.createElement("h1");
             p.innerText = "Cart Empty";
+            p.id = "cartEmpty";
             document.getElementById("CartList").appendChild(p);
 
         }
@@ -575,7 +581,7 @@ function displayRestaurantReviews() {
             btn.onclick=function(){window.location.search='restaurant='+ reviews[i].restaurant.name};
             itemValue = reviews[i].restaurant.name;
         }
-        btn.innerHTML =  "<span class = 'ReviewText SocialMenu RestaurantReviews'  >" + reviews[i].user.name + "<br/>" + itemValue + "<br/> </span>";
+        btn.innerHTML =  "<span class = 'ReviewText SocialMenu RestaurantReviews'  >" + reviews[i].user.name + " Reviewed" + "<br/>" + "'" + itemValue + "'" +  "<br/> </span>";
         if (window.location.search.includes("restaurant="))
 
 
@@ -591,7 +597,7 @@ function displayRestaurantReviews() {
 
         
             var stars = new Image();
-            stars.src = "stars/" + Math.floor(reviews[i].rating) + "star.png"
+            stars.src = "stars/" + Math.round(reviews[i].rating) + "star.png"
             stars.style.width = "35%";
             btn.appendChild(stars);
            
@@ -639,7 +645,7 @@ function displayFeaturedReview() {
             };
 
 
-            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].recipe.foodItem.name + "<br/> </span>";
+            btn.innerHTML = "<span class = 'ReviewText'> Featured Item at " + uniqueReview[index].restaurant.name +  " <br/>" + uniqueReview[index].recipe.foodItem.name + "<br/> </span>";
             // btn.style.textAlign
             //btn.onclick = function () {   //this will need to pop up menu with food choices.
             //    window.location.search = 'restaurant=' + reviews[0].name;
@@ -652,7 +658,7 @@ function displayFeaturedReview() {
             btn.style.backgroundPosition = 'center';
 
             var stars = new Image();
-            stars.src = "stars/" + Math.floor(uniqueReview[index].rating) + "star.png"
+            stars.src = "stars/" + Math.round(uniqueReview[index].rating) + "star.png"
             stars.style.width = "35%";
             btn.appendChild(stars);
 
@@ -666,7 +672,7 @@ function displayFeaturedReview() {
         if (bestRest[0] !== undefined) {
             let uniqueReview = getUniqueRestaurantReviews(bestRest);
             let index = mod(parseInt(sessionStorage.getItem("FeaturedReviewNum") + uniqueReview.length*10), uniqueReview.length);
-            btn.innerHTML = "<span class = 'ReviewText'>" + uniqueReview[index].name + "<br/> </span>";
+            btn.innerHTML = "<span class = 'ReviewText'> Featured Restaurant <br/>" + uniqueReview[index].name + "<br/> </span>";
             btn.onclick = function () {
                 window.location.search = 'restaurant=' + bestRest[0].name;
             };
@@ -677,7 +683,7 @@ function displayFeaturedReview() {
             btn.style.backgroundPosition = 'center';
 
             var stars = new Image();
-            stars.src = "stars/" + Math.floor(uniqueReview[index].rating) + "star.png"
+            stars.src = "stars/" + Math.round(uniqueReview[index].rating) + "star.png"
             stars.style.width = "35%";
             btn.appendChild(stars);
 
@@ -743,9 +749,11 @@ function addReviewThing(){
     num=Math.min(5, num);
     num=Math.max(1,num);
 
+    let name = "AnonymousUser";  //PUT ACTUAL USERNAME HERE!
+    if(sessionStorage.getItem("UserName") != null) {
+        name = sessionStorage.getItem("UserName");
+    }
 
-
-    let name = "Your Name";  //PUT ACTUAL USERNAME HERE!
     let user = new Friend(name);
     let review = getReview(user, num);
     addNewReview(review);
@@ -826,7 +834,7 @@ function getFoodPhotoDir(foodName){
         category = "pickle";
     else if(foodName.includes("burger") || foodName.includes("sandwich") || foodName.includes("krabby")
         || foodName.includes("four cheddar") || foodName.includes("sweet home") || foodName.includes("eggers can")
-        || foodName.includes("gourdon") || foodName.includes("big dipper"))
+        || foodName.includes("gordon") || foodName.includes("big dipper"))
         category = "burger";
     else if(foodName.includes("dog"))
         category = "hotdog";
@@ -904,10 +912,10 @@ function getFoodPhotoDir(foodName){
         category = "coldsoup";
     else if(foodName.includes("chowder"))
         category = "chowder";
-    else if(foodName.includes("double diped"))
+    else if(foodName.includes("double dipped"))
         category = "dippedbanana";
-    else if(foodName.includes("go banana") || foodName.includes("girly banana") || foodName.includes("george daddy")
-        || foodName.includes("simple simon") || foodName.includes("original frozen banana") )
+    else if(foodName.includes("go banana") || foodName.includes("girly banana") || foodName.includes("george")
+        || foodName.includes("simple simon") || foodName.includes("original frozen banana"))
         category = "banana";
     else if(foodName.includes("iced tea"))
         category = "icedtea";
@@ -941,142 +949,142 @@ function hidePopUp(){
 
 function getRestaurantText(){
     let string1 = "Aniket's Iced Chowder Cafe(Frozen Clam Chowder, Frozen Lamb Chowder, Lukewarm Potato Chowder, Scolding Hot Cheese Chowder)\n" +
-    "Banana Boat Ice Cream(Banana Split, Chocolate Banana Softserve, Vanilla Banana Softserve, Chunky Monkey, Coke-Float)\n" +
-    "Bob's Burgers(The Original Burger, Don't You Four Cheddar Bout Me, Sweet Home Avocado, Eggers Can't Be Cheesers, Gourdon Hamsy)\n" +
-    "Boston Pizza(Fried Wings, Quesadillas, Chicken Sandwich, The Big Dipper Burger, Tacos)\n" +
-    "Christophers Chunky Cheeses(Chunk o' Cheddar, Bowl o' Brie, Fist o' Feta, A-ton o' Asiago, Aged Crackers)\n" +
-    "Frozen Banana Stand(Original Frozen Banana, On the Go-Go Banana, Double Diped Frozen, Giddy-Girly Banana, George Daddy, Simple Simon)\n" +
-    "Good Burger(Good Burger, Good Fries, Good Shake, Good Pickle, Double Good Burger)\n" +
-    "Gusteau's(Grilled Steak, Ratatouille, Roasted Cod Fish, Chocolate Mousse, Apple Tart, Tiramisu)\n" +
-    "Jack Rabbit Slims(MilkShake, Foie and Loathing in Las VeGras, Honey I Shrunk The Soup, Blueberry Pie)\n" +
-    "Krusty Krab(Krabby Patty Burger, Double Krabby Patty Burger, Triple Krabby Patty Burger, Coral bits, Kelp Rings)\n" +
-    "Los Pollos Hermanos(Gus' World Famous Chicken, The Heisenberg Special, Fajitas, Gales Gordita, Jesse's Tasty Tacos)\n" +
-    "Mamma Mia's Pizzaria(Mia's Famous Fettuccine Alfredo, Mia's Manicotti, Mia's Rigatoni, Mia's Meaty Pizzaroni)\n" +
-    "Matthias' Burger Stank Shack(Matty's Big Ol' Cheeseburger, MeeMaw's Famous Burger Slider, Matt's Curly Fries, Matt's Musk Burger)\n" +
-    "MilkTheCow(Chai Tea, Green Tea, Coffee, Iced Tea, Cappuccino, Americano, Latte, Espresso)\n" +
-    "Paunch Burger(The Ron Swanson Supreme, The Meat Tornado, The Heart Attack, Gravy Bucket, The Artery Clogger)\n" +
-    "Piece a da Pizza(Pizza Your Heart, Slice To Meat You, Can't Be Topped, Slice Slice Baby)\n" +
-    "Pizza Party(Party Pizza for 8, Jumbo Party Pizza for 10, Sad Lonely Pizza for One)\n" +
-    "Ryan's Great Gazpacho Emporium(Green Grape and Cucumber Gazpacho, Red Pepper Gazpacho, Butter Gazpacho, Yogurt Gazpacho)\n" +
-    "Sous Sol(Warm Olives, Cheese Plate, Vegan \"Tartare\", Braised Beef Short Rib, Duck Leg Confit, Manitoba Arctic Char, Flourless Chocolate Cake, House Made Ice Cream)\n" +
-    "529 Wellington(Chicken Breast, Jumbo Prawns, Caesar Salad, Carved Prime Beef, 8 oz. Beef Tenderloin, 12 oz. Beef Tenderloin, 14 oz. New York Steak, 14 oz. Rib Eye)";
-    return string1; 
+        "Banana Boat Ice Cream(Banana Split, Chocolate Banana Soft Serve, Vanilla Banana Soft Serve, Chunky Monkey, Coke-Float)\n" +
+        "Bob's Burgers(The Original Burger, Don't You Four Cheddar Bout Me, Sweet Home Avocado, Eggers Can't Be Cheesers, Gordon Hamsy)\n" +
+        "Boston Pizza(Fried Wings, Quesadillas, Chicken Sandwich, The Big Dipper Burger, Tacos)\n" +
+        "Christopher's Chunky Cheeses(Chunk o' Cheddar, Bowl o' Brie, Fist o' Feta, A-ton o' Asiago, Aged Crackers)\n" +
+        "Frozen Banana Stand(Original Frozen Banana, On the Go-Go Banana, Double Dipped Frozen, Giddy-Girly Banana, George Daddy, Simple Simon)\n" +
+        "Good Burger(Good Burger, Good Fries, Good Shake, Good Pickle, Double Good Burger)\n" +
+        "Gusteau's(Grilled Steak, Ratatouille, Roasted Cod Fish, Chocolate Mousse, Apple Tart, Tiramisu)\n" +
+        "Jack Rabbit Slims(Milkshake, Foie and Loathing in Las VeGras, Honey I Shrunk The Soup, Blueberry Pie)\n" +
+        "Krusty Krab(Krabby Patty Burger, Double Krabby Patty Burger, Triple Krabby Patty Burger, Coral bits, Kelp Rings)\n" +
+        "Los Pollos Hermanos(Gus' World Famous Chicken, The Heisenberg Special, Fajitas, Gale's Gordita, Jesse's Tasty Tacos)\n" +
+        "Mamma Mia's Pizzeria(Mia's Famous Fettuccine Alfredo, Mia's Manicotti, Mia's Rigatoni, Mia's Meaty Pizzaroni)\n" +
+        "Matthias' Burger Stank Shack(Matty's Big Ol' Cheeseburger, MeeMaw's Famous Burger Slider, Matt's Curly Fries, Matt's Musk Burger)\n" +
+        "MilkTheCow(Chai Tea, Green Tea, Coffee, Iced Tea, Cappuccino, Americano, Latte, Espresso)\n" +
+        "Paunch Burger(The Ron Swanson Supreme, The Meat Tornado, The Heart Attack, Gravy Bucket, The Artery Clogger)\n" +
+        "Piece a da Pizza(Pizza Your Heart, Slice To Meat You, Can't Be Topped, Slice Slice Baby)\n" +
+        "Pizza Party(Party Pizza for 8, Jumbo Party Pizza for 10, Sad Lonely Pizza for One)\n" +
+        "Ryan's Great Gazpacho Emporium(Green Grape and Cucumber Gazpacho, Red Pepper Gazpacho, Butter Gazpacho, Yogurt Gazpacho)\n" +
+        "Sous Sol(Warm Olives, Cheese Plate, Vegan \"Tartare\", Braised Beef Short Rib, Duck Leg Confit, Manitoba Arctic Char, Flourless Chocolate Cake, House Made Ice Cream)\n" +
+        "529 Wellington(Chicken Breast, Jumbo Prawns, Caesar Salad, Carved Prime Beef, 8 oz. Beef Tenderloin, 12 oz. Beef Tenderloin, 14 oz. New York Steak, 14 oz. Rib Eye)";
+    return string1;
 }
 
 function getFoodText(){
     let string2 = "Gus' World Famous Chicken:5.38:Main:Delicious Fried Chicken Cooked Perfectly By Gus.:Extra Gus Sauce, BBQ Sauce Dip, Ketchup Dip:\n" +
-    "The Heisenberg Special:50.00:Main:A Special Concoction made by one of our Cooks. We'd tell you whats in it, but then we'd have to kill you.:Extra Methylamene, Chili Powder:\n" +
-    "Fajitas:8.18:Main:Spicy and Declicious ABQ Fajitas.:Lettuce, Tomatoes, Onions, Peppers, Guacamole:\n" +
-    "Gales Gordita:3.91:Main:A Mouth Watering Pastry cooked perfectly by our renownend cook Gale.:Extra Gus Sauce:\n" +
-    "Jesse's Tasty Tacos:4.01:Main:Three Tacos, with a little extra Chippy Powder on all of them.:Lettuce, Tomatoes, Onions, Guacamole, Spicy Sauce:\n" +
-    "Good Burger:5.07:Main:The best burger in Town. Comes with extra Good Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Good Sauce:\n" +
-    "Good Fries:2.03:Main:The best fries in Town. Comes fried in Good Sauce.:Extra Salt, Buttered Fries, Ketchup:\n" +
-    "Good Shake:4.85:Main:The best vanilla Shake In Town. Comes with Good Sauce on top.:Chocolate Sauce, Bananas, Cherries:\n" +
-    "Good Pickle:5.62:Dessert:Our world famous Good Pickles. Brined to pickley perfection in Good Sauce.:Extra Good Sauce:\n" +
-    "Double Good Burger:8.85:Main:Its like a Good Burger, but twice as Good (Double Patty).:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Good Sauce:\n" +
-    "Cheeseburger:15.32:Main:A Classic Cheeseburger.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo:\n" +
-    "French Fries:6.32:Main:Delicious classic french fries, nothing special here!:Extra Salt, Buttered Fries, Ketchup:\n" +
-    "Hot Dog:5.33:Main:A classic hotdog.:Ketchup, Mustard, Onions, Relish:\n" +
-    "Jumbo Dog:7.31:Main:A classic jumbodog, its like a hotdog but bigger!:Ketchup, Mustard, Onions, Relish:\n" +
-    "Krabby Patty Burger:4.25:Main:Our Ocean Famous Burger. Comes with Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Secret Sauce:\n" +
-    "Double Krabby Patty Burger:6.50:Main:A Krabby Patty Burger with an Extra Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
-    "Triple Krabby Patty Burger:8.95:Main:A Double Krabby Patty Burger with 1.5x the Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
-    "Coral bits:2.41:Appetizer:Fresh Coral Grilled To Perfection.:Ketchup:\n" +
-    "Kelp Rings:5.97:Main:Deep Fried Kelp shaped into a ring. Good for the soul, bad for the arteries.:Ketchup:\n" +
-    "The Original Burger:6.15:Main:There can only be one original. Bob's Best Burger with our Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Bob Sauce:\n" +
-    "Don't You Four Cheddar Bout Me:5.93:Main:A Delicious Cheese Burger with Aged Cheddar.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Extra Bob Sauce:\n" +
-    "Sweet Home Avocado:6.46:Main:A Tasty Burger Topped with A Smathering Of Avacado.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Avacado, Extra Bob Sauce:\n" +
-    "Eggers Can't Be Cheesers:9.69:Main:Cheeseburger with an egg on it. Sweet livin'.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo, Extra Bob Sauce:\n" +
-    "Gourdon Hamsy:7.82:Main:Served with Squash and Ham. Brought Tears To Gordon Ramsay's Eyes.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo, Extra Ham, Extra Bob Sauce:\n" +
-    "Jumbo Dog:7.31:Main:A classic Jumbodog, its like a Hotdog but bigger!:Ketchup, Mustard, Onions, Relish:\n" +
-    "The Ron Swanson Supreme:7.65:Main:Quadruple Burger, hold the veggies.:Extra Meat, Additional Protein, Extra Perservatives:\n" +
-    "The Meat Tornado:10.35:Main:Assorted Meats, Guranteed to Give you the Meat Sweats.:Extra Meat, Additional Protein, Extra Perservatives:\n" +
-    "The Heart Attack:4.91:Main:Onion Loaf. Comes with a waiver you need to sign before eating it.:Extra Meat, Additional Protein, Extra Perservatives, Extra lard:\n" +
-    "Gravy Bucket:7.23:Main:It's a Bucket o' Gravy. Simple as that.:Additional Protein:\n" +
-    "The Artery Clogger:15.35:Appetizer:Assorted Meats and Graveys. Just one person has finished the meal in its entirity, but many have died trying.:Extra Meat, Additional Protein, Extra Perservatives:\n" +
-    "Matty's Big Ol' Cheeseburger:6.35:Main:Extra Large Cheeseburger. Cooked by North-West St. Vital's fifth best Fry Cook.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
-    "MeeMaw's Famous Burger Slider:1.81:Main:Extra Small Cheeseburger. Cooked by the Mother of North-West St. Vital's fifth best Fry Cook.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
-    "Matt's Curly Fries:1.21:Main:Like normal fries but all bendy.:Extra Salt, Buttered Fries, Ketchup:\n" +
-    "Matt's Musk Burger:6.36:Main:Matty's Big Ol' Cheeseburger with extra Musk Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
-    "Fried Wings:4.98:Main:Delicious Fried Wings.:Spicy Dip, Medium Dip, Cool Dip, Ranch Dip:\n" +
-    "Quesadillas:5.1:Main:Our Famous Quesadillas. You're going to love them.:Lettuce, Tomatoes, Onions, Peppers, Guacamole:\n" +
-    "Chicken Sandwich:6.81:Main:Our Chicken Sandwhich was perfected through iterative design.:Lettuce, Tomatoes, Guacamole:\n" +
-    "The Big Dipper Burger:7.41:Main:It's astronomically good.:Lettuce, Ketchup, Mustard, Tomatoes, Spicy Sauce, Peppers, Guacamole:\n" +
-    "Tacos:4.36:Main:Our crunchy beef tacos, they are a classic.:Lettuce, Tomatoes, Onions, Guacamole, Spicy Sauce:\n" +
-    "Olive Lovers Pizza:18.51:Main:Pizza which comes with extra olives!:Green Olives, Black Olives, Extra Cheese:\n" +
-    "Margarita Pizza:16.42:Main:A classic style margarita pizza.:Extra Cheese, Extra Basil, Extra Tomatoes:\n" +
-    "Meat Lovers:22.53:Main:A classic style meat pizza, comes with extra pepperoni and sasauge.:Extra Bacon, Extra Pepperoni, Extra Sasauge:\n" +
-    "Party Pizza for 8:27.69:Main:A comically large Pizza designed to perfectly fill the bellies of 8 people.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "Jumbo Party Pizza for 10:35.54:Main:An EXTRA large pizza for 10 people.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Ham, Chicken, Ranch:\n" +
-    "Sad Lonely Pizza for One:4.24:Main:A sad pizza designed perfectly for one person to consume in its entirity.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "Pizza Your Heart:13.21:Main:It is so good that it will fill your belly AND your heart. Comes with our delicious pizza sauce.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "Slice To Meat You:12.63:Main:A delicious pizza topped in slices of ham.:Extra Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Ham, Chicken, Ranch:\n" +
-    "Can't Be Topped:18.33:Main:An Extra Large Cheese Pizza topped by Extra Small Pizzas.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "Slice Slice Baby:13.96:Main:Cold Pizza, toppings of your choice.:Ham, Pineapple, Bacon, Pepperoni, Sasauge, Extra Cheese, Chicken, Ranch:\n" +
-    "Mia's Famous Fettuccine Alfredo:6.04:Main:A creamy and delicious pasta coming from Mamma Mia!:Extra Alfredo Sauce:\n" +
-    "Mia's Manicotti:4.68:Main:A zesty Manicotti served hot and ready from Mamma Mia!:Tomato Sauce:\n" +
-    "Mia's Rigatoni:7.04:Main:A perfectly cooked Rigatoni, world famous, coming straight from Mamma Mia's oven!:Tomato Sauce:\n" +
-    "Mia's Meaty Pizzaroni:3.86:Main:Mamma Mia's hidden recipe, hint(its a pizza + a rigatoni!):Tomato Sauce, Pepperoni:\n" +
-    "Grilled Steak:12.33:Main:Cooked Medium Rare, don't like your steaks medium rare? Eat somewhere else.:Buttered, Bacon-wrapped:\n" +
-    "Ratatouille:9.96:Main:Cooked by our famous Chef, Remy.:Make It Large:\n" +
-    "Roasted Cod Fish:14.85:Main:A roasted fresh cod fish. Perfectly cooked and seasoned.:Asparagus, Additional Sauce:\n" +
-    "Chocolate Mousse:11.62:Dessert:Delicious, velvety, chocolate. A greaty way to end a meal.:Make It Large:\n" +
-    "Apple Tart:7.99:Dessert:Delicious, perfectly baked apple tart.:Make It Large:\n" +
-    "Tiramisu:6.15:Dessert:A classic dessert done right.:Make It Large:\n" +
-    "MilkShake:5.00:Drink:Tastes as good as a Five Dollar Milkshake should.:Chocolate Sauce, Bananas, Cherries:\n" +
-    "Foie and Loathing in Las VeGras:6.19:Main:Delicious Foie Gras.:Make It Large:\n" +
-    "Honey I Shrunk The Soup:7:Main:Our famous cream soup.:Make It Spicy:\n" +
-    "Blueberry Pie:7.1:Dessert:A slice of delicious blueberry pie.:Make It Large:\n" +
-    "Chicken Breast:5.35:Main:Perfectly cooked portuguese chicken breast, comes with rice and a potato (as do most portuguese foods).:Extra Potato, Extra Rice, Spicy Chicken:\n" +
-    "Jumbo Prawns:9.75:Main:Jumbo prawns which come with our delcious prawn sauce.:Extra Sauce:\n" +
-    "Caesar Salad:5.97:Appetizer:To make our Caesar Salads, we take a normal salad then stab it 23 times. Et tu, brute?:Tomatoes, Spinach:\n" +
-    "Carved Prime Beef:22.63:Main:A tender medium rare prime beef.:Buttered, Bacon-wrapped:\n" +
-    "8 oz. Beef Tenderloin:22.61:Main:8 oz. of perfectly cooked medium rare Beef Tenderloin.:Buttered, Bacon-wrapped:\n" +
-    "12 oz. Beef Tenderloin:28.36:Main:12 oz. of perfectly cooked medium rare Beef Tenderloin.:Buttered, Bacon-wrapped:\n" +
-    "14 oz. New York Steak:33.12:Main:14 oz. of perfectly cooked medium rare New York Steak.:Buttered, Bacon-wrapped:\n" +
-    "14 oz. Rib Eye:29.43:Main:14 oz. of perfectly cooked medium rare Rib Eye.:Buttered, Bacon-wrapped:\n" +
-    "Warm Olives:5.44:Appetizer:Warm Olives served with a tasty citrus sauce. Tastes better than it sounds.:Make It Large:\n" +
-    "Cheese Plate:8.71:Appetizer:A great way to start a meal. Comes with crackers.:Make It Large, Include Blue Cheese:\n" +
-    "Vegan \"Tartare\":15.39:Appetizer:Smoked Beets, Coconut Creme Fraiche, Horseradish, Pickled Mustard seeds, French Bread.:Make It Large, No Horseradish:\n" +
-    "Braised Beef Short Rib:25.35:Main:Beef reduction, Roasted Root Vegetables, Cremini, Shiitake & Oyster Mushrooms.:Make It Large, Extra Mushrooms:\n" +
-    "Duck Leg Confit:20.00:Main:Bacon & White Bean Cassoulet, Red Wine Jus, Tomato & Onion Reduction.:Make It Large:\n" +
-    "Manitoba Arctic Char:20.00:Main:Cocount Creme Lentils, Smoked Beets, Anchovy Bread Crumbs, Pickled Shallot.:Make It Large:\n" +
-    "Flourless Chocolate Cake:7.50:Dessert:Vanilla Creme Fraiche, Candied Pecans.:Make It Large:\n" +
-    "House Made Ice Cream:12.00:Dessert:Vanilla Ice Cream, Flourless Chocolate Brownie Pieces, Rum Caramel, Berries.:Whipped Cream, Extra Scoop: \n" +
-    "Green Grape and Cucumber Gazpacho:8.58:Main:Nothing better than cold soup ft. Grape and Cucumber.:Large Bowl, Spicy:\n" +
-    "Red Pepper Gazpacho:8.63:Main:Soup? Cold. Peppers? Red. Delicious? Maybe.:Large Bowl, Spicy:\n" +
-    "Butter Gazpacho:7.63:Main:Cold Butter Soup, just like how my mother used to make.:Large Bowl, Spicy:\n" +
-    "Yogurt Gazpacho:8.27:Main:Gazpacho made from Yogurt. Shockingly mediocre.:Large Bowl, Spicy:\n" +
-    "Frozen Clam Chowder:8.15:Main:Frozen Clam Chowder Popsicle. It's trendy. Reheat at your own convinience.:Make It Large:\n" +
-    "Frozen Lamb Chowder:8.15:Main:Frozen Lamb Chowder Popsicle. It's trendy. Reheat at your own convinience.:Make It Large:\n" +
-    "Lukewarm Potato Chowder:6.92:Main:Lukewarm Potato Chowder. Our famous recipe. Pairs well with Scolding Hot Cheese Chowder.:Large Bowl, Peppers, Spicy:\n" +
-    "Scolding Hot Cheese Chowder:6.57:Main:A delicious Hot Cheese Chowder! Let it cool before sipping. Pairs well with Lukewarm Potato Chowder.:Large Bowl, Peppers, Spicy:\n" +
-    "Original Frozen Banana:1.00:Dessert:Its a frozen banana!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
-    "On the Go-Go Banana:1.01:Dessert:Frozen banana for those on the go!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
-    "Double Diped Frozen:1.50:Dessert:Frozen banana double dipped in our banana sauce!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
-    "Giddy-Girly Banana:0.99:Dessert:Frozen banana topped with fruitberries.:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
-    "George Daddy:2.00:Dessert:Three Frozen Bananas, for the price of two!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
-    "Simple Simon:0.50:Dessert:A normal, non frozen banana.:With Peel:\n" +
-    "Chai Tea:4.29:Drink:A tasty tea to warm your soul.:Strong:\n" +
-    "Green Tea:4.26:Drink:A tasty tea to warm your soul.:Strong:\n" +
-    "Coffee:6.66:Drink:A perfectly brewed coffee to fuel your work.:Strong:\n" +
-    "Iced Tea:3.71:Drink:American Iced Tea perfect for drinking under the hot sun.:Strong:\n" +
-    "Cappuccino:6.17:Drink:Comes with cappuccino art on top!:Strong:\n" +
-    "Americano:5.76:Drink:Brewed to perfection.:Strong:\n" +
-    "Latte:6.52:Drink:Espresso and steamed milk. Simple and delicious.:Strong:\n" +
-    "Espresso:5.34:Drink:Nobody really likes actually likes espresso, but we get it, you need the caffeine.:Strong:\n" +
-    "Banana Split:3.05:Dessert:Bananas and ice cream, could you really ask for more?:Whipped Cream, Chocolate Sauce, Strawberries, Caramel:\n" +
-    "Chocolate Banana Softserve:5.50:Dessert:Bananas and chocolate icecream. Delicious.:Whipped Cream, Chocolate Sauce:\n" +
-    "Vanilla Banana Softserve:5.50:Dessert:Banans and vanilla icecream. Fantastic.:Whipped Cream, Chocolate Sauce:\n" +
-    "Chunky Monkey:8.45:Dessert:Chocolate chunks, ice cream and love!:Whipped Cream, Chocolate Sauce, Strawberries, Banana, Caramel:\n" +
-    "Coke-Float:6.68:Drink:Coke and vanilla ice cream. Its foamy!:Make It Large:\n" +
-    "Chunk o' Cheddar:34.52:Main:Big Chunk of Cheddar Cheese. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
-    "Bowl o' Brie:34.22:Main:Big Bag of Brie. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
-    "Fist o' Feta:34.63:Main:Big Fist Full of Feta Cheese. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
-    "A-ton o' Asiago:32.11:Main:A ton (metaphorically) of Asiago Cheese. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
-    "Aged Crackers:4.33:Appetizer:Air Aged, delicious whole wheat crackers to pair with one of our cheeses.:Salted:";
+        "The Heisenberg Special:50.00:Main:A Special Concoction made by one of our Cooks. We'd tell you what's in it, but then we'd have to kill you.:Extra Methylamine, Chili Powder:\n" +
+        "Fajitas:8.18:Main:Spicy and Delicious ABQ Fajitas.:Lettuce, Tomatoes, Onions, Peppers, Guacamole:\n" +
+        "Gale's Gordita:3.91:Main:A Mouth Watering Pastry cooked perfectly by our renowned cook Gale.:Extra Gus Sauce:\n" +
+        "Jesse's Tasty Tacos:4.01:Main:Three Tacos, with a little extra Chili Powder on all of them.:Lettuce, Tomatoes, Onions, Guacamole, Spicy Sauce:\n" +
+        "Good Burger:5.07:Main:The best burger in Town. Comes with extra Good Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Good Sauce:\n" +
+        "Good Fries:2.03:Main:The best fries in Town. Comes fried in Good Sauce.:Extra Salt, Buttered Fries, Ketchup:\n" +
+        "Good Shake:4.85:Main:The best vanilla Shake In Town. Comes with Good Sauce on top.:Chocolate Sauce, Bananas, Cherries:\n" +
+        "Good Pickle:5.62:Dessert:Our world famous Good Pickles. Brined to pickley perfection in Good Sauce.:Extra Good Sauce:\n" +
+        "Double Good Burger:8.85:Main:Its like a Good Burger, but twice as Good (Double Patty).:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Good Sauce:\n" +
+        "Cheeseburger:15.32:Main:A Classic Cheeseburger.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo:\n" +
+        "French Fries:6.32:Main:Delicious classic French fries, nothing special here!:Extra Salt, Buttered Fries, Ketchup:\n" +
+        "Hot Dog:5.33:Main:A classic hotdog.:Ketchup, Mustard, Onions, Relish:\n" +
+        "Jumbo Dog:7.31:Main:A classic jumbo dog, it's like a hotdog but bigger!:Ketchup, Mustard, Onions, Relish:\n" +
+        "Krabby Patty Burger:4.25:Main:Our Ocean Famous Burger. Comes with Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Secret Sauce:\n" +
+        "Double Krabby Patty Burger:6.50:Main:A Krabby Patty Burger with an Extra Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
+        "Triple Krabby Patty Burger:8.95:Main:A Double Krabby Patty Burger with 1.5x the Patty.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo,  Cheddar, Extra Secret Sauce:\n" +
+        "Coral bits:2.41:Appetizer:Fresh Coral Grilled To Perfection.:Ketchup:\n" +
+        "Kelp Rings:5.97:Main:Deep Fried Kelp shaped into a ring. Good for the soul, bad for the arteries.:Ketchup:\n" +
+        "The Original Burger:6.15:Main:There can only be one original. Bob's Best Burger with our Secret Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Bob Sauce:\n" +
+        "Don't You Four Cheddar Bout Me:5.93:Main:A Delicious Cheese Burger with Aged Cheddar.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Extra Bob Sauce:\n" +
+        "Sweet Home Avocado:6.46:Main:A Tasty Burger Topped with A Smattering Of Avocado.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Mayo, Cheddar, Extra Avocado, Extra Bob Sauce:\n" +
+        "Eggers Can't Be Cheesers:9.69:Main:Cheeseburger with an egg on it. Sweet livin'.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo, Extra Bob Sauce:\n" +
+        "Gordon Hamsy:7.82:Main:Served with Squash and Ham. Brought Tears To Gordon Ramsay's Eyes.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo, Extra Ham, Extra Bob Sauce:\n" +
+        "The Ron Swanson Supreme:7.65:Main:Quadruple Burger, hold the veggies.:Extra Meat, Additional Protein, Extra Preservatives:\n" +
+        "The Meat Tornado:10.35:Main:Assorted Meats, Guaranteed to Give you the Meat Sweats.:Extra Meat, Additional Protein, Extra Preservatives:\n" +
+        "The Heart Attack:4.91:Main:Onion Loaf. Comes with a waiver you need to sign before eating it.:Extra Meat, Additional Protein, Extra Preservatives, Extra lard:\n" +
+        "Gravy Bucket:7.23:Main:It's a Bucket o' Gravy. Simple as that.:Additional Protein:\n" +
+        "The Artery Clogger:15.35:Appetizer:Assorted Meats and Gravies. Just one person has finished the meal in its entirety, but many have died trying.:Extra Meat, Additional Protein, Extra Preservatives:\n" +
+        "Matty's Big Ol' Cheeseburger:6.35:Main:Extra Large Cheeseburger. Cooked by North-West St. Vital's fifth best Fry Cook.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
+        "MeeMaw's Famous Burger Slider:1.81:Main:Extra Small Cheeseburger. Cooked by the Mother of North-West St. Vital's fifth best Fry Cook.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
+        "Matt's Curly Fries:1.21:Main:Like normal fries but all bendy.:Extra Salt, Buttered Fries, Ketchup:\n" +
+        "Matt's Musk Burger:6.36:Main:Matty's Big Ol' Cheeseburger with extra Musk Sauce.:Tomatoes, Ketchup, Mustard, Pickles, Onions, Cheddar, Mayo:\n" +
+        "Fried Wings:4.98:Main:Delicious Fried Wings.:Spicy Dip, Medium Dip, Cool Dip, Ranch Dip:\n" +
+        "Quesadillas:5.13:Main:Our Famous Quesadillas. You're going to love them.:Lettuce, Tomatoes, Onions, Peppers, Guacamole:\n" +
+        "Chicken Sandwich:6.81:Main:Our Chicken Sandwich was perfected through iterative design.:Lettuce, Tomatoes, Guacamole:\n" +
+        "The Big Dipper Burger:7.41:Main:It's astronomically good.:Lettuce, Ketchup, Mustard, Tomatoes, Spicy Sauce, Peppers, Guacamole:\n" +
+        "Tacos:4.36:Main:Our crunchy beef tacos, they are a classic.:Lettuce, Tomatoes, Onions, Guacamole, Spicy Sauce:\n" +
+        "Olive Lovers Pizza:18.51:Main:Pizza which comes with extra olives!:Green Olives, Black Olives, Extra Cheese:\n" +
+        "Margarita Pizza:16.42:Main:A classic style margarita pizza.:Extra Cheese, Extra Basil, Extra Tomatoes:\n" +
+        "Meat Lovers:22.53:Main:A classic style meat pizza, comes with extra pepperoni and sausage.:Extra Bacon, Extra Pepperoni, Extra Sausage:\n" +
+        "Party Pizza for 8:27.69:Main:A comically large Pizza designed to perfectly fill the bellies of 8 people.:Ham, Pineapple, Bacon, Pepperoni, Sausage, Extra Cheese, Chicken, Ranch:\n" +
+        "Jumbo Party Pizza for 10:35.54:Main:An EXTRA large pizza for 10 people.:Ham, Pineapple, Bacon, Pepperoni, Sausage, Extra Cheese, Ham, Chicken, Ranch:\n" +
+        "Sad Lonely Pizza for One:4.24:Main:A sad pizza designed perfectly for one person to consume in its entirety.:Ham, Pineapple, Bacon, Pepperoni, Sausage, Extra Cheese, Chicken, Ranch:\n" +
+        "Pizza Your Heart:13.21:Main:It is so good that it will fill your belly AND your heart. Comes with our delicious pizza sauce.:Ham, Pineapple, Bacon, Pepperoni, Sausage, Extra Cheese, Chicken, Ranch:\n" +
+        "Slice To Meat You:12.63:Main:A delicious pizza topped with slices of ham.:Extra Ham, Pineapple, Bacon, Pepperoni, Sausage, Extra Cheese, Ham, Chicken, Ranch:\n" +
+        "Can't Be Topped:18.33:Main:An Extra Large Cheese Pizza topped with Extra Small Pizzas.:Ham, Pineapple, Bacon, Pepperoni, Sausage, Extra Cheese, Chicken, Ranch:\n" +
+        "Slice Slice Baby:13.96:Main:Cold Pizza, toppings of your choice.:Ham, Pineapple, Bacon, Pepperoni, Sausage, Extra Cheese, Chicken, Ranch:\n" +
+        "Mia's Famous Fettuccine Alfredo:6.04:Main:A creamy and delicious pasta coming from Mamma Mia!:Extra Alfredo Sauce:\n" +
+        "Mia's Manicotti:4.68:Main:A zesty Manicotti served hot and ready from Mamma Mia!:Tomato Sauce:\n" +
+        "Mia's Rigatoni:7.04:Main:A perfectly cooked Rigatoni, world famous, coming straight from Mamma Mia's oven!:Tomato Sauce:\n" +
+        "Mia's Meaty Pizzaroni:3.86:Main:Mamma Mia's hidden recipe, hint (it's a pizza + a rigatoni!):Tomato Sauce, Pepperoni:\n" +
+        "Grilled Steak:12.33:Main:Cooked Medium Rare, don't like your steaks medium rare? Eat somewhere else.:Buttered, Bacon-wrapped:\n" +
+        "Ratatouille:9.96:Main:Cooked by our famous Chef, Remy.:Make It Large:\n" +
+        "Roasted Cod Fish:14.85:Main:A roasted fresh cod fish. Perfectly cooked and seasoned.:Asparagus, Additional Sauce:\n" +
+        "Chocolate Mousse:11.62:Dessert:Delicious, velvety, chocolate. A great way to end a meal.:Make It Large:\n" +
+        "Apple Tart:7.99:Dessert:Delicious, perfectly baked apple tart.:Make It Large:\n" +
+        "Tiramisu:6.15:Dessert:A classic dessert done right.:Make It Large:\n" +
+        "Milkshake:5.00:Drink:Tastes as good as a Five Dollar Milkshake should.:Chocolate Sauce, Bananas, Cherries:\n" +
+        "Foie and Loathing in Las VeGras:6.19:Main:Delicious Foie Gras.:Make It Large:\n" +
+        "Honey I Shrunk The Soup:7.35:Main:Our famous cream soup.:Make It Spicy:\n" +
+        "Blueberry Pie:7.13:Dessert:A slice of delicious blueberry pie.:Make It Large:\n" +
+        "Chicken Breast:5.35:Main:Perfectly cooked Portuguese chicken breast, comes with rice and a potato (as do most Portuguese foods).:Extra Potato, Extra Rice, Spicy Chicken:\n" +
+        "Jumbo Prawns:9.75:Main:Jumbo prawns which come with our delicious prawn sauce.:Extra Sauce:\n" +
+        "Caesar Salad:5.97:Appetizer:To make our Caesar Salads, we take a normal salad then stab it 23 times. Et tu, brute?:Tomatoes, Spinach:\n" +
+        "Carved Prime Beef:22.63:Main:A tender medium rare prime beef.:Buttered, Bacon-wrapped:\n" +
+        "8 oz. Beef Tenderloin:22.61:Main:8 oz. of perfectly cooked medium rare Beef Tenderloin.:Buttered, Bacon-wrapped:\n" +
+        "12 oz. Beef Tenderloin:28.36:Main:12 oz. of perfectly cooked medium rare Beef Tenderloin.:Buttered, Bacon-wrapped:\n" +
+        "14 oz. New York Steak:33.12:Main:14 oz. of perfectly cooked medium rare New York Steak.:Buttered, Bacon-wrapped:\n" +
+        "14 oz. Rib Eye:29.43:Main:14 oz. of perfectly cooked medium rare Rib Eye.:Buttered, Bacon-wrapped:\n" +
+        "Warm Olives:5.44:Appetizer:Warm Olives served with a tasty citrus sauce. Tastes better than it sounds.:Make It Large:\n" +
+        "Cheese Plate:8.71:Appetizer:A great way to start a meal. Comes with crackers.:Make It Large, Include Blue Cheese:\n" +
+        "Vegan \"Tartare\":15.39:Appetizer:Smoked Beets, Coconut Creme Fraiche, Horseradish, Pickled Mustard seeds, French Bread.:Make It Large, No Horseradish:\n" +
+        "Braised Beef Short Rib:25.35:Main:Beef reduction, Roasted Root Vegetables, Cremini, Shiitake & Oyster Mushrooms.:Make It Large, Extra Mushrooms:\n" +
+        "Duck Leg Confit:20.00:Main:Bacon & White Bean Cassoulet, Red Wine Jus, Tomato & Onion Reduction.:Make It Large:\n" +
+        "Manitoba Arctic Char:20.00:Main:Cocount Creme Lentils, Smoked Beets, Anchovy Bread Crumbs, Pickled Shallot.:Make It Large:\n" +
+        "Flourless Chocolate Cake:7.50:Dessert:Vanilla Creme Fraiche, Candied Pecans.:Make It Large:\n" +
+        "House Made Ice Cream:12.00:Dessert:Vanilla Ice Cream, Flourless Chocolate Brownie Pieces, Rum Caramel, Berries.:Whipped Cream, Extra Scoop: \n" +
+        "Green Grape and Cucumber Gazpacho:8.58:Main:Nothing better than cold soup ft. Grape and Cucumber.:Large Bowl, Spicy:\n" +
+        "Red Pepper Gazpacho:8.63:Main:Soup? Cold. Peppers? Red. Delicious? Maybe.:Large Bowl, Spicy:\n" +
+        "Butter Gazpacho:7.63:Main:Cold Butter Soup, just like how my mother used to make.:Large Bowl, Spicy:\n" +
+        "Yogurt Gazpacho:8.27:Main:Gazpacho made from Yogurt. Shockingly mediocre.:Large Bowl, Spicy:\n" +
+        "Frozen Clam Chowder:8.15:Main:Frozen Clam Chowder Popsicle. It's trendy. Reheat at your own convenience.:Make It Large:\n" +
+        "Frozen Lamb Chowder:8.15:Main:Frozen Lamb Chowder Popsicle. It's trendy. Reheat at your own convenience.:Make It Large:\n" +
+        "Lukewarm Potato Chowder:6.92:Main:Lukewarm Potato Chowder. Our famous recipe. Pairs well with Scolding Hot Cheese Chowder.:Large Bowl, Peppers, Spicy:\n" +
+        "Scolding Hot Cheese Chowder:6.57:Main:A delicious Hot Cheese Chowder! Let it cool before sipping. Pairs well with Lukewarm Potato Chowder.:Large Bowl, Peppers, Spicy:\n" +
+        "Original Frozen Banana:1.00:Dessert:It's a frozen banana!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
+        "On the Go-Go Banana:1.01:Dessert:Frozen banana for those on the go!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
+        "Double Dipped Frozen:1.50:Dessert:Frozen banana double dipped in our banana sauce!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
+        "Giddy-Girly Banana:0.99:Dessert:Frozen banana topped with fruit berries.:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
+        "George Daddy:2.00:Dessert:Three Frozen Bananas, for the price of two!:Whipped Cream, Chocolate Chips, Caramel, On A Stick:\n" +
+        "Simple Simon:0.50:Dessert:A normal, non-frozen banana.:With Peel:\n" +
+        "Chai Tea:4.29:Drink:A tasty tea to warm your soul.:Strong:\n" +
+        "Green Tea:4.26:Drink:A tasty tea to warm your soul.:Strong:\n" +
+        "Coffee:6.66:Drink:A perfectly brewed coffee to fuel your work.:Strong:\n" +
+        "Iced Tea:3.71:Drink:American Iced Tea perfect for drinking under the hot sun.:Strong:\n" +
+        "Cappuccino:6.17:Drink:Comes with cappuccino art on top!:Strong:\n" +
+        "Americano:5.76:Drink:Brewed to perfection.:Strong:\n" +
+        "Latte:6.52:Drink:Espresso and steamed milk. Simple and delicious.:Strong:\n" +
+        "Espresso:5.34:Drink:Nobody actually likes espresso, but we get it, you need the caffeine.:Strong:\n" +
+        "Banana Split:3.05:Dessert:Bananas and ice cream, could you really ask for more?:Whipped Cream, Chocolate Sauce, Strawberries, Caramel:\n" +
+        "Chocolate Banana Soft Serve:5.50:Dessert:Bananas and chocolate ice cream. Delicious.:Whipped Cream, Chocolate Sauce:\n" +
+        "Vanilla Banana Soft Serve:5.50:Dessert:Banans and vanilla ice cream. Fantastic.:Whipped Cream, Chocolate Sauce:\n" +
+        "Chunky Monkey:8.45:Dessert:Chocolate chunks, ice cream and love!:Whipped Cream, Chocolate Sauce, Strawberries, Banana, Caramel:\n" +
+        "Coke-Float:6.68:Drink:Coke and vanilla ice cream. Its foamy!:Make It Large:\n" +
+        "Chunk o' Cheddar:34.52:Main:Big Chunk of Cheddar Cheese. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
+        "Bowl o' Brie:34.22:Main:Big Bag of Brie. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
+        "Fist o' Feta:34.63:Main:Big Fist Full of Feta Cheese. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
+        "A-ton o' Asiago:32.11:Main:A ton (metaphorically) of Asiago Cheese. For Cheese Lovers, by Cheese Lovers.:Aged:\n" +
+        "Aged Crackers:4.33:Appetizer:Air Aged, delicious whole wheat crackers to pair with one of our cheeses.:Salted:";
     return string2;
 }
+
 
 let foodPhotoCount = {  // folder name, count of files in that folder.
     "artery": 1,

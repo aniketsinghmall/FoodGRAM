@@ -2,14 +2,33 @@ let currRestaurant=-1, currMenuItem=-1;
 let cartContents = [];
 let windowLocationSearch;
 let dropDownAnimating = false;
+let checkedOut=false;
 
 (function(){
     data = createData();
-    document.getElementById("checkoutButton").addEventListener("click", function(){checkoutDropDown();});
+    document.getElementById("checkoutButton").addEventListener("click", checkoutDropDown);
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
-    document.body.addEventListener("click", function(){if(document.getElementById("proceedCheckout")){checkoutDropDown()}});
+    document.body.addEventListener("click", function(event){if(document.getElementById("proceedCheckout") && !event.target.matches(".noClose")){checkoutDropDown()}});
+    document.body.onload = thankYou;
+
+    if(sessionStorage.getItem("UserName") !== null) {
+        document.getElementById('loginButton').style.display = 'none';
+        document.getElementById('signUpButton').style.display = 'none';
+        document.getElementById('usernameButton').style.display = 'block';
+        document.getElementById('usernameButton').innerHTML = "Welcome, " + sessionStorage.getItem("UserName") + "!";
+    }
 })();
+
+function loginAction() {
+    sessionStorage.setItem("UserName", document.getElementById("usernameL").value);
+}
+
+
+function signUpAction() {
+    sessionStorage.setItem("UserName", document.getElementById("username").value);
+}
+
 
 async function checkoutDropDown(){
     if(!dropDownAnimating){
@@ -19,34 +38,42 @@ async function checkoutDropDown(){
             const dropDown = document.createElement("div");
             dropDown.id = "checkoutDropDown";
             dropDown.class = "headerButton right";
+            dropDown.classList.add("noClose");
             document.getElementById("headerButtons").appendChild(dropDown);
             let cartItem;
             let totalPrice = 0;
             let cartButton;
             let list = document.createElement("ul");
             list.style= "overflow:scroll; height:66%; list-style-type: none;"
+            dropDown.className
+            list.classList.add("noClose");
             dropDown.appendChild(list);
             for(let i = 0; i<cartContents.length; i++){
                 cartItem = document.createElement("li");
                 cartItem.className = "checkoutItem";
-                cartItem.innerHTML = "<button class=\"cartButton\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\">- $" + cartContents[i].foodItem.price+"</div>";
+                cartItem.innerHTML = "<button class=\"cartButton noClose\" id=\"cart"+i+"\" onclick=\"removeItem("+i+")\">X</button>"+cartContents[i].foodItem.name + "<br> <div style=\"padding-left:75px;\" class=\"noClose\">- $" + cartContents[i].foodItem.price+"</div>";
+                cartItem.classList.add("noClose");
                 list.appendChild(cartItem);
                 totalPrice += parseFloat(cartContents[i].foodItem.price);
             }
             let line = document.createElement("hr");
-            line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 20px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
+            line.style = "position:absolute; bottom:125px; left:0px; right:0px; background-color: rgb(35, 35, 35); height: 40px; padding-left:0px; padding-right:30px; z-index: 11; border-color:rgba(0,0,0,0);";
+            line.classList.add("noClose");
             dropDown.appendChild(line);
             line = document.createElement("hr");
             line.style = "position:absolute; bottom:135px; left:0px; right:0px; background-color: #03DAC5; height: 3px; padding-left:0px; padding-right:30px; z-index: 12;";
+            line.classList.add("noClose");
             dropDown.appendChild(line);
             cartItem = document.createElement("div");
             cartItem.innerHTML = "Total price: $"+totalPrice.toFixed(2);
             cartItem.style = "position:absolute; bottom:110px; left:10px; right:10px; font-family:Arial;";
+            cartItem.classList.add("noClose");
             dropDown.appendChild(cartItem);
             const checkout = document.createElement("button");
             checkout.id = "proceedCheckout";
             checkout.innerHTML = "Proceed to Checkout";
             checkout.addEventListener("click", proceedToCheckout);
+            checkout.classList.add("noClose");
             dropDown.appendChild(checkout);
             await sleep(230);
             checkout.style = "font-size:20px";
@@ -109,7 +136,7 @@ function searchResults(){
                     let fn = "onclick=\"(function(){"+
                         "ingredients("+i+", "+j+");"+ 
                     "})();\"";
-                    let s = "<button "+fn+">"+data[0][i].foodItems[j].name+" - $"+ data[0][i].foodItems[j].price+"</button> \n<form class = \"ingredients\" id = \""+"restaurant"+i+"menuItem"+j+"\"></form>";
+                    let s = "<button "+fn+" + class =\"QuickFix\" >"+data[0][i].foodItems[j].name+" - $"+ data[0][i].foodItems[j].price+"</button> \n<form class = \"ingredients\" id = \""+"restaurant"+i+"menuItem"+j+"\"></form>";
                     list.innerHTML += s;
                 }
             }
@@ -124,7 +151,7 @@ function searchResults(){
         if(restaurants.length > 0){
             list.innerHTML = "";
             for(let i = 0; i<restaurants.length; i++){
-                let s = "<button id = \""+restaurants[i].name+"\" onclick=\"(function(){window.location.search='restaurant='+`"+restaurants[i].name+"`;})();\">"+restaurants[i].name+"</button>";
+                let s = "<button class =\"QuickFix\"  id = \""+restaurants[i].name+"\" onclick=\"(function(){window.location.search='restaurant='+`"+restaurants[i].name+"`;})();\">"+restaurants[i].name+"</button>";
                 list.innerHTML += s;
 
             }
@@ -143,9 +170,8 @@ function goHome(){
 
 function ingredients(restaurant, menuItem){
     windowLocationSearch = window.location.search;
-    console.log("In the function!");
     document.getElementById('foodPopup').style.display = "block";
-    document.getElementById('FoodName').innerText = data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodName').innerText = "$" + data[0][restaurant].foodItems[menuItem].price + " - " + data[0][restaurant].foodItems[menuItem].name;
     document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
     document.getElementById("IngredientList").innerHTML = "";
 
@@ -156,7 +182,7 @@ function ingredients(restaurant, menuItem){
         else
             helper = "\"IngredientRow2\"";
         let theOnPressFunction = "onclick=\"document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked = "+
-            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked; console.log('clicked');\"";
+            "!document.getElementById('checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"').checked;\"";
         document.getElementById("IngredientList").innerHTML += "<li " + theOnPressFunction + " class = "+ helper +" style=\"display: block\"><input id = \"checkBoxRestaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\" " +
             "type = \"checkbox\" class=\"checkItem\" name=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+"<label class = \"checkText\" for=\"restaurant"+restaurant+"menuItem"+menuItem+"ingredient"+i+"\">"+
             data[0][restaurant].foodItems[menuItem].ingredients[i].name+"</label></li>";
@@ -172,7 +198,7 @@ function ingredients(restaurant, menuItem){
 function ingredientsFromPremade(restaurant, menuItem, choices, name){
     windowLocationSearch = window.location.search;
     document.getElementById('foodPopup').style.display = "block";
-    document.getElementById('FoodName').innerText = name + " - " + data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodName').innerText = "$" + data[0][restaurant].foodItems[menuItem].price + " - " + name + " - " + data[0][restaurant].foodItems[menuItem].name;
     document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
     document.getElementById("IngredientList").innerHTML = "";
 
@@ -270,13 +296,9 @@ async function removeItem(item){
 function getReview(user, rating){
     let checkboxes = document.getElementsByClassName("checkItem");
     let checkBoxVals = [];
-    console.log("checkboxes length: " + checkboxes.length);
     for(let i = 0; i<checkboxes.length; i++){
         checkBoxVals.push(checkboxes[i].checked);
     }
-
-    console.log("restaurant: " + data[0][currRestaurant]);
-    console.log("food: " + data[0][currRestaurant].foodItems[currMenuItem]);
 
     let review = new FoodReview(user, rating, data[0][currRestaurant], data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals);
     return review;
@@ -284,19 +306,14 @@ function getReview(user, rating){
     // return new Recipe(data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals), document.getElementById("reviewRating").value;
 }
 
-
-function loginAction() {
-    document.getElementById('login').style.display ='none'; 
-    document.getElementById('loginButton').style.display ='none';
-    document.getElementById('signUpButton').style.display ='none';
-    document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("usernameL").value + "!";
+async function thankYou(){
+    if(window.localStorage.getItem("checkedOut") == "true"){
+        document.getElementById('thankYou').style.display='block';
+        window.localStorage.setItem('cartContents', JSON.stringify([]));
+        window.localStorage.setItem("checkedOut", false);
+    }
 }
 
-function signUpAction() {
-    document.getElementById('signup').style.display ='none'; 
-    document.getElementById('loginButton').style.display ='none';
-    document.getElementById('signUpButton').style.display ='none';
-    document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("fnameS").value + " " + document.getElementById("lnameS").value + "!";
+function submitForm(){
+    window.localStorage.setItem("checkedOut", true);
 }
