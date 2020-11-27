@@ -22,7 +22,7 @@
         <span id = "loginButton"><button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button></span>
         <button id = "usernameButton" class = "usernameButton left" style="display: none"> </button>
         <img id = "logo" src="logo1.png">
-        <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
+        <button class = "headerButton right" id = "checkoutButton"> <i style = "font-size:1.2vw;" class="material-icons">add_shopping_cart</i>
         </button>
         <form>
             <input id = "searchBar" type="text" name="search">
@@ -31,12 +31,12 @@
 
     <div class="bottomHeader"> <!-- Bottom header for category buttons -->
         <ul class = "topNavBar">
-            <li><a href = "index.html"> <img src = "stars/oldStars/1star.png" style="width:30px; height:30px;"> All </a></li>
-            <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" style="width:30px; height:30px;"> Pizza </a></li>
-            <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" style="width:30px; height:30px;"> Burgers </a></li>
-            <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" style="width:40px; height:30px;"> Fine Dinning </a></li>
-            <li><a href = "index.html?search=Chocolate"><img src = "navBarIcons/cupcake.png" style="width:30px; height:30px;"> Desserts </a></li>
-            <li><a href = "index.html?search=Coffee"><img src = "navBarIcons/coffee.png" style="width:30px; height:30px;"> Drinks </a></li>
+            <li><a href = "index.html"> <img src = "stars/oldStars/1star.png"  class = "catImg" "> All </a></li>
+            <li><a href = "index.html?search=Pizza"> <img src = "navBarIcons/pizza.png" class = "catImg"> Pizza </a></li>
+            <li><a href = "index.html?search=Burger"><img src = "navBarIcons/burger.png" class = "catImg"> Burgers </a></li>
+            <li><a href = "index.html?search=Steak"><img src = "navBarIcons/roast.png" class = "catImg"> Fine Dinning </a></li>
+            <li><a href = "index.html?search=Chocolate"><img src = "navBarIcons/cupcake.png" class = "catImg"> Desserts </a></li>
+            <li><a href = "index.html?search=Coffee"><img src = "navBarIcons/coffee.png" class = "catImg"> Drinks </a></li>
         </ul>
     </div>
 
@@ -106,15 +106,15 @@
 
 <div id="cart" class="modal grid-cart">
     <div class="cartHeader">
-        <h1 style="text-align:center;font-size:60px;">Your Order</h1>
+        <h1 style="text-align:center;font-size:2.6vw;">Your Order</h1>
     </div>
     <div class="cart1"  style="  background-color: rgb(25, 25, 25);">
-        <h1 style="text-align: center; font-size:50px;">Order Summary</h1>
+        <h1 style="text-align: center; font-size:2.2vw;">Order Summary</h1>
             <div class = "CartScroller">
                 <ul id="CartList">
                 </ul>
             </div>
-        <footer style="float:right; font:bold; font-size: 24px; color:white;" id="TotalCost">Total Cost: </footer>
+        <footer style="float:right; font:bold; font-size: 1.6vw; color:white;" id="TotalCost">Total Cost: </footer>
     </div>
 
     <div class="cart2" style="background-color: rgb(25, 25, 25);" >
@@ -166,7 +166,7 @@
                     <option value="23">23</option>
                     <option value="24">24</option>
                 </select>
-                <input type="text" style="width: 40px;" id="ccNumber" name="cvcCode" placeholder="CVC" required><br>
+                <input type="password" style="width: 40px;" id="ccNumber" name="cvcCode" placeholder="CVC" required><br>
                 <button  class = "cancelButton" onclick="document.getElementById('cart').style.display='none';">Cancel</button>
                 <button  class = "acceptButton" id="processPayment">Process Payment</button>
 
@@ -243,7 +243,7 @@
     <div class="modal-content2 animate">
         <div>
             <span>
-                <button style = "width:50px;" id = "closePopupPage" class = "headerButton2" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
+                <button id = "closePopupPage" class = "headerButton2" onclick="document.getElementById('foodPopup').style.display='none';">X</button>
             </span>
             <h1 id="FoodName">Food Item!</h1>
         </div>
@@ -260,7 +260,7 @@
     <div class="modal-content3">
         <div>
             <span>
-                <button style = "width:50px;" id = "closeReviewPage" class = "headerButton2" onclick="document.getElementById('reviewPopup').style.display='none';">X</button>
+                <button  id = "closeReviewPage" class = "headerButton2" onclick="document.getElementById('reviewPopup').style.display='none';">X</button>
             </span>
             <h1 id="ReviewTag" style="color:white;text-align:center;margin:0;">Add Review</h1>
         </div>
@@ -271,7 +271,7 @@
 
         <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
         <br>
-                <p style="text-align:left;float:left;">I give my recipe a 
+                <p style="text-align:left;float:left;" class="text3">I give my recipe a
 
         <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "5" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
 
