@@ -2,6 +2,7 @@ let currRestaurant=-1, currMenuItem=-1;
 let cartContents = [];
 let windowLocationSearch;
 let dropDownAnimating = false;
+let checkedOut=false;
 
 (function(){
     data = createData();
@@ -9,7 +10,7 @@ let dropDownAnimating = false;
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
     document.body.addEventListener("click", function(event){if(document.getElementById("proceedCheckout") && !event.target.matches(".noClose")){checkoutDropDown()}});
-
+    document.body.onload = thankYou;
 
     if(sessionStorage.getItem("UserName") !== null) {
         document.getElementById('loginButton').style.display = 'none';
@@ -303,4 +304,16 @@ function getReview(user, rating){
     return review;
 
     // return new Recipe(data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals), document.getElementById("reviewRating").value;
+}
+
+async function thankYou(){
+    if(window.localStorage.getItem("checkedOut") == "true"){
+        document.getElementById('thankYou').style.display='block';
+        window.localStorage.setItem('cartContents', JSON.stringify([]));
+        window.localStorage.setItem("checkedOut", false);
+    }
+}
+
+function submitForm(){
+    window.localStorage.setItem("checkedOut", true);
 }
