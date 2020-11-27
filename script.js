@@ -11,11 +11,6 @@ let dropDownAnimating = false;
     document.body.addEventListener("click", function(event){if(document.getElementById("proceedCheckout") && !event.target.matches(".noClose")){checkoutDropDown()}});
 })();
 
-function goto(event) {
-    var noRedirect = '.some-div-class, .another-div-class, .parent-div-class *';
-    if (!event.target.matches(noRedirect)) {
-    }
-  }
 
 async function checkoutDropDown(){
     if(!dropDownAnimating){
