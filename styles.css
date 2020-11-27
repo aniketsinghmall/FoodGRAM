@@ -24,10 +24,9 @@ body {
   'footer footer';
   grid-gap: 0px;
   padding: 2px;
-  grid-template-rows: 7% 4% 5% 25% 50% 5% 4%;
+  grid-template-rows: 8% 5% 5% 25% 50% 5% 2%;
   grid-template-columns: 20% 80%;
 }
-
 
 
 
