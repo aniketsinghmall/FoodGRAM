@@ -750,9 +750,11 @@ function addReviewThing(){
     num=Math.min(5, num);
     num=Math.max(1,num);
 
+    let name = "AnonymousUser";  //PUT ACTUAL USERNAME HERE!
+    if(sessionStorage.getItem("UserName") != null) {
+        name = sessionStorage.getItem("UserName");
+    }
 
-
-    let name = "Your Name";  //PUT ACTUAL USERNAME HERE!
     let user = new Friend(name);
     let review = getReview(user, num);
     addNewReview(review);
@@ -938,8 +940,6 @@ function getFoodPhotoDir(foodName){
         category = "crackers";
     else if(foodName.includes("banana split"))
         category = "bananasplit";
-
-    console.log(foodName + " " + category);
     return "foodImages/" + category + "/" + category + ((hash%foodPhotoCount[category]) + 1) +".jpg";
 }
 
@@ -1032,7 +1032,7 @@ function getFoodText(){
         "Chocolate Mousse:11.62:Dessert:Delicious, velvety, chocolate. A great way to end a meal.:Make It Large:\n" +
         "Apple Tart:7.99:Dessert:Delicious, perfectly baked apple tart.:Make It Large:\n" +
         "Tiramisu:6.15:Dessert:A classic dessert done right.:Make It Large:\n" +
-        "MilkShake:5.00:Drink:Tastes as good as a Five Dollar Milkshake should.:Chocolate Sauce, Bananas, Cherries:\n" +
+        "Milkshake:5.00:Drink:Tastes as good as a Five Dollar Milkshake should.:Chocolate Sauce, Bananas, Cherries:\n" +
         "Foie and Loathing in Las VeGras:6.19:Main:Delicious Foie Gras.:Make It Large:\n" +
         "Honey I Shrunk The Soup:7:Main:Our famous cream soup.:Make It Spicy:\n" +
         "Blueberry Pie:7.1:Dessert:A slice of delicious blueberry pie.:Make It Large:\n" +

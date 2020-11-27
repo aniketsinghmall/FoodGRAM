@@ -115,7 +115,7 @@
                 <ul id="CartList">
                 </ul>
             </div>
-        <footer style="float:right;font: bold; font-size: 24px; color:white;" id="TotalCost">Total Cost: </footer>
+        <footer style="float:right; font:bold; font-size: 24px; color:white;" id="TotalCost">Total Cost: </footer>
     </div>
 
     <div class="cart2" style="background-color: rgb(25, 25, 25);" >
@@ -187,7 +187,7 @@
 <!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
 
-    <form class="modal-content animate" method="post">
+    <form class="modal-content animate" onsubmit="loginAction();" method="post">
 
         <div style ="color: rgb(187,134,252);">
 
@@ -201,6 +201,10 @@
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
+<<<<<<< Updated upstream
+=======
+                <button class = "headerButton" >Log In</button>
+>>>>>>> Stashed changes
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
                 <button class = "headerButton" onsubmit="loginAction();">Log In</button>
 
@@ -211,29 +215,29 @@
 
 
 <div id="signup" class="modal">
-    <form class="modal-content animate" method="post">
+    <form class="modal-content animate" onsubmit="signUpAction();" method="post">
         <div style ="color: rgba(187,134,252);">
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
 
             <ul style="margin-left: 35%">
 
                 <label for="fnameS"><b>First Name:</b></label><br>
-                <input class = "login" type="text" id="fnameS" name="fnameS" placeholder="Your First Name" autofocus required><br>
+                <input class = "signup" type="text" id="fnameS" name="fnameS" placeholder="Your First Name" autofocus required><br>
 
                 <label for="lnameS"><b>Last Name:</b></label><br>
-                <input class = "login" type="text" id="lnameS" name="lnameS" placeholder="Your Last Name" required><br>
+                <input class = "signup" type="text" id="lnameS" name="lnameS" placeholder="Your Last Name" required><br>
             
                 <label for="email"><b>Email:</b></label><br>
-                <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
+                <input class = "signup" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
 
                 <label for="username"><b>Username:</b></label><br>
-                <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
+                <input class = "signup" type="text" id="username" name="username" placeholder="Choose Username" required><br>
 
                 <label for="pass"><b>Password:</b></label><br>
-                <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
+                <input class = "signup" type="password" id="pass" name="pass" placeholder="********" required><br>
 
                 <label for="confpass"><b>Confirm Password:</b></label><br>
-                <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
+                <input class = "signup" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 
                 <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
                 <button class = "headerButton" onsubmit="signUpAction();">Sign Up</button>
