@@ -7,7 +7,6 @@
 <head>
     <link id = "myStyleSheet" rel="stylesheet" href="styles.css">
     <script type="text/javascript" src="BackEnd.js"></script>
-    <script src = "BackEnd.js"> </script>
     <!-- Imports Google icons for use-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -25,7 +24,7 @@
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
-        <form>
+        <form novalidate>
             <input id = "searchBar" type="text" name="search">
         </form>
     </div>
@@ -122,7 +121,7 @@
     <div class="cart2" style="background-color: rgb(25, 25, 25);" >
         <h1>Checkout</h1>
 
-         <form method="post" onsubmit="let testVal = []; localStorage.setItem('cartContents', JSON.stringify(testVal));" >
+         <form method="post" onsubmit="let testVal = []; localStorage.setItem('cartContents', JSON.stringify(testVal));" novalidate>
 
             <label for="Delivery Address">Delivery Address<br></label>
             <input type="text" id="fname" name="fname" placeholder="First Name" required>
@@ -283,7 +282,7 @@
         <br>
                 <p style="text-align:left;float:left;">I give my recipe a 
 
-        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
+        <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "5" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
 
         out of 5 </p>
 
