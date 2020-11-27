@@ -799,7 +799,7 @@ body {
   position:relative;
   border: 1px solid #888;
   width: 60vw;
-  height:44vh;
+  height:45vh;
   font-size: 1.3vw;
 }
 
@@ -820,7 +820,7 @@ body {
 
 #IngredientList{
   overflow-y: scroll;
-  height:55%;
+  height:15vh;
   background-color: rgb(35,35,35);;
 }
 
