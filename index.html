@@ -19,8 +19,9 @@
 <div class="grid-container"> <!-- Site contained in grid -->
 
     <div class="topHeader" id= "headerButtons">  <!-- top header for logo and top buttons. -->
-        <button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button>
-        <button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button>
+        <span id = "signUpButton"><button class = "headerButton left" onclick="document.getElementById('signup').style.display='inline'"> Sign Up </button></span>
+        <span id = "loginButton"><button class = "headerButton left" onclick="document.getElementById('login').style.display='inline'"> Log In </button></span>
+        <button id = "usernameButton" class = "usernameButton left" style="display: none"> </button>
         <img id = "logo" src="logo1.png">
         <button class = "headerButton right" id = "checkoutButton"> <i class="material-icons">add_shopping_cart</i> Cart
         </button>
@@ -76,7 +77,10 @@
         <div id="contact" class="modal">
             <div class="modal-content animate" style ="color: rgb(187,134,252);">
                 <h1 style="text-align:center">Welcome to FoodGram!</h1>
-                <p>This is our high-fidelity vertical prototype. Formed as a part of our HCI project.</p><br>
+                <p>This is a high-fidelity vertical prototype.</p>
+                <p>FoodGram is here to help you find freshest food in town through User Reviews.</p>
+                <p>Click a review to either see the reviewed restaurant, or the exact meal someone ordered.</p>
+                <p>FoodGram automatically adds your social media friends from other platforms, so remember to leave a review so your friends can find the food you love!</p><br>
                 <pre style="font-size: 16px; font-weight: bold; font-size: large;">
 	  Developed by:
         Aniket Mall 							        malla@myumanitoba.ca
@@ -90,7 +94,7 @@
 
         <div class="footer">
             <!-- <button class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button> -->
-            <button type = "button" class = "headerButton" onclick="document.getElementById('contact').style.display='block';" >Contact Us</button>
+            <button type = "button" class = "headerButton" id="contactUsButton" onclick="document.getElementById('contact').style.display='block';" >Help Me</button>
         </div>
         <script>
             if ( window.history.replaceState ) {
@@ -105,13 +109,13 @@
     <div class="cartHeader">
         <h1 style="text-align:center;font-size:60px;">Your Order</h1>
     </div>
-    <div class="cart1" style="  background-color: rgb(25, 25, 25);">
+    <div class="cart1"  style="  background-color: rgb(25, 25, 25);">
         <h1 style="text-align: center; font-size:50px;">Order Summary</h1>
             <div class = "CartScroller">
                 <ul id="CartList">
                 </ul>
             </div>
-        <footer style="float:right;font: bold; font-size: 24px; color:white;" id="TotalCost">Total Cost: </footer>
+        <footer style="float:right; font:bold; font-size: 24px; color:white;" id="TotalCost">Total Cost: </footer>
     </div>
 
     <div class="cart2" style="background-color: rgb(25, 25, 25);" >
@@ -136,8 +140,8 @@
             <br>
             <br>
 
-            <label for="Payment Method"><pre>Payment Method</pre></label>
-            <input type="text" style="margin-left: 0px; width:186px;" id="ccNumber" name="ccNumber" placeholder="Credit Card Number" required>
+            <label for="Payment Method">Payment Method</br></label>
+            <input type="text" style="margin-left: 0px; " id="ccNumber" name="ccNumber" placeholder="Credit Card Number" required>
             <br>
 
             <label for="expiryMonth">Expiry</label>
@@ -182,7 +186,8 @@
 
 <!--LOGIN PAGE. PLEASE ASK ANIKET ABOUT HIS DUPLICATE ID'S SO THAT WE CAN FIX ERRORS-->
 <div id="login" class="modal">
-    <form class="modal-content animate" method="post">
+
+    <form class="modal-content animate" onsubmit="loginAction();" method="post">
 
         <div style ="color: rgb(187,134,252);">
 
@@ -190,14 +195,19 @@
 
             <ul style="margin-left: 35%">
 
-                <label for="username"><b>Username:</b></label><br>
-                <input class = "login" type="text" id="username" name="username" placeholder="Enter Username" autofocus required><br>
+                <label for="usernameL"><b>Username:</b></label><br>
+                <input class = "login" type="text" id="usernameL" name="usernameL" placeholder="Enter Username" required><br>
 
                 <label for="pass"><b>Password:</b></label><br>
                 <input class = "login" type="password" id="pass" name="pass" placeholder="Enter Password" required><br>
 
+<<<<<<< Updated upstream
+=======
                 <button class = "headerButton" >Log In</button>
+>>>>>>> Stashed changes
                 <button class = "cancelButton" onclick="document.getElementById('login').style.display='none';">Cancel</button>
+                <button class = "headerButton" onsubmit="loginAction();">Log In</button>
+
             </ul>
         </div>
     </form>
@@ -205,32 +215,33 @@
 
 
 <div id="signup" class="modal">
-    <form class="modal-content animate" method="post">
+    <form class="modal-content animate" onsubmit="signUpAction();" method="post">
         <div style ="color: rgba(187,134,252);">
             <h1 style="text-align:center">Welcome to FoodGram!</h1>
 
             <ul style="margin-left: 35%">
-                <label for="fname"><b>First Name:</b></label><br>
-                <input class = "login" type="text" id="fname" name="fname" placeholder="Your First Name" autofocus required><br>
 
-                <label for="lname"><b>Last Name:</b></label><br>
-                <input class = "login" type="text" id="lname" name="lname" placeholder="Your Last Name" required><br>
+                <label for="fnameS"><b>First Name:</b></label><br>
+                <input class = "signup" type="text" id="fnameS" name="fnameS" placeholder="Your First Name" autofocus required><br>
+
+                <label for="lnameS"><b>Last Name:</b></label><br>
+                <input class = "signup" type="text" id="lnameS" name="lnameS" placeholder="Your Last Name" required><br>
             
                 <label for="email"><b>Email:</b></label><br>
-                <input class = "login" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
+                <input class = "signup" type="email" id="email" name="email" placeholder="YourEmail@Example.com" required><br>
 
                 <label for="username"><b>Username:</b></label><br>
-                <input class = "login" type="text" id="username" name="username" placeholder="Choose Username" required><br>
+                <input class = "signup" type="text" id="username" name="username" placeholder="Choose Username" required><br>
 
                 <label for="pass"><b>Password:</b></label><br>
-                <input class = "login" type="password" id="pass" name="pass" placeholder="********" required><br>
+                <input class = "signup" type="password" id="pass" name="pass" placeholder="********" required><br>
 
                 <label for="confpass"><b>Confirm Password:</b></label><br>
-                <input class = "login" type="password" id="confpass" name="confpass" placeholder="********" required><br>
+                <input class = "signup" type="password" id="confpass" name="confpass" placeholder="********" required><br>
 
-
-                <button class = "headerButton" >Sign Up</button>
                 <button class = "cancelButton" onclick="document.getElementById('signup').style.display='none';">Cancel</button>
+                <button class = "headerButton" onsubmit="signUpAction();">Sign Up</button>
+
             </ul>
         </div>
     </form>
@@ -251,7 +262,7 @@
         </div>
         <h2 id="FoodDesc">Here is the description</h2>
         <div id="IngredientList"></div>
-        <button id="AddToCart" class = "headerButton3" onclick = "addToCart() ">Add To Cart</button>
+        <button id="AddToCart" class = "headerButton3" onclick = "addToCart();">Add To Cart</button>
 
         <button id="AddReview" class = "headerButton4"  onclick = "document.getElementById('reviewPopup').style.display='block'">Add To Reviews</button>
     </div>
@@ -268,16 +279,23 @@
         </div>
 
 
+        <form method="post">
+
 
         <p id="FoodDesc2"  style="text-align:left;" >Enter your review for your recipe. You can change your review later in the profile page (not implemented).</p>
         <br>
-        <p style="text-align:left;float:left;">I give my recipe a 
+                <p style="text-align:left;float:left;">I give my recipe a 
 
         <input type="number" id="reviewRating" name="quantity" min="1" max="5" value = "" required style="display: inline-block;margin-top:17px;margin-left: 10px; margin-right:10px;">
 
         out of 5 </p>
-        <button id="AddAReview" class = "headerButton3"  onclick = "addReviewThing();" style="margin-top:10%;">Add Review</button>
+
+  
+        <button type = "button" id="AddAReview" class = "headerButton3"  onclick = "addReviewThing();" style="margin-top:10%;">Add Review</button>
         <button id="CancelReview" class = "headerButton3"  style="margin-top:10%;background-color:red;">Cancel</button>
+
+        </form>
+
 
     </div>
 </div>

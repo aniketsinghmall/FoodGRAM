@@ -9,7 +9,26 @@ let dropDownAnimating = false;
     window.addEventListener("popstate", searchResults());
     document.getElementById("logo").addEventListener("click", goHome);
     document.body.addEventListener("click", function(event){if(document.getElementById("proceedCheckout") && !event.target.matches(".noClose")){checkoutDropDown()}});
+
+
+    if(sessionStorage.getItem("UserName") !== null) {
+        console.log("This ran!");
+        document.getElementById('loginButton').style.display = 'none';
+        document.getElementById('signUpButton').style.display = 'none';
+        document.getElementById('usernameButton').style.display = 'block';
+        document.getElementById('usernameButton').innerHTML = "Welcome, " + sessionStorage.getItem("UserName") + "!";
+    }
 })();
+
+function loginAction() {
+    console.log("this ran");
+    sessionStorage.setItem("UserName", document.getElementById("usernameL").value);
+}
+
+
+function signUpAction() {
+    sessionStorage.setItem("UserName", document.getElementById("username").value);
+}
 
 
 async function checkoutDropDown(){
@@ -152,9 +171,8 @@ function goHome(){
 
 function ingredients(restaurant, menuItem){
     windowLocationSearch = window.location.search;
-    console.log("In the function!");
     document.getElementById('foodPopup').style.display = "block";
-    document.getElementById('FoodName').innerText = data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodName').innerText = "$" + data[0][restaurant].foodItems[menuItem].price + " - " + data[0][restaurant].foodItems[menuItem].name;
     document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
     document.getElementById("IngredientList").innerHTML = "";
 
@@ -181,7 +199,7 @@ function ingredients(restaurant, menuItem){
 function ingredientsFromPremade(restaurant, menuItem, choices, name){
     windowLocationSearch = window.location.search;
     document.getElementById('foodPopup').style.display = "block";
-    document.getElementById('FoodName').innerText = name + " - " + data[0][restaurant].foodItems[menuItem].name;
+    document.getElementById('FoodName').innerText = "$" + data[0][restaurant].foodItems[menuItem].price + " - " + name + " - " + data[0][restaurant].foodItems[menuItem].name;
     document.getElementById('FoodDesc').innerText = "\"" + data[0][restaurant].foodItems[menuItem].description + "\"";
     document.getElementById("IngredientList").innerHTML = "";
 
@@ -291,13 +309,4 @@ function getReview(user, rating){
     return review;
 
     // return new Recipe(data[0][currRestaurant].foodItems[currMenuItem], checkBoxVals), document.getElementById("reviewRating").value;
-}
-
-
-function loginAction() {
-    document.getElementById('login').style.display ='none'; 
-    document.getElementById('loginButton').style.display ='none';
-    document.getElementById('signUpButton').style.display ='none';
-    document.getElementById('usernameButton').style.display ='inline';
-    document.getElementById('usernameButton').innerHTML = "Welcome, " + document.getElementById("username").value + "!";
 }
