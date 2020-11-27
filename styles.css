@@ -1167,7 +1167,11 @@ overflow: scroll;
 
   border-radius: 15px;
 
+}
 
+#resultsHeader{
+  top-margin: -5%;
+  font-size: 40px;
 }
 
 
@@ -1200,6 +1204,7 @@ p {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(35, 35, 35);
+  background: #4e9dde;
 }
 
 /* Handle on hover */
