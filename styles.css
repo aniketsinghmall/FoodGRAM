@@ -1167,7 +1167,11 @@ overflow: scroll;
 
   border-radius: 15px;
 
+}
 
+#resultsHeader{
+  top-margin: -5%;
+  font-size: 40px;
 }
 
 
